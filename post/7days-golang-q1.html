@@ -25,7 +25,7 @@
     
   </title>
 
-  <link rel="canonical" href="https://geektutu.com/post/7days-golang-q1.html">
+  <link rel="canonical" href="https://ysliving.github.io/post/7days-golang-q1.html">
   
 <link rel="stylesheet" href="/css/geektutu.css">
 
@@ -334,7 +334,7 @@
         
         <li><a target="_blank" rel="noopener" href="https://github.com/geektutu">Github</a></li>
         
-        <li><a href="https://geektutu.com/feed.xml">RSS</a></li>
+        <li><a target="_blank" rel="noopener" href="https://geektutu.com/feed.xml">RSS</a></li>
         
         <li><a target="_blank" rel="noopener" href="https://www.zhihu.com/people/gzdaijie">知乎</a></li>
         
@@ -489,7 +489,7 @@
       
       <div class="gkt-article-start"></div>
       <p><img src="7days-golang-q1/7days-golang-qa.jpg" alt="7days-golang 有价值的问题"></p>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>在 <a href="https://geektutu.com/post/geecache-day2.html">动手写分布式缓存 - GeeCache第二天 单机并发缓存</a> 这篇文章中，有一个接口型函数的实现：</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>在 <a target="_blank" rel="noopener" href="https://geektutu.com/post/geecache-day2.html">动手写分布式缓存 - GeeCache第二天 单机并发缓存</a> 这篇文章中，有一个接口型函数的实现：</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// A Getter loads data for a key.</span></span><br><span class="line"><span class="keyword">type</span> Getter <span class="keyword">interface</span> &#123;</span><br><span class="line">	Get(key <span class="keyword">string</span>) ([]<span class="keyword">byte</span>, error)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// A GetterFunc implements Getter with a function.</span></span><br><span class="line"><span class="keyword">type</span> GetterFunc <span class="function"><span class="keyword">func</span><span class="params">(key <span class="keyword">string</span>)</span> <span class="params">([]<span class="keyword">byte</span>, error)</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Get implements Getter interface function</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(f GetterFunc)</span> <span class="title">Get</span><span class="params">(key <span class="keyword">string</span>)</span> <span class="params">([]<span class="keyword">byte</span>, error)</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> f(key)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>这里呢，定义了一个接口 <code>Getter</code>，只包含一个方法 <code>Get(key string) ([]byte, error)</code>，紧接着定义了一个函数类型 <code>GetterFunc</code>，GetterFunc 参数和返回值与 Getter 中 Get 方法是一致的。而且 GetterFunc 还定义了 Get 方式，并在 Get 方法中调用自己，这样就实现了接口 Getter。所以 GetterFunc 是一个实现了接口的函数类型，简称为接口型函数。</p>
@@ -537,7 +537,7 @@
 <p>那如果我们看过 HandleFunc 的内部实现的话，就会知道两种写法是完全等价的，内部将第二种写法转换为了第一种写法。</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(mux *ServeMux)</span> <span class="title">HandleFunc</span><span class="params">(pattern <span class="keyword">string</span>, handler <span class="keyword">func</span>(ResponseWriter, *Request)</span>)</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> handler == <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="built_in">panic</span>(<span class="string">&quot;http: nil handler&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	mux.Handle(pattern, HandlerFunc(handler))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>如果你仔细观察，会发现 <code>http.ListenAndServe</code> 的第二个参数也是接口类型 <code>Handler</code>，我们使用了标准库 <code>net/http</code> 内置的路由，因此呢，传入的值是 nil。那如果这个地方我们传入的是一个实现了 <code>Handler</code> 接口的结构体呢？就可以完全托管所有的 HTTP 请求，后续怎么路由，怎么处理，请求前后增加什么功能，都可以自定义了。慢慢地，就变成了一个功能丰富的 Web 框架了。如果你感兴趣呢，可以阅读 <a href="https://geektutu.com/post/gee.html">7天用Go从零实现Web框架Gee教程</a>。</p>
+<p>如果你仔细观察，会发现 <code>http.ListenAndServe</code> 的第二个参数也是接口类型 <code>Handler</code>，我们使用了标准库 <code>net/http</code> 内置的路由，因此呢，传入的值是 nil。那如果这个地方我们传入的是一个实现了 <code>Handler</code> 接口的结构体呢？就可以完全托管所有的 HTTP 请求，后续怎么路由，怎么处理，请求前后增加什么功能，都可以自定义了。慢慢地，就变成了一个功能丰富的 Web 框架了。如果你感兴趣呢，可以阅读 <a target="_blank" rel="noopener" href="https://geektutu.com/post/gee.html">7天用Go从零实现Web框架Gee教程</a>。</p>
 <h2 id="其他语言类似特性"><a href="#其他语言类似特性" class="headerlink" title="其他语言类似特性"></a>其他语言类似特性</h2><p>如果有 Java 编程经验的同学可能比较有感触。Java 1.5 中是不支持直接传入函数的，参数要么是接口，要么是对象。举一个最简单的例子，列表自定义排序时，需要实现一个匿名的 Comparator 类，重写 compare 方法。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Collections.sort(list, <span class="keyword">new</span> Comparator&lt;Integer&gt;()&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Integer o1, Integer o2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> o2 - o1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
@@ -703,7 +703,7 @@
     
     <a style="display:inline-block;" target="_blank" rel="noopener" href="https://github.com/geektutu" title="Github"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/github.png" /></a>
     
-    <a style="display:inline-block;" href="https://geektutu.com/feed.xml" title="RSS"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/rss.jpg" /></a>
+    <a style="display:inline-block;" target="_blank" rel="noopener" href="https://geektutu.com/feed.xml" title="RSS"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/rss.jpg" /></a>
     
     <a style="display:inline-block;" target="_blank" rel="noopener" href="https://www.zhihu.com/people/gzdaijie" title="知乎"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/zhihu.png" /></a>
     
@@ -779,7 +779,7 @@
                 wrapper.appendChild(div)
             })
             var p = document.createElement('p')
-            p.innerHTML = '<a href="https://geektutu.com/post/blog-experience-7.html">Gitalk Plus</a>';
+            p.innerHTML = '<a target="_blank" rel="noopener" href="https://geektutu.com/post/blog-experience-7.html">Gitalk Plus</a>';
             p.classList.add('dis-divide');
             wrapper.appendChild(p);
             wrapper.classList.add('dis-wrapper')

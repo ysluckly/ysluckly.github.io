@@ -25,7 +25,7 @@
     
   </title>
 
-  <link rel="canonical" href="https://geektutu.com/post/pandas-select-data.html">
+  <link rel="canonical" href="https://ysliving.github.io/post/pandas-select-data.html">
   
 <link rel="stylesheet" href="/css/geektutu.css">
 
@@ -344,7 +344,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">filter_func</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="built_in">float</span>(x[<span class="string">&#x27;单价&#x27;</span>]) <span class="comment"># x是为某一行的数据，x[&#x27;单价&#x27;]可以取到该行对应的值</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">df = pd.read_csv(<span class="string">&#x27;demo.csv&#x27;</span>, index_col=<span class="string">&#x27;编号&#x27;</span>)</span><br><span class="line">print(df[df.apply(filter_func, axis=<span class="number">1</span>)])</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">                       日期     单价  数量</span></span><br><span class="line"><span class="string">编号                                  </span></span><br><span class="line"><span class="string">T001  2018-03-02 12:34:05    100   3</span></span><br><span class="line"><span class="string">T002  2018-03-02 13:04:05    200   3</span></span><br><span class="line"><span class="string">T003  2018-03-03 18:12:31     30  10</span></span><br><span class="line"><span class="string">T004  2018-03-04 20:34:05    400   2</span></span><br><span class="line"><span class="string">T005  2018-03-02 20:34:05  500.0   1</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="附-推荐"><a href="#附-推荐" class="headerlink" title="附 推荐"></a>附 推荐</h2><ul>
-<li><a href="https://geektutu.com/post/quick-python.html">一篇文章入门 Python</a></li>
+<li><a target="_blank" rel="noopener" href="https://geektutu.com/post/quick-python.html">一篇文章入门 Python</a></li>
 </ul>
 
         
@@ -370,7 +370,7 @@
             
             <p>
                 本站永久域名「 <a
-                        href="/post/pandas-select-data.html">geektutu.com</a>
+                        href="/post/pandas-select-data.html">ysliving.github.io</a>
                     」，也可搜索「 极客兔兔 」找到我。
             </p>
             
@@ -531,7 +531,7 @@
     
     <a style="display:inline-block;" target="_blank" rel="noopener" href="https://github.com/geektutu" title="Github"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/github.png" /></a>
     
-    <a style="display:inline-block;" href="https://geektutu.com/feed.xml" title="RSS"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/rss.jpg" /></a>
+    <a style="display:inline-block;" target="_blank" rel="noopener" href="https://geektutu.com/feed.xml" title="RSS"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/rss.jpg" /></a>
     
     <a style="display:inline-block;" target="_blank" rel="noopener" href="https://www.zhihu.com/people/gzdaijie" title="知乎"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/zhihu.png" /></a>
     
@@ -544,7 +544,7 @@
         <h3>推荐阅读</h3>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/geecache/geecache_sm.jpg')"></div>
+    <div class="post-img" style="background-image: url('/post/quick-go-protobuf/protocol-buffers.jpg')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
@@ -558,14 +558,14 @@
                 
                 
             </div>
-            <a href="/post/geecache.html" class="title">
-                7天用Go从零实现分布式缓存GeeCache
+            <a href="/post/quick-go-protobuf.html" class="title">
+                Go Protobuf 简明教程
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2020-02-08，</span>
-                    <span class="hidden-xs">全文3456字，</span>
-                    <span>阅读约12分钟</span>
+                    <span>发表于2020-01-11，</span>
+                    <span class="hidden-xs">全文7609字，</span>
+                    <span>阅读约26分钟</span>
                 </small>
             </p>
         </div>
@@ -573,7 +573,7 @@
 </div>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/blog-experience-7/comment.jpg')"></div>
+    <div class="post-img" style="background-image: url('/post/tensorflow2-gym-nn/cartpole_v0_failed.gif')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
@@ -581,20 +581,32 @@
                 
                 <span>/</span>
                 
-                <a class="text-gray" href="/tags/#关于我"
-                    title="关于我">关于我</a>
+                <a class="text-gray" href="/tags/#机器学习"
+                    title="机器学习">机器学习</a>
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#TensorFlow"
+                    title="TensorFlow">TensorFlow</a>
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#Python"
+                    title="Python">Python</a>
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#OpenAI gym"
+                    title="OpenAI gym">OpenAI gym</a>
                 <span>/</span>
                 
                 
             </div>
-            <a href="/post/blog-experience-7.html" class="title">
-                博客折腾记(七) - Gitalk Plus
+            <a href="/post/tensorflow2-gym-nn.html" class="title">
+                TensorFlow 2.0 (六) - 监督学习玩转 OpenAI gym game
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2019-08-23，</span>
-                    <span class="hidden-xs">全文2462字，</span>
-                    <span>阅读约9分钟</span>
+                    <span>发表于2019-06-21，</span>
+                    <span class="hidden-xs">全文7072字，</span>
+                    <span>阅读约24分钟</span>
                 </small>
             </p>
         </div>
@@ -602,7 +614,7 @@
 </div>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/quick-go2/go2.jpg')"></div>
+    <div class="post-img" style="background-image: url('/post/tensorflow-mnist-tensorboard-training/tensorboard_mnist_graph.png')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
@@ -610,20 +622,32 @@
                 
                 <span>/</span>
                 
-                <a class="text-gray" href="/tags/#Go"
-                    title="Go">Go</a>
+                <a class="text-gray" href="/tags/#机器学习"
+                    title="机器学习">机器学习</a>
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#TensorFlow"
+                    title="TensorFlow">TensorFlow</a>
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#mnist"
+                    title="mnist">mnist</a>
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#Python"
+                    title="Python">Python</a>
                 <span>/</span>
                 
                 
             </div>
-            <a href="/post/quick-go2.html" class="title">
-                Go2 新特性简明教程
+            <a href="/post/tensorflow-mnist-tensorboard-training.html" class="title">
+                TensorFlow入门(三) - mnist手写数字识别(可视化训练)
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2019-08-15，</span>
-                    <span class="hidden-xs">全文4860字，</span>
-                    <span>阅读约17分钟</span>
+                    <span>发表于2018-03-29，</span>
+                    <span class="hidden-xs">全文5393字，</span>
+                    <span>阅读约18分钟</span>
                 </small>
             </p>
         </div>
@@ -771,7 +795,7 @@
                 wrapper.appendChild(div)
             })
             var p = document.createElement('p')
-            p.innerHTML = '<a href="https://geektutu.com/post/blog-experience-7.html">Gitalk Plus</a>';
+            p.innerHTML = '<a target="_blank" rel="noopener" href="https://geektutu.com/post/blog-experience-7.html">Gitalk Plus</a>';
             p.classList.add('dis-divide');
             wrapper.appendChild(p);
             wrapper.classList.add('dis-wrapper')
@@ -862,7 +886,7 @@
         
         <a target="_blank" rel="noopener" href="https://github.com/geektutu"><img src="/img/related_links/github.png" /></a>
         
-        <a href="https://geektutu.com/feed.xml"><img src="/img/related_links/rss.jpg" /></a>
+        <a target="_blank" rel="noopener" href="https://geektutu.com/feed.xml"><img src="/img/related_links/rss.jpg" /></a>
         
         <a target="_blank" rel="noopener" href="https://www.zhihu.com/people/gzdaijie"><img src="/img/related_links/zhihu.png" /></a>
         

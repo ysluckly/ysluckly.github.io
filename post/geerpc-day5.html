@@ -25,7 +25,7 @@
     
   </title>
 
-  <link rel="canonical" href="https://geektutu.com/post/geerpc-day5.html">
+  <link rel="canonical" href="https://ysliving.github.io/post/geerpc-day5.html">
   
 <link rel="stylesheet" href="/css/geektutu.css">
 
@@ -334,7 +334,7 @@
         
         <li><a target="_blank" rel="noopener" href="https://github.com/geektutu">Github</a></li>
         
-        <li><a href="https://geektutu.com/feed.xml">RSS</a></li>
+        <li><a target="_blank" rel="noopener" href="https://geektutu.com/feed.xml">RSS</a></li>
         
         <li><a target="_blank" rel="noopener" href="https://www.zhihu.com/people/gzdaijie">知乎</a></li>
         
@@ -524,7 +524,7 @@
       
       <div class="gkt-article-start"></div>
       <p><img src="geerpc/geerpc.jpg" alt="golang RPC framework"></p>
-<p>本文是<a href="https://geektutu.com/post/geerpc.html">7天用Go从零实现RPC框架GeeRPC</a>的第五篇。</p>
+<p>本文是<a target="_blank" rel="noopener" href="https://geektutu.com/post/geerpc.html">7天用Go从零实现RPC框架GeeRPC</a>的第五篇。</p>
 <ul>
 <li>支持 HTTP 协议</li>
 <li>基于 HTTP 实现一个简单的 Debug 页面，代码约 150 行。</li>
@@ -573,7 +573,7 @@
 
 <p>也就是说，只需要实现接口 Handler 即可作为一个 HTTP Handler 处理 HTTP 请求。接口 Handler 只定义了一个方法 <code>ServeHTTP</code>，实现该方法即可。</p>
 <blockquote>
-<p>关于 http.Handler 的更多信息，推荐阅读 <a href="https://geektutu.com/post/gee-day1.html">Go语言动手写Web框架 - Gee第一天 http.Handler</a></p>
+<p>关于 http.Handler 的更多信息，推荐阅读 <a target="_blank" rel="noopener" href="https://geektutu.com/post/gee-day1.html">Go语言动手写Web框架 - Gee第一天 http.Handler</a></p>
 </blockquote>
 <h2 id="客户端支持-HTTP-协议"><a href="#客户端支持-HTTP-协议" class="headerlink" title="客户端支持 HTTP 协议"></a>客户端支持 HTTP 协议</h2><p>服务端已经能够接受 CONNECT 请求，并返回了 200 状态码 <code>HTTP/1.0 200 Connected to Gee RPC</code>，客户端要做的，发起 CONNECT 请求，检查返回状态码即可成功建立连接。</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/geektutu/7days-golang/tree/master/gee-rpc/day5-http-debug">day5-http-debug/client.go</a></p>
@@ -611,8 +611,8 @@
 <p>服务已经启动，此时我们如果在浏览器中访问 <code>localhost:9999/debug/geerpc</code>，将会看到：</p>
 <p><img src="geerpc-day5/geerpc_debug.png" alt="geerpc services debug"></p>
 <h2 id="附-推荐阅读"><a href="#附-推荐阅读" class="headerlink" title="附 推荐阅读"></a>附 推荐阅读</h2><ul>
-<li><a href="https://geektutu.com/post/quick-golang.html">Go 语言简明教程</a></li>
-<li><a href="https://geektutu.com/post/qa-golang.html">Go 语言笔试面试题</a></li>
+<li><a target="_blank" rel="noopener" href="https://geektutu.com/post/quick-golang.html">Go 语言简明教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://geektutu.com/post/qa-golang.html">Go 语言笔试面试题</a></li>
 </ul>
 
       
@@ -768,7 +768,7 @@
     
     <a style="display:inline-block;" target="_blank" rel="noopener" href="https://github.com/geektutu" title="Github"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/github.png" /></a>
     
-    <a style="display:inline-block;" href="https://geektutu.com/feed.xml" title="RSS"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/rss.jpg" /></a>
+    <a style="display:inline-block;" target="_blank" rel="noopener" href="https://geektutu.com/feed.xml" title="RSS"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/rss.jpg" /></a>
     
     <a style="display:inline-block;" target="_blank" rel="noopener" href="https://www.zhihu.com/people/gzdaijie" title="知乎"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/zhihu.png" /></a>
     
@@ -844,7 +844,7 @@
                 wrapper.appendChild(div)
             })
             var p = document.createElement('p')
-            p.innerHTML = '<a href="https://geektutu.com/post/blog-experience-7.html">Gitalk Plus</a>';
+            p.innerHTML = '<a target="_blank" rel="noopener" href="https://geektutu.com/post/blog-experience-7.html">Gitalk Plus</a>';
             p.classList.add('dis-divide');
             wrapper.appendChild(p);
             wrapper.classList.add('dis-wrapper')

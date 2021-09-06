@@ -25,7 +25,7 @@
     
   </title>
 
-  <link rel="canonical" href="https://geektutu.com/post/gee-day7.html">
+  <link rel="canonical" href="https://ysliving.github.io/post/gee-day7.html">
   
 <link rel="stylesheet" href="/css/geektutu.css">
 
@@ -334,7 +334,7 @@
         
         <li><a target="_blank" rel="noopener" href="https://github.com/geektutu">Github</a></li>
         
-        <li><a href="https://geektutu.com/feed.xml">RSS</a></li>
+        <li><a target="_blank" rel="noopener" href="https://geektutu.com/feed.xml">RSS</a></li>
         
         <li><a target="_blank" rel="noopener" href="https://www.zhihu.com/people/gzdaijie">知乎</a></li>
         
@@ -523,7 +523,7 @@
       </blockquote>
       
       <div class="gkt-article-start"></div>
-      <p>本文是<a href="https://geektutu.com/post/gee.html">7天用Go从零实现Web框架Gee教程系列</a>的第七篇。</p>
+      <p>本文是<a target="_blank" rel="noopener" href="https://geektutu.com/post/gee.html">7天用Go从零实现Web框架Gee教程系列</a>的第七篇。</p>
 <ul>
 <li>实现错误处理机制。</li>
 </ul>
@@ -552,7 +552,7 @@
 
 <p>我们可以看到，recover 捕获了 panic，程序正常结束。<em>test_recover()</em> 中的 <em>after panic</em> 没有打印，这是正确的，当 panic 被触发时，控制权就被交给了 defer 。就像在 java 中，<code>try</code>代码块中发生了异常，控制权交给了 <code>catch</code>，接下来执行 catch 代码块中的代码。而在 <em>main()</em> 中打印了 <em>after recover</em>，说明程序已经恢复正常，继续往下执行直到结束。</p>
 <h2 id="Gee-的错误处理机制"><a href="#Gee-的错误处理机制" class="headerlink" title="Gee 的错误处理机制"></a>Gee 的错误处理机制</h2><p>对一个 Web 框架而言，错误处理机制是非常必要的。可能是框架本身没有完备的测试，导致在某些情况下出现空指针异常等情况。也有可能用户不正确的参数，触发了某些异常，例如数组越界，空指针等。如果因为这些原因导致系统宕机，必然是不可接受的。</p>
-<p>我们在<a href="https://geektutu.com/post/gee-day6.html">第六天</a>实现的框架并没有加入异常处理机制，如果代码中存在会触发 panic 的 BUG，很容易宕掉。</p>
+<p>我们在<a target="_blank" rel="noopener" href="https://geektutu.com/post/gee-day6.html">第六天</a>实现的框架并没有加入异常处理机制，如果代码中存在会触发 panic 的 BUG，很容易宕掉。</p>
 <p>例如下面的代码：</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	r := gee.New()</span><br><span class="line">	r.GET(<span class="string">&quot;/panic&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gee.Context)</span></span> &#123;</span><br><span class="line">		names := []<span class="keyword">string</span>&#123;<span class="string">&quot;geektutu&quot;</span>&#125;</span><br><span class="line">		c.String(http.StatusOK, names[<span class="number">100</span>])</span><br><span class="line">	&#125;)</span><br><span class="line">	r.Run(<span class="string">&quot;:9999&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>在上面的代码中，我们为 gee 注册了路由 <code>/panic</code>，而这个路由的处理函数内部存在数组越界 <code>names[100]</code>，如果访问 <em>localhost:9999/panic</em>，Web 服务就会宕掉。</p>
@@ -736,7 +736,7 @@
     
     <a style="display:inline-block;" target="_blank" rel="noopener" href="https://github.com/geektutu" title="Github"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/github.png" /></a>
     
-    <a style="display:inline-block;" href="https://geektutu.com/feed.xml" title="RSS"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/rss.jpg" /></a>
+    <a style="display:inline-block;" target="_blank" rel="noopener" href="https://geektutu.com/feed.xml" title="RSS"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/rss.jpg" /></a>
     
     <a style="display:inline-block;" target="_blank" rel="noopener" href="https://www.zhihu.com/people/gzdaijie" title="知乎"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/zhihu.png" /></a>
     
@@ -812,7 +812,7 @@
                 wrapper.appendChild(div)
             })
             var p = document.createElement('p')
-            p.innerHTML = '<a href="https://geektutu.com/post/blog-experience-7.html">Gitalk Plus</a>';
+            p.innerHTML = '<a target="_blank" rel="noopener" href="https://geektutu.com/post/blog-experience-7.html">Gitalk Plus</a>';
             p.classList.add('dis-divide');
             wrapper.appendChild(p);
             wrapper.classList.add('dis-wrapper')

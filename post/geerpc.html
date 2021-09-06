@@ -25,7 +25,7 @@
     
   </title>
 
-  <link rel="canonical" href="https://geektutu.com/post/geerpc.html">
+  <link rel="canonical" href="https://ysliving.github.io/post/geerpc.html">
   
 <link rel="stylesheet" href="/css/geektutu.css">
 
@@ -334,7 +334,7 @@
         
         <li><a target="_blank" rel="noopener" href="https://github.com/geektutu">Github</a></li>
         
-        <li><a href="https://geektutu.com/feed.xml">RSS</a></li>
+        <li><a target="_blank" rel="noopener" href="https://geektutu.com/feed.xml">RSS</a></li>
         
         <li><a target="_blank" rel="noopener" href="https://www.zhihu.com/people/gzdaijie">知乎</a></li>
         
@@ -541,17 +541,17 @@
 <p>考虑性能和功能，上述成熟的框架代码量都比较庞大，而且通常和第三方库，例如 <code>protobuf</code>、<code>etcd</code>、<code>zookeeper</code> 等有比较深的耦合，难以直观地窥视框架的本质。GeeRPC 的目的是以最少的代码，实现 RPC 框架中最为重要的部分，帮助大家理解 RPC 框架在设计时需要考虑什么。代码简洁是第一位的，功能是第二位的。</p>
 <p>因此，GeeRPC 选择从零实现 Go 语言官方的标准库 <code>net/rpc</code>，并在此基础上，新增了协议交换(protocol exchange)、注册中心(registry)、服务发现(service discovery)、负载均衡(load balance)、超时处理(timeout processing)等特性。分七天完成，最终代码约 1000 行。</p>
 <h2 id="4-目录"><a href="#4-目录" class="headerlink" title="4 目录"></a>4 目录</h2><ul>
-<li>第一天 - <a href="https://geektutu.com/post/geerpc-day1.html">服务端与消息编码</a> | <a href="ghttps://github.com/geektutu/7days-golang/tree/master/ee-rpc/day1-codec">Code</a></li>
-<li>第二天 - <a href="https://geektutu.com/post/geerpc-day2.html">支持并发与异步的客户端</a> | <a href="ghttps://github.com/geektutu/7days-golang/tree/master/ee-rpc/day2-client">Code</a></li>
-<li>第三天 - <a href="https://geektutu.com/post/geerpc-day3.html">服务注册(service register)</a> | <a target="_blank" rel="noopener" href="https://github.com/geektutu/7days-golang/tree/master/gee-rpc/day3-service">Code</a></li>
-<li>第四天 - <a href="https://geektutu.com/post/geerpc-day4.html">超时处理(timeout)</a> | <a href="ghttps://github.com/geektutu/7days-golang/tree/master/ee-rpc/day4-timeout">Code</a></li>
-<li>第五天 - <a href="https://geektutu.com/post/geerpc-day5.html">支持HTTP协议</a> | <a href="ghttps://github.com/geektutu/7days-golang/tree/master/ee-rpc/day5-http-debug">Code</a></li>
-<li>第六天 - <a href="https://geektutu.com/post/geerpc-day6.html">负载均衡(load balance)</a> | <a target="_blank" rel="noopener" href="https://github.com/geektutu/7days-golang/tree/master/gee-rpc/day6-load-balance">Code</a></li>
-<li>第七天 - <a href="https://geektutu.com/post/geerpc-day7.html">服务发现与注册中心(registry)</a> | <a target="_blank" rel="noopener" href="https://github.com/geektutu/7days-golang/tree/master/gee-rpc/day7-registry">Code</a></li>
+<li>第一天 - <a target="_blank" rel="noopener" href="https://geektutu.com/post/geerpc-day1.html">服务端与消息编码</a> | <a href="ghttps://github.com/geektutu/7days-golang/tree/master/ee-rpc/day1-codec">Code</a></li>
+<li>第二天 - <a target="_blank" rel="noopener" href="https://geektutu.com/post/geerpc-day2.html">支持并发与异步的客户端</a> | <a href="ghttps://github.com/geektutu/7days-golang/tree/master/ee-rpc/day2-client">Code</a></li>
+<li>第三天 - <a target="_blank" rel="noopener" href="https://geektutu.com/post/geerpc-day3.html">服务注册(service register)</a> | <a target="_blank" rel="noopener" href="https://github.com/geektutu/7days-golang/tree/master/gee-rpc/day3-service">Code</a></li>
+<li>第四天 - <a target="_blank" rel="noopener" href="https://geektutu.com/post/geerpc-day4.html">超时处理(timeout)</a> | <a href="ghttps://github.com/geektutu/7days-golang/tree/master/ee-rpc/day4-timeout">Code</a></li>
+<li>第五天 - <a target="_blank" rel="noopener" href="https://geektutu.com/post/geerpc-day5.html">支持HTTP协议</a> | <a href="ghttps://github.com/geektutu/7days-golang/tree/master/ee-rpc/day5-http-debug">Code</a></li>
+<li>第六天 - <a target="_blank" rel="noopener" href="https://geektutu.com/post/geerpc-day6.html">负载均衡(load balance)</a> | <a target="_blank" rel="noopener" href="https://github.com/geektutu/7days-golang/tree/master/gee-rpc/day6-load-balance">Code</a></li>
+<li>第七天 - <a target="_blank" rel="noopener" href="https://geektutu.com/post/geerpc-day7.html">服务发现与注册中心(registry)</a> | <a target="_blank" rel="noopener" href="https://github.com/geektutu/7days-golang/tree/master/gee-rpc/day7-registry">Code</a></li>
 </ul>
 <h2 id="附-推荐阅读"><a href="#附-推荐阅读" class="headerlink" title="附 推荐阅读"></a>附 推荐阅读</h2><ul>
-<li><a href="https://geektutu.com/post/quick-golang.html">Go 语言简明教程</a></li>
-<li><a href="https://geektutu.com/post/qa-golang.html">Go 语言笔试面试题</a></li>
+<li><a target="_blank" rel="noopener" href="https://geektutu.com/post/quick-golang.html">Go 语言简明教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://geektutu.com/post/qa-golang.html">Go 语言笔试面试题</a></li>
 </ul>
 
       
@@ -707,7 +707,7 @@
     
     <a style="display:inline-block;" target="_blank" rel="noopener" href="https://github.com/geektutu" title="Github"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/github.png" /></a>
     
-    <a style="display:inline-block;" href="https://geektutu.com/feed.xml" title="RSS"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/rss.jpg" /></a>
+    <a style="display:inline-block;" target="_blank" rel="noopener" href="https://geektutu.com/feed.xml" title="RSS"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/rss.jpg" /></a>
     
     <a style="display:inline-block;" target="_blank" rel="noopener" href="https://www.zhihu.com/people/gzdaijie" title="知乎"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/zhihu.png" /></a>
     
@@ -783,7 +783,7 @@
                 wrapper.appendChild(div)
             })
             var p = document.createElement('p')
-            p.innerHTML = '<a href="https://geektutu.com/post/blog-experience-7.html">Gitalk Plus</a>';
+            p.innerHTML = '<a target="_blank" rel="noopener" href="https://geektutu.com/post/blog-experience-7.html">Gitalk Plus</a>';
             p.classList.add('dis-divide');
             wrapper.appendChild(p);
             wrapper.classList.add('dis-wrapper')

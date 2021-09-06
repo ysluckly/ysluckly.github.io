@@ -25,7 +25,7 @@
     
   </title>
 
-  <link rel="canonical" href="https://geektutu.com/post/geecache-day5.html">
+  <link rel="canonical" href="https://ysliving.github.io/post/geecache-day5.html">
   
 <link rel="stylesheet" href="/css/geektutu.css">
 
@@ -334,7 +334,7 @@
         
         <li><a target="_blank" rel="noopener" href="https://github.com/geektutu">Github</a></li>
         
-        <li><a href="https://geektutu.com/feed.xml">RSS</a></li>
+        <li><a target="_blank" rel="noopener" href="https://geektutu.com/feed.xml">RSS</a></li>
         
         <li><a target="_blank" rel="noopener" href="https://www.zhihu.com/people/gzdaijie">知乎</a></li>
         
@@ -524,14 +524,14 @@
       
       <div class="gkt-article-start"></div>
       <p><img src="geecache-day5/dist_nodes.jpg" alt="分布式缓存节点"></p>
-<p>本文是<a href="https://geektutu.com/post/geecache.html">7天用Go从零实现分布式缓存GeeCache</a>的第五篇。</p>
+<p>本文是<a target="_blank" rel="noopener" href="https://geektutu.com/post/geecache.html">7天用Go从零实现分布式缓存GeeCache</a>的第五篇。</p>
 <ul>
 <li>注册节点(Register Peers)，借助一致性哈希算法选择节点。</li>
 <li>实现 HTTP 客户端，与远程节点的服务端通信，<strong>代码约90行</strong></li>
 </ul>
 <h2 id="1-流程回顾"><a href="#1-流程回顾" class="headerlink" title="1 流程回顾"></a>1 流程回顾</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">                            是</span><br><span class="line">接收 key --&gt; 检查是否被缓存 -----&gt; 返回缓存值 ⑴</span><br><span class="line">                |  否                         是</span><br><span class="line">                |-----&gt; 是否应当从远程节点获取 -----&gt; 与远程节点交互 --&gt; 返回缓存值 ⑵</span><br><span class="line">                            |  否</span><br><span class="line">                            |-----&gt; 调用`回调函数`，获取值并添加到缓存 --&gt; 返回缓存值 ⑶</span><br></pre></td></tr></table></figure>
 
-<p>我们在<a href="https://geektutu.com/post/geecache-day2.html">GeeCache 第二天</a> 中描述了 geecache 的流程。在这之前已经实现了流程 ⑴ 和 ⑶，今天实现流程 ⑵，从远程节点获取缓存值。</p>
+<p>我们在<a target="_blank" rel="noopener" href="https://geektutu.com/post/geecache-day2.html">GeeCache 第二天</a> 中描述了 geecache 的流程。在这之前已经实现了流程 ⑴ 和 ⑶，今天实现流程 ⑵，从远程节点获取缓存值。</p>
 <p>我们进一步细化流程 ⑵：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">使用一致性哈希选择节点        是                                    是</span><br><span class="line">    |-----&gt; 是否是远程节点 -----&gt; HTTP 客户端访问远程节点 --&gt; 成功？-----&gt; 服务端返回返回值</span><br><span class="line">                    |  否                                    ↓  否</span><br><span class="line">                    |----------------------------&gt; 回退到本地节点处理。</span><br></pre></td></tr></table></figure>
 
@@ -542,7 +542,7 @@
 <li>在这里，抽象出 2 个接口，PeerPicker 的 <code>PickPeer()</code> 方法用于根据传入的 key 选择相应节点 PeerGetter。</li>
 <li>接口 PeerGetter 的 <code>Get()</code> 方法用于从对应 group 查找缓存值。PeerGetter 就对应于上述流程中的 HTTP 客户端。</li>
 </ul>
-<h2 id="3-节点选择与-HTTP-客户端"><a href="#3-节点选择与-HTTP-客户端" class="headerlink" title="3 节点选择与 HTTP 客户端"></a>3 节点选择与 HTTP 客户端</h2><p>在 <a href="https://geektutu.com/post/geecache-day3.html">GeeCache 第三天</a> 中我们为 <code>HTTPPool</code> 实现了服务端功能，通信不仅需要服务端还需要客户端，因此，我们接下来要为 <code>HTTPPool</code> 实现客户端的功能。</p>
+<h2 id="3-节点选择与-HTTP-客户端"><a href="#3-节点选择与-HTTP-客户端" class="headerlink" title="3 节点选择与 HTTP 客户端"></a>3 节点选择与 HTTP 客户端</h2><p>在 <a target="_blank" rel="noopener" href="https://geektutu.com/post/geecache-day3.html">GeeCache 第三天</a> 中我们为 <code>HTTPPool</code> 实现了服务端功能，通信不仅需要服务端还需要客户端，因此，我们接下来要为 <code>HTTPPool</code> 实现客户端的功能。</p>
 <p>首先创建具体的 HTTP 客户端类 <code>httpGetter</code>，实现 PeerGetter 接口。</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/geektutu/7days-golang/tree/master/gee-cache/day5-multi-nodes/geecache">day5-multi-nodes/geecache/http.go - github</a></p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> httpGetter <span class="keyword">struct</span> &#123;</span><br><span class="line">	baseURL <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *httpGetter)</span> <span class="title">Get</span><span class="params">(group <span class="keyword">string</span>, key <span class="keyword">string</span>)</span> <span class="params">([]<span class="keyword">byte</span>, error)</span></span> &#123;</span><br><span class="line">	u := fmt.Sprintf(</span><br><span class="line">		<span class="string">&quot;%v%v/%v&quot;</span>,</span><br><span class="line">		h.baseURL,</span><br><span class="line">		url.QueryEscape(group),</span><br><span class="line">		url.QueryEscape(key),</span><br><span class="line">	)</span><br><span class="line">	res, err := http.Get(u)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">defer</span> res.Body.Close()</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> res.StatusCode != http.StatusOK &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, fmt.Errorf(<span class="string">&quot;server returned: %v&quot;</span>, res.Status)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	bytes, err := ioutil.ReadAll(res.Body)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, fmt.Errorf(<span class="string">&quot;reading response body: %v&quot;</span>, err)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> bytes, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> _ PeerGetter = (*httpGetter)(<span class="literal">nil</span>)</span><br></pre></td></tr></table></figure>
@@ -599,8 +599,8 @@
 <p>测试的时候，我们并发了 3 个请求 <code>?key=Tom</code>，从日志中可以看到，三次均选择了节点 <code>8001</code>，这是一致性哈希算法的功劳。但是有一个问题在于，同时向 <code>8001</code> 发起了 3 次请求。试想，假如有 10 万个在并发请求该数据呢？那就会向 <code>8001</code> 同时发起 10 万次请求，如果 <code>8001</code> 又同时向数据库发起 10 万次查询请求，很容易导致缓存被击穿。</p>
 <p>三次请求的结果是一致的，对于相同的 key，能不能只向 <code>8001</code> 发起一次请求？这个问题下一次解决。</p>
 <h2 id="附-推荐阅读"><a href="#附-推荐阅读" class="headerlink" title="附 推荐阅读"></a>附 推荐阅读</h2><ul>
-<li><a href="https://geektutu.com/post/quick-golang.html">Go 语言简明教程</a></li>
-<li><a href="https://geektutu.com/post/quick-go-test.html">Go Test 单元测试简明教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://geektutu.com/post/quick-golang.html">Go 语言简明教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://geektutu.com/post/quick-go-test.html">Go Test 单元测试简明教程</a></li>
 </ul>
 
       
@@ -756,7 +756,7 @@
     
     <a style="display:inline-block;" target="_blank" rel="noopener" href="https://github.com/geektutu" title="Github"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/github.png" /></a>
     
-    <a style="display:inline-block;" href="https://geektutu.com/feed.xml" title="RSS"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/rss.jpg" /></a>
+    <a style="display:inline-block;" target="_blank" rel="noopener" href="https://geektutu.com/feed.xml" title="RSS"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/rss.jpg" /></a>
     
     <a style="display:inline-block;" target="_blank" rel="noopener" href="https://www.zhihu.com/people/gzdaijie" title="知乎"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/zhihu.png" /></a>
     
@@ -832,7 +832,7 @@
                 wrapper.appendChild(div)
             })
             var p = document.createElement('p')
-            p.innerHTML = '<a href="https://geektutu.com/post/blog-experience-7.html">Gitalk Plus</a>';
+            p.innerHTML = '<a target="_blank" rel="noopener" href="https://geektutu.com/post/blog-experience-7.html">Gitalk Plus</a>';
             p.classList.add('dis-divide');
             wrapper.appendChild(p);
             wrapper.classList.add('dis-wrapper')

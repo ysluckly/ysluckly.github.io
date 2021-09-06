@@ -25,7 +25,7 @@
     
   </title>
 
-  <link rel="canonical" href="https://geektutu.com/post/gee.html">
+  <link rel="canonical" href="https://ysliving.github.io/post/gee.html">
   
 <link rel="stylesheet" href="/css/geektutu.css">
 
@@ -334,7 +334,7 @@
         
         <li><a target="_blank" rel="noopener" href="https://github.com/geektutu">Github</a></li>
         
-        <li><a href="https://geektutu.com/feed.xml">RSS</a></li>
+        <li><a target="_blank" rel="noopener" href="https://geektutu.com/feed.xml">RSS</a></li>
         
         <li><a target="_blank" rel="noopener" href="https://www.zhihu.com/people/gzdaijie">知乎</a></li>
         
@@ -543,23 +543,23 @@
 <li>插件(Plugin)：Bottle本身功能有限，但提供了插件机制。可以选择安装到全局，也可以只针对某几个路由生效。</li>
 <li>…</li>
 </ul>
-<h2 id="Gee-框架"><a href="#Gee-框架" class="headerlink" title="Gee 框架"></a>Gee 框架</h2><p>这个教程将使用 Go 语言实现一个简单的 Web 框架，起名叫做<code>Gee</code>，<a href="https://geektutu.com/"><code>geektutu.com</code></a>的前三个字母。我第一次接触的 Go 语言的 Web 框架是<code>Gin</code>，<code>Gin</code>的代码总共是14K，其中测试代码9K，也就是说实际代码量只有<strong>5K</strong>。<code>Gin</code>也是我非常喜欢的一个框架，与Python中的<code>Flask</code>很像，小而美。</p>
+<h2 id="Gee-框架"><a href="#Gee-框架" class="headerlink" title="Gee 框架"></a>Gee 框架</h2><p>这个教程将使用 Go 语言实现一个简单的 Web 框架，起名叫做<code>Gee</code>，<a target="_blank" rel="noopener" href="https://geektutu.com/"><code>geektutu.com</code></a>的前三个字母。我第一次接触的 Go 语言的 Web 框架是<code>Gin</code>，<code>Gin</code>的代码总共是14K，其中测试代码9K，也就是说实际代码量只有<strong>5K</strong>。<code>Gin</code>也是我非常喜欢的一个框架，与Python中的<code>Flask</code>很像，小而美。</p>
 <p><code>7天实现Gee框架</code>这个教程的很多设计，包括源码，参考了<code>Gin</code>，大家可以看到很多<code>Gin</code>的影子。</p>
 <p>时间关系，同时为了尽可能地简洁明了，这个框架中的很多部分实现的功能都很简单，但是尽可能地体现一个框架核心的设计原则。例如<code>Router</code>的设计，虽然支持的动态路由规则有限，但为了性能考虑匹配算法是用<code>Trie树</code>实现的，<code>Router</code>最重要的指标之一便是性能。</p>
 <p>希望这个教程能够对你有所启发，如果对 Gee 有任何好的建议，欢迎提<a target="_blank" rel="noopener" href="https://github.com/geektutu/7days-golang/issues">issues - Github</a> 和 PR。教程中的任何问题，可以直接在文章末尾评论。</p>
 <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
-<li>第一天：<a href="https://geektutu.com/post/gee-day1.html">前置知识(http.Handler接口)</a>，<a target="_blank" rel="noopener" href="https://github.com/geektutu/7days-golang/tree/master/gee-web/day1-http-base">Code - Github</a></li>
-<li>第二天：<a href="https://geektutu.com/post/gee-day2.html">上下文设计(Context)</a>，<a target="_blank" rel="noopener" href="https://github.com/geektutu/7days-golang/tree/master/gee-web/day2-context">Code - Github</a></li>
-<li>第三天：<a href="https://geektutu.com/post/gee-day3.html">Trie树路由(Router)</a>，<a target="_blank" rel="noopener" href="https://github.com/geektutu/7days-golang/tree/master/gee-web/day3-router">Code - Github</a></li>
-<li>第四天：<a href="https://geektutu.com/post/gee-day4.html">分组控制(Group)</a>，<a target="_blank" rel="noopener" href="https://github.com/geektutu/7days-golang/tree/master/gee-web/day4-group">Code - Github</a></li>
-<li>第五天：<a href="https://geektutu.com/post/gee-day5.html">中间件(Middleware)</a>，<a target="_blank" rel="noopener" href="https://github.com/geektutu/7days-golang/tree/master/gee-web/day5-middleware">Code - Github</a></li>
-<li>第六天：<a href="https://geektutu.com/post/gee-day6.html">HTML模板(Template)</a>，<a target="_blank" rel="noopener" href="https://github.com/geektutu/7days-golang/tree/master/gee-web/day6-template">Code - Github</a></li>
-<li>第七天：<a href="https://geektutu.com/post/gee-day7.html">错误恢复(Panic Recover)</a>，<a target="_blank" rel="noopener" href="https://github.com/geektutu/7days-golang/tree/master/gee-web/day7-panic-recover">Code - Github</a></li>
+<li>第一天：<a target="_blank" rel="noopener" href="https://geektutu.com/post/gee-day1.html">前置知识(http.Handler接口)</a>，<a target="_blank" rel="noopener" href="https://github.com/geektutu/7days-golang/tree/master/gee-web/day1-http-base">Code - Github</a></li>
+<li>第二天：<a target="_blank" rel="noopener" href="https://geektutu.com/post/gee-day2.html">上下文设计(Context)</a>，<a target="_blank" rel="noopener" href="https://github.com/geektutu/7days-golang/tree/master/gee-web/day2-context">Code - Github</a></li>
+<li>第三天：<a target="_blank" rel="noopener" href="https://geektutu.com/post/gee-day3.html">Trie树路由(Router)</a>，<a target="_blank" rel="noopener" href="https://github.com/geektutu/7days-golang/tree/master/gee-web/day3-router">Code - Github</a></li>
+<li>第四天：<a target="_blank" rel="noopener" href="https://geektutu.com/post/gee-day4.html">分组控制(Group)</a>，<a target="_blank" rel="noopener" href="https://github.com/geektutu/7days-golang/tree/master/gee-web/day4-group">Code - Github</a></li>
+<li>第五天：<a target="_blank" rel="noopener" href="https://geektutu.com/post/gee-day5.html">中间件(Middleware)</a>，<a target="_blank" rel="noopener" href="https://github.com/geektutu/7days-golang/tree/master/gee-web/day5-middleware">Code - Github</a></li>
+<li>第六天：<a target="_blank" rel="noopener" href="https://geektutu.com/post/gee-day6.html">HTML模板(Template)</a>，<a target="_blank" rel="noopener" href="https://github.com/geektutu/7days-golang/tree/master/gee-web/day6-template">Code - Github</a></li>
+<li>第七天：<a target="_blank" rel="noopener" href="https://geektutu.com/post/gee-day7.html">错误恢复(Panic Recover)</a>，<a target="_blank" rel="noopener" href="https://github.com/geektutu/7days-golang/tree/master/gee-web/day7-panic-recover">Code - Github</a></li>
 </ul>
 <h2 id="推荐阅读"><a href="#推荐阅读" class="headerlink" title="推荐阅读"></a>推荐阅读</h2><ul>
-<li><a href="https://geektutu.com/post/quick-golang.html">Go 语言简明教程</a></li>
-<li><a href="https://geektutu.com/post/quick-golang.html">Go Test 单元测试简明教程</a></li>
-<li><a href="https://geektutu.com/post/quick-go-gin.html">Go Gin 简明教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://geektutu.com/post/quick-golang.html">Go 语言简明教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://geektutu.com/post/quick-golang.html">Go Test 单元测试简明教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://geektutu.com/post/quick-go-gin.html">Go Gin 简明教程</a></li>
 </ul>
 
       
@@ -715,7 +715,7 @@
     
     <a style="display:inline-block;" target="_blank" rel="noopener" href="https://github.com/geektutu" title="Github"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/github.png" /></a>
     
-    <a style="display:inline-block;" href="https://geektutu.com/feed.xml" title="RSS"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/rss.jpg" /></a>
+    <a style="display:inline-block;" target="_blank" rel="noopener" href="https://geektutu.com/feed.xml" title="RSS"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/rss.jpg" /></a>
     
     <a style="display:inline-block;" target="_blank" rel="noopener" href="https://www.zhihu.com/people/gzdaijie" title="知乎"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/zhihu.png" /></a>
     
@@ -791,7 +791,7 @@
                 wrapper.appendChild(div)
             })
             var p = document.createElement('p')
-            p.innerHTML = '<a href="https://geektutu.com/post/blog-experience-7.html">Gitalk Plus</a>';
+            p.innerHTML = '<a target="_blank" rel="noopener" href="https://geektutu.com/post/blog-experience-7.html">Gitalk Plus</a>';
             p.classList.add('dis-divide');
             wrapper.appendChild(p);
             wrapper.classList.add('dis-wrapper')

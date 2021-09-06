@@ -25,7 +25,7 @@
     
   </title>
 
-  <link rel="canonical" href="https://geektutu.com/post/geecache-day2.html">
+  <link rel="canonical" href="https://ysliving.github.io/post/geecache-day2.html">
   
 <link rel="stylesheet" href="/css/geektutu.css">
 
@@ -334,7 +334,7 @@
         
         <li><a target="_blank" rel="noopener" href="https://github.com/geektutu">Github</a></li>
         
-        <li><a href="https://geektutu.com/feed.xml">RSS</a></li>
+        <li><a target="_blank" rel="noopener" href="https://geektutu.com/feed.xml">RSS</a></li>
         
         <li><a target="_blank" rel="noopener" href="https://www.zhihu.com/people/gzdaijie">知乎</a></li>
         
@@ -524,7 +524,7 @@
       
       <div class="gkt-article-start"></div>
       <p><img src="geecache-day2/concurrent_cache.jpg" alt="geecache concurrent cache"></p>
-<p>本文是<a href="https://geektutu.com/post/geecache.html">7天用Go从零实现分布式缓存GeeCache</a>的第二篇。</p>
+<p>本文是<a target="_blank" rel="noopener" href="https://geektutu.com/post/geecache.html">7天用Go从零实现分布式缓存GeeCache</a>的第二篇。</p>
 <ul>
 <li>介绍 sync.Mutex 互斥锁的使用，并实现 LRU 缓存的并发控制。</li>
 <li>实现 GeeCache 核心数据结构 Group，缓存不存在时，调用回调函数获取源数据，<strong>代码约150行</strong></li>
@@ -549,7 +549,7 @@
 <p><code>Unlock()</code>释放锁还有另外一种写法：</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">printOnce</span><span class="params">(num <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">	m.Lock()</span><br><span class="line">	<span class="keyword">defer</span> m.Unlock()</span><br><span class="line">	<span class="keyword">if</span> _, exist := set[num]; !exist &#123;</span><br><span class="line">		fmt.Println(num)</span><br><span class="line">	&#125;</span><br><span class="line">	set[num] = <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="2-支持并发读写"><a href="#2-支持并发读写" class="headerlink" title="2 支持并发读写"></a>2 支持并发读写</h2><p>上一篇文章 <a href="https://geektutu.com/post/geecache-day1.html">GeeCache 第一天</a> 实现了 LRU 缓存淘汰策略。接下来我们使用 <code>sync.Mutex</code> 封装 LRU 的几个方法，使之支持并发的读写。在这之前，我们抽象了一个只读数据结构 <code>ByteView</code> 用来表示缓存值，是 GeeCache 主要的数据结构之一。</p>
+<h2 id="2-支持并发读写"><a href="#2-支持并发读写" class="headerlink" title="2 支持并发读写"></a>2 支持并发读写</h2><p>上一篇文章 <a target="_blank" rel="noopener" href="https://geektutu.com/post/geecache-day1.html">GeeCache 第一天</a> 实现了 LRU 缓存淘汰策略。接下来我们使用 <code>sync.Mutex</code> 封装 LRU 的几个方法，使之支持并发的读写。在这之前，我们抽象了一个只读数据结构 <code>ByteView</code> 用来表示缓存值，是 GeeCache 主要的数据结构之一。</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/geektutu/7days-golang/tree/master/gee-cache/day2-single-node/geecache">day2-single-node/geecache/byteview.go - github</a></p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> geecache</span><br><span class="line"></span><br><span class="line"><span class="comment">// A ByteView holds an immutable view of bytes.</span></span><br><span class="line"><span class="keyword">type</span> ByteView <span class="keyword">struct</span> &#123;</span><br><span class="line">	b []<span class="keyword">byte</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Len returns the view&#x27;s length</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(v ByteView)</span> <span class="title">Len</span><span class="params">()</span> <span class="title">int</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">len</span>(v.b)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ByteSlice returns a copy of the data as a byte slice.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(v ByteView)</span> <span class="title">ByteSlice</span><span class="params">()</span> []<span class="title">byte</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> cloneBytes(v.b)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// String returns the data as a string, making a copy if necessary.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(v ByteView)</span> <span class="title">String</span><span class="params">()</span> <span class="title">string</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">string</span>(v.b)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">cloneBytes</span><span class="params">(b []<span class="keyword">byte</span>)</span> []<span class="title">byte</span></span> &#123;</span><br><span class="line">	c := <span class="built_in">make</span>([]<span class="keyword">byte</span>, <span class="built_in">len</span>(b))</span><br><span class="line">	<span class="built_in">copy</span>(c, b)</span><br><span class="line">	<span class="keyword">return</span> c</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -583,7 +583,7 @@
 <li>函数类型实现某一个接口，称之为接口型函数，方便使用者在调用时既能够传入函数作为参数，也能够传入实现了该接口的结构体作为参数。</li>
 </ul>
 <blockquote>
-<p>了解接口型函数的使用场景，可以参考 <a href="https://geektutu.com/post/7days-golang-q1.html">Go 接口型函数的使用场景 - 7days-golang Q &amp; A</a></p>
+<p>了解接口型函数的使用场景，可以参考 <a target="_blank" rel="noopener" href="https://geektutu.com/post/7days-golang-q1.html">Go 接口型函数的使用场景 - 7days-golang Q &amp; A</a></p>
 </blockquote>
 <p>我们可以写一个测试用例来保证回调函数能够正常工作。</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestGetter</span><span class="params">(t *testing.T)</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> f Getter = GetterFunc(<span class="function"><span class="keyword">func</span><span class="params">(key <span class="keyword">string</span>)</span> <span class="params">([]<span class="keyword">byte</span>, error)</span></span> &#123;</span><br><span class="line">		<span class="keyword">return</span> []<span class="keyword">byte</span>(key), <span class="literal">nil</span></span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	expect := []<span class="keyword">byte</span>(<span class="string">&quot;key&quot;</span>)</span><br><span class="line">	<span class="keyword">if</span> v, _ := f.Get(<span class="string">&quot;key&quot;</span>); !reflect.DeepEqual(v, expect) &#123;</span><br><span class="line">		t.Errorf(<span class="string">&quot;callback failed&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -632,8 +632,8 @@
 
 <p>可以很清晰地看到，缓存为空时，调用了回调函数，第二次访问时，则直接从缓存中读取。</p>
 <h2 id="附-推荐阅读"><a href="#附-推荐阅读" class="headerlink" title="附 推荐阅读"></a>附 推荐阅读</h2><ul>
-<li><a href="https://geektutu.com/post/quick-golang.html#7-%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B-goroutine">Go 语言简明教程 - 并发编程</a></li>
-<li><a href="https://geektutu.com/post/quick-go-test.html">Go Test 单元测试简明教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://geektutu.com/post/quick-golang.html#7-%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B-goroutine">Go 语言简明教程 - 并发编程</a></li>
+<li><a target="_blank" rel="noopener" href="https://geektutu.com/post/quick-go-test.html">Go Test 单元测试简明教程</a></li>
 <li><a target="_blank" rel="noopener" href="https://golang.org/pkg/sync/">sync 官方文档 - golang.org</a></li>
 </ul>
 
@@ -790,7 +790,7 @@
     
     <a style="display:inline-block;" target="_blank" rel="noopener" href="https://github.com/geektutu" title="Github"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/github.png" /></a>
     
-    <a style="display:inline-block;" href="https://geektutu.com/feed.xml" title="RSS"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/rss.jpg" /></a>
+    <a style="display:inline-block;" target="_blank" rel="noopener" href="https://geektutu.com/feed.xml" title="RSS"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/rss.jpg" /></a>
     
     <a style="display:inline-block;" target="_blank" rel="noopener" href="https://www.zhihu.com/people/gzdaijie" title="知乎"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/zhihu.png" /></a>
     
@@ -866,7 +866,7 @@
                 wrapper.appendChild(div)
             })
             var p = document.createElement('p')
-            p.innerHTML = '<a href="https://geektutu.com/post/blog-experience-7.html">Gitalk Plus</a>';
+            p.innerHTML = '<a target="_blank" rel="noopener" href="https://geektutu.com/post/blog-experience-7.html">Gitalk Plus</a>';
             p.classList.add('dis-divide');
             wrapper.appendChild(p);
             wrapper.classList.add('dis-wrapper')

@@ -25,7 +25,7 @@
     
   </title>
 
-  <link rel="canonical" href="https://geektutu.com/post/quick-go-wasm.html">
+  <link rel="canonical" href="https://ysliving.github.io/post/quick-go-wasm.html">
   
 <link rel="stylesheet" href="/css/geektutu.css">
 
@@ -289,7 +289,7 @@
 </ul>
 <p>Go 语言在 1.11 版本(2018年8月) 加入了对 WebAssembly (Wasm) 的原生支持，使用 Go 语言开发 WebAssembly 相关的应用变得更加地简单。Go 语言的内建支持是 Go 语言进军前端的一个重要的里程碑。在这之前，如果想使用 Go 语言开发前端，需要使用 <a target="_blank" rel="noopener" href="https://github.com/gopherjs/gopherjs">GopherJS</a>，GopherJS 是一个编译器，可以将 Go 语言转换成可以在浏览器中运行的 JavaScript 代码。新版本的 Go 则直接将 Go 代码编译为 wasm 二进制文件，而不再需要转为 JavaScript 代码。更巧的是，实现 GopherJS 和在 Go 语言中内建支持 WebAssembly 的是同一拨人。</p>
 <p>Go 语言实现的函数可以直接导出供 JavaScript 代码调用，同时，Go 语言内置了 <a target="_blank" rel="noopener" href="https://github.com/golang/go/tree/master/src/syscall/js">syscall/js</a> 包，可以在 Go 语言中直接调用 JavaScript 函数，包括对 DOM 树的操作。</p>
-<h2 id="2-Hello-World"><a href="#2-Hello-World" class="headerlink" title="2 Hello World"></a>2 Hello World</h2><p>如果对 Go 语言不熟悉，推荐 <a href="https://geektutu.com/post/quick-golang.html">Go 语言简明教程</a>，一篇文章快速入门。</p>
+<h2 id="2-Hello-World"><a href="#2-Hello-World" class="headerlink" title="2 Hello World"></a>2 Hello World</h2><p>如果对 Go 语言不熟悉，推荐 <a target="_blank" rel="noopener" href="https://geektutu.com/post/quick-golang.html">Go 语言简明教程</a>，一篇文章快速入门。</p>
 <p>接下来，我们使用 Go 语言实现一个最简单的程序，在网页上弹出 <code>Hello World</code>。</p>
 <p>第一步，新建文件 main.go，使用 js.Global().get(‘alert’) 获取全局的 alert 对象，通过 Invoke 方法调用。等价于在 js 中调用 <code>window.alert(&quot;Hello World&quot;)</code>。</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.go</span></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;syscall/js&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	alert := js.Global().Get(<span class="string">&quot;alert&quot;</span>)</span><br><span class="line">	alert.Invoke(<span class="string">&quot;Hello World!&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -414,7 +414,7 @@
             
             <p>
                 本站永久域名「 <a
-                        href="/post/quick-go-wasm.html">geektutu.com</a>
+                        href="/post/quick-go-wasm.html">ysliving.github.io</a>
                     」，也可搜索「 极客兔兔 」找到我。
             </p>
             
@@ -575,7 +575,7 @@
     
     <a style="display:inline-block;" target="_blank" rel="noopener" href="https://github.com/geektutu" title="Github"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/github.png" /></a>
     
-    <a style="display:inline-block;" href="https://geektutu.com/feed.xml" title="RSS"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/rss.jpg" /></a>
+    <a style="display:inline-block;" target="_blank" rel="noopener" href="https://geektutu.com/feed.xml" title="RSS"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/rss.jpg" /></a>
     
     <a style="display:inline-block;" target="_blank" rel="noopener" href="https://www.zhihu.com/people/gzdaijie" title="知乎"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/zhihu.png" /></a>
     
@@ -588,7 +588,7 @@
         <h3>推荐阅读</h3>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/geerpc/geerpc.jpg')"></div>
+    <div class="post-img" style="background-image: url('/post/geeorm/geeorm_sm.jpg')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
@@ -602,14 +602,14 @@
                 
                 
             </div>
-            <a href="/post/geerpc-day6.html" class="title">
-                动手写RPC框架 - GeeRPC第六天 负载均衡(load balance)
+            <a href="/post/geeorm-day4.html" class="title">
+                动手写ORM框架 - GeeORM第四天 链式操作与更新删除
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2020-10-08，</span>
-                    <span class="hidden-xs">全文11384字，</span>
-                    <span>阅读约38分钟</span>
+                    <span>发表于2020-03-08，</span>
+                    <span class="hidden-xs">全文7152字，</span>
+                    <span>阅读约24分钟</span>
                 </small>
             </p>
         </div>
@@ -617,7 +617,7 @@
 </div>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/gee/gee.jpg')"></div>
+    <div class="post-img" style="background-image: url('/post/quick-golang/golang.jpg')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
@@ -631,14 +631,14 @@
                 
                 
             </div>
-            <a href="/post/gee-day2.html" class="title">
-                Go语言动手写Web框架 - Gee第二天 上下文Context
+            <a href="/post/quick-golang.html" class="title">
+                Go 语言简明教程
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2019-08-19，</span>
-                    <span class="hidden-xs">全文6819字，</span>
-                    <span>阅读约23分钟</span>
+                    <span>发表于2019-08-06，</span>
+                    <span class="hidden-xs">全文15305字，</span>
+                    <span>阅读约52分钟</span>
                 </small>
             </p>
         </div>
@@ -646,7 +646,7 @@
 </div>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/pandas-cheat-sheet-zh-cn/cheat_sheet_part.png')"></div>
+    <div class="post-img" style="background-image: url('/post/tensorflow-mnist-tensorboard-training/tensorboard_mnist_graph.png')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
@@ -654,20 +654,32 @@
                 
                 <span>/</span>
                 
-                <a class="text-gray" href="/tags/#Pandas"
-                    title="Pandas">Pandas</a>
+                <a class="text-gray" href="/tags/#机器学习"
+                    title="机器学习">机器学习</a>
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#TensorFlow"
+                    title="TensorFlow">TensorFlow</a>
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#mnist"
+                    title="mnist">mnist</a>
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#Python"
+                    title="Python">Python</a>
                 <span>/</span>
                 
                 
             </div>
-            <a href="/post/pandas-cheat-sheet-zh-cn.html" class="title">
-                Pandas 数据处理(三) - Cheat Sheet 中文版
+            <a href="/post/tensorflow-mnist-tensorboard-training.html" class="title">
+                TensorFlow入门(三) - mnist手写数字识别(可视化训练)
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2019-06-16，</span>
-                    <span class="hidden-xs">全文1090字，</span>
-                    <span>阅读约4分钟</span>
+                    <span>发表于2018-03-29，</span>
+                    <span class="hidden-xs">全文5393字，</span>
+                    <span>阅读约18分钟</span>
                 </small>
             </p>
         </div>
@@ -815,7 +827,7 @@
                 wrapper.appendChild(div)
             })
             var p = document.createElement('p')
-            p.innerHTML = '<a href="https://geektutu.com/post/blog-experience-7.html">Gitalk Plus</a>';
+            p.innerHTML = '<a target="_blank" rel="noopener" href="https://geektutu.com/post/blog-experience-7.html">Gitalk Plus</a>';
             p.classList.add('dis-divide');
             wrapper.appendChild(p);
             wrapper.classList.add('dis-wrapper')
@@ -906,7 +918,7 @@
         
         <a target="_blank" rel="noopener" href="https://github.com/geektutu"><img src="/img/related_links/github.png" /></a>
         
-        <a href="https://geektutu.com/feed.xml"><img src="/img/related_links/rss.jpg" /></a>
+        <a target="_blank" rel="noopener" href="https://geektutu.com/feed.xml"><img src="/img/related_links/rss.jpg" /></a>
         
         <a target="_blank" rel="noopener" href="https://www.zhihu.com/people/gzdaijie"><img src="/img/related_links/zhihu.png" /></a>
         

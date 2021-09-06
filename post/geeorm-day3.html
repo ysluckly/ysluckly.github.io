@@ -25,7 +25,7 @@
     
   </title>
 
-  <link rel="canonical" href="https://geektutu.com/post/geeorm-day3.html">
+  <link rel="canonical" href="https://ysliving.github.io/post/geeorm-day3.html">
   
 <link rel="stylesheet" href="/css/geektutu.css">
 
@@ -334,7 +334,7 @@
         
         <li><a target="_blank" rel="noopener" href="https://github.com/geektutu">Github</a></li>
         
-        <li><a href="https://geektutu.com/feed.xml">RSS</a></li>
+        <li><a target="_blank" rel="noopener" href="https://geektutu.com/feed.xml">RSS</a></li>
         
         <li><a target="_blank" rel="noopener" href="https://www.zhihu.com/people/gzdaijie">知乎</a></li>
         
@@ -523,7 +523,7 @@
       </blockquote>
       
       <div class="gkt-article-start"></div>
-      <p>本文是<a href="https://geektutu.com/post/geeorm.html">7天用Go从零实现ORM框架GeeORM</a>的第三篇。</p>
+      <p>本文是<a target="_blank" rel="noopener" href="https://geektutu.com/post/geeorm.html">7天用Go从零实现ORM框架GeeORM</a>的第三篇。</p>
 <ul>
 <li>实现新增(insert)记录的功能。</li>
 <li>使用反射(reflect)将数据库的记录转换为对应的结构体实例，实现查询(select)功能。<strong>代码约150行</strong></li>
@@ -597,9 +597,9 @@
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> session</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;testing&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> (</span><br><span class="line">	user1 = &amp;User&#123;<span class="string">&quot;Tom&quot;</span>, <span class="number">18</span>&#125;</span><br><span class="line">	user2 = &amp;User&#123;<span class="string">&quot;Sam&quot;</span>, <span class="number">25</span>&#125;</span><br><span class="line">	user3 = &amp;User&#123;<span class="string">&quot;Jack&quot;</span>, <span class="number">25</span>&#125;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">testRecordInit</span><span class="params">(t *testing.T)</span> *<span class="title">Session</span></span> &#123;</span><br><span class="line">	t.Helper()</span><br><span class="line">	s := NewSession().Model(&amp;User&#123;&#125;)</span><br><span class="line">	err1 := s.DropTable()</span><br><span class="line">	err2 := s.CreateTable()</span><br><span class="line">	_, err3 := s.Insert(user1, user2)</span><br><span class="line">	<span class="keyword">if</span> err1 != <span class="literal">nil</span> || err2 != <span class="literal">nil</span> || err3 != <span class="literal">nil</span> &#123;</span><br><span class="line">		t.Fatal(<span class="string">&quot;failed init test records&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> s</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestSession_Insert</span><span class="params">(t *testing.T)</span></span> &#123;</span><br><span class="line">	s := testRecordInit(t)</span><br><span class="line">	affected, err := s.Insert(user3)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> || affected != <span class="number">1</span> &#123;</span><br><span class="line">		t.Fatal(<span class="string">&quot;failed to create record&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestSession_Find</span><span class="params">(t *testing.T)</span></span> &#123;</span><br><span class="line">	s := testRecordInit(t)</span><br><span class="line">	<span class="keyword">var</span> users []User</span><br><span class="line">	<span class="keyword">if</span> err := s.Find(&amp;users); err != <span class="literal">nil</span> || <span class="built_in">len</span>(users) != <span class="number">2</span> &#123;</span><br><span class="line">		t.Fatal(<span class="string">&quot;failed to query all&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="附-推荐阅读"><a href="#附-推荐阅读" class="headerlink" title="附 推荐阅读"></a>附 推荐阅读</h2><ul>
-<li><a href="https://geektutu.com/post/quick-golang.html">Go 语言简明教程</a></li>
-<li><a href="https://geektutu.com/post/quick-go-test.html">Go Test 单元测试简明教程</a></li>
-<li><a href="https://geektutu.com/post/cheat-sheet-sqlite.html">SQLite 常用命令速查表</a></li>
+<li><a target="_blank" rel="noopener" href="https://geektutu.com/post/quick-golang.html">Go 语言简明教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://geektutu.com/post/quick-go-test.html">Go Test 单元测试简明教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://geektutu.com/post/cheat-sheet-sqlite.html">SQLite 常用命令速查表</a></li>
 <li><a target="_blank" rel="noopener" href="https://blog.golang.org/laws-of-reflection">Laws Of Reflection - golang.org</a></li>
 </ul>
 
@@ -756,7 +756,7 @@
     
     <a style="display:inline-block;" target="_blank" rel="noopener" href="https://github.com/geektutu" title="Github"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/github.png" /></a>
     
-    <a style="display:inline-block;" href="https://geektutu.com/feed.xml" title="RSS"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/rss.jpg" /></a>
+    <a style="display:inline-block;" target="_blank" rel="noopener" href="https://geektutu.com/feed.xml" title="RSS"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/rss.jpg" /></a>
     
     <a style="display:inline-block;" target="_blank" rel="noopener" href="https://www.zhihu.com/people/gzdaijie" title="知乎"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/zhihu.png" /></a>
     
@@ -832,7 +832,7 @@
                 wrapper.appendChild(div)
             })
             var p = document.createElement('p')
-            p.innerHTML = '<a href="https://geektutu.com/post/blog-experience-7.html">Gitalk Plus</a>';
+            p.innerHTML = '<a target="_blank" rel="noopener" href="https://geektutu.com/post/blog-experience-7.html">Gitalk Plus</a>';
             p.classList.add('dis-divide');
             wrapper.appendChild(p);
             wrapper.classList.add('dis-wrapper')

@@ -25,7 +25,7 @@
     
   </title>
 
-  <link rel="canonical" href="https://geektutu.com/post/geecache-day1.html">
+  <link rel="canonical" href="https://ysliving.github.io/post/geecache-day1.html">
   
 <link rel="stylesheet" href="/css/geektutu.css">
 
@@ -334,7 +334,7 @@
         
         <li><a target="_blank" rel="noopener" href="https://github.com/geektutu">Github</a></li>
         
-        <li><a href="https://geektutu.com/feed.xml">RSS</a></li>
+        <li><a target="_blank" rel="noopener" href="https://geektutu.com/feed.xml">RSS</a></li>
         
         <li><a target="_blank" rel="noopener" href="https://www.zhihu.com/people/gzdaijie">知乎</a></li>
         
@@ -523,7 +523,7 @@
       </blockquote>
       
       <div class="gkt-article-start"></div>
-      <p>本文是<a href="https://geektutu.com/post/geecache.html">7天用Go从零实现分布式缓存GeeCache教程系列</a>的第一篇。</p>
+      <p>本文是<a target="_blank" rel="noopener" href="https://geektutu.com/post/geecache.html">7天用Go从零实现分布式缓存GeeCache教程系列</a>的第一篇。</p>
 <ul>
 <li>介绍常用的三种缓存淘汰(失效)算法：FIFO，LFU 和 LRU</li>
 <li>实现 LRU 缓存淘汰算法，<strong>代码约80行</strong></li>
@@ -589,8 +589,8 @@
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestOnEvicted</span><span class="params">(t *testing.T)</span></span> &#123;</span><br><span class="line">	keys := <span class="built_in">make</span>([]<span class="keyword">string</span>, <span class="number">0</span>)</span><br><span class="line">	callback := <span class="function"><span class="keyword">func</span><span class="params">(key <span class="keyword">string</span>, value Value)</span></span> &#123;</span><br><span class="line">		keys = <span class="built_in">append</span>(keys, key)</span><br><span class="line">	&#125;</span><br><span class="line">	lru := New(<span class="keyword">int64</span>(<span class="number">10</span>), callback)</span><br><span class="line">	lru.Add(<span class="string">&quot;key1&quot;</span>, String(<span class="string">&quot;123456&quot;</span>))</span><br><span class="line">	lru.Add(<span class="string">&quot;k2&quot;</span>, String(<span class="string">&quot;k2&quot;</span>))</span><br><span class="line">	lru.Add(<span class="string">&quot;k3&quot;</span>, String(<span class="string">&quot;k3&quot;</span>))</span><br><span class="line">	lru.Add(<span class="string">&quot;k4&quot;</span>, String(<span class="string">&quot;k4&quot;</span>))</span><br><span class="line"></span><br><span class="line">	expect := []<span class="keyword">string</span>&#123;<span class="string">&quot;key1&quot;</span>, <span class="string">&quot;k2&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> !reflect.DeepEqual(expect, keys) &#123;</span><br><span class="line">		t.Fatalf(<span class="string">&quot;Call OnEvicted failed, expect keys equals to %s&quot;</span>, expect)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="附-推荐阅读"><a href="#附-推荐阅读" class="headerlink" title="附 推荐阅读"></a>附 推荐阅读</h2><ul>
-<li><a href="https://geektutu.com/post/quick-golang.html">Go 语言简明教程</a></li>
-<li><a href="https://geektutu.com/post/quick-go-test.html">Go Test 单元测试简明教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://geektutu.com/post/quick-golang.html">Go 语言简明教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://geektutu.com/post/quick-go-test.html">Go Test 单元测试简明教程</a></li>
 <li><a target="_blank" rel="noopener" href="https://golang.org/pkg/container/list/">list 官方文档 - golang.org</a></li>
 </ul>
 
@@ -747,7 +747,7 @@
     
     <a style="display:inline-block;" target="_blank" rel="noopener" href="https://github.com/geektutu" title="Github"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/github.png" /></a>
     
-    <a style="display:inline-block;" href="https://geektutu.com/feed.xml" title="RSS"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/rss.jpg" /></a>
+    <a style="display:inline-block;" target="_blank" rel="noopener" href="https://geektutu.com/feed.xml" title="RSS"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/rss.jpg" /></a>
     
     <a style="display:inline-block;" target="_blank" rel="noopener" href="https://www.zhihu.com/people/gzdaijie" title="知乎"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/zhihu.png" /></a>
     
@@ -823,7 +823,7 @@
                 wrapper.appendChild(div)
             })
             var p = document.createElement('p')
-            p.innerHTML = '<a href="https://geektutu.com/post/blog-experience-7.html">Gitalk Plus</a>';
+            p.innerHTML = '<a target="_blank" rel="noopener" href="https://geektutu.com/post/blog-experience-7.html">Gitalk Plus</a>';
             p.classList.add('dis-divide');
             wrapper.appendChild(p);
             wrapper.classList.add('dis-wrapper')

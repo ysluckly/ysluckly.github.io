@@ -25,7 +25,7 @@
     
   </title>
 
-  <link rel="canonical" href="https://geektutu.com/post/tensorflow2-mnist-cnn.html">
+  <link rel="canonical" href="https://ysliving.github.io/post/tensorflow2-mnist-cnn.html">
   
 <link rel="stylesheet" href="/css/geektutu.css">
 
@@ -306,7 +306,7 @@
 <h2 id="4-mnist数据集预处理（train-py）"><a href="#4-mnist数据集预处理（train-py）" class="headerlink" title="4. mnist数据集预处理（train.py）"></a>4. mnist数据集预处理（train.py）</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DataSource</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="comment"># mnist数据集存储的位置，如何不存在将自动下载</span></span><br><span class="line">        data_path = os.path.abspath(os.path.dirname(__file__)) + <span class="string">&#x27;/../data_set_tf2/mnist.npz&#x27;</span></span><br><span class="line">        (train_images, train_labels), (test_images, test_labels) = datasets.mnist.load_data(path=data_path)</span><br><span class="line">        <span class="comment"># 6万张训练图片，1万张测试图片</span></span><br><span class="line">        train_images = train_images.reshape((<span class="number">60000</span>, <span class="number">28</span>, <span class="number">28</span>, <span class="number">1</span>))</span><br><span class="line">        test_images = test_images.reshape((<span class="number">10000</span>, <span class="number">28</span>, <span class="number">28</span>, <span class="number">1</span>))</span><br><span class="line">        <span class="comment"># 像素值映射到 0 - 1 之间</span></span><br><span class="line">        train_images, test_images = train_images / <span class="number">255.0</span>, test_images / <span class="number">255.0</span></span><br><span class="line"></span><br><span class="line">        self.train_images, self.train_labels = train_images, train_labels</span><br><span class="line">        self.test_images, self.test_labels = test_images, test_labels</span><br></pre></td></tr></table></figure>
 
 <p>因为mnist数据集国内下载不稳定，因此数据集也同步到了Github仓库。</p>
-<p>对mnist数据集的介绍，大家可以参考这个系列的第一篇文章<a href="https://geektutu.com/post/tensorflow-mnist-simplest.html">TensorFlow入门(一) - mnist手写数字识别(网络搭建)</a>。</p>
+<p>对mnist数据集的介绍，大家可以参考这个系列的第一篇文章<a target="_blank" rel="noopener" href="https://geektutu.com/post/tensorflow-mnist-simplest.html">TensorFlow入门(一) - mnist手写数字识别(网络搭建)</a>。</p>
 <h2 id="5-开始训练并保存训练结果（train-py）"><a href="#5-开始训练并保存训练结果（train-py）" class="headerlink" title="5. 开始训练并保存训练结果（train.py）"></a>5. 开始训练并保存训练结果（train.py）</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Train</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.cnn = CNN()</span><br><span class="line">        self.data = DataSource()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">train</span>(<span class="params">self</span>):</span></span><br><span class="line">        check_path = <span class="string">&#x27;./ckpt/cp-&#123;epoch:04d&#125;.ckpt&#x27;</span></span><br><span class="line">        <span class="comment"># period 每隔5epoch保存一次</span></span><br><span class="line">        save_model_cb = tf.keras.callbacks.ModelCheckpoint(check_path, save_weights_only=<span class="literal">True</span>, verbose=<span class="number">1</span>, period=<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">        self.cnn.model.<span class="built_in">compile</span>(optimizer=<span class="string">&#x27;adam&#x27;</span>,</span><br><span class="line">                               loss=<span class="string">&#x27;sparse_categorical_crossentropy&#x27;</span>,</span><br><span class="line">                               metrics=[<span class="string">&#x27;accuracy&#x27;</span>])</span><br><span class="line">        self.cnn.model.fit(self.data.train_images, self.data.train_labels, epochs=<span class="number">5</span>, callbacks=[save_model_cb])</span><br><span class="line"></span><br><span class="line">        test_loss, test_acc = self.cnn.model.evaluate(self.data.test_images, self.data.test_labels)</span><br><span class="line">        print(<span class="string">&quot;准确率: %.4f，共测试了%d张图片 &quot;</span> % (test_acc, <span class="built_in">len</span>(self.data.test_labels)))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    app = Train()</span><br><span class="line">    app.train()</span><br></pre></td></tr></table></figure>
 
 <p>在执行<code>python train.py</code>后，会得到以下的结果：</p>
@@ -325,7 +325,7 @@
 <li>Keras的接口成为了主力，<strong>datasets, layers, models</strong>都是从Keras引入的，而且在网络的搭建上，代码更少，更为简洁。</li>
 </ol>
 <h2 id="附：-推荐"><a href="#附：-推荐" class="headerlink" title="附： 推荐"></a>附： 推荐</h2><ul>
-<li><a href="https://geektutu.com/post/quick-python.html">一篇文章入门 Python</a></li>
+<li><a target="_blank" rel="noopener" href="https://geektutu.com/post/quick-python.html">一篇文章入门 Python</a></li>
 </ul>
 
         
@@ -351,7 +351,7 @@
             
             <p>
                 本站永久域名「 <a
-                        href="/post/tensorflow2-mnist-cnn.html">geektutu.com</a>
+                        href="/post/tensorflow2-mnist-cnn.html">ysliving.github.io</a>
                     」，也可搜索「 极客兔兔 」找到我。
             </p>
             
@@ -512,7 +512,7 @@
     
     <a style="display:inline-block;" target="_blank" rel="noopener" href="https://github.com/geektutu" title="Github"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/github.png" /></a>
     
-    <a style="display:inline-block;" href="https://geektutu.com/feed.xml" title="RSS"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/rss.jpg" /></a>
+    <a style="display:inline-block;" target="_blank" rel="noopener" href="https://geektutu.com/feed.xml" title="RSS"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/rss.jpg" /></a>
     
     <a style="display:inline-block;" target="_blank" rel="noopener" href="https://www.zhihu.com/people/gzdaijie" title="知乎"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/zhihu.png" /></a>
     
@@ -525,7 +525,7 @@
         <h3>推荐阅读</h3>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/geerpc/geerpc.jpg')"></div>
+    <div class="post-img" style="background-image: url('/post/geeorm/geeorm_sm.jpg')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
@@ -539,42 +539,13 @@
                 
                 
             </div>
-            <a href="/post/geerpc-day2.html" class="title">
-                动手写RPC框架 - GeeRPC第二天 支持并发与异步的客户端
+            <a href="/post/geeorm-day5.html" class="title">
+                动手写ORM框架 - GeeORM第五天 实现钩子(Hooks)
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2020-10-07，</span>
-                    <span class="hidden-xs">全文9943字，</span>
-                    <span>阅读约34分钟</span>
-                </small>
-            </p>
-        </div>
-    </div>
-</div>
-        
-        <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/blog-experience-3/cnzz.jpg')"></div>
-    <div class="post-info">
-        <div class="post-info-center">
-            <div class="hidden-xs">
-                
-                
-                <span>/</span>
-                
-                <a class="text-gray" href="/tags/#关于我"
-                    title="关于我">关于我</a>
-                <span>/</span>
-                
-                
-            </div>
-            <a href="/post/blog-experience-3.html" class="title">
-                博客折腾记(三) - 主题设计、彩蛋与阅读量翻倍
-            </a>
-            <p class="text-gray">
-                <small>
-                    <span>发表于2019-06-23，</span>
-                    <span class="hidden-xs">全文3998字，</span>
+                    <span>发表于2020-03-08，</span>
+                    <span class="hidden-xs">全文3904字，</span>
                     <span>阅读约14分钟</span>
                 </small>
             </p>
@@ -583,7 +554,7 @@
 </div>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/tensorflow2-gym-nn/cartpole_v0_failed.gif')"></div>
+    <div class="post-img" style="background-image: url('/post/geeorm/geeorm_sm.jpg')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
@@ -591,32 +562,49 @@
                 
                 <span>/</span>
                 
-                <a class="text-gray" href="/tags/#机器学习"
-                    title="机器学习">机器学习</a>
-                <span>/</span>
-                
-                <a class="text-gray" href="/tags/#TensorFlow"
-                    title="TensorFlow">TensorFlow</a>
-                <span>/</span>
-                
-                <a class="text-gray" href="/tags/#Python"
-                    title="Python">Python</a>
-                <span>/</span>
-                
-                <a class="text-gray" href="/tags/#OpenAI gym"
-                    title="OpenAI gym">OpenAI gym</a>
+                <a class="text-gray" href="/tags/#Go"
+                    title="Go">Go</a>
                 <span>/</span>
                 
                 
             </div>
-            <a href="/post/tensorflow2-gym-nn.html" class="title">
-                TensorFlow 2.0 (六) - 监督学习玩转 OpenAI gym game
+            <a href="/post/geeorm-day3.html" class="title">
+                动手写ORM框架 - GeeORM第三天 记录新增和查询
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2019-06-21，</span>
-                    <span class="hidden-xs">全文7072字，</span>
-                    <span>阅读约24分钟</span>
+                    <span>发表于2020-03-08，</span>
+                    <span class="hidden-xs">全文9712字，</span>
+                    <span>阅读约33分钟</span>
+                </small>
+            </p>
+        </div>
+    </div>
+</div>
+        
+        <div class="post-preview">
+    <div class="post-img" style="background-image: url('/post/gee/gee.jpg')"></div>
+    <div class="post-info">
+        <div class="post-info-center">
+            <div class="hidden-xs">
+                
+                
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#Go"
+                    title="Go">Go</a>
+                <span>/</span>
+                
+                
+            </div>
+            <a href="/post/gee-day2.html" class="title">
+                Go语言动手写Web框架 - Gee第二天 上下文Context
+            </a>
+            <p class="text-gray">
+                <small>
+                    <span>发表于2019-08-19，</span>
+                    <span class="hidden-xs">全文6819字，</span>
+                    <span>阅读约23分钟</span>
                 </small>
             </p>
         </div>
@@ -764,7 +752,7 @@
                 wrapper.appendChild(div)
             })
             var p = document.createElement('p')
-            p.innerHTML = '<a href="https://geektutu.com/post/blog-experience-7.html">Gitalk Plus</a>';
+            p.innerHTML = '<a target="_blank" rel="noopener" href="https://geektutu.com/post/blog-experience-7.html">Gitalk Plus</a>';
             p.classList.add('dis-divide');
             wrapper.appendChild(p);
             wrapper.classList.add('dis-wrapper')
@@ -855,7 +843,7 @@
         
         <a target="_blank" rel="noopener" href="https://github.com/geektutu"><img src="/img/related_links/github.png" /></a>
         
-        <a href="https://geektutu.com/feed.xml"><img src="/img/related_links/rss.jpg" /></a>
+        <a target="_blank" rel="noopener" href="https://geektutu.com/feed.xml"><img src="/img/related_links/rss.jpg" /></a>
         
         <a target="_blank" rel="noopener" href="https://www.zhihu.com/people/gzdaijie"><img src="/img/related_links/zhihu.png" /></a>
         

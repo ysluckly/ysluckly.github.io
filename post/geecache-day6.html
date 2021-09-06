@@ -25,7 +25,7 @@
     
   </title>
 
-  <link rel="canonical" href="https://geektutu.com/post/geecache-day6.html">
+  <link rel="canonical" href="https://ysliving.github.io/post/geecache-day6.html">
   
 <link rel="stylesheet" href="/css/geektutu.css">
 
@@ -334,7 +334,7 @@
         
         <li><a target="_blank" rel="noopener" href="https://github.com/geektutu">Github</a></li>
         
-        <li><a href="https://geektutu.com/feed.xml">RSS</a></li>
+        <li><a target="_blank" rel="noopener" href="https://geektutu.com/feed.xml">RSS</a></li>
         
         <li><a target="_blank" rel="noopener" href="https://www.zhihu.com/people/gzdaijie">知乎</a></li>
         
@@ -524,12 +524,12 @@
       
       <div class="gkt-article-start"></div>
       <p><img src="geecache-day6/singleflight.jpg" alt="geecache single flight"></p>
-<p>本文是<a href="https://geektutu.com/post/geecache.html">7天用Go从零实现分布式缓存GeeCache</a>的第六篇。</p>
+<p>本文是<a target="_blank" rel="noopener" href="https://geektutu.com/post/geecache.html">7天用Go从零实现分布式缓存GeeCache</a>的第六篇。</p>
 <ul>
 <li>缓存雪崩、缓存击穿与缓存穿透的概念简介。</li>
 <li>使用 singleflight 防止缓存击穿，实现与测试。<strong>代码约70行</strong></li>
 </ul>
-<h2 id="1-缓存雪崩、缓存击穿与缓存穿透"><a href="#1-缓存雪崩、缓存击穿与缓存穿透" class="headerlink" title="1 缓存雪崩、缓存击穿与缓存穿透"></a>1 缓存雪崩、缓存击穿与缓存穿透</h2><p><a href="https://geektutu.com/post/geecache-day5.html">GeeCache 第五天</a> 提到了缓存雪崩和缓存击穿，在这里做下总结：</p>
+<h2 id="1-缓存雪崩、缓存击穿与缓存穿透"><a href="#1-缓存雪崩、缓存击穿与缓存穿透" class="headerlink" title="1 缓存雪崩、缓存击穿与缓存穿透"></a>1 缓存雪崩、缓存击穿与缓存穿透</h2><p><a target="_blank" rel="noopener" href="https://geektutu.com/post/geecache-day5.html">GeeCache 第五天</a> 提到了缓存雪崩和缓存击穿，在这里做下总结：</p>
 <blockquote>
 <p><strong>缓存雪崩</strong>：缓存在同一时刻全部失效，造成瞬时DB请求量大、压力骤增，引起雪崩。缓存雪崩通常因为缓存服务器宕机、缓存的 key 设置了相同的过期时间等引起。</p>
 </blockquote>
@@ -539,7 +539,7 @@
 <blockquote>
 <p><strong>缓存穿透</strong>：查询一个不存在的数据，因为不存在则不会写到缓存中，所以每次都会去请求 DB，如果瞬间流量过大，穿透到 DB，导致宕机。</p>
 </blockquote>
-<h2 id="2-singleflight-的实现"><a href="#2-singleflight-的实现" class="headerlink" title="2 singleflight 的实现"></a>2 singleflight 的实现</h2><p>还记得 <a href="https://geektutu.com/post/geecache-day5.html">GeeCache 第五天</a> 最后的测试结果吗？</p>
+<h2 id="2-singleflight-的实现"><a href="#2-singleflight-的实现" class="headerlink" title="2 singleflight 的实现"></a>2 singleflight 的实现</h2><p>还记得 <a target="_blank" rel="noopener" href="https://geektutu.com/post/geecache-day5.html">GeeCache 第五天</a> 最后的测试结果吗？</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2020/02/16 21:17:45 [Server http://localhost:8003] Pick peer http://localhost:8001</span><br><span class="line">2020/02/16 21:17:45 [Server http://localhost:8003] Pick peer http://localhost:8001</span><br><span class="line">2020/02/16 21:17:45 [Server http://localhost:8003] Pick peer http://localhost:8001</span><br></pre></td></tr></table></figure>
 
 <p>我们并发了 N 个请求 <code>?key=Tom</code>，8003 节点向 8001 同时发起了 N 次请求。假设对数据库的访问没有做任何限制的，很可能向数据库也发起 N 次请求，容易导致缓存击穿和穿透。即使对数据库做了防护，HTTP 请求是非常耗费资源的操作，针对相同的 key，8003 节点向 8001 发起三次请求也是没有必要的。那这种情况下，我们如何做到只向远端节点发起一次请求呢？</p>
@@ -581,8 +581,8 @@
 <p>可以看到，向 API 发起了三次并发请求，但8003 只向 8001 发起了一次请求，就搞定了。</p>
 <p>如果并发度不够高，可能仍会看到向 8001 请求三次的场景。这种情况下三次请求是串行执行的，并没有触发 <code>singleflight</code> 的锁机制工作，可以加大并发数量再测试。即，将 <code>run.sh</code> 中的 <code>curl</code> 命令复制 N 次。</p>
 <h2 id="附-推荐"><a href="#附-推荐" class="headerlink" title="附 推荐"></a>附 推荐</h2><ul>
-<li><a href="https://geektutu.com/post/quick-golang.html#7-%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B-goroutine">Go 语言简明教程#并发编程</a></li>
-<li><a href="https://geektutu.com/post/quick-go-test.html">Go Test 单元测试简明教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://geektutu.com/post/quick-golang.html#7-%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B-goroutine">Go 语言简明教程#并发编程</a></li>
+<li><a target="_blank" rel="noopener" href="https://geektutu.com/post/quick-go-test.html">Go Test 单元测试简明教程</a></li>
 </ul>
 
       
@@ -738,7 +738,7 @@
     
     <a style="display:inline-block;" target="_blank" rel="noopener" href="https://github.com/geektutu" title="Github"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/github.png" /></a>
     
-    <a style="display:inline-block;" href="https://geektutu.com/feed.xml" title="RSS"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/rss.jpg" /></a>
+    <a style="display:inline-block;" target="_blank" rel="noopener" href="https://geektutu.com/feed.xml" title="RSS"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/rss.jpg" /></a>
     
     <a style="display:inline-block;" target="_blank" rel="noopener" href="https://www.zhihu.com/people/gzdaijie" title="知乎"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/zhihu.png" /></a>
     
@@ -814,7 +814,7 @@
                 wrapper.appendChild(div)
             })
             var p = document.createElement('p')
-            p.innerHTML = '<a href="https://geektutu.com/post/blog-experience-7.html">Gitalk Plus</a>';
+            p.innerHTML = '<a target="_blank" rel="noopener" href="https://geektutu.com/post/blog-experience-7.html">Gitalk Plus</a>';
             p.classList.add('dis-divide');
             wrapper.appendChild(p);
             wrapper.classList.add('dis-wrapper')
