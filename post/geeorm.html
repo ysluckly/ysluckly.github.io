@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<!-- Head tag -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  <meta name="baidu-site-verification" content="p7Pz3jlx4t" />
+  <meta name="google-site-verification" content="X31OY0d2sKImNbS2x8-OpITWRK4nn7nZCcXe3_hA9ew" />
+  <meta name="msvalidate.01" content="7E2AEE3378AC93764DEAB411177A21A1" />
+  <meta name="360-site-verification" content="1d1e81a1a48a1ed2e3308d7cb8e548e7" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- if page has tags, then add tags to keyword -->
+  
+  
+  <meta name="keywords" content="geektutu,jiketutu,Go语言,golang,python,Go,Go语言,从零实现ORM框架,动手写ORM框架,database/sql,sqlite3">
+  <!-- page.description has higher priority -->
+  <meta name="description" content="7天用 Go语言/golang 从零实现 ORM 框架 GeeORM 教程(7 days implement golang object relational mapping framework from scratch tutorial)，动手写 ORM 框架，参照 gorm, xorm 的实现。功能包括对象和表结构的相互映射，表的创建删除(table)，记录的增删查改，事务支持(transaction)，数据库迁移(migrate)，钩子(hooks)等。">
+  <link rel="shortcut icon" href="/img/icon.png">
+  <title>
+    
+    7天用Go从零实现ORM框架GeeORM | 极客兔兔
+    
+  </title>
+
+  <link rel="canonical" href="https://geektutu.com/post/geeorm.html">
+  
+<link rel="stylesheet" href="/css/geektutu.css">
+
+  <!-- global function -->
+  <script>
+    window.globalAddScript = function (url, onload, onerror) {
+      var s = document.createElement('script');
+      s.src = url;
+      onload && (s.onload = onload);
+      onerror && (s.onerror = onerror);
+      document.body.appendChild(s);
+    }
+    window.globalAddCss = function (url) {
+      var s = document.createElement('link');
+      s.rel = 'stylesheet';
+      s.href = url;
+      document.body.appendChild(s);
+    }
+    window.getPosition = function (ele) {
+      var x = 0, y = 0;
+      while (ele) {
+        x += (ele.offsetLeft - ele.scrollLeft + ele.clientLeft);
+        y += (ele.offsetTop - ele.scrollTop + ele.clientTop);
+        ele = ele.offsetParent;
+      }
+      return { x: x, y: y };
+    }
+    window.getDom = function (str) { return document.querySelector(str) }
+  </script>
+  <!-- google ad -->
+  
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/feed.xml" title="极客兔兔" type="application/rss+xml">
+</head>
+
+<body>
+    
+<style>
+    body {
+        background: white;
+    }
+    .gkt-header-placeholder, .gkt-header {
+        display: none;
+    }
+    .main-container {
+        width: 100%;
+        padding-top: 0;
+        max-width: 100%;
+    }
+</style>
+
+<header class="gkt-header col-xs-12 padding-0">
+    <div id="gkt-nav" class="gkt-header-container">
+        <a href="/" class="gkt-header-title float-left">
+            <img class="float-left" src="/img/icon.png" alt="">
+            <span>极客兔兔</span>
+        </a>
+        <nav class="gkt-header-nav text-right">
+            <ul>
+                <li><a class="hidden-xs" href="/feed.xml">订阅</a></li>
+                <li><a href="/series/">专题</a></li>
+                <li><a href="/archives/">归档</a></li>
+                <li><a href="/post/link.html">友链</a></li>
+                <li><a href="/post/about.html">关于</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div id="gkt-cate-nav" class="gkt-header-container hidden-xs">
+        
+        <nav class="gkt-header-nav float-left">
+            <ul>
+                
+                
+                <li class="gkt-cate-name float-left ">
+                    <a class="float-left" href="/post/tensorflow-mnist-simplest.html">简明教程 ▾</a>
+                    
+                    <ul class="gkt-sub-cate">
+                        
+                        <li class="gkt-sub-cate-name "><a class="float-left"
+                                href="/post/tensorflow-mnist-simplest.html">TensorFlow 教程</a></li>
+                        
+                        <li class="gkt-sub-cate-name "><a class="float-left"
+                                href="/post/pandas-dataframe-series.html">Pandas 数据处理</a></li>
+                        
+                        <li class="gkt-sub-cate-name "><a class="float-left"
+                                href="/post/quick-golang.html">Go 简明教程</a></li>
+                        
+                        <li class="gkt-sub-cate-name "><a class="float-left"
+                                href="/post/quick-rust.html">Rust 简明教程</a></li>
+                        
+                        <li class="gkt-sub-cate-name "><a class="float-left"
+                                href="/post/quick-python.html">Python 简明教程</a></li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li class="gkt-cate-name float-left ">
+                    <a class="float-left" href="/post/blog-experience-1.html">杂谈 ▾</a>
+                    
+                    <ul class="gkt-sub-cate">
+                        
+                        <li class="gkt-sub-cate-name "><a class="float-left"
+                                href="/post/blog-experience-1.html">建站经历</a></li>
+                        
+                        <li class="gkt-sub-cate-name "><a class="float-left"
+                                href="/post/2020.html">年终总结</a></li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li class="gkt-cate-name float-left active">
+                    <a class="float-left" href="/post/gee.html">从零实现 ▾</a>
+                    
+                    <ul class="gkt-sub-cate">
+                        
+                        <li class="gkt-sub-cate-name "><a class="float-left"
+                                href="/post/gee.html">Web框架 - Gee</a></li>
+                        
+                        <li class="gkt-sub-cate-name "><a class="float-left"
+                                href="/post/geecache.html">分布式缓存 - GeeCache</a></li>
+                        
+                        <li class="gkt-sub-cate-name active"><a class="float-left"
+                                href="/post/geeorm.html">ORM框架 - GeeORM</a></li>
+                        
+                        <li class="gkt-sub-cate-name "><a class="float-left"
+                                href="/post/geerpc.html">RPC框架 - GeeRPC</a></li>
+                        
+                        <li class="gkt-sub-cate-name "><a class="float-left"
+                                href="/post/7days-golang-q1.html">7days-golang Q &amp; A</a></li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li class="gkt-cate-name float-left ">
+                    <a class="float-left" href="/post/box-tools.html">百宝箱 ▾</a>
+                    
+                    <ul class="gkt-sub-cate">
+                        
+                        <li class="gkt-sub-cate-name "><a class="float-left"
+                                href="/post/box-tools.html">工具</a></li>
+                        
+                        <li class="gkt-sub-cate-name "><a class="float-left"
+                                href="/post/cheat-sheet-sqlite.html">SQLite 速查表</a></li>
+                        
+                    </ul>
+                    
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+<div class="gkt-header-placeholder" style="height: 44px"></div>
+<div class="gkt-header-placeholder hidden-xs" style="height: 44px"></div>
+<script>
+    (function () {
+        window.addEventListener('scroll', function () {
+            if (window.innerWidth < 768) {
+                return;
+            }
+            var nav = document.querySelector('#gkt-nav');
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            scrollTop > 50 && (nav.classList.add('hide'));
+            scrollTop <= 50 && (nav.classList.remove('hide'));
+        });
+        var cateNavs = document.querySelectorAll('#gkt-cate-nav>nav>ul>li');
+        [].slice.call(cateNavs).forEach(function (item) {
+            var sub = item.querySelector('.gkt-sub-cate');
+            if (!sub) return;
+            item.addEventListener('mouseenter', function (e) { sub.style.display = 'block'; }, false);
+            item.addEventListener('mouseleave', function (e) { sub.style.display = 'none'; }, false);
+        })
+    })();
+</script>
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Main Content -->
+<main class="col-xs-12 padding-0 markdown-it">
+    <!-- Post Container -->
+    
+    
+    <!-- Post Content -->
+<style>
+  .markdown-it article h1, .markdown-it article h2, .markdown-it article h3 {
+    padding-top: 5px;
+    margin-top: 0px;
+  }
+  .post-container {
+    padding: 0 !important;
+    width: 100%;
+  }
+  .post-container article {
+    padding: 0 15px !important;
+  }
+  .gkt-book {
+    max-width: 80rem;
+    margin: 1rem auto;
+    display: flex;
+  }
+  .gkt-book-title {
+    color: #343a40;
+    font-size: 1.2em;
+  }
+  .gkt-sidebar-wrapper {
+    position: fixed;
+    margin-top: 15px;
+  }
+  .gkt-book-menu {
+    flex: 0 0 16rem;
+    padding-left: 15px;
+    padding-top: 5px;
+    z-index: 999;
+  }
+  .gkt-book-menu a {
+    color: #343a40;
+  }
+  .gkt-book-menu a.active {
+    color: #337ab7;
+  }
+  .gkt-book-menu > nav {
+    position: fixed;
+    overflow: auto;
+    padding-right: 15px;
+    height: 95%;
+    font-size: 0.85em;
+    line-height: 2;
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
+  }
+  .gkt-book-menu > nav::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-left: 1px solid #eee;
+  }
+  .gkt-book-menu > nav::-webkit-scrollbar-thumb {
+      background-color: #c1c1c1;
+  }
+  .gkt-book-menu > nav::-webkit-scrollbar {
+    width: 5px !important;
+  }
+  .gkt-book-menu hr {
+    padding: 2px;
+  }
+  .gkt-book-menu > nav > ul {
+    padding-left: 0;
+  }
+  .gkt-book-menu > nav ul,
+  .gkt-book-toc ul,
+  .gkt-book-toc ol {
+    list-style: none !important;
+  }
+  @media (min-width: 992px) {
+    .gkt-book-page {
+      width: calc(100% - 32rem);
+    }
+  }
+  .gkt-book-page {
+    min-width: 20rem;
+    transition: .2s ease-in-out;
+    transition-property: opacity;
+  }
+  .gkt-page-tips {
+    color: #555;
+    margin-top: -10px;
+  }
+  .gkt-book-toc {
+    flex: 0 0 16rem;
+    font-size: 0.85em;
+  }
+  .gkt-book .series_links {
+    border: 1px solid #eaecef;
+    padding: 0 15px;
+    background-color: #fff8dc;
+    margin-bottom: 20px;
+    border-radius: 5px;
+  }
+  .gkt-book-menu-icon {
+    padding: 0 15px;
+    font-size: 16px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  @media (max-width: 767px) {
+    .gkt-book-menu-hidden {
+      margin-left: -16rem;
+    }
+  }
+  .gkt-book-menu-checked {
+    opacity: 0.4;
+    margin-right: -16rem;
+    transition: .2s ease-in-out;
+    transition-property: opacity;
+  }
+</style>
+<div class="gkt-book post-container">
+  <aside class="gkt-book-menu gkt-book-menu-hidden">
+    <nav>
+      
+      <h3 class="text-center">
+        <a class="gkt-book-title" href="/post/gee.html">七天用Go从零实现系列</a>
+      </h3>
+      
+      <ul class="col-xs-12 text-center">
+        <li><a href="/">极客兔兔</a></li>
+        
+        <li><a target="_blank" rel="noopener" href="https://github.com/geektutu">Github</a></li>
+        
+        <li><a href="https://geektutu.com/feed.xml">RSS</a></li>
+        
+        <li><a target="_blank" rel="noopener" href="https://www.zhihu.com/people/gzdaijie">知乎</a></li>
+        
+        <li><a target="_blank" rel="noopener" href="https://weibo.com/geektutu">微博</a></li>
+        
+      </ul>
+      
+      <hr />
+      
+      <ul>
+        
+        <li>
+          <a>Web框架 - Gee</a>
+          <ul>
+            
+            <li><a href="/post/gee.html" class=" ">Day0 序言</a></li>
+            
+            <li><a href="/post/gee-day1.html" class=" ">Day1 HTTP 基础</a></li>
+            
+            <li><a href="/post/gee-day2.html" class=" ">Day2 上下文</a></li>
+            
+            <li><a href="/post/gee-day3.html" class=" ">Day3 前缀树路由</a></li>
+            
+            <li><a href="/post/gee-day4.html" class=" ">Day4 分组控制</a></li>
+            
+            <li><a href="/post/gee-day5.html" class=" ">Day5 中间件</a></li>
+            
+            <li><a href="/post/gee-day6.html" class=" ">Day6 模板 Template</a></li>
+            
+            <li><a href="/post/gee-day7.html" class=" ">Day7 错误恢复</a></li>
+            
+          </ul>
+        </li>
+        
+        <li>
+          <a>分布式缓存 - GeeCache</a>
+          <ul>
+            
+            <li><a href="/post/geecache.html" class=" ">Day0 序言</a></li>
+            
+            <li><a href="/post/geecache-day1.html" class=" ">Day1 LRU 缓存淘汰策略</a></li>
+            
+            <li><a href="/post/geecache-day2.html" class=" ">Day2 单机并发缓存</a></li>
+            
+            <li><a href="/post/geecache-day3.html" class=" ">Day3 HTTP 服务端</a></li>
+            
+            <li><a href="/post/geecache-day4.html" class=" ">Day4 一致性哈希</a></li>
+            
+            <li><a href="/post/geecache-day5.html" class=" ">Day5 分布式节点</a></li>
+            
+            <li><a href="/post/geecache-day6.html" class=" ">Day6 防止缓存击穿</a></li>
+            
+            <li><a href="/post/geecache-day7.html" class=" ">Day7 使用 Protobuf 通信</a></li>
+            
+          </ul>
+        </li>
+        
+        <li>
+          <a>ORM框架 - GeeORM</a>
+          <ul>
+            
+            <li><a href="/post/geeorm.html" class="active ">Day0 序言</a></li>
+            
+            <li><a href="/post/geeorm-day1.html" class=" ">Day1 database/sql 基础</a></li>
+            
+            <li><a href="/post/geeorm-day2.html" class=" ">Day2 对象表结构映射</a></li>
+            
+            <li><a href="/post/geeorm-day3.html" class=" ">Day3 记录新增和查询</a></li>
+            
+            <li><a href="/post/geeorm-day4.html" class=" ">Day4 链式操作与更新删除</a></li>
+            
+            <li><a href="/post/geeorm-day5.html" class=" ">Day5 实现钩子</a></li>
+            
+            <li><a href="/post/geeorm-day6.html" class=" ">Day6 支持事务</a></li>
+            
+            <li><a href="/post/geeorm-day7.html" class=" ">Day7 数据库迁移</a></li>
+            
+          </ul>
+        </li>
+        
+        <li>
+          <a>RPC框架 - GeeRPC</a>
+          <ul>
+            
+            <li><a href="/post/geerpc.html" class=" ">Day0 序言</a></li>
+            
+            <li><a href="/post/geerpc-day1.html" class=" ">Day1 服务端与消息编码</a></li>
+            
+            <li><a href="/post/geerpc-day2.html" class=" ">Day2 高性能客户端</a></li>
+            
+            <li><a href="/post/geerpc-day3.html" class=" ">Day3 服务注册</a></li>
+            
+            <li><a href="/post/geerpc-day4.html" class=" ">Day4 超时处理</a></li>
+            
+            <li><a href="/post/geerpc-day5.html" class=" ">Day5 支持HTTP协议</a></li>
+            
+            <li><a href="/post/geerpc-day6.html" class=" ">Day6 负载均衡</a></li>
+            
+            <li><a href="/post/geerpc-day7.html" class=" ">Day7 服务发现与注册中心</a></li>
+            
+          </ul>
+        </li>
+        
+        <li>
+          <a>7days-golang Q &amp; A</a>
+          <ul>
+            
+            <li><a href="/post/7days-golang-q1.html" class=" ">接口型函数</a></li>
+            
+          </ul>
+        </li>
+        
+      </ul>
+    </nav>
+  </aside>
+  <div class="gkt-book-page">
+    <div class="hidden-sm hidden-md hidden-lg gkt-book-menu-icon">
+      <label for="book-menu">
+        <svg class="float-left" name="book-menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+      </label>
+      <strong class="float-right">七天用Go从零实现系列</strong>
+    </div>
+    <div class="u-arrow-wrapper hidden-xs">
+        
+        <a class="float-left" href="/post/geecache-day7.html"><i class="u-arrow-left"></i></a>
+        
+        
+        <a class="float-right" href="/post/cheat-sheet-sqlite.html"><i class="u-arrow-right"></i></a>
+        
+    </div>
+    <article class="col-xs-12">
+      <h1>7天用Go从零实现ORM框架GeeORM</h1>
+       
+      <div class="hidden-lg hidden-md hidden-sm series_links">
+        <p><strong> ORM框架 - GeeORM系列文章链接：</strong></p>
+        <ul>
+          
+          <li>
+            <a href="/post/geeorm.html">7天用Go从零实现ORM框架GeeORM</a>
+            <span class="post-item-date">(Mar 1, 2020)</span>
+          </li>
+          
+          <li>
+            <a href="/post/geeorm-day1.html">动手写ORM框架 - GeeORM第一天 database/sql 基础</a>
+            <span class="post-item-date">(Mar 7, 2020)</span>
+          </li>
+          
+          <li>
+            <a href="/post/geeorm-day2.html">动手写ORM框架 - GeeORM第二天 对象表结构映射</a>
+            <span class="post-item-date">(Mar 8, 2020)</span>
+          </li>
+          
+          <li>
+            <a href="/post/geeorm-day3.html">动手写ORM框架 - GeeORM第三天 记录新增和查询</a>
+            <span class="post-item-date">(Mar 8, 2020)</span>
+          </li>
+          
+          <li>
+            <a href="/post/geeorm-day4.html">动手写ORM框架 - GeeORM第四天 链式操作与更新删除</a>
+            <span class="post-item-date">(Mar 8, 2020)</span>
+          </li>
+          
+          <li>
+            <a href="/post/geeorm-day5.html">动手写ORM框架 - GeeORM第五天 实现钩子(Hooks)</a>
+            <span class="post-item-date">(Mar 8, 2020)</span>
+          </li>
+          
+          <li>
+            <a href="/post/geeorm-day6.html">动手写ORM框架 - GeeORM第六天 支持事务(Transaction)</a>
+            <span class="post-item-date">(Mar 8, 2020)</span>
+          </li>
+          
+          <li>
+            <a href="/post/geeorm-day7.html">动手写ORM框架 - GeeORM第七天 数据库迁移(Migrate)</a>
+            <span class="post-item-date">(Mar 8, 2020)</span>
+          </li>
+          
+        </ul>
+      </div>
+       
+      <blockquote>
+        <p>
+          源代码/数据集已上传到
+          <a href="https://github.com/geektutu/7days-golang" target="_blank" rel="noopener">Github - 7days-golang</a>
+        </p>
+      </blockquote>
+      
+      <div class="gkt-article-start"></div>
+      <p><img src="geeorm/geeorm.jpg" alt="golang ORM framework"></p>
+<h2 id="1-谈谈-ORM-框架"><a href="#1-谈谈-ORM-框架" class="headerlink" title="1 谈谈 ORM 框架"></a>1 谈谈 ORM 框架</h2><blockquote>
+<p>对象关系映射（Object Relational Mapping，简称ORM）是通过使用描述对象和数据库之间映射的元数据，将面向对象语言程序中的对象自动持久化到关系数据库中。</p>
+</blockquote>
+<p>那对象和数据库是如何映射的呢？</p>
+<table>
+<thead>
+<tr>
+<th align="center">数据库</th>
+<th align="center">面向对象的编程语言</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">表(table)</td>
+<td align="center">类(class/struct)</td>
+</tr>
+<tr>
+<td align="center">记录(record, row)</td>
+<td align="center">对象 (object)</td>
+</tr>
+<tr>
+<td align="center">字段(field, column)</td>
+<td align="center">对象属性(attribute)</td>
+</tr>
+</tbody></table>
+<p>举一个具体的例子，来理解 ORM。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `<span class="keyword">User</span>` (`Name` text, `Age` <span class="type">integer</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> `<span class="keyword">User</span>` (`Name`, `Age`) <span class="keyword">VALUES</span> (&quot;Tom&quot;, <span class="number">18</span>);</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> `<span class="keyword">User</span>`;</span><br></pre></td></tr></table></figure>
+
+<p>第一条 SQL 语句，在数据库中创建了表 <code>User</code>，并且定义了 2 个字段 <code>Name</code> 和 <code>Age</code>；第二条 SQL 语句往表中添加了一条记录；最后一条语句返回表中的所有记录。</p>
+<p>假如我们使用了 ORM 框架，可以这么写：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">    Name <span class="keyword">string</span></span><br><span class="line">    Age  <span class="keyword">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">orm.CreateTable(&amp;User&#123;&#125;)</span><br><span class="line">orm.Save(&amp;User&#123;<span class="string">&quot;Tom&quot;</span>, <span class="number">18</span>&#125;)</span><br><span class="line"><span class="keyword">var</span> users []User</span><br><span class="line">orm.Find(&amp;users)</span><br></pre></td></tr></table></figure>
+
+<p>ORM 框架相当于对象和数据库中间的一个桥梁，借助 ORM 可以避免写繁琐的 SQL 语言，仅仅通过操作具体的对象，就能够完成对关系型数据库的操作。</p>
+<p>那如何实现一个 ORM 框架呢？</p>
+<ul>
+<li><code>CreateTable</code> 方法需要从参数 <code>&amp;User&#123;&#125;</code> 得到对应的结构体的名称 User 作为表名，成员变量 Name, Age 作为列名，同时还需要知道成员变量对应的类型。</li>
+<li><code>Save</code> 方法则需要知道每个成员变量的值。</li>
+<li><code>Find</code> 方法仅从传入的空切片 <code>&amp;[]User</code>，得到对应的结构体名也就是表名 User，并从数据库中取到所有的记录，将其转换成 User 对象，添加到切片中。</li>
+</ul>
+<p>如果这些方法只接受 User 类型的参数，那是很容易实现的。但是 ORM 框架是通用的，也就是说可以将任意合法的对象转换成数据库中的表和记录。例如：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Account <span class="keyword">struct</span> &#123;</span><br><span class="line">    Username <span class="keyword">string</span></span><br><span class="line">    Password <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">orm.CreateTable(&amp;Account&#123;&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>这就面临了一个很重要的问题：如何根据任意类型的指针，得到其对应的结构体的信息。这涉及到了 Go 语言的反射机制(reflect)，通过反射，可以获取到对象对应的结构体名称，成员变量、方法等信息，例如：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">typ := reflect.Indirect(reflect.ValueOf(&amp;Account&#123;&#125;)).Type()</span><br><span class="line">fmt.Println(typ.Name()) <span class="comment">// Account</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i := <span class="number">0</span>; i &lt; typ.NumField(); i++ &#123;</span><br><span class="line">    field := typ.Field(i)</span><br><span class="line">    fmt.Println(field.Name) <span class="comment">// Username Password</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>reflect.ValueOf()</code> 获取指针对应的反射值。</li>
+<li><code>reflect.Indirect()</code> 获取指针指向的对象的反射值。</li>
+<li><code>(reflect.Type).Name()</code> 返回类名(字符串)。</li>
+<li><code>(reflect.Type).Field(i)</code> 获取第 i 个成员变量。</li>
+</ul>
+<p>除了对象和表结构/记录的映射以外，设计 ORM 框架还需要关注什么问题呢？</p>
+<p>1）MySQL，PostgreSQL，SQLite 等数据库的 SQL 语句是有区别的，ORM 框架如何在开发者不感知的情况下适配多种数据库？</p>
+<p>2）如何对象的字段发生改变，数据库表结构能够自动更新，即是否支持数据库自动迁移(migrate)？</p>
+<p>3）数据库支持的功能很多，例如事务(transaction)，ORM 框架能实现哪些？</p>
+<p>4）…</p>
+<h2 id="2-关于-GeeORM"><a href="#2-关于-GeeORM" class="headerlink" title="2 关于 GeeORM"></a>2 关于 GeeORM</h2><p>数据库的特性非常多，简单的增删查改使用 ORM 替代 SQL 语句是没有问题的，但是也有很多特性难以用 ORM 替代，比如复杂的多表关联查询，ORM 也可能支持，但是基于性能的考虑，开发者自己写 SQL 语句很可能更高效。</p>
+<p>因此，设计实现一个 ORM 框架，就需要给功能特性排优先级了。</p>
+<p>Go 语言中使用比较广泛 ORM 框架是 <a target="_blank" rel="noopener" href="https://github.com/jinzhu/gorm">gorm</a> 和 <a target="_blank" rel="noopener" href="https://github.com/go-xorm/xorm">xorm</a>。除了基础的功能，比如表的操作，记录的增删查改，gorm 还实现了关联关系(一对一、一对多等)，回调插件等；xorm 实现了读写分离(支持配置多个数据库)，数据同步，导入导出等。</p>
+<p>gorm 正在彻底重构 v1 版本，短期内看不到发布 v2 的可能。相比于 gorm-v1，xorm 在设计上更清晰。GeeORM 的设计主要参考了 xorm，一些细节上的实现参考了 gorm。GeeORM 的目的主要是了解 ORM 框架设计的原理，具体实现上鲁棒性做得不够，一些复杂的特性，例如 gorm 的关联关系，xorm 的读写分离没有实现。目前支持的特性有：</p>
+<ul>
+<li>表的创建、删除、迁移。</li>
+<li>记录的增删查改，查询条件的链式操作。</li>
+<li>单一主键的设置(primary key)。</li>
+<li>钩子(在创建/更新/删除/查找之前或之后)</li>
+<li>事务(transaction)。</li>
+<li>…</li>
+</ul>
+<p><code>GeeORM</code> 分7天实现，每天完成的部分都是可以独立运行和测试的，就像搭积木一样，一个个独立的特性组合在一起就是最终的 ORM 框架。每天的代码在 100 行左右，同时配有较为完备的单元测试用例。</p>
+<h2 id="3-目录"><a href="#3-目录" class="headerlink" title="3 目录"></a>3 目录</h2><ul>
+<li>第一天：<a href="https://geektutu.com/post/geeorm-day1.html">database/sql 基础</a> | <a target="_blank" rel="noopener" href="https://github.com/geektutu/7days-golang/blob/master/gee-orm/day1-database-sql">Code</a></li>
+<li>第二天：<a href="https://geektutu.com/post/geeorm-day2.html">对象表结构映射</a> | <a target="_blank" rel="noopener" href="https://github.com/geektutu/7days-golang/blob/master/gee-orm/day2-reflect-schema">Code</a></li>
+<li>第三天：<a href="https://geektutu.com/post/geeorm-day3.html">记录新增和查询</a> | <a target="_blank" rel="noopener" href="https://github.com/geektutu/7days-golang/blob/master/gee-orm/day3-save-query">Code</a></li>
+<li>第四天：<a href="https://geektutu.com/post/geeorm-day4.html">链式操作与更新删除</a> | <a target="_blank" rel="noopener" href="https://github.com/geektutu/7days-golang/blob/master/gee-orm/day4-chain-operation">Code</a></li>
+<li>第五天：<a href="https://geektutu.com/post/geeorm-day5.html">实现钩子(Hooks)</a> | <a target="_blank" rel="noopener" href="https://github.com/geektutu/7days-golang/blob/master/gee-orm/day5-hooks">Code</a></li>
+<li>第六天：<a href="https://geektutu.com/post/geeorm-day6.html">支持事务(Transaction)</a> | <a target="_blank" rel="noopener" href="https://github.com/geektutu/7days-golang/blob/master/gee-orm/day6-transaction">Code</a></li>
+<li>第七天：<a href="https://geektutu.com/post/geeorm-day7.html">数据库迁移(Migrate)</a> | <a target="_blank" rel="noopener" href="https://github.com/geektutu/7days-golang/blob/master/gee-orm/day7-migrate">Code</a></li>
+</ul>
+<h2 id="附-推荐阅读"><a href="#附-推荐阅读" class="headerlink" title="附 推荐阅读"></a>附 推荐阅读</h2><ul>
+<li><a href="https://geektutu.com/post/quick-golang.html">Go 语言简明教程</a></li>
+<li><a href="https://geektutu.com/post/quick-go-test.html">Go Test 单元测试简明教程</a></li>
+<li><a href="https://geektutu.com/post/hpg-reflect.html">Go Reflect 提高反射性能</a></li>
+<li><a href="https://geektutu.com/post/cheat-sheet-sqlite.html">SQLite 常用命令速查表</a></li>
+</ul>
+
+      
+<script src="/js/qrious.min.js"></script>
+
+
+      <hr />
+      <p>
+        
+        <span class="float-right gkt-page-tips">last updated at 2021-09-07</span>
+      </p>
+    </article>
+    <!-- 赞赏 -->
+    <!--打赏-->
+
+<style>
+    #reward .reward-btn-wrapper {
+        width: 100px;
+        padding-top: 35px;
+        cursor: pointer;
+        margin: 0 auto;
+    }
+
+    #reward .reward-btn {
+        padding: 2px 15px;
+        color: #fff;
+        background-color: #ea6f5a;
+        border-radius: 20px;
+    }
+
+    #reward .reward-code {
+        position: absolute;
+        top: -220px;
+        left: 50%;
+        display: none;
+        width: 360px;
+        height: 240px;
+        margin-left: -180px;
+        padding: 15px 20px;
+        border: 1px solid #e6e6e6;
+        background: #fff;
+        box-shadow: 0 1px 1px 1px #efefef;
+    }
+
+    #reward .reward-code:after,
+    #reward .reward-code:before {
+        position: absolute;
+        content: '';
+        border: 10px solid transparent
+    }
+
+    #reward .reward-code:after {
+        bottom: -19px;
+        left: 50%;
+        margin-left: -10px;
+        border-top-color: #fff
+    }
+
+    #reward .reward-code:before {
+        bottom: -20px;
+        left: 50%;
+        margin-left: -10px;
+        border-top-color: #e6e6e6
+    }
+
+    #reward .qr-code {
+        width: 50%;
+        float: left;
+        padding: 5px;
+    }
+
+    #reward .qr-code p {
+        margin-top: -6px;
+    }
+
+    #reward img {
+        transform: none;
+        -webkit-transform: none;
+        margin-left: 0;
+    }
+
+    #reward img[alt='i'] {
+        width: 20px;
+        height: 20px;
+        z-index: 2;
+        position: absolute;
+        margin: 65px 0 0 65px;
+    }
+
+    #reward img[alt="ali"] {
+        width: 100%;
+        box-sizing: border-box;
+        border: 5px solid #0f9be0;
+    }
+
+    #reward img[alt="wechat"] {
+        width: 100%;
+        box-sizing: border-box;
+        border: 5px solid #3db034;
+    }
+
+    #reward .reward-tip {
+        font-size: 1.2em;
+        margin-bottom: 0;
+        color: #ea6f5a;
+    }
+</style>
+<div id="reward" class="col-xs-12">
+    <div class="reward-btn-wrapper">
+        <div class="reward-btn text-center">赞赏支持</div>
+    </div>
+    <div class="reward-code text-center">
+        <p class="text-center reward-tip"><strong>请我吃胡萝卜 =^_^= </strong></p>
+        <div class="qr-code">
+            <img src="/img/icon.png" alt="i">
+            <img id="reward-ali" src="" alt="ali">
+            <p><small>支付宝</small></p>
+        </div>
+        <div class="qr-code">
+            <img src="/img/icon.png" alt="i">
+            <img id="reward-wechat" src="" alt="wechat">
+            <p><small>微信</small></p>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window, document) {
+        var aliQr = new QRious({ value: 'HTTPS://QR.ALIPAY.COM/FKX060337TUXBAX9LIFJE8' });
+        var wechatQr = new QRious({ value: 'wxp://f2f0qgGBlfD1nZXjvBjievxB0z0fc0W2sBq5' });
+        document.querySelector('#reward-ali').src = aliQr.toDataURL();
+        document.querySelector('#reward-wechat').src = wechatQr.toDataURL();
+
+        var rewardBtn = document.querySelector('#reward .reward-btn-wrapper');
+        var qrCode = document.querySelector('#reward .reward-code')
+        var activeFunc = function (e) {
+            qrCode.style.display = 'block';
+        }
+        var hideFunc = function (e) {
+            qrCode.style.display = 'none';
+        }
+
+        rewardBtn.addEventListener('mouseenter', activeFunc, false)
+        rewardBtn.addEventListener('mouseover', activeFunc, false)
+        rewardBtn.addEventListener('mouseleave', hideFunc, false)
+        qrCode.addEventListener('mouseenter', activeFunc, false)
+        qrCode.addEventListener('mouseover', activeFunc, false)
+        qrCode.addEventListener('mouseleave', hideFunc, false)
+    })(window, document);
+</script>
+
+    
+<div class="col-xs-12 text-center" style="margin-top: 30px;">
+    
+    <a style="display:inline-block;" target="_blank" rel="noopener" href="https://github.com/geektutu" title="Github"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/github.png" /></a>
+    
+    <a style="display:inline-block;" href="https://geektutu.com/feed.xml" title="RSS"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/rss.jpg" /></a>
+    
+    <a style="display:inline-block;" target="_blank" rel="noopener" href="https://www.zhihu.com/people/gzdaijie" title="知乎"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/zhihu.png" /></a>
+    
+    <a style="display:inline-block;" target="_blank" rel="noopener" href="https://weibo.com/geektutu" title="微博"><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/weibo.jpg" /></a>
+    
+</div>
+
+    <!-- 评论 -->
+    
+    <div class="col-xs-12">
+      
+<div class="col-xs-12 padding-0">
+    <div id="gitalk-container">
+        <div class="gt-container text-center" style="margin-top: 50px;">
+            <button class="gt-btn gt-btn-public"><span class="gt-btn-text">去 Github 评论</span></button>
+        </div>
+    </div>
+    <div id="gitalk-related"></div>
+</div>
+
+<link rel="stylesheet" href="/css/gitalk.css">
+
+
+<script src="/js/gitalk.min.js"></script>
+
+<script>
+    window.addEventListener('load', function () {
+        function renderCommentUrl(data) {
+            var url = (data[window.location.pathname] || {}).url
+            url && getDom('#gitalk-container button').addEventListener('click', function (e) { window.open(url)})
+            url || (getDom('#gitalk-container').style.display = 'none')
+        }
+        const gitalk = new Gitalk({
+            clientID: 'c1fdd456a4caae5f7df0',
+            clientSecret: 'b2674451e21feae50520f99337ec15d2aebe7879',
+            accessToken: '513dc2f1e6df8c07a12fbf1547874f54679d9712',
+            repo: 'blog',
+            owner: 'geektutu',
+            admin: ['geektutu'],
+            id: window.location.pathname,
+            distractionFreeMode: false
+        });
+        fetch("https://api.github.com/user").then(function(resp){
+            gitalk.render('gitalk-container');
+        }).catch(function(e){
+            fetch('/tool/issues.json').then(function (r) { return r.json() }).then(renderCommentUrl).catch(function (e) { })
+        })
+        getDom('#gitalk-container').addEventListener('click', function (e) {
+            e && e.stopPropagation && e.stopPropagation();
+        });
+    })
+</script>
+<script>
+    window.addEventListener('load', function () {
+        function render(comments) {
+            var template = '<a href="${comment.url}?utm_source=gitalk" class="dis-item-url"><h3 class="dis-item-title">${comment.title}</h3>' +
+                '<p class="dis-item-des">${comment.count} 评论 ● ${comment.date}</p>' +
+                '<div class="dis-item-content"><img class="dis-item-img" src="${comment.icon}" alt="icon"><p><b><span class="dis-item-user">${comment.user}</span></b>&nbsp;——&nbsp;${comment.body}</p></div>' +
+                '</a>'
+
+            var wrapper = getDom('#gitalk-related');
+            comments = shuffle(comments);
+            comments.slice(0, 4).forEach(function (c) {
+                var div = document.createElement('div');
+                div.classList.add('dis-item');
+                div.innerHTML = template.replace("${comment.url}", c.url)
+                    .replace("${comment.title}", c.title)
+                    .replace("${comment.count}", c.count)
+                    .replace("${comment.date}", c.date)
+                    .replace("${comment.icon}", c.icon)
+                    .replace("${comment.user}", c.user)
+                    .replace("${comment.body}", c.body)
+                wrapper.appendChild(div)
+            })
+            var p = document.createElement('p')
+            p.innerHTML = '<a href="https://geektutu.com/post/blog-experience-7.html">Gitalk Plus</a>';
+            p.classList.add('dis-divide');
+            wrapper.appendChild(p);
+            wrapper.classList.add('dis-wrapper')
+        }
+        function shuffle(a) {
+            for (var i = a.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                [a[i], a[j]] = [a[j], a[i]];
+            }
+            return a;
+        }
+        fetch('/tool/comments.json').then(function (r) { return r.json() }).then(render).catch(function (e) { })
+    })
+</script>
+
+    </div>
+    
+  </div>
+  <aside class="gkt-book-toc hidden-xs hidden-sm">
+    <div style="clear: both"></div>
+    <div class="gkt-sidebar-wrapper">
+      <!-- Table of Contents -->
+<div id="sidebar-toc">
+  <!-- TOC  -->
+  
+  
+  <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-%E8%B0%88%E8%B0%88-ORM-%E6%A1%86%E6%9E%B6"><span class="toc-nav-text">1 谈谈 ORM 框架</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-%E5%85%B3%E4%BA%8E-GeeORM"><span class="toc-nav-text">2 关于 GeeORM</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-%E7%9B%AE%E5%BD%95"><span class="toc-nav-text">3 目录</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%99%84-%E6%8E%A8%E8%8D%90%E9%98%85%E8%AF%BB"><span class="toc-nav-text">附 推荐阅读</span></a></li></ol>
+  
+</div>
+
+<script>
+  (function () {
+    var h2 = document.querySelectorAll('article h2');
+    var h3 = document.querySelectorAll('article h3');
+    var linkList = document.querySelectorAll('#sidebar-toc a');
+
+    function findLinkElement(name) {
+      for (var i = 0; i < linkList.length; i++) {
+        var items = linkList[i].href.split('#');
+        if (items && items[items.length - 1] === encodeURIComponent(name)) {
+          return i;
+        }
+      }
+      return -1;
+    }
+
+    function activeLink(titleList) {
+      var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      for (var i = titleList.length - 1; i >= 0; i--) {
+        if (scrollTop - titleList[i].offsetTop > 0) {
+          var index = findLinkElement(titleList[i].id);
+          index != -1 && linkList[index].classList.add('gkt-sidebar-active');
+          break;
+        }
+      }
+    }
+
+    window.addEventListener("scroll", function (e) {
+      [].slice.call(linkList).forEach(function (link) {
+        link.classList.remove('gkt-sidebar-active');
+      })
+      activeLink(h2);
+    })
+  })();
+</script>
+    </div>
+  </aside>
+</div>
+<script>
+    (function () {
+        function resizeUArrow() {
+            var s = getDom('.u-arrow-wrapper').style
+            var pc = getDom('.gkt-book-page')
+            s.left = getPosition(pc).x - 15 + 'px';
+            s.width = pc.clientWidth + 30 + 'px';
+        }
+        resizeUArrow()
+        window.addEventListener('resize', resizeUArrow);
+        var nav = getDom('.gkt-book-menu nav');
+        var key = 'gkt_book_七天用Go从零实现系列_' + parseInt(new Date().getTime()/1000/3600/24/7)
+        nav.scrollTo(0, localStorage.getItem(key) * 1)
+        nav.addEventListener('scroll', function(){ localStorage.setItem(key, nav.scrollTop) })
+    })();
+    (function(){
+      getDom(".gkt-book-menu-icon").addEventListener('click', function() {
+        var menu = getDom(".gkt-book-menu").classList
+        var article = getDom(".gkt-book-page").classList
+        if (menu.contains("gkt-book-menu-hidden")) {
+          menu.remove('gkt-book-menu-hidden')
+          article.add('gkt-book-menu-checked')
+        } else {
+          menu.add('gkt-book-menu-hidden')
+          article.remove('gkt-book-menu-checked')
+        }
+      })
+    })();
+</script>
+
+
+    
+
+</main>
+    </div>
+    <style>
+    img#go-top {
+        position: fixed;
+        bottom: 100px;
+        width: 50px;
+        cursor: pointer;
+        z-index: 9999;
+    }
+</style>
+<img id="go-top" src="/icon/top.png" class="hidden-xs" style="display: none" />
+<script>
+    (function () {
+        var goTop = document.getElementById('go-top');
+        var mainContainer = document.querySelector('.main-container');
+        
+        goTop.addEventListener('click', function () {
+            window.scroll(0, 0);
+        }, false);
+        window.addEventListener('scroll', function () {
+            var right = document.body.offsetWidth - mainContainer.getBoundingClientRect().right;
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            goTop.style.right = right + 10 + 'px'
+            scrollTop > 700 && (goTop.style.display = "block");
+            scrollTop <= 700 && (goTop.style.display = "none");
+        });
+    })();
+</script>
+    <style>
+    #geektutu-click-img-container {
+        position: fixed;
+        left: 0;
+        top: 0;
+        text-align: center;
+        width: 100%;
+        display: none;
+        z-index: 9999;
+    }
+
+    #geektutu-click-img-container img {
+        object-fit: contain;
+        background: #eaecef;
+        padding: 15px;
+        border-radius: 10px;
+        height: auto;
+        width: auto;
+        vertical-align: middle;
+    }
+</style>
+
+
+<div id="geektutu-click-img-container">
+    <img src="" alt="Big Image">
+</div>
+
+<script>
+    (function () {
+        var container = document.querySelector('#geektutu-click-img-container')
+        var targetImg = container.querySelector('img')
+        var imgs = document.querySelectorAll('article img');
+        targetImg.addEventListener('click', function (e) {
+            container.style.display = 'none';
+            e && e.stopPropagation && e.stopPropagation();
+        }, false);
+
+        for (var i = 0; i < imgs.length; ++i) {
+            var img = imgs[i];
+            img.addEventListener('click', (function (src, rate) {
+                return function (e) {
+                    e && e.stopPropagation && e.stopPropagation();
+                    if (window.innerWidth < 980) {
+                        return
+                    }
+                    targetImg.style.height = targetImg.style.width = 'auto';
+                    if (window.innerWidth / window.innerHeight > rate) {
+                        targetImg.style.height = (window.innerHeight - 20) + 'px';
+                    } else {
+                        targetImg.style.width = (window.innerWidth - 20) + 'px';
+                    }
+                    container.style.height = window.innerHeight + 'px'
+                    container.style.lineHeight = window.innerHeight + 'px'
+                    container.style.display = 'block';
+                    targetImg.src = src;
+                };
+            }(img.src, img.width / img.height)), false)
+        }
+    })();
+</script>
+    <!-- Footer -->
+    <!-- Footer -->
+<style>
+    footer {
+        width: 100%;
+        line-height: 1.5;
+        padding: 20px;
+    }
+
+    footer a {
+        color: #333;
+        text-decoration: none;
+    }
+
+    .footer-hexo img {
+        height: 20px;
+        margin-bottom: -5px;
+    }
+
+    .footer-hexo a {
+        color: #337ab7;
+    }
+</style>
+<footer class="text-center col-xs-12">
+    <p>
+        <small>© 2021 - 极客兔兔 - </small>
+        <small>
+            <a target="_blank" rel="nofollow noopener" href="http://beian.miit.gov.cn/">沪ICP备18001798号-1</a>
+        </small>
+    </p>
+    <p class="footer-hexo">
+        <!-- 但若直接使用或修改主题，请务必保留这段声明 -->
+        <small>Powered by <a target="_blank" href="https://hexo.io">Hexo</a> | Theme
+            <a target="_blank" href="https://geektutu.com">Geektutu</a>
+            <a target="_blank" rel="noopener" href="https://github.com/geektutu/hexo-theme-geektutu">
+                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAYGBgYHBgcICAcKCwoLCg8ODAwODxYQERAREBYiFRkVFRkVIh4kHhweJB42KiYmKjY+NDI0PkxERExfWl98fKcBBgYGBgcGBwgIBwoLCgsKDw4MDA4PFhAREBEQFiIVGRUVGRUiHiQeHB4kHjYqJiYqNj40MjQ+TERETF9aX3x8p//CABEIACIAUAMBIgACEQEDEQH/xAAcAAABBAMBAAAAAAAAAAAAAAAAAQQFBwIDBgj/2gAIAQEAAAAA9KrHSgAYL5/z6zZGuJd12uugbhq3uKtmuRtix20IS7lTLAfAAAn/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oACAECEAAAAAAB/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAgBAxAAAAAAAf/EADEQAAICAQIEBQEGBwAAAAAAAAECAwQFAAYREhORBxQhUlQxQVFic5KxJDJCYYGC0f/aAAgBAQABPwCFHnjWUzuvN6hV4cANSRLGjO9yRVUcSzMoA7jVXJYe5N0a2dhmk9kc0bN2GvLN8mbuNeWb5M3ca8s3yZu415Y/Jm7jXlm+TN3H/NeVPyZu40vOk3TZywK8wJ+v3EHVM/wsI/Dq2lrxN3Nnca16eti8chSAIoMbzByhMwP14kHVfwIiSaF5c96J6kwwCOTnHsYk8uvCrdmQy1TI4rJuz3cZLyGR/wCd4+YoOf8AEpUjXitubLYPG4paFsUxcuiGe7yc5gTW3LW44szXmobsi3Dhmic2+Z4+vCVH9CpraPiQ+QvbgTJrPFBWd5YpWrmNIIEXiRO32Pqt4p7cnfHk18lFBdmEVW1LVdIZGOrniTt6plrWKaO69yCykDRxwF+LMAewB0Txtr+Sf31VI8tEPw62fZt7N3Humtbpzz13ucX6CGSWMSuzpLyD1eNgeUka3PuvHbaxq3biTMHfkiSNCS78CwU+3Xg7Vu3MhuTcU6cq3Zemn3Eh2dv8Lzcut+29x1atKbHYqLJUhLwyNMwiZ3j9yDWOxUOV3tgb+3No5LDx1pi9+aeIwRlNY6bc+Jv+IFGrhLxtXJZ7VKcw81diiAAEn0JOrkWZyNfbEr0tz27UGQgkuGzXdIIvyowq99bRxk9ffO/L81SZBPZgEEroQroIxxMZOgeNsfkn99QypHGqO4Vl9CDrN4LDZkwyzyyQ2IgRHZrzGCZVP1XnQglT9oOtw4LC7iqV6uRkZoYpxKFSQpzFRw4EjVRMfSrQ1qqwxQxKFjjTgFUD7BoWYR6iVe+mtxt9Zwf9teaj4AdccPu5tedX5A/VrzUR+sy/q1CwksF19VEfDj/cnQRW+qg66cfsXtrpx+xe2unH7F7a6cfsXtrpx+xe2unH7F7a6cfsXtoxx+xe2gAAOA1//8QAFBEBAAAAAAAAAAAAAAAAAAAAMP/aAAgBAgEBPwB//8QAFBEBAAAAAAAAAAAAAAAAAAAAMP/aAAgBAwEBPwB//9k="
+                    alt="Github Star">
+            </a>
+        </small>
+    </p>
+    
+    <p>
+        <small>
+            <span id="busuanzi_container_site_pv">👁<span id="busuanzi_value_site_pv"></span></span> &nbsp;
+            <span id="busuanzi_container_page_pv">📚<span id="busuanzi_value_page_pv"></span></span>
+        </small>
+    </p>
+    
+    
+
+</footer>
+
+
+<script>
+    window.addEventListener('load', function () {
+        globalAddScript('//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js');
+    })
+</script>
+
+<!-- Baidu Tongji -->
+
+<script>
+    window.addEventListener('load', function () {
+        var _hmt = _hmt || [];
+        globalAddScript('//hm.baidu.com/hm.js?1a0ec38c52c08db815b0046c2783b1aa')
+    })
+</script>
+
+
+
+<!-- baidu auto push for seo -->
+<script>
+    window.addEventListener('load', function () {
+        var src = 'http://push.zhanzhang.baidu.com/push.js'
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        globalAddScript(src);
+    })
+</script>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-142641425-1');
+
+    window.addEventListener('load', function () {
+        globalAddScript('https://www.googletagmanager.com/gtag/js?id=UA-142641425-1');
+    });
+</script>
+
+
+    <script>
+        // 非本站网址，新开tab页签
+        (function () {
+            var stopBubble = function (e) {
+                e && e.stopPropagation && e.stopPropagation();
+            }
+            var links = document.querySelectorAll('a');
+            [].slice.call(links).forEach(function (item) {
+                if (item.href && item.href.indexOf(window.location.host) === -1) {
+                    item.target = '_blank'
+                }
+                // 阻止冒泡，不触发彩蛋。
+                item.addEventListener('click', stopBubble, false);
+            });
+            var article = document.querySelector('article');
+            article && article.addEventListener('click', stopBubble, false)
+        })();
+    </script>
+    
+</body>
+
+</html>
