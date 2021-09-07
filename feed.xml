@@ -3,18 +3,18 @@
   xmlns:atom="http://www.w3.org/2005/Atom"
   xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>极客兔兔</title>
+    <title>码农印象</title>
     <link>https://ysliving.github.io/</link>
     
     <image>
       <url>https://ysliving.github.io/img/icon.png</url>
-      <title>极客兔兔</title>
+      <title>码农印象</title>
       <link>https://ysliving.github.io/</link>
     </image>
     
     <atom:link href="https://ysliving.github.io/feed.xml" rel="self" type="application/rss+xml"/>
     
-    <description>极客兔兔的博客，致力于分享一些技术教程和有趣的技术实践，包括但不限于 Go 语言/golang, Python, tensorflow, 分布式, 机器学习相关的内容。也可以通过搜索极客小站,jiketutu 找到我。</description>
+    <description>码农印象的博客，致力于分享一些技术教程和有趣的技术实践，包括但不限于 Go 语言/golang, Python, Linux, 分布式等相关的内容。</description>
     <pubDate>Mon, 06 Sep 2021 15:53:00 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
@@ -1123,6 +1123,29 @@
     </item>
     
     <item>
+      <title>Go语言动手写Web框架 - Gee第一天 http.Handler</title>
+      <link>https://ysliving.github.io/post/ys-%E6%B5%8B%E8%AF%95.html</link>
+      <guid>https://ysliving.github.io/post/ys-%E6%B5%8B%E8%AF%95.html</guid>
+      <pubDate>Sun, 11 Aug 2019 16:10:10 GMT</pubDate>
+      
+      <description>7天用 Go语言 从零实现Web框架教程(7 days implement golang web framework from scratch tutorial)，用 Go语言/golang 动手写Web框架，从零实现一个Web框架，以 Gin 为原型从零设计一个Web框架。本文介绍了Go标准库 net/http 和 http.Handler 接口的使用，拦截所有的 HTTP 请求，交给Gee框架处理。</description>
+      
+      
+      <enclosure url="https://ysliving.github.io/post/gee/gee.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://ysliving.github.io/categories/%E6%B5%8B%E8%AF%95/">测试</category>
+      
+      
+      <category domain="https://ysliving.github.io/tags/Go/">Go</category>
+      
+      
+      <comments>https://ysliving.github.io/post/ys-%E6%B5%8B%E8%AF%95.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
       <title>7天用Go从零实现Web框架Gee教程</title>
       <link>https://ysliving.github.io/post/gee.html</link>
       <guid>https://ysliving.github.io/post/gee.html</guid>
@@ -1669,7 +1692,7 @@
       <guid>https://ysliving.github.io/post/link.html</guid>
       <pubDate>Mon, 03 Jul 2017 03:51:24 GMT</pubDate>
       
-      <description>极客兔兔的友情链接</description>
+      <description>码农印象的友情链接</description>
       
       
       <enclosure url="https://ysliving.github.io/post/link/link.png" type="image"/>
