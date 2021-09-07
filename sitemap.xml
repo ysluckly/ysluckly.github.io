@@ -2,13 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://ysliving.github.io/post/ys-%E6%B5%8B%E8%AF%95.html</loc>
-    
-    <lastmod>2021-09-07</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://ysliving.github.io/post/link.html</loc>
     
     <lastmod>2021-09-07</lastmod>
@@ -798,13 +791,6 @@
   
   <url>
     <loc>https://ysliving.github.io/categories/Rust-%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/</loc>
-    <lastmod>2021-09-07</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://ysliving.github.io/categories/%E6%B5%8B%E8%AF%95/</loc>
     <lastmod>2021-09-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
