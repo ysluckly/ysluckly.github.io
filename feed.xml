@@ -15,8 +15,123 @@
     <atom:link href="https://ysliving.github.io/feed.xml" rel="self" type="application/rss+xml"/>
     
     <description>码农印象的博客，致力于分享一些技术教程和有趣的技术实践，包括但不限于 Go 语言/golang, Python, Linux, 分布式等相关的内容。</description>
-    <pubDate>Mon, 06 Sep 2021 15:53:00 GMT</pubDate>
+    <pubDate>Wed, 08 Sep 2021 16:52:54 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>Go sync.Cond</title>
+      <link>https://ysliving.github.io/post/charpter-3/hpg-sync-cond.html</link>
+      <guid>https://ysliving.github.io/post/charpter-3/hpg-sync-cond.html</guid>
+      <pubDate>Thu, 14 Jan 2021 15:00:00 GMT</pubDate>
+      
+      <description>Go 语言/golang 高性能编程，Go 语言进阶教程，Go 语言高性能编程(high performance go)。sync.Cond 是一个条件锁，也被称为条件变量，常用来一写多读(一个 goroutine 通知多个在等待的 goroutines)的场景。</description>
+      
+      
+      <enclosure url="https://ysliving.github.io/post/hpg-mutex/concurrent.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://ysliving.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">并发编程</category>
+      
+      
+      <category domain="https://ysliving.github.io/tags/Go%E8%AF%AD%E8%A8%80%E9%AB%98%E6%80%A7%E8%83%BD%E7%BC%96%E7%A8%8B/">Go语言高性能编程</category>
+      
+      
+      <comments>https://ysliving.github.io/post/charpter-3/hpg-sync-cond.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Go 死码消除与调试(debug)模式</title>
+      <link>https://ysliving.github.io/post/charpter-4/hpg-dead-code-elimination.html</link>
+      <guid>https://ysliving.github.io/post/charpter-4/hpg-dead-code-elimination.html</guid>
+      <pubDate>Sun, 10 Jan 2021 17:00:00 GMT</pubDate>
+      
+      <description>Go 语言/golang 高性能编程，Go 语言进阶教程，Go 语言高性能编程(high performance go)。本文介绍了编译器在死码消除(Dead code elimination, DCE) 方面的优化，在实际编程中如何利用这一优化提高程序性能。并结合构建标记(build tags) 增加调试模式。</description>
+      
+      
+      <enclosure url="https://ysliving.github.io/post/hpg-reduce-size/compiler.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://ysliving.github.io/categories/%E7%BC%96%E8%AF%91%E4%BC%98%E5%8C%96/">编译优化</category>
+      
+      
+      <category domain="https://ysliving.github.io/tags/Go%E8%AF%AD%E8%A8%80%E9%AB%98%E6%80%A7%E8%83%BD%E7%BC%96%E7%A8%8B/">Go语言高性能编程</category>
+      
+      
+      <comments>https://ysliving.github.io/post/charpter-4/hpg-dead-code-elimination.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Go sync.Once</title>
+      <link>https://ysliving.github.io/post/charpter-3/hpg-sync-once.html</link>
+      <guid>https://ysliving.github.io/post/charpter-3/hpg-sync-once.html</guid>
+      <pubDate>Thu, 07 Jan 2021 15:00:00 GMT</pubDate>
+      
+      <description>Go 语言/golang 高性能编程，Go 语言进阶教程，Go 语言高性能编程(high performance go)。sync.Once 是 Golang package 中使方法只执行一次的对象实现，作用与 init 函数类似，但也有所不同。本文还解释了 sync.Once 源码中,done 为什么作为第一个字段。</description>
+      
+      
+      <enclosure url="https://ysliving.github.io/post/hpg-mutex/concurrent.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://ysliving.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">并发编程</category>
+      
+      
+      <category domain="https://ysliving.github.io/tags/Go%E8%AF%AD%E8%A8%80%E9%AB%98%E6%80%A7%E8%83%BD%E7%BC%96%E7%A8%8B/">Go语言高性能编程</category>
+      
+      
+      <comments>https://ysliving.github.io/post/charpter-3/hpg-sync-once.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Go sync.Pool</title>
+      <link>https://ysliving.github.io/post/charpter-3/hpg-sync-pool.html</link>
+      <guid>https://ysliving.github.io/post/charpter-3/hpg-sync-pool.html</guid>
+      <pubDate>Thu, 31 Dec 2020 15:00:00 GMT</pubDate>
+      
+      <description>Go 语言/golang 高性能编程，Go 语言进阶教程，Go 语言高性能编程(high performance go)。Go 语言标准库中的 sync.Pool 可以建立对象池，复用已有对象，解决内存分配碎片化的问题，有效减轻垃圾回收的压力(Garbage Collection, GC)，在特定场景下可以有效地降低内存占用，提升性能。最后介绍了 sync.Pool 的作用和用法。</description>
+      
+      
+      <enclosure url="https://ysliving.github.io/post/hpg-mutex/concurrent.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://ysliving.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">并发编程</category>
+      
+      
+      <category domain="https://ysliving.github.io/tags/Go%E8%AF%AD%E8%A8%80%E9%AB%98%E6%80%A7%E8%83%BD%E7%BC%96%E7%A8%8B/">Go语言高性能编程</category>
+      
+      
+      <comments>https://ysliving.github.io/post/charpter-3/hpg-sync-pool.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Go 逃逸分析</title>
+      <link>https://ysliving.github.io/post/charpter-4/hpg-escape-analysis.html</link>
+      <guid>https://ysliving.github.io/post/charpter-4/hpg-escape-analysis.html</guid>
+      <pubDate>Wed, 30 Dec 2020 16:45:00 GMT</pubDate>
+      
+      <description>Go 语言/golang 高性能编程，Go 语言进阶教程，Go 语言高性能编程(high performance go)。介绍了 Go 内存分配逃逸分析(escape analysis)的几种典型场景，变量所使用的内存什么时候分配到栈上，什么时候分配到堆上。以及如何利用逃逸分析的原理优化代码的性能，例如传值 VS 传指针。</description>
+      
+      
+      <enclosure url="https://ysliving.github.io/post/hpg-reduce-size/compiler.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://ysliving.github.io/categories/%E7%BC%96%E8%AF%91%E4%BC%98%E5%8C%96/">编译优化</category>
+      
+      
+      <category domain="https://ysliving.github.io/tags/Go%E8%AF%AD%E8%A8%80%E9%AB%98%E6%80%A7%E8%83%BD%E7%BC%96%E7%A8%8B/">Go语言高性能编程</category>
+      
+      
+      <comments>https://ysliving.github.io/post/charpter-4/hpg-escape-analysis.html#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>2020 年终总结</title>
@@ -38,6 +153,351 @@
       
       
       <comments>https://ysliving.github.io/post/2020.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Go struct 内存对齐</title>
+      <link>https://ysliving.github.io/post/charpter-2/hpg-struct-alignment.html</link>
+      <guid>https://ysliving.github.io/post/charpter-2/hpg-struct-alignment.html</guid>
+      <pubDate>Sun, 27 Dec 2020 15:00:00 GMT</pubDate>
+      
+      <description>Go 语言/golang 高性能编程，Go 语言进阶教程，Go 语言高性能编程(high performance go)。本文介绍了结构体(struct)占用的内存空间如何计算，为什么要字节对齐/内存对齐，Go 语言中的大小和对齐保证(size and alignment guarantees)，字节对齐和安全访问(原子访问)的关系，以及如果利用内存对齐的规律减小 struct 内存占用。</description>
+      
+      
+      <enclosure url="https://ysliving.github.io/post/hpg-string-concat/data-structure.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://ysliving.github.io/categories/%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">常用数据结构</category>
+      
+      
+      <category domain="https://ysliving.github.io/tags/Go%E8%AF%AD%E8%A8%80%E9%AB%98%E6%80%A7%E8%83%BD%E7%BC%96%E7%A8%8B/">Go语言高性能编程</category>
+      
+      
+      <comments>https://ysliving.github.io/post/charpter-2/hpg-struct-alignment.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Go 空结构体 struct{} 的使用</title>
+      <link>https://ysliving.github.io/post/charpter-2/hpg-empty-struct.html</link>
+      <guid>https://ysliving.github.io/post/charpter-2/hpg-empty-struct.html</guid>
+      <pubDate>Fri, 25 Dec 2020 15:00:00 GMT</pubDate>
+      
+      <description>Go 语言/golang 高性能编程，Go 语言进阶教程，Go 语言高性能编程(high performance go)。本文介绍了使用空 struct{}/空结构体的优点：不占用内存，且具有良好的语义。</description>
+      
+      
+      <enclosure url="https://ysliving.github.io/post/hpg-string-concat/data-structure.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://ysliving.github.io/categories/%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">常用数据结构</category>
+      
+      
+      <category domain="https://ysliving.github.io/tags/Go%E8%AF%AD%E8%A8%80%E9%AB%98%E6%80%A7%E8%83%BD%E7%BC%96%E7%A8%8B/">Go语言高性能编程</category>
+      
+      
+      <comments>https://ysliving.github.io/post/charpter-2/hpg-empty-struct.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>控制协程(goroutine)的并发数量</title>
+      <link>https://ysliving.github.io/post/charpter-3/hpg-concurrency-control.html</link>
+      <guid>https://ysliving.github.io/post/charpter-3/hpg-concurrency-control.html</guid>
+      <pubDate>Sun, 20 Dec 2020 17:00:00 GMT</pubDate>
+      
+      <description>Go 语言/golang 高性能编程，Go 语言进阶教程，Go 语言高性能编程(high performance go)。本文介绍了 goroutine 协程并发控制，避免并发过高，大量消耗系统资源，导致程序崩溃或卡顿，影响性能。主要通过 2 种方式控制，一是使用 channel 的缓冲区，二是使用第三方协程池，例如 tunny 和 ants。同时介绍了使用 ulimit 和虚拟内存(virtual memory)提高资源上限的技巧。</description>
+      
+      
+      <enclosure url="https://ysliving.github.io/post/hpg-mutex/concurrent.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://ysliving.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">并发编程</category>
+      
+      
+      <category domain="https://ysliving.github.io/tags/Go%E8%AF%AD%E8%A8%80%E9%AB%98%E6%80%A7%E8%83%BD%E7%BC%96%E7%A8%8B/">Go语言高性能编程</category>
+      
+      
+      <comments>https://ysliving.github.io/post/charpter-3/hpg-concurrency-control.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>如何退出协程 goroutine (其他场景)</title>
+      <link>https://ysliving.github.io/post/charpter-3/hpg-exit-goroutine.html</link>
+      <guid>https://ysliving.github.io/post/charpter-3/hpg-exit-goroutine.html</guid>
+      <pubDate>Tue, 15 Dec 2020 15:00:00 GMT</pubDate>
+      
+      <description>Go 语言/golang 高性能编程，Go 语言进阶教程，Go 语言高性能编程(high performance go)。本文介绍了协程没有正常关闭导致内存泄漏的场景，并介绍了如何借助通道/信道(channel) 优雅地退出协程。</description>
+      
+      
+      <enclosure url="https://ysliving.github.io/post/hpg-mutex/concurrent.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://ysliving.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">并发编程</category>
+      
+      
+      <category domain="https://ysliving.github.io/tags/Go%E8%AF%AD%E8%A8%80%E9%AB%98%E6%80%A7%E8%83%BD%E7%BC%96%E7%A8%8B/">Go语言高性能编程</category>
+      
+      
+      <comments>https://ysliving.github.io/post/charpter-3/hpg-exit-goroutine.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>如何退出协程 goroutine (超时场景)</title>
+      <link>https://ysliving.github.io/post/charpter-3/hpg-timeout-goroutine.html</link>
+      <guid>https://ysliving.github.io/post/charpter-3/hpg-timeout-goroutine.html</guid>
+      <pubDate>Sat, 12 Dec 2020 12:00:00 GMT</pubDate>
+      
+      <description>Go 语言/golang 高性能编程，Go 语言进阶教程，Go 语言高性能编程(high performance go)。本文介绍了 Go 语言中实现超时(timeout)退出时常见的错误，即子协程(goroutine)不能正常关闭，导致内存泄漏。常见的实现超时的方式有 time.After 和 context.WithTimeout。</description>
+      
+      
+      <enclosure url="https://ysliving.github.io/post/hpg-mutex/concurrent.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://ysliving.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">并发编程</category>
+      
+      
+      <category domain="https://ysliving.github.io/tags/Go%E8%AF%AD%E8%A8%80%E9%AB%98%E6%80%A7%E8%83%BD%E7%BC%96%E7%A8%8B/">Go语言高性能编程</category>
+      
+      
+      <comments>https://ysliving.github.io/post/charpter-3/hpg-timeout-goroutine.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Go 语言陷阱 - 数组和切片</title>
+      <link>https://ysliving.github.io/post/charpter-a1/hpg-gotchas-array-slice.html</link>
+      <guid>https://ysliving.github.io/post/charpter-a1/hpg-gotchas-array-slice.html</guid>
+      <pubDate>Sun, 06 Dec 2020 17:00:00 GMT</pubDate>
+      
+      <description>Go 语言/golang 高性能编程(high performance go)，Go 语言进阶教程，Go 语言陷阱(gotchas)。这篇文章介绍了 Go 语言中数组(Array) 和切片(Slice)的常见陷阱和规避方式。例如数组作为参数，修改参数，原数组不会发生改变。</description>
+      
+      
+      <enclosure url="https://ysliving.github.io/post/hpg-gotchas-array-slice/gotchas.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://ysliving.github.io/categories/%E8%AF%AD%E8%A8%80%E9%99%B7%E9%98%B1/">语言陷阱</category>
+      
+      
+      <category domain="https://ysliving.github.io/tags/Go%E8%AF%AD%E8%A8%80%E9%AB%98%E6%80%A7%E8%83%BD%E7%BC%96%E7%A8%8B/">Go语言高性能编程</category>
+      
+      
+      <comments>https://ysliving.github.io/post/charpter-a1/hpg-gotchas-array-slice.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>减小 Go 代码编译后的二进制体积</title>
+      <link>https://ysliving.github.io/post/charpter-4/hpg-reduce-size.html</link>
+      <guid>https://ysliving.github.io/post/charpter-4/hpg-reduce-size.html</guid>
+      <pubDate>Sun, 06 Dec 2020 15:00:00 GMT</pubDate>
+      
+      <description>Go 语言/golang 高性能编程，Go 语言进阶教程，Go 语言高性能编程(high performance go)。介绍了 2 种方式(编译选项和 UPX 工具) 来减小 Go 代码编译后的二进制文件/可执行文件的体积/大小。</description>
+      
+      
+      <enclosure url="https://ysliving.github.io/post/hpg-reduce-size/compiler.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://ysliving.github.io/categories/%E7%BC%96%E8%AF%91%E4%BC%98%E5%8C%96/">编译优化</category>
+      
+      
+      <category domain="https://ysliving.github.io/tags/Go%E8%AF%AD%E8%A8%80%E9%AB%98%E6%80%A7%E8%83%BD%E7%BC%96%E7%A8%8B/">Go语言高性能编程</category>
+      
+      
+      <comments>https://ysliving.github.io/post/charpter-4/hpg-reduce-size.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Go Reflect 提高反射性能</title>
+      <link>https://ysliving.github.io/post/charpter-2/hpg-reflect.html</link>
+      <guid>https://ysliving.github.io/post/charpter-2/hpg-reflect.html</guid>
+      <pubDate>Sat, 05 Dec 2020 17:00:00 GMT</pubDate>
+      
+      <description>Go 语言/golang 高性能编程，Go 语言进阶教程，Go 语言高性能编程(high performance go)。本文介绍了反射的使用场景，并测试了反射的性能，以及某些场景下的替代方式。</description>
+      
+      
+      <enclosure url="https://ysliving.github.io/post/hpg-string-concat/data-structure.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://ysliving.github.io/categories/%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">常用数据结构</category>
+      
+      
+      <category domain="https://ysliving.github.io/tags/Go%E8%AF%AD%E8%A8%80%E9%AB%98%E6%80%A7%E8%83%BD%E7%BC%96%E7%A8%8B/">Go语言高性能编程</category>
+      
+      
+      <comments>https://ysliving.github.io/post/charpter-2/hpg-reflect.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>读写锁和互斥锁的性能比较</title>
+      <link>https://ysliving.github.io/post/charpter-3/hpg-mutex.html</link>
+      <guid>https://ysliving.github.io/post/charpter-3/hpg-mutex.html</guid>
+      <pubDate>Sat, 05 Dec 2020 15:00:00 GMT</pubDate>
+      
+      <description>Go 语言/golang 高性能编程，Go 语言进阶教程，Go 语言高性能编程(high performance go)。介绍了读写锁(sync.RWMutex)和互斥锁(sync.Mutex)在不同的读写比情况下的性能开销。</description>
+      
+      
+      <enclosure url="https://ysliving.github.io/post/hpg-mutex/concurrent.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://ysliving.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">并发编程</category>
+      
+      
+      <category domain="https://ysliving.github.io/tags/Go%E8%AF%AD%E8%A8%80%E9%AB%98%E6%80%A7%E8%83%BD%E7%BC%96%E7%A8%8B/">Go语言高性能编程</category>
+      
+      
+      <comments>https://ysliving.github.io/post/charpter-3/hpg-mutex.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>for 和 range 的性能比较</title>
+      <link>https://ysliving.github.io/post/charpter-2/hpg-range.html</link>
+      <guid>https://ysliving.github.io/post/charpter-2/hpg-range.html</guid>
+      <pubDate>Tue, 01 Dec 2020 15:00:00 GMT</pubDate>
+      
+      <description>Go 语言/golang 高性能编程，Go 语言进阶教程，Go 语言高性能编程(high performance go)。本文比较了普通的 for 循环和 range 在不同场景下的性能，并解释了背后的原理：range 迭代时返回迭代值的拷贝，如果每个迭代值占用内存过大，性能将显著地低于 for，将元素类型改为指针，能够解决这一问题。</description>
+      
+      
+      <enclosure url="https://ysliving.github.io/post/hpg-string-concat/data-structure.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://ysliving.github.io/categories/%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">常用数据结构</category>
+      
+      
+      <category domain="https://ysliving.github.io/tags/Go%E8%AF%AD%E8%A8%80%E9%AB%98%E6%80%A7%E8%83%BD%E7%BC%96%E7%A8%8B/">Go语言高性能编程</category>
+      
+      
+      <comments>https://ysliving.github.io/post/charpter-2/hpg-range.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>切片(slice)性能及陷阱</title>
+      <link>https://ysliving.github.io/post/charpter-2/hpg-slice.html</link>
+      <guid>https://ysliving.github.io/post/charpter-2/hpg-slice.html</guid>
+      <pubDate>Sun, 29 Nov 2020 17:00:00 GMT</pubDate>
+      
+      <description>Go 语言/golang 高性能编程，Go 语言进阶教程，Go 语言高性能编程(high performance go)。详细介绍了切片(slice) 常用的几种操作 append、copy 等的性能及原理。并且介绍了切片的陷阱，即什么情况下会产生大量内存被占用，而没法释放的情况。</description>
+      
+      
+      <enclosure url="https://ysliving.github.io/post/hpg-string-concat/data-structure.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://ysliving.github.io/categories/%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">常用数据结构</category>
+      
+      
+      <category domain="https://ysliving.github.io/tags/Go%E8%AF%AD%E8%A8%80%E9%AB%98%E6%80%A7%E8%83%BD%E7%BC%96%E7%A8%8B/">Go语言高性能编程</category>
+      
+      
+      <comments>https://ysliving.github.io/post/charpter-2/hpg-slice.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>字符串拼接性能及原理</title>
+      <link>https://ysliving.github.io/post/charpter-2/hpg-string-concat.html</link>
+      <guid>https://ysliving.github.io/post/charpter-2/hpg-string-concat.html</guid>
+      <pubDate>Mon, 23 Nov 2020 17:00:00 GMT</pubDate>
+      
+      <description>Go 语言/golang 高性能编程，Go 语言进阶教程，Go 语言高性能编程(high performance go)。详细介绍了构造字符串/拼接字符串(string concatation) 的 5 种方式：+, strings.Builder, bytes.Buffer, []byte 和 fmt.Sprintf，比较了这 5 种方式的性能，并且深入解释了背后的原理。</description>
+      
+      
+      <enclosure url="https://ysliving.github.io/post/hpg-string-concat/data-structure.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://ysliving.github.io/categories/%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">常用数据结构</category>
+      
+      
+      <category domain="https://ysliving.github.io/tags/Go%E8%AF%AD%E8%A8%80%E9%AB%98%E6%80%A7%E8%83%BD%E7%BC%96%E7%A8%8B/">Go语言高性能编程</category>
+      
+      
+      <comments>https://ysliving.github.io/post/charpter-2/hpg-string-concat.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>pprof 性能分析</title>
+      <link>https://ysliving.github.io/post/charpter-1/hpg-pprof.html</link>
+      <guid>https://ysliving.github.io/post/charpter-1/hpg-pprof.html</guid>
+      <pubDate>Sat, 21 Nov 2020 17:00:00 GMT</pubDate>
+      
+      <description>Go 语言/golang 高性能编程，Go 语言进阶教程，Go 语言高性能编程(high performance go)。详细介绍如何测试/评估 Go 代码的性能，内容包括使用 testing 库进行基准测试(benchmark)，性能分析(profiling) 编译优化(compiler optimisations)，内存管理(memory management)和垃圾回收(garbage collect)、pprof 等内容。同时也介绍了使用 Go 语言如何写出高性能的程序和应用，包括不限于 Go 语言标准库、第三方库的使用方式和最佳实践。</description>
+      
+      
+      <enclosure url="https://ysliving.github.io/post/hpg-benchmark/benchmark.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://ysliving.github.io/categories/%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/">性能分析</category>
+      
+      
+      <category domain="https://ysliving.github.io/tags/Go%E8%AF%AD%E8%A8%80%E9%AB%98%E6%80%A7%E8%83%BD%E7%BC%96%E7%A8%8B/">Go语言高性能编程</category>
+      
+      
+      <comments>https://ysliving.github.io/post/charpter-1/hpg-pprof.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>benchmark 基准测试</title>
+      <link>https://ysliving.github.io/post/charpter-1/hpg-benchmark.html</link>
+      <guid>https://ysliving.github.io/post/charpter-1/hpg-benchmark.html</guid>
+      <pubDate>Mon, 16 Nov 2020 17:00:00 GMT</pubDate>
+      
+      <description>Go 语言/golang 高性能编程，Go 语言进阶教程，Go 语言高性能编程(high performance go)。详细介绍如何测试/评估 Go 代码的性能，内容包括使用 testing 库进行基准测试(benchmark)，性能分析(profiling) 编译优化(compiler optimisations)，内存管理(memory management)和垃圾回收(garbage collect)、pprof 等内容。同时也介绍了使用 Go 语言如何写出高性能的程序和应用，包括不限于 Go 语言标准库、第三方库的使用方式和最佳实践。</description>
+      
+      
+      <enclosure url="https://ysliving.github.io/post/hpg-benchmark/benchmark.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://ysliving.github.io/categories/%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/">性能分析</category>
+      
+      
+      <category domain="https://ysliving.github.io/tags/Go%E8%AF%AD%E8%A8%80%E9%AB%98%E6%80%A7%E8%83%BD%E7%BC%96%E7%A8%8B/">Go语言高性能编程</category>
+      
+      
+      <comments>https://ysliving.github.io/post/charpter-1/hpg-benchmark.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Go 语言高性能编程</title>
+      <link>https://ysliving.github.io/post/charpter-0/high-performance-go.html</link>
+      <guid>https://ysliving.github.io/post/charpter-0/high-performance-go.html</guid>
+      <pubDate>Fri, 06 Nov 2020 08:00:00 GMT</pubDate>
+      
+      <description>Go 语言/golang 高性能编程，Go 语言进阶教程，Go 语言高性能编程(high performance go)。详细介绍如何测试/评估 Go 代码的性能，内容包括使用 testing 库进行基准测试(benchmark)，性能分析(profiling) 编译优化(compiler optimisations)，内存管理(memory management)和垃圾回收(garbage collect)、pprof 等内容。同时也介绍了使用 Go 语言如何写出高性能的程序和应用，包括不限于 Go 语言标准库、第三方库的使用方式和最佳实践。</description>
+      
+      
+      <enclosure url="https://ysliving.github.io/post/high-performance-go/high-performance-go.jpg" type="image"/>
+      
+      
+      
+      <category domain="https://ysliving.github.io/categories/%E5%BA%8F%E8%A8%80/">序言</category>
+      
+      
+      <category domain="https://ysliving.github.io/tags/Go%E8%AF%AD%E8%A8%80%E9%AB%98%E6%80%A7%E8%83%BD%E7%BC%96%E7%A8%8B/">Go语言高性能编程</category>
+      
+      
+      <comments>https://ysliving.github.io/post/charpter-0/high-performance-go.html#disqus_thread</comments>
       
     </item>
     
