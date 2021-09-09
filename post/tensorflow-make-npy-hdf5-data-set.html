@@ -299,7 +299,7 @@
 <h2 id="准备图片"><a href="#准备图片" class="headerlink" title="准备图片"></a>准备图片</h2><p><img src="tensorflow-make-npy-hdf5-data-set/gen_mnist_images.png" alt="mnist-images"></p>
 <p>直接读取tensorflow中mnist数据集，将数据集还原为图片。</p>
 <p>在这里，使用 pillow库将矩阵转为图片。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> tensorflow.examples.tutorials.mnist <span class="keyword">import</span> input_data</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gen_image</span>(<span class="params">arr, index, label</span>):</span></span><br><span class="line">    <span class="comment"># 直接保存 arr，是黑底图片，1.0 - arr 是白底图片</span></span><br><span class="line">    matrix = (np.reshape(<span class="number">1.0</span> - arr, (<span class="number">28</span>, <span class="number">28</span>)) * <span class="number">255</span>).astype(np.uint8)</span><br><span class="line">    img = Image.fromarray(matrix, <span class="string">&#x27;L&#x27;</span>)</span><br><span class="line">    <span class="comment"># 存储图片时，label_index的格式，方便在制作数据集时，从文件名即可知道label</span></span><br><span class="line">    img.save(<span class="string">&quot;./images/&#123;&#125;_&#123;&#125;.png&quot;</span>.<span class="built_in">format</span>(label, index))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">data = input_data.read_data_sets(<span class="string">&#x27;../mnist/data_set&#x27;</span>)</span><br><span class="line">x, y = data.train.next_batch(<span class="number">200</span>)</span><br><span class="line"><span class="keyword">for</span> i, (arr, label) <span class="keyword">in</span> <span class="built_in">enumerate</span>(<span class="built_in">zip</span>(x, y)):</span><br><span class="line">    print(i, label)</span><br><span class="line">    gen_image(arr, i, label)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> tensorflow.examples.tutorials.mnist <span class="keyword">import</span> input_data</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gen_image</span>(<span class="params">arr, index, label</span>):</span></span><br><span class="line">    <span class="comment"># 直接保存 arr，是黑底图片，1.0 - arr 是白底图片</span></span><br><span class="line">    matrix = (np.reshape(<span class="number">1.0</span> - arr, (<span class="number">28</span>, <span class="number">28</span>)) * <span class="number">255</span>).astype(np.uint8)</span><br><span class="line">    img = Image.fromarray(matrix, <span class="string">&#x27;L&#x27;</span>)</span><br><span class="line">    <span class="comment"># 存储图片时，label_index的格式，方便在制作数据集时，从文件名即可知道label</span></span><br><span class="line">    img.save(<span class="string">&quot;./images/&#123;&#125;_&#123;&#125;.png&quot;</span>.<span class="built_in">format</span>(label, index))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">data = input_data.read_data_sets(<span class="string">&#x27;../mnist/data_set&#x27;</span>)</span><br><span class="line">x, y = data.train.next_batch(<span class="number">200</span>)</span><br><span class="line"><span class="keyword">for</span> i, (arr, label) <span class="keyword">in</span> <span class="built_in">enumerate</span>(<span class="built_in">zip</span>(x, y)):</span><br><span class="line">    <span class="built_in">print</span>(i, label)</span><br><span class="line">    gen_image(arr, i, label)</span><br></pre></td></tr></table></figure>
 
 <p>这样，就得到了200张 <code>28*28</code>的图片供下一步制作训练集。</p>
 <h2 id="制作npy格式的数据集"><a href="#制作npy格式的数据集" class="headerlink" title="制作npy格式的数据集"></a>制作npy格式的数据集</h2><p>numpy能够将矩阵保存为文件，也能从文件中读取矩阵，因此可以考虑使用numpy制作数据集。</p>
@@ -562,7 +562,7 @@
         <h3>推荐阅读</h3>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/geerpc/geerpc.jpg')"></div>
+    <div class="post-img" style="background-image: url('/post/7days-golang-q1/7days-golang-qa.jpg')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
@@ -576,14 +576,14 @@
                 
                 
             </div>
-            <a href="/post/geerpc-day6.html" class="title">
-                动手写RPC框架 - GeeRPC第六天 负载均衡(load balance)
+            <a href="/post/7days-golang-q1.html" class="title">
+                Go 接口型函数的使用场景
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2020-10-08，</span>
-                    <span class="hidden-xs">全文11384字，</span>
-                    <span>阅读约38分钟</span>
+                    <span>发表于2020-10-25，</span>
+                    <span class="hidden-xs">全文4789字，</span>
+                    <span>阅读约16分钟</span>
                 </small>
             </p>
         </div>
@@ -591,7 +591,7 @@
 </div>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/quick-go-wasm/go-wasm.jpg')"></div>
+    <div class="post-img" style="background-image: url('/post/quick-go-mmap/mmap_sm.jpg')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
@@ -605,14 +605,14 @@
                 
                 
             </div>
-            <a href="/post/quick-go-wasm.html" class="title">
-                Go WebAssembly (Wasm) 简明教程
+            <a href="/post/quick-go-mmap.html" class="title">
+                Go Mmap 文件内存映射简明教程
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2020-01-23，</span>
-                    <span class="hidden-xs">全文8883字，</span>
-                    <span>阅读约30分钟</span>
+                    <span>发表于2020-04-20，</span>
+                    <span class="hidden-xs">全文5831字，</span>
+                    <span>阅读约20分钟</span>
                 </small>
             </p>
         </div>
@@ -620,7 +620,7 @@
 </div>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/link/link.png')"></div>
+    <div class="post-img" style="background-image: url('/post/geeorm/geeorm_sm.jpg')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
@@ -628,20 +628,20 @@
                 
                 <span>/</span>
                 
-                <a class="text-gray" href="/tags/#友链"
-                    title="友链">友链</a>
+                <a class="text-gray" href="/tags/#Go"
+                    title="Go">Go</a>
                 <span>/</span>
                 
                 
             </div>
-            <a href="/post/link.html" class="title">
-                友情链接
+            <a href="/post/geeorm.html" class="title">
+                7天用Go从零实现ORM框架GeeORM
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2017-07-03，</span>
-                    <span class="hidden-xs">全文855字，</span>
-                    <span>阅读约3分钟</span>
+                    <span>发表于2020-03-01，</span>
+                    <span class="hidden-xs">全文4545字，</span>
+                    <span>阅读约16分钟</span>
                 </small>
             </p>
         </div>

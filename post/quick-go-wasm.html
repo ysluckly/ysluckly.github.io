@@ -328,7 +328,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cp <span class="string">&quot;<span class="subst">$(go env GOROOT)</span>/misc/wasm/wasm_exec.js&quot;</span> static</span><br></pre></td></tr></table></figure>
 
 <p>第四步，创建 index.html，引用 <code>static/main.wasm</code> 和 <code>static/wasm_exec.js</code>。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;static/wasm_exec.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">	<span class="keyword">const</span> go = <span class="keyword">new</span> Go();</span></span><br><span class="line"><span class="javascript">	WebAssembly.instantiateStreaming(fetch(<span class="string">&quot;static/main.wasm&quot;</span>), go.importObject)</span></span><br><span class="line"><span class="javascript">		.then(<span class="function">(<span class="params">result</span>) =&gt;</span> go.run(result.instance));</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;static/wasm_exec.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">	<span class="keyword">const</span> go = <span class="keyword">new</span> Go();</span></span><br><span class="line"><span class="javascript">	WebAssembly.instantiateStreaming(fetch(<span class="string">&quot;static/main.wasm&quot;</span>), go.importObject)</span></span><br><span class="line"><span class="javascript">		.then(<span class="function">(<span class="params">result</span>) =&gt;</span> go.run(result.instance));</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>第五步，使用 goexec 启动 Web 服务</p>
 <blockquote>
@@ -621,7 +621,36 @@
         <h3>推荐阅读</h3>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/geerpc/geerpc.jpg')"></div>
+    <div class="post-img" style="background-image: url('/post/hpg-mutex/concurrent.jpg')"></div>
+    <div class="post-info">
+        <div class="post-info-center">
+            <div class="hidden-xs">
+                
+                
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#Go语言高性能编程"
+                    title="Go语言高性能编程">Go语言高性能编程</a>
+                <span>/</span>
+                
+                
+            </div>
+            <a href="/post/charpter-3/hpg-exit-goroutine.html" class="title">
+                如何退出协程 goroutine (其他场景)
+            </a>
+            <p class="text-gray">
+                <small>
+                    <span>发表于2020-12-15，</span>
+                    <span class="hidden-xs">全文4652字，</span>
+                    <span>阅读约16分钟</span>
+                </small>
+            </p>
+        </div>
+    </div>
+</div>
+        
+        <div class="post-preview">
+    <div class="post-img" style="background-image: url('/post/geecache-day7/protobuf_logo.jpg')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
@@ -635,14 +664,14 @@
                 
                 
             </div>
-            <a href="/post/geerpc-day5.html" class="title">
-                动手写RPC框架 - GeeRPC第五天 支持HTTP协议
+            <a href="/post/geecache-day7.html" class="title">
+                动手写分布式缓存 - GeeCache第七天 使用 Protobuf 通信
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2020-10-08，</span>
-                    <span class="hidden-xs">全文9644字，</span>
-                    <span>阅读约33分钟</span>
+                    <span>发表于2020-02-17，</span>
+                    <span class="hidden-xs">全文4718字，</span>
+                    <span>阅读约16分钟</span>
                 </small>
             </p>
         </div>
@@ -650,7 +679,7 @@
 </div>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/tensorflow2-gym-nn/cartpole_v0_failed.gif')"></div>
+    <div class="post-img" style="background-image: url('/post/pandas-dataframe-series/pandas.gif')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
@@ -658,61 +687,20 @@
                 
                 <span>/</span>
                 
-                <a class="text-gray" href="/tags/#机器学习"
-                    title="机器学习">机器学习</a>
-                <span>/</span>
-                
-                <a class="text-gray" href="/tags/#TensorFlow"
-                    title="TensorFlow">TensorFlow</a>
-                <span>/</span>
-                
-                <a class="text-gray" href="/tags/#Python"
-                    title="Python">Python</a>
-                <span>/</span>
-                
-                <a class="text-gray" href="/tags/#OpenAI gym"
-                    title="OpenAI gym">OpenAI gym</a>
+                <a class="text-gray" href="/tags/#Pandas"
+                    title="Pandas">Pandas</a>
                 <span>/</span>
                 
                 
             </div>
-            <a href="/post/tensorflow2-gym-nn.html" class="title">
-                TensorFlow 2.0 (六) - 监督学习玩转 OpenAI gym game
+            <a href="/post/pandas-dataframe-series.html" class="title">
+                Pandas 数据处理(一) - DataFrame 与 Series
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2019-06-21，</span>
-                    <span class="hidden-xs">全文7072字，</span>
+                    <span>发表于2018-03-20，</span>
+                    <span class="hidden-xs">全文7121字，</span>
                     <span>阅读约24分钟</span>
-                </small>
-            </p>
-        </div>
-    </div>
-</div>
-        
-        <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/about/leave_a_msg.gif')"></div>
-    <div class="post-info">
-        <div class="post-info-center">
-            <div class="hidden-xs">
-                
-                
-                <span>/</span>
-                
-                <a class="text-gray" href="/tags/#关于我"
-                    title="关于我">关于我</a>
-                <span>/</span>
-                
-                
-            </div>
-            <a href="/post/about.html" class="title">
-                留言板
-            </a>
-            <p class="text-gray">
-                <small>
-                    <span>发表于2017-07-03，</span>
-                    <span class="hidden-xs">全文577字，</span>
-                    <span>阅读约2分钟</span>
                 </small>
             </p>
         </div>

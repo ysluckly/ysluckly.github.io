@@ -331,7 +331,7 @@
 <ul>
 <li><strong>训练时保存summary的数据</strong></li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">from</span> tensorflow.examples.tutorials.mnist <span class="keyword">import</span> input_data</span><br><span class="line"><span class="keyword">from</span> model <span class="keyword">import</span> Network</span><br><span class="line"></span><br><span class="line">CKPT_DIR = <span class="string">&#x27;ckpt&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Train</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.net = Network()</span><br><span class="line">        self.sess = tf.Session()</span><br><span class="line">        self.sess.run(tf.global_variables_initializer())</span><br><span class="line">        self.data = input_data.read_data_sets(<span class="string">&#x27;../data_set&#x27;</span>, one_hot=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">train</span>(<span class="params">self</span>):</span></span><br><span class="line">        batch_size = <span class="number">64</span></span><br><span class="line">        train_step = <span class="number">20000</span></span><br><span class="line">        step = <span class="number">0</span></span><br><span class="line">        save_interval = <span class="number">1000</span></span><br><span class="line">        saver = tf.train.Saver(max_to_keep=<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># merge所有的summary node</span></span><br><span class="line">        merged_summary_op = tf.summary.merge_all()</span><br><span class="line">        <span class="comment"># 可视化存储目录为当前文件夹下的 log</span></span><br><span class="line">        merged_writer = tf.summary.FileWriter(<span class="string">&quot;./log&quot;</span>, self.sess.graph)</span><br><span class="line"></span><br><span class="line">        ckpt = tf.train.get_checkpoint_state(CKPT_DIR)</span><br><span class="line">        <span class="keyword">if</span> ckpt <span class="keyword">and</span> ckpt.model_checkpoint_path:</span><br><span class="line">            saver.restore(self.sess, ckpt.model_checkpoint_path)</span><br><span class="line">            <span class="comment"># 读取网络中的global_step的值，即当前已经训练的次数</span></span><br><span class="line">            step = self.sess.run(self.net.global_step)</span><br><span class="line">            print(<span class="string">&#x27;Continue from&#x27;</span>)</span><br><span class="line">            print(<span class="string">&#x27;        -&gt; Minibatch update : &#x27;</span>, step)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> step &lt; train_step:</span><br><span class="line">            x, label = self.data.train.next_batch(batch_size)</span><br><span class="line">            _, loss, merged_summary = self.sess.run(</span><br><span class="line">                [self.net.train, self.net.loss, merged_summary_op],</span><br><span class="line">                feed_dict=&#123;self.net.x: x, self.net.label: label&#125;</span><br><span class="line">            )</span><br><span class="line">            step = self.sess.run(self.net.global_step)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> step % <span class="number">100</span> == <span class="number">0</span>:</span><br><span class="line">                merged_writer.add_summary(merged_summary, step)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> step % save_interval == <span class="number">0</span>:</span><br><span class="line">                saver.save(self.sess, CKPT_DIR + <span class="string">&#x27;/model&#x27;</span>, global_step=step)</span><br><span class="line">                print(<span class="string">&#x27;%s/model-%d saved&#x27;</span> % (CKPT_DIR, step))</span><br><span class="line"></span><br><span class="line">app = Train()</span><br><span class="line">app.train()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">from</span> tensorflow.examples.tutorials.mnist <span class="keyword">import</span> input_data</span><br><span class="line"><span class="keyword">from</span> model <span class="keyword">import</span> Network</span><br><span class="line"></span><br><span class="line">CKPT_DIR = <span class="string">&#x27;ckpt&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Train</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.net = Network()</span><br><span class="line">        self.sess = tf.Session()</span><br><span class="line">        self.sess.run(tf.global_variables_initializer())</span><br><span class="line">        self.data = input_data.read_data_sets(<span class="string">&#x27;../data_set&#x27;</span>, one_hot=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">train</span>(<span class="params">self</span>):</span></span><br><span class="line">        batch_size = <span class="number">64</span></span><br><span class="line">        train_step = <span class="number">20000</span></span><br><span class="line">        step = <span class="number">0</span></span><br><span class="line">        save_interval = <span class="number">1000</span></span><br><span class="line">        saver = tf.train.Saver(max_to_keep=<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># merge所有的summary node</span></span><br><span class="line">        merged_summary_op = tf.summary.merge_all()</span><br><span class="line">        <span class="comment"># 可视化存储目录为当前文件夹下的 log</span></span><br><span class="line">        merged_writer = tf.summary.FileWriter(<span class="string">&quot;./log&quot;</span>, self.sess.graph)</span><br><span class="line"></span><br><span class="line">        ckpt = tf.train.get_checkpoint_state(CKPT_DIR)</span><br><span class="line">        <span class="keyword">if</span> ckpt <span class="keyword">and</span> ckpt.model_checkpoint_path:</span><br><span class="line">            saver.restore(self.sess, ckpt.model_checkpoint_path)</span><br><span class="line">            <span class="comment"># 读取网络中的global_step的值，即当前已经训练的次数</span></span><br><span class="line">            step = self.sess.run(self.net.global_step)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;Continue from&#x27;</span>)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;        -&gt; Minibatch update : &#x27;</span>, step)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> step &lt; train_step:</span><br><span class="line">            x, label = self.data.train.next_batch(batch_size)</span><br><span class="line">            _, loss, merged_summary = self.sess.run(</span><br><span class="line">                [self.net.train, self.net.loss, merged_summary_op],</span><br><span class="line">                feed_dict=&#123;self.net.x: x, self.net.label: label&#125;</span><br><span class="line">            )</span><br><span class="line">            step = self.sess.run(self.net.global_step)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> step % <span class="number">100</span> == <span class="number">0</span>:</span><br><span class="line">                merged_writer.add_summary(merged_summary, step)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> step % save_interval == <span class="number">0</span>:</span><br><span class="line">                saver.save(self.sess, CKPT_DIR + <span class="string">&#x27;/model&#x27;</span>, global_step=step)</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&#x27;%s/model-%d saved&#x27;</span> % (CKPT_DIR, step))</span><br><span class="line"></span><br><span class="line">app = Train()</span><br><span class="line">app.train()</span><br></pre></td></tr></table></figure>
 
 <h2 id="启动tensorboard"><a href="#启动tensorboard" class="headerlink" title="启动tensorboard"></a>启动tensorboard</h2><p>启动前，需要先训练网络，训练过程中，数据会每隔100步写入log文件夹下的文件中，这个时候，可以启动tensorboard（随tensorflow安装，不用单独安装）</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tensorboard --logdir=./log</span><br><span class="line">或</span><br><span class="line">python -m tensorboard.main --logdir=./log</span><br></pre></td></tr></table></figure>
@@ -548,7 +548,7 @@
         <h3>推荐阅读</h3>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/geecache-day2/concurrent_cache_logo.jpg')"></div>
+    <div class="post-img" style="background-image: url('/post/hpg-reduce-size/compiler.jpg')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
@@ -556,20 +556,20 @@
                 
                 <span>/</span>
                 
-                <a class="text-gray" href="/tags/#Go"
-                    title="Go">Go</a>
+                <a class="text-gray" href="/tags/#Go语言高性能编程"
+                    title="Go语言高性能编程">Go语言高性能编程</a>
                 <span>/</span>
                 
                 
             </div>
-            <a href="/post/geecache-day2.html" class="title">
-                动手写分布式缓存 - GeeCache第二天 单机并发缓存
+            <a href="/post/charpter-4/hpg-reduce-size.html" class="title">
+                减小 Go 代码编译后的二进制体积
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2020-02-12，</span>
-                    <span class="hidden-xs">全文10228字，</span>
-                    <span>阅读约35分钟</span>
+                    <span>发表于2020-12-06，</span>
+                    <span class="hidden-xs">全文3884字，</span>
+                    <span>阅读约13分钟</span>
                 </small>
             </p>
         </div>
@@ -577,7 +577,7 @@
 </div>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/quick-go-test/go_test.jpg')"></div>
+    <div class="post-img" style="background-image: url('/post/hpg-string-concat/data-structure.jpg')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
@@ -585,20 +585,20 @@
                 
                 <span>/</span>
                 
-                <a class="text-gray" href="/tags/#Go"
-                    title="Go">Go</a>
+                <a class="text-gray" href="/tags/#Go语言高性能编程"
+                    title="Go语言高性能编程">Go语言高性能编程</a>
                 <span>/</span>
                 
                 
             </div>
-            <a href="/post/quick-go-test.html" class="title">
-                Go Test 单元测试简明教程
+            <a href="/post/charpter-2/hpg-string-concat.html" class="title">
+                字符串拼接性能及原理
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2020-02-10，</span>
-                    <span class="hidden-xs">全文9131字，</span>
-                    <span>阅读约31分钟</span>
+                    <span>发表于2020-11-24，</span>
+                    <span class="hidden-xs">全文6685字，</span>
+                    <span>阅读约23分钟</span>
                 </small>
             </p>
         </div>
@@ -606,7 +606,7 @@
 </div>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/blog-experience-3/cnzz.jpg')"></div>
+    <div class="post-img" style="background-image: url('/post/tensorflow2-gym-dqn/mountaincar_v0_scores.jpg')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
@@ -614,20 +614,36 @@
                 
                 <span>/</span>
                 
-                <a class="text-gray" href="/tags/#关于我"
-                    title="关于我">关于我</a>
+                <a class="text-gray" href="/tags/#TensorFlow"
+                    title="TensorFlow">TensorFlow</a>
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#Python"
+                    title="Python">Python</a>
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#强化学习"
+                    title="强化学习">强化学习</a>
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#OpenAI gym"
+                    title="OpenAI gym">OpenAI gym</a>
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#DQN"
+                    title="DQN">DQN</a>
                 <span>/</span>
                 
                 
             </div>
-            <a href="/post/blog-experience-3.html" class="title">
-                博客折腾记(三) - 主题设计、彩蛋与阅读量翻倍
+            <a href="/post/tensorflow2-gym-dqn.html" class="title">
+                TensorFlow 2.0 (八) - 强化学习 DQN 玩转 gym Mountain Car
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2019-06-23，</span>
-                    <span class="hidden-xs">全文3998字，</span>
-                    <span>阅读约14分钟</span>
+                    <span>发表于2019-06-28，</span>
+                    <span class="hidden-xs">全文8488字，</span>
+                    <span>阅读约29分钟</span>
                 </small>
             </p>
         </div>

@@ -294,7 +294,7 @@
 </ul>
 <p>第一个问题，磁盘挂载到Linux下时，所有的权限都被变为了 777，如果需要保持 Linux 下的习惯（文件夹 755，文件644），则需要额外配置 <code>/etc/wsl.conf</code>。</p>
 <p><code>vim /etc/wsl.conf</code>，添加如下配置，这样在 Windows 中新建文件夹和文件，将以 755/644 的权限创建：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[automount]</span><br><span class="line">options &#x3D; &quot;metadata,umask&#x3D;22,fmask&#x3D;11&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[automount]</span><br><span class="line">options = &quot;metadata,umask=22,fmask=11&quot;</span><br></pre></td></tr></table></figure>
 
 <p>第二个问题，WSL 中创建文件夹和文件，仍旧是 777 的权限，因为 WSL 的 umask 默认值为 <code>0000</code>，需要修改为<code>0022</code>：</p>
 <p><code>vim ~/.profile</code>，添加</p>
@@ -319,7 +319,7 @@
 <li><p>第二步，为了让 Terminal 的快捷键和 Linux 更接近，还可以设置快捷键。</p>
 </li>
 </ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&quot;keybindings&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">&quot;command&quot;</span>: <span class="string">&quot;closeTab&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;keys&quot;</span>: [<span class="string">&quot;ctrl+w&quot;</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">&quot;command&quot;</span>: <span class="string">&quot;newTab&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;keys&quot;</span>: [<span class="string">&quot;ctrl+t&quot;</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">&quot;command&quot;</span>: <span class="string">&quot;paste&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;keys&quot;</span>: [<span class="string">&quot;shift+insert&quot;</span>]</span><br><span class="line">    &#125;</span><br><span class="line">],</span><br><span class="line">&quot;copyOnSelect&quot;: true // 选中即复制</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;keybindings&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">&quot;command&quot;</span>: <span class="string">&quot;closeTab&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;keys&quot;</span>: [<span class="string">&quot;ctrl+w&quot;</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">&quot;command&quot;</span>: <span class="string">&quot;newTab&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;keys&quot;</span>: [<span class="string">&quot;ctrl+t&quot;</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">&quot;command&quot;</span>: <span class="string">&quot;paste&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;keys&quot;</span>: [<span class="string">&quot;shift+insert&quot;</span>]</span><br><span class="line">    &#125;</span><br><span class="line">],</span><br><span class="line"><span class="string">&quot;copyOnSelect&quot;</span>: <span class="literal">true</span> <span class="comment">// 选中即复制</span></span><br></pre></td></tr></table></figure>
 
 <p>默认的快捷键：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ctrl + tab <span class="comment"># 切换标签页</span></span><br><span class="line">ctrl + <span class="built_in">shift</span> + c <span class="comment"># 复制</span></span><br><span class="line">ctrl + <span class="built_in">shift</span> + v <span class="comment"># 粘贴</span></span><br><span class="line">ctrl + <span class="built_in">shift</span> + 1/2/3 <span class="comment"># 打开 powershell/cmd/WSL</span></span><br></pre></td></tr></table></figure>
@@ -538,36 +538,7 @@
         <h3>推荐阅读</h3>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/hpg-mutex/concurrent.jpg')"></div>
-    <div class="post-info">
-        <div class="post-info-center">
-            <div class="hidden-xs">
-                
-                
-                <span>/</span>
-                
-                <a class="text-gray" href="/tags/#Go语言高性能编程"
-                    title="Go语言高性能编程">Go语言高性能编程</a>
-                <span>/</span>
-                
-                
-            </div>
-            <a href="/post/charpter-3/hpg-sync-pool.html" class="title">
-                Go sync.Pool
-            </a>
-            <p class="text-gray">
-                <small>
-                    <span>发表于2020-12-31，</span>
-                    <span class="hidden-xs">全文4812字，</span>
-                    <span>阅读约17分钟</span>
-                </small>
-            </p>
-        </div>
-    </div>
-</div>
-        
-        <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/geeorm/geeorm_sm.jpg')"></div>
+    <div class="post-img" style="background-image: url('/post/gee-day7/go-panic.png')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
@@ -581,14 +552,14 @@
                 
                 
             </div>
-            <a href="/post/geeorm-day7.html" class="title">
-                动手写ORM框架 - GeeORM第七天 数据库迁移(Migrate)
+            <a href="/post/gee-day7.html" class="title">
+                Go语言动手写Web框架 - Gee第七天 错误恢复(Panic Recover)
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2020-03-08，</span>
-                    <span class="hidden-xs">全文4763字，</span>
-                    <span>阅读约16分钟</span>
+                    <span>发表于2020-01-09，</span>
+                    <span class="hidden-xs">全文6855字，</span>
+                    <span>阅读约23分钟</span>
                 </small>
             </p>
         </div>
@@ -596,7 +567,36 @@
 </div>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/pandas-select-data/pandas.gif')"></div>
+    <div class="post-img" style="background-image: url('/post/blog-experience-1/loading.gif')"></div>
+    <div class="post-info">
+        <div class="post-info-center">
+            <div class="hidden-xs">
+                
+                
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#关于我"
+                    title="关于我">关于我</a>
+                <span>/</span>
+                
+                
+            </div>
+            <a href="/post/blog-experience-1.html" class="title">
+                博客折腾记(一) - 极致性能的尝试
+            </a>
+            <p class="text-gray">
+                <small>
+                    <span>发表于2019-06-17，</span>
+                    <span class="hidden-xs">全文4050字，</span>
+                    <span>阅读约14分钟</span>
+                </small>
+            </p>
+        </div>
+    </div>
+</div>
+        
+        <div class="post-preview">
+    <div class="post-img" style="background-image: url('/post/pandas-dataframe-series/pandas.gif')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
@@ -610,14 +610,14 @@
                 
                 
             </div>
-            <a href="/post/pandas-select-data.html" class="title">
-                Pandas 数据处理(二) - 筛选数据
+            <a href="/post/pandas-dataframe-series.html" class="title">
+                Pandas 数据处理(一) - DataFrame 与 Series
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2018-03-21，</span>
-                    <span class="hidden-xs">全文7858字，</span>
-                    <span>阅读约27分钟</span>
+                    <span>发表于2018-03-20，</span>
+                    <span class="hidden-xs">全文7121字，</span>
+                    <span>阅读约24分钟</span>
                 </small>
             </p>
         </div>

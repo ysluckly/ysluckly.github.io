@@ -306,7 +306,7 @@
 <h2 id="OpenAI-gym-初尝试"><a href="#OpenAI-gym-初尝试" class="headerlink" title="OpenAI gym 初尝试"></a>OpenAI gym 初尝试</h2><p>我们先对 OpenAI 的 gym 库的几个核心概念作个简单介绍。</p>
 <p>想象一下你在玩贪吃蛇，你需要分析当前游戏的<code>状态(State)</code>，例如你所处的位置，周围的障碍物等，才能够决定下一步的<code>动作(Action)</code>，上下左右。那你每走一步，就会得到一个<code>奖励(Reward)</code>。这个奖励可能是正向奖励(Positive Reward)，也可能是负向奖励(Negative Reward)，比如撞到了障碍物。重复N次这样的过程，直到游戏<code>结束(Done)</code>。</p>
 <p>从整个例子中，可以总结出几个重要的概念，接下来的示例将会使用 OpenAI gym 库提供的 <strong>CartPole Game</strong> 环境，一起来熟悉CartPole 游戏中的这几个概念的含义吧。先直接给一个可以运行看效果的示例，这个示例中，Action 是随机选择的。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># try_gym.py</span></span><br><span class="line"><span class="comment"># https://geektutu.com</span></span><br><span class="line"><span class="keyword">import</span> gym  <span class="comment"># 0.12.5</span></span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">env = gym.make(<span class="string">&quot;CartPole-v0&quot;</span>)  <span class="comment"># 加载游戏环境</span></span><br><span class="line"></span><br><span class="line">state = env.reset()</span><br><span class="line">score = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    time.sleep(<span class="number">0.1</span>)</span><br><span class="line">    env.render()   <span class="comment"># 显示画面</span></span><br><span class="line">    action = random.randint(<span class="number">0</span>, <span class="number">1</span>)  <span class="comment"># 随机选择一个动作 0 或 1</span></span><br><span class="line">    state, reward, done, _ = env.step(action)  <span class="comment"># 执行这个动作</span></span><br><span class="line">    score += reward     <span class="comment"># 每回合的得分</span></span><br><span class="line">    <span class="keyword">if</span> done:       <span class="comment"># 游戏结束</span></span><br><span class="line">        print(<span class="string">&#x27;score: &#x27;</span>, score)  <span class="comment"># 打印分数</span></span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">env.close()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># try_gym.py</span></span><br><span class="line"><span class="comment"># https://geektutu.com</span></span><br><span class="line"><span class="keyword">import</span> gym  <span class="comment"># 0.12.5</span></span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">env = gym.make(<span class="string">&quot;CartPole-v0&quot;</span>)  <span class="comment"># 加载游戏环境</span></span><br><span class="line"></span><br><span class="line">state = env.reset()</span><br><span class="line">score = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    time.sleep(<span class="number">0.1</span>)</span><br><span class="line">    env.render()   <span class="comment"># 显示画面</span></span><br><span class="line">    action = random.randint(<span class="number">0</span>, <span class="number">1</span>)  <span class="comment"># 随机选择一个动作 0 或 1</span></span><br><span class="line">    state, reward, done, _ = env.step(action)  <span class="comment"># 执行这个动作</span></span><br><span class="line">    score += reward     <span class="comment"># 每回合的得分</span></span><br><span class="line">    <span class="keyword">if</span> done:       <span class="comment"># 游戏结束</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;score: &#x27;</span>, score)  <span class="comment"># 打印分数</span></span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">env.close()</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ python3 try_gym.py</span><br><span class="line">score:  14.0</span><br></pre></td></tr></table></figure>
 
@@ -350,7 +350,7 @@
 <p>随机产生的数据，得分很低，如果不过滤，数据集质量是很低的。</p>
 <p>最终的办法：<strong>试，一百次不行，就试一万次</strong>。</p>
 <p>简而言之，我们在过程中计算<code>Score</code>，如果最终得分达到设定的标准，这个分数所对应的所有<code>State</code>和<code>Action</code>就可以作为我们的训练数据了。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># train.py</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate_data_one_episode</span>():</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;生成单次游戏的训练数据&#x27;&#x27;&#x27;</span></span><br><span class="line">    x, y, score = [], [], <span class="number">0</span></span><br><span class="line">    state = env.reset()</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        action = random.randrange(<span class="number">0</span>, <span class="number">2</span>)</span><br><span class="line">        x.append(state)</span><br><span class="line">        y.append([<span class="number">1</span>, <span class="number">0</span>] <span class="keyword">if</span> action == <span class="number">0</span> <span class="keyword">else</span> [<span class="number">0</span>, <span class="number">1</span>]) <span class="comment"># 记录数据</span></span><br><span class="line">        state, reward, done, _ = env.step(action) <span class="comment"># 执行动作</span></span><br><span class="line">        score += reward</span><br><span class="line">        <span class="keyword">if</span> done:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">return</span> x, y, score</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate_training_data</span>(<span class="params">expected_score=<span class="number">100</span></span>):</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;# 生成N次游戏的训练数据，并进行筛选，选择 &gt; 100 的数据作为训练集&#x27;&#x27;&#x27;</span></span><br><span class="line">    data_X, data_Y, scores = [], [], []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10000</span>):</span><br><span class="line">        x, y, score = generate_data_one_episode()</span><br><span class="line">        <span class="keyword">if</span> score &gt; expected_score:</span><br><span class="line">            data_X += x</span><br><span class="line">            data_Y += y</span><br><span class="line">            scores.append(score)</span><br><span class="line">    print(<span class="string">&#x27;dataset size: &#123;&#125;, max score: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">len</span>(data_X), <span class="built_in">max</span>(scores)))</span><br><span class="line">    <span class="keyword">return</span> np.array(data_X), np.array(data_Y)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># train.py</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate_data_one_episode</span>():</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;生成单次游戏的训练数据&#x27;&#x27;&#x27;</span></span><br><span class="line">    x, y, score = [], [], <span class="number">0</span></span><br><span class="line">    state = env.reset()</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        action = random.randrange(<span class="number">0</span>, <span class="number">2</span>)</span><br><span class="line">        x.append(state)</span><br><span class="line">        y.append([<span class="number">1</span>, <span class="number">0</span>] <span class="keyword">if</span> action == <span class="number">0</span> <span class="keyword">else</span> [<span class="number">0</span>, <span class="number">1</span>]) <span class="comment"># 记录数据</span></span><br><span class="line">        state, reward, done, _ = env.step(action) <span class="comment"># 执行动作</span></span><br><span class="line">        score += reward</span><br><span class="line">        <span class="keyword">if</span> done:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">return</span> x, y, score</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate_training_data</span>(<span class="params">expected_score=<span class="number">100</span></span>):</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;# 生成N次游戏的训练数据，并进行筛选，选择 &gt; 100 的数据作为训练集&#x27;&#x27;&#x27;</span></span><br><span class="line">    data_X, data_Y, scores = [], [], []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10000</span>):</span><br><span class="line">        x, y, score = generate_data_one_episode()</span><br><span class="line">        <span class="keyword">if</span> score &gt; expected_score:</span><br><span class="line">            data_X += x</span><br><span class="line">            data_Y += y</span><br><span class="line">            scores.append(score)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;dataset size: &#123;&#125;, max score: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">len</span>(data_X), <span class="built_in">max</span>(scores)))</span><br><span class="line">    <span class="keyword">return</span> np.array(data_X), np.array(data_Y)</span><br></pre></td></tr></table></figure>
 
 <p>这样，我们就可以使用<code>generate_training_data</code>函数生成训练集了。</p>
 <h2 id="训练并保存模型"><a href="#训练并保存模型" class="headerlink" title="训练并保存模型"></a>训练并保存模型</h2><p>神经网络和数据集都准备好了，训练就非常简单了。</p>
@@ -359,7 +359,7 @@
 <p>从运行的结果看，我们最终得到的训练集大小为213，最大分数是108分。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">$ python train.py</span><br><span class="line">Model: <span class="string">&quot;sequential&quot;</span></span><br><span class="line">_________________________________________________________________</span><br><span class="line">Layer (<span class="built_in">type</span>)                 Output Shape              Param <span class="comment">#   </span></span><br><span class="line">=================================================================</span><br><span class="line">dense (Dense)                (None, 64)                320       </span><br><span class="line">_________________________________________________________________</span><br><span class="line">dense_1 (Dense)              (None, 20)                1300      </span><br><span class="line">_________________________________________________________________</span><br><span class="line">dense_2 (Dense)              (None, 2)                 42        </span><br><span class="line">=================================================================</span><br><span class="line">Total params: 1,662</span><br><span class="line">Trainable params: 1,662</span><br><span class="line">Non-trainable params: 0</span><br><span class="line">_________________________________________________________________</span><br><span class="line">dataset size: 213, max score: 108.0</span><br><span class="line">Train on 213 samples</span><br><span class="line">Epoch 1/5</span><br><span class="line">213/213 [==============================] - 0s 713us/sample - loss: 0.4701</span><br><span class="line">Epoch 2/5</span><br><span class="line">213/213 [==============================] - 0s 35us/sample - loss: 0.3920</span><br><span class="line">Epoch 3/5</span><br><span class="line">213/213 [==============================] - 0s 38us/sample - loss: 0.3370</span><br><span class="line">Epoch 4/5</span><br><span class="line">213/213 [==============================] - 0s 39us/sample - loss: 0.2985</span><br><span class="line">Epoch 5/5</span><br><span class="line">213/213 [==============================] - 0s 38us/sample - loss: 0.2745</span><br></pre></td></tr></table></figure>
 
-<h2 id="模型测试-预测"><a href="#模型测试-预测" class="headerlink" title="模型测试/预测"></a>模型测试/预测</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># predict.py</span></span><br><span class="line"><span class="comment"># https://geektutu.com</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> gym</span><br><span class="line"><span class="keyword">from</span> tensorflow.keras <span class="keyword">import</span> models</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">saved_model = models.load_model(<span class="string">&#x27;CartPole-v0-nn.h5&#x27;</span>)  <span class="comment"># 加载模型</span></span><br><span class="line">env = gym.make(<span class="string">&quot;CartPole-v0&quot;</span>)  <span class="comment"># 加载游戏环境</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">    state = env.reset()</span><br><span class="line">    score = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        time.sleep(<span class="number">0.01</span>)</span><br><span class="line">        env.render()   <span class="comment"># 显示画面</span></span><br><span class="line">        action = np.argmax(saved_model.predict(np.array([state]))[<span class="number">0</span>])  <span class="comment"># 预测动作</span></span><br><span class="line">        state, reward, done, _ = env.step(action)  <span class="comment"># 执行这个动作</span></span><br><span class="line">        score += reward     <span class="comment"># 每回合的得分</span></span><br><span class="line">        <span class="keyword">if</span> done:       <span class="comment"># 游戏结束</span></span><br><span class="line">            print(<span class="string">&#x27;using nn, score: &#x27;</span>, score)  <span class="comment"># 打印分数</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">env.close()</span><br></pre></td></tr></table></figure>
+<h2 id="模型测试-预测"><a href="#模型测试-预测" class="headerlink" title="模型测试/预测"></a>模型测试/预测</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># predict.py</span></span><br><span class="line"><span class="comment"># https://geektutu.com</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> gym</span><br><span class="line"><span class="keyword">from</span> tensorflow.keras <span class="keyword">import</span> models</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">saved_model = models.load_model(<span class="string">&#x27;CartPole-v0-nn.h5&#x27;</span>)  <span class="comment"># 加载模型</span></span><br><span class="line">env = gym.make(<span class="string">&quot;CartPole-v0&quot;</span>)  <span class="comment"># 加载游戏环境</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">    state = env.reset()</span><br><span class="line">    score = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        time.sleep(<span class="number">0.01</span>)</span><br><span class="line">        env.render()   <span class="comment"># 显示画面</span></span><br><span class="line">        action = np.argmax(saved_model.predict(np.array([state]))[<span class="number">0</span>])  <span class="comment"># 预测动作</span></span><br><span class="line">        state, reward, done, _ = env.step(action)  <span class="comment"># 执行这个动作</span></span><br><span class="line">        score += reward     <span class="comment"># 每回合的得分</span></span><br><span class="line">        <span class="keyword">if</span> done:       <span class="comment"># 游戏结束</span></span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;using nn, score: &#x27;</span>, score)  <span class="comment"># 打印分数</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">env.close()</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ python predict.py</span><br><span class="line">using nn, score:  200.0</span><br><span class="line">using nn, score:  200.0</span><br><span class="line">using nn, score:  200.0</span><br><span class="line">using nn, score:  200.0</span><br><span class="line">using nn, score:  200.0</span><br></pre></td></tr></table></figure>
 
@@ -577,7 +577,7 @@
         <h3>推荐阅读</h3>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/hpg-reduce-size/compiler.jpg')"></div>
+    <div class="post-img" style="background-image: url('/post/hpg-string-concat/data-structure.jpg')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
@@ -591,14 +591,14 @@
                 
                 
             </div>
-            <a href="/post/charpter-4/hpg-reduce-size.html" class="title">
-                减小 Go 代码编译后的二进制体积
+            <a href="/post/charpter-2/hpg-range.html" class="title">
+                for 和 range 的性能比较
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2020-12-06，</span>
-                    <span class="hidden-xs">全文3884字，</span>
-                    <span>阅读约13分钟</span>
+                    <span>发表于2020-12-01，</span>
+                    <span class="hidden-xs">全文5859字，</span>
+                    <span>阅读约20分钟</span>
                 </small>
             </p>
         </div>
@@ -606,36 +606,7 @@
 </div>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/geeorm/geeorm_sm.jpg')"></div>
-    <div class="post-info">
-        <div class="post-info-center">
-            <div class="hidden-xs">
-                
-                
-                <span>/</span>
-                
-                <a class="text-gray" href="/tags/#Go"
-                    title="Go">Go</a>
-                <span>/</span>
-                
-                
-            </div>
-            <a href="/post/geeorm-day2.html" class="title">
-                动手写ORM框架 - GeeORM第二天 对象表结构映射
-            </a>
-            <p class="text-gray">
-                <small>
-                    <span>发表于2020-03-08，</span>
-                    <span class="hidden-xs">全文9801字，</span>
-                    <span>阅读约33分钟</span>
-                </small>
-            </p>
-        </div>
-    </div>
-</div>
-        
-        <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/blog-experience-5/heart.jpg')"></div>
+    <div class="post-img" style="background-image: url('/post/blog-experience-4/google.jpg')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
@@ -649,14 +620,59 @@
                 
                 
             </div>
-            <a href="/post/blog-experience-5.html" class="title">
-                博客折腾记(五) - 友链这件事，没那么简单
+            <a href="/post/blog-experience-4.html" class="title">
+                博客折腾记(四) - 原创资格是争取来的
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2019-07-03，</span>
-                    <span class="hidden-xs">全文3764字，</span>
-                    <span>阅读约13分钟</span>
+                    <span>发表于2019-06-30，</span>
+                    <span class="hidden-xs">全文4994字，</span>
+                    <span>阅读约17分钟</span>
+                </small>
+            </p>
+        </div>
+    </div>
+</div>
+        
+        <div class="post-preview">
+    <div class="post-img" style="background-image: url('/post/tensorflow2-gym-dqn/mountaincar_v0_scores.jpg')"></div>
+    <div class="post-info">
+        <div class="post-info-center">
+            <div class="hidden-xs">
+                
+                
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#TensorFlow"
+                    title="TensorFlow">TensorFlow</a>
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#Python"
+                    title="Python">Python</a>
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#强化学习"
+                    title="强化学习">强化学习</a>
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#OpenAI gym"
+                    title="OpenAI gym">OpenAI gym</a>
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#DQN"
+                    title="DQN">DQN</a>
+                <span>/</span>
+                
+                
+            </div>
+            <a href="/post/tensorflow2-gym-dqn.html" class="title">
+                TensorFlow 2.0 (八) - 强化学习 DQN 玩转 gym Mountain Car
+            </a>
+            <p class="text-gray">
+                <small>
+                    <span>发表于2019-06-28，</span>
+                    <span class="hidden-xs">全文8488字，</span>
+                    <span>阅读约29分钟</span>
                 </small>
             </p>
         </div>

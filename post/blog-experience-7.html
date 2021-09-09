@@ -303,10 +303,10 @@
 <li>将数据写入<code>comments.json</code>。</li>
 </ul>
 <p>最终的 JSON 文本如下：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[&#123;</span><br><span class="line">    <span class="attr">&quot;title&quot;</span>: <span class="string">&quot;Pandas数据处理-Cheat Sheet中文版&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;url&quot;</span>: <span class="string">&quot;/post/pandas-cheat-sheet-zh-cn.html&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;count&quot;</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">&quot;user&quot;</span>: <span class="string">&quot;cooldeepAI&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;icon&quot;</span>: <span class="string">&quot;https://avatars0.githubusercontent.com/u/45840623?v=4&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;date&quot;</span>: <span class="string">&quot;10小时前&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;body&quot;</span>: <span class="string">&quot;感谢翻译与分享:)&quot;</span></span><br><span class="line">&#125;,&#123; ... &#125;,&#123; ... &#125;,&#123; ... &#125; ...]</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[&#123;</span><br><span class="line">    <span class="attr">&quot;title&quot;</span>: <span class="string">&quot;Pandas数据处理-Cheat Sheet中文版&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;url&quot;</span>: <span class="string">&quot;/post/pandas-cheat-sheet-zh-cn.html&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;count&quot;</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">&quot;user&quot;</span>: <span class="string">&quot;cooldeepAI&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;icon&quot;</span>: <span class="string">&quot;https://avatars0.githubusercontent.com/u/45840623?v=4&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;date&quot;</span>: <span class="string">&quot;10小时前&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;body&quot;</span>: <span class="string">&quot;感谢翻译与分享:)&quot;</span></span><br><span class="line">&#125;,&#123; ... &#125;,&#123; ... &#125;,&#123; ... &#125; ...]</span><br></pre></td></tr></table></figure>
 
 <p>然后我在博客模板中添加了如下代码。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;gitalk-related&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span> <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params">comments</span>) </span>&#123;</span></span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line"><span class="javascript">    fetch(<span class="string">&#x27;/comments.json&#x27;</span>)</span></span><br><span class="line"><span class="javascript">        .then(<span class="function"><span class="keyword">function</span> (<span class="params">r</span>) </span>&#123; <span class="keyword">return</span> r.json() &#125;)</span></span><br><span class="line">        .then(render)</span><br><span class="line"><span class="javascript">        .catch(<span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;&#125;)</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span>   </span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;gitalk-related&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span> <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params">comments</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        ...</span></span><br><span class="line"><span class="javascript">    &#125;</span></span><br><span class="line"><span class="javascript">    fetch(<span class="string">&#x27;/comments.json&#x27;</span>)</span></span><br><span class="line"><span class="javascript">        .then(<span class="function"><span class="keyword">function</span> (<span class="params">r</span>) </span>&#123; <span class="keyword">return</span> r.json() &#125;)</span></span><br><span class="line"><span class="javascript">        .then(render)</span></span><br><span class="line"><span class="javascript">        .catch(<span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;&#125;)</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>   </span><br></pre></td></tr></table></figure>
 
 <p>使用 JavaScript 的 fetch 函数请求<code>comments.json</code>的数据，随机选取 4 条，动态地生成 HTML，插入到 <code>gitalk-related</code>中。这样每篇文章推荐的评论都不一样了。效果的话，相信读到这里你已经看到了~</p>
 <p>生成 comments.json 和动态渲染 HTML 的代码都放到 <a target="_blank" rel="noopener" href="https://gist.github.com/geektutu/f379d87767787979507a0e4a20da64ba">Github</a>。CSS 色彩基本是按照 Gitalk 来写的，这份代码对所有的使用 Github Issues 作为评论系统的童鞋都是可用的，也是静态博客完善评论系统的一个思路吧。</p>
@@ -517,6 +517,35 @@
         <h3>推荐阅读</h3>
         
         <div class="post-preview">
+    <div class="post-img" style="background-image: url('/post/hpg-mutex/concurrent.jpg')"></div>
+    <div class="post-info">
+        <div class="post-info-center">
+            <div class="hidden-xs">
+                
+                
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#Go语言高性能编程"
+                    title="Go语言高性能编程">Go语言高性能编程</a>
+                <span>/</span>
+                
+                
+            </div>
+            <a href="/post/charpter-3/hpg-mutex.html" class="title">
+                读写锁和互斥锁的性能比较
+            </a>
+            <p class="text-gray">
+                <small>
+                    <span>发表于2020-12-05，</span>
+                    <span class="hidden-xs">全文6076字，</span>
+                    <span>阅读约21分钟</span>
+                </small>
+            </p>
+        </div>
+    </div>
+</div>
+        
+        <div class="post-preview">
     <div class="post-img" style="background-image: url('/post/high-performance-go/high-performance-go.jpg')"></div>
     <div class="post-info">
         <div class="post-info-center">
@@ -546,7 +575,7 @@
 </div>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/geecache-day3/http_logo.jpg')"></div>
+    <div class="post-img" style="background-image: url('/post/tensorflow2-gym-nn/cartpole_v0_failed.gif')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
@@ -554,49 +583,32 @@
                 
                 <span>/</span>
                 
-                <a class="text-gray" href="/tags/#Go"
-                    title="Go">Go</a>
+                <a class="text-gray" href="/tags/#机器学习"
+                    title="机器学习">机器学习</a>
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#TensorFlow"
+                    title="TensorFlow">TensorFlow</a>
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#Python"
+                    title="Python">Python</a>
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#OpenAI gym"
+                    title="OpenAI gym">OpenAI gym</a>
                 <span>/</span>
                 
                 
             </div>
-            <a href="/post/geecache-day3.html" class="title">
-                动手写分布式缓存 - GeeCache第三天 HTTP 服务端
+            <a href="/post/tensorflow2-gym-nn.html" class="title">
+                TensorFlow 2.0 (六) - 监督学习玩转 OpenAI gym game
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2020-02-12，</span>
-                    <span class="hidden-xs">全文6023字，</span>
-                    <span>阅读约21分钟</span>
-                </small>
-            </p>
-        </div>
-    </div>
-</div>
-        
-        <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/geecache/geecache_sm.jpg')"></div>
-    <div class="post-info">
-        <div class="post-info-center">
-            <div class="hidden-xs">
-                
-                
-                <span>/</span>
-                
-                <a class="text-gray" href="/tags/#Go"
-                    title="Go">Go</a>
-                <span>/</span>
-                
-                
-            </div>
-            <a href="/post/geecache.html" class="title">
-                7天用Go从零实现分布式缓存GeeCache
-            </a>
-            <p class="text-gray">
-                <small>
-                    <span>发表于2020-02-08，</span>
-                    <span class="hidden-xs">全文3456字，</span>
-                    <span>阅读约12分钟</span>
+                    <span>发表于2019-06-21，</span>
+                    <span class="hidden-xs">全文7072字，</span>
+                    <span>阅读约24分钟</span>
                 </small>
             </p>
         </div>

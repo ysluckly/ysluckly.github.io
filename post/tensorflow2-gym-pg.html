@@ -346,7 +346,7 @@
 </blockquote>
 <p>某一步的累加期望等于下一步的累加期望乘衰减系数<code>gamma</code>，加上<code>reward</code>。</p>
 <p>手工算一算。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">最后一步：1</span><br><span class="line">倒数第二步：1 + 0.95 * 1 &#x3D; 1.95</span><br><span class="line">倒数第三步：1 + 0.95 * 1.95 &#x3D; 2.8525</span><br><span class="line">倒数第四步：1 + 0.95 * 2.8525 &#x3D; 3.709875</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">最后一步：1</span><br><span class="line">倒数第二步：1 + 0.95 * 1 = 1.95</span><br><span class="line">倒数第三步：1 + 0.95 * 1.95 = 2.8525</span><br><span class="line">倒数第四步：1 + 0.95 * 2.8525 = 3.709875</span><br></pre></td></tr></table></figure>
 
 <p>假设某个回合只得了10分，那么这个回合的每一步的累加期望都不会高。假设得到了满分200分，那么回合中的大部分步骤的累加期望很会很高，越是前面的步骤，累加期望越高。</p>
 <p>代码实现就很简单了，唯一的不同是最后加了中心化和标准化的处理。这样处理的目的是希望得到相同尺度的数据，避免因为数值相差过大而导致网络无法收敛。</p>
@@ -363,7 +363,7 @@
 
 <p>设置参数<code>sample_weight</code>，即可给loss设权重。</p>
 <h2 id="训练过程与结果"><a href="#训练过程与结果" class="headerlink" title="训练过程与结果"></a>训练过程与结果</h2><p>接下来，把 OpenAI gym 的代码融入进来吧。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># policy_gradient.py</span></span><br><span class="line"><span class="comment"># https://geektutu.com</span></span><br><span class="line">episodes = <span class="number">2000</span>  <span class="comment"># 至多2000次</span></span><br><span class="line">score_list = []  <span class="comment"># 记录所有分数</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(episodes):</span><br><span class="line">    s = env.reset()</span><br><span class="line">    score = <span class="number">0</span></span><br><span class="line">    replay_records = []</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        a = choose_action(s)</span><br><span class="line">        next_s, r, done, _ = env.step(a)</span><br><span class="line">        replay_records.append((s, a, r))</span><br><span class="line"></span><br><span class="line">        score += r</span><br><span class="line">        s = next_s</span><br><span class="line">        <span class="keyword">if</span> done:</span><br><span class="line">            train(replay_records)</span><br><span class="line">            score_list.append(score)</span><br><span class="line">            print(<span class="string">&#x27;episode:&#x27;</span>, i, <span class="string">&#x27;score:&#x27;</span>, score, <span class="string">&#x27;max:&#x27;</span>, <span class="built_in">max</span>(score_list))</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="comment"># 最后10次的平均分大于 195 时，停止并保存模型</span></span><br><span class="line">    <span class="keyword">if</span> np.mean(score_list[-<span class="number">10</span>:]) &gt; <span class="number">195</span>:</span><br><span class="line">        model.save(<span class="string">&#x27;CartPole-v0-pg.h5&#x27;</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">env.close()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># policy_gradient.py</span></span><br><span class="line"><span class="comment"># https://geektutu.com</span></span><br><span class="line">episodes = <span class="number">2000</span>  <span class="comment"># 至多2000次</span></span><br><span class="line">score_list = []  <span class="comment"># 记录所有分数</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(episodes):</span><br><span class="line">    s = env.reset()</span><br><span class="line">    score = <span class="number">0</span></span><br><span class="line">    replay_records = []</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        a = choose_action(s)</span><br><span class="line">        next_s, r, done, _ = env.step(a)</span><br><span class="line">        replay_records.append((s, a, r))</span><br><span class="line"></span><br><span class="line">        score += r</span><br><span class="line">        s = next_s</span><br><span class="line">        <span class="keyword">if</span> done:</span><br><span class="line">            train(replay_records)</span><br><span class="line">            score_list.append(score)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;episode:&#x27;</span>, i, <span class="string">&#x27;score:&#x27;</span>, score, <span class="string">&#x27;max:&#x27;</span>, <span class="built_in">max</span>(score_list))</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="comment"># 最后10次的平均分大于 195 时，停止并保存模型</span></span><br><span class="line">    <span class="keyword">if</span> np.mean(score_list[-<span class="number">10</span>:]) &gt; <span class="number">195</span>:</span><br><span class="line">        model.save(<span class="string">&#x27;CartPole-v0-pg.h5&#x27;</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">env.close()</span><br></pre></td></tr></table></figure>
 
 <p>运行一下试一试吧。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ python policy_gradient.py</span><br><span class="line">episode: 0 score: 13.0 max: 13.0</span><br><span class="line">episode: 1 score: 35.0 max: 35.0</span><br><span class="line">episode: 2 score: 18.0 max: 35.0</span><br><span class="line">...</span><br><span class="line">episode: 793 score: 200.0 max: 200.0</span><br><span class="line">episode: 794 score: 200.0 max: 200.0</span><br><span class="line">episode: 795 score: 164.0 max: 200.0</span><br><span class="line">episode: 796 score: 200.0 max: 200.0</span><br><span class="line">model saved</span><br></pre></td></tr></table></figure>
@@ -373,7 +373,7 @@
 
 <p><img src="tensorflow2-gym-pg/pg_plot.jpg" alt="Geektutu Policy Gradient Plot">。</p>
 <h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>按照惯例，测试下效果。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># test_policy_gradient.py</span></span><br><span class="line"><span class="comment"># https://geektutu.com</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> gym</span><br><span class="line"><span class="keyword">from</span> tensorflow.keras <span class="keyword">import</span> models</span><br><span class="line"></span><br><span class="line">saved_model = models.load_model(<span class="string">&#x27;CartPole-v0-pg.h5&#x27;</span>)</span><br><span class="line">env = gym.make(<span class="string">&quot;CartPole-v0&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">    s = env.reset()</span><br><span class="line">    score = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        time.sleep(<span class="number">0.01</span>)</span><br><span class="line">        env.render()</span><br><span class="line">        prob = saved_model.predict(np.array([s]))[<span class="number">0</span>]</span><br><span class="line">        a = np.random.choice(<span class="built_in">len</span>(prob), p=prob)</span><br><span class="line">        s, r, done, _ = env.step(a)</span><br><span class="line">        score += r</span><br><span class="line">        <span class="keyword">if</span> done:</span><br><span class="line">            print(<span class="string">&#x27;using policy gradient, score: &#x27;</span>, score)  <span class="comment"># 打印分数</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">env.close()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># test_policy_gradient.py</span></span><br><span class="line"><span class="comment"># https://geektutu.com</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> gym</span><br><span class="line"><span class="keyword">from</span> tensorflow.keras <span class="keyword">import</span> models</span><br><span class="line"></span><br><span class="line">saved_model = models.load_model(<span class="string">&#x27;CartPole-v0-pg.h5&#x27;</span>)</span><br><span class="line">env = gym.make(<span class="string">&quot;CartPole-v0&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">    s = env.reset()</span><br><span class="line">    score = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        time.sleep(<span class="number">0.01</span>)</span><br><span class="line">        env.render()</span><br><span class="line">        prob = saved_model.predict(np.array([s]))[<span class="number">0</span>]</span><br><span class="line">        a = np.random.choice(<span class="built_in">len</span>(prob), p=prob)</span><br><span class="line">        s, r, done, _ = env.step(a)</span><br><span class="line">        score += r</span><br><span class="line">        <span class="keyword">if</span> done:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;using policy gradient, score: &#x27;</span>, score)  <span class="comment"># 打印分数</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">env.close()</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">python test_policy_gradient.py</span><br><span class="line">using policy gradient, score:  200.0</span><br><span class="line">using policy gradient, score:  200.0</span><br><span class="line">using policy gradient, score:  200.0</span><br><span class="line">using policy gradient, score:  200.0</span><br><span class="line">using policy gradient, score:  200.0</span><br></pre></td></tr></table></figure>
 
@@ -590,7 +590,7 @@
         <h3>推荐阅读</h3>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/hpg-benchmark/benchmark.jpg')"></div>
+    <div class="post-img" style="background-image: url('/post/hpg-gotchas-array-slice/gotchas.jpg')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
@@ -604,14 +604,43 @@
                 
                 
             </div>
-            <a href="/post/charpter-1/hpg-pprof.html" class="title">
-                pprof 性能分析
+            <a href="/post/charpter-a1/hpg-gotchas-array-slice.html" class="title">
+                Go 语言陷阱 - 数组和切片
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2020-11-22，</span>
-                    <span class="hidden-xs">全文10385字，</span>
-                    <span>阅读约35分钟</span>
+                    <span>发表于2020-12-07，</span>
+                    <span class="hidden-xs">全文2590字，</span>
+                    <span>阅读约9分钟</span>
+                </small>
+            </p>
+        </div>
+    </div>
+</div>
+        
+        <div class="post-preview">
+    <div class="post-img" style="background-image: url('/post/gee-day5/middleware.jpg')"></div>
+    <div class="post-info">
+        <div class="post-info-center">
+            <div class="hidden-xs">
+                
+                
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#Go"
+                    title="Go">Go</a>
+                <span>/</span>
+                
+                
+            </div>
+            <a href="/post/gee-day5.html" class="title">
+                Go语言动手写Web框架 - Gee第五天 中间件Middleware
+            </a>
+            <p class="text-gray">
+                <small>
+                    <span>发表于2019-09-01，</span>
+                    <span class="hidden-xs">全文6135字，</span>
+                    <span>阅读约21分钟</span>
                 </small>
             </p>
         </div>
@@ -641,35 +670,6 @@
                     <span>发表于2019-08-19，</span>
                     <span class="hidden-xs">全文6819字，</span>
                     <span>阅读约23分钟</span>
-                </small>
-            </p>
-        </div>
-    </div>
-</div>
-        
-        <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/quick-go2/go2.jpg')"></div>
-    <div class="post-info">
-        <div class="post-info-center">
-            <div class="hidden-xs">
-                
-                
-                <span>/</span>
-                
-                <a class="text-gray" href="/tags/#Go"
-                    title="Go">Go</a>
-                <span>/</span>
-                
-                
-            </div>
-            <a href="/post/quick-go2.html" class="title">
-                Go2 新特性简明教程
-            </a>
-            <p class="text-gray">
-                <small>
-                    <span>发表于2019-08-15，</span>
-                    <span class="hidden-xs">全文4860字，</span>
-                    <span>阅读约17分钟</span>
                 </small>
             </p>
         </div>

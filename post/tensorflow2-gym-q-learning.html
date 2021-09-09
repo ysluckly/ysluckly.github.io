@@ -416,13 +416,13 @@
 <p>为什么是<code>max(Q[next_s])</code>而不是<code>min(Q[next_s])</code>呢？在Q-Table中，状态 <strong>next_s</strong> 有3个动作可选，即[0, 1, 2]，对应价值 **Q[next_s][0]，Q[next_s][1]，Q[next_s][2]**。<code>Q[s][a]</code>的值应由产生的最大价值的动作决定。</p>
 <p>我们想象一个极端场景：五子棋，最后一步，下在X位置赢，100分；其他位置输，0分。那怎么衡量倒数第二步的价值呢？当然是由最后一步的最大价值决定，不能因为最后一步走错了，就否定前面动作的价值。</p>
 <h2 id="开始训练"><a href="#开始训练" class="headerlink" title="开始训练"></a>开始训练</h2><p>接下来我们就把这个公式嵌入到<code>OpenAI gym</code>中吧。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># q_learning.py</span></span><br><span class="line"><span class="comment"># https://geektutu.com</span></span><br><span class="line">lr, factor = <span class="number">0.7</span>, <span class="number">0.95</span></span><br><span class="line">episodes = <span class="number">10000</span>  <span class="comment"># 训练10000次</span></span><br><span class="line">score_list = []  <span class="comment"># 记录所有分数</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(episodes):</span><br><span class="line">    s = transform_state(env.reset())</span><br><span class="line">    score = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        a = np.argmax(Q[s])</span><br><span class="line">        <span class="comment"># 训练刚开始，多一点随机性，以便有更多的状态</span></span><br><span class="line">        <span class="keyword">if</span> np.random.random() &gt; i * <span class="number">3</span> / episodes:</span><br><span class="line">            a = np.random.choice([<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>])</span><br><span class="line">        <span class="comment"># 执行动作</span></span><br><span class="line">        next_s, reward, done, _ = env.step(a)</span><br><span class="line">        next_s = transform_state(next_s)</span><br><span class="line">        <span class="comment"># 根据上面的公式更新Q-Table</span></span><br><span class="line">        Q[s][a] = (<span class="number">1</span> - lr) * Q[s][a] + lr * (reward + factor * <span class="built_in">max</span>(Q[next_s]))</span><br><span class="line">        score += reward</span><br><span class="line">        s = next_s</span><br><span class="line">        <span class="keyword">if</span> done:</span><br><span class="line">            score_list.append(score)</span><br><span class="line">            print(<span class="string">&#x27;episode:&#x27;</span>, i, <span class="string">&#x27;score:&#x27;</span>, score, <span class="string">&#x27;max:&#x27;</span>, <span class="built_in">max</span>(score_list))</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">env.close()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 保存模型</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;MountainCar-v0-q-learning.pickle&#x27;</span>, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    pickle.dump(<span class="built_in">dict</span>(Q), f)</span><br><span class="line">    print(<span class="string">&#x27;model saved&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># q_learning.py</span></span><br><span class="line"><span class="comment"># https://geektutu.com</span></span><br><span class="line">lr, factor = <span class="number">0.7</span>, <span class="number">0.95</span></span><br><span class="line">episodes = <span class="number">10000</span>  <span class="comment"># 训练10000次</span></span><br><span class="line">score_list = []  <span class="comment"># 记录所有分数</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(episodes):</span><br><span class="line">    s = transform_state(env.reset())</span><br><span class="line">    score = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        a = np.argmax(Q[s])</span><br><span class="line">        <span class="comment"># 训练刚开始，多一点随机性，以便有更多的状态</span></span><br><span class="line">        <span class="keyword">if</span> np.random.random() &gt; i * <span class="number">3</span> / episodes:</span><br><span class="line">            a = np.random.choice([<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>])</span><br><span class="line">        <span class="comment"># 执行动作</span></span><br><span class="line">        next_s, reward, done, _ = env.step(a)</span><br><span class="line">        next_s = transform_state(next_s)</span><br><span class="line">        <span class="comment"># 根据上面的公式更新Q-Table</span></span><br><span class="line">        Q[s][a] = (<span class="number">1</span> - lr) * Q[s][a] + lr * (reward + factor * <span class="built_in">max</span>(Q[next_s]))</span><br><span class="line">        score += reward</span><br><span class="line">        s = next_s</span><br><span class="line">        <span class="keyword">if</span> done:</span><br><span class="line">            score_list.append(score)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;episode:&#x27;</span>, i, <span class="string">&#x27;score:&#x27;</span>, score, <span class="string">&#x27;max:&#x27;</span>, <span class="built_in">max</span>(score_list))</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">env.close()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 保存模型</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;MountainCar-v0-q-learning.pickle&#x27;</span>, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    pickle.dump(<span class="built_in">dict</span>(Q), f)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;model saved&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
 <p>接下来我们来看一看训练效果。因为Q表的状态比较多，因而训练到3000次的时候，仍旧没能成功到达山顶。最终训练结束的时候，分数保持在-150左右，最大分数达到-119。代码中的参数都是随便选取的，如果有时间优化下，肯定能有更好的结果。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ python q_learning.py</span><br><span class="line">episode: 3080 score: -200.0 max: -200</span><br><span class="line">episode: 3081 score: -200.0 max: -200</span><br><span class="line">...</span><br><span class="line">episode: 9996 score: -169.0 max: -119.0</span><br><span class="line">episode: 9997 score: -141.0 max: -119.0</span><br><span class="line">episode: 9998 score: -160.0 max: -119.0</span><br><span class="line">episode: 9999 score: -161.0 max: -119.0</span><br><span class="line">model saved</span><br></pre></td></tr></table></figure>
 
 <h2 id="测试模型"><a href="#测试模型" class="headerlink" title="测试模型"></a>测试模型</h2><p>最终，我们写一下测试代码，加载模型，顺便感受下真实的游戏画面吧~</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># test_q_learning.py</span></span><br><span class="line"><span class="comment"># https://geektutu.com</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">import</span> gym</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载模型</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;MountainCar-v0-q-learning.pickle&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    Q = pickle.load(f)</span><br><span class="line">    print(<span class="string">&#x27;model loaded&#x27;</span>)</span><br><span class="line"></span><br><span class="line">env = gym.make(<span class="string">&#x27;MountainCar-v0&#x27;</span>)</span><br><span class="line">s = env.reset()</span><br><span class="line">score = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    env.render()</span><br><span class="line">    time.sleep(<span class="number">0.01</span>)</span><br><span class="line">    <span class="comment"># transform_state函数 与 训练时的一致</span></span><br><span class="line">    s = transform_state(s)</span><br><span class="line">    a = np.argmax(Q[s]) <span class="keyword">if</span> s <span class="keyword">in</span> Q <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line">    s, reward, done, _ = env.step(a)</span><br><span class="line">    score += reward</span><br><span class="line">    <span class="keyword">if</span> done:</span><br><span class="line">        print(<span class="string">&#x27;score:&#x27;</span>, score)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">env.close()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># test_q_learning.py</span></span><br><span class="line"><span class="comment"># https://geektutu.com</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">import</span> gym</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载模型</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;MountainCar-v0-q-learning.pickle&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    Q = pickle.load(f)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;model loaded&#x27;</span>)</span><br><span class="line"></span><br><span class="line">env = gym.make(<span class="string">&#x27;MountainCar-v0&#x27;</span>)</span><br><span class="line">s = env.reset()</span><br><span class="line">score = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    env.render()</span><br><span class="line">    time.sleep(<span class="number">0.01</span>)</span><br><span class="line">    <span class="comment"># transform_state函数 与 训练时的一致</span></span><br><span class="line">    s = transform_state(s)</span><br><span class="line">    a = np.argmax(Q[s]) <span class="keyword">if</span> s <span class="keyword">in</span> Q <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line">    s, reward, done, _ = env.step(a)</span><br><span class="line">    score += reward</span><br><span class="line">    <span class="keyword">if</span> done:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;score:&#x27;</span>, score)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">env.close()</span><br></pre></td></tr></table></figure>
 
 <p>运行一下，你就知道。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ python test_q_learning.py</span><br><span class="line">model loaded</span><br><span class="line">score: -151.0</span><br></pre></td></tr></table></figure>
@@ -640,7 +640,7 @@
         <h3>推荐阅读</h3>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/hpg-benchmark/benchmark.jpg')"></div>
+    <div class="post-img" style="background-image: url('/post/hpg-string-concat/data-structure.jpg')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
@@ -654,14 +654,14 @@
                 
                 
             </div>
-            <a href="/post/charpter-1/hpg-pprof.html" class="title">
-                pprof 性能分析
+            <a href="/post/charpter-2/hpg-empty-struct.html" class="title">
+                Go 空结构体 struct{} 的使用
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2020-11-22，</span>
-                    <span class="hidden-xs">全文10385字，</span>
-                    <span>阅读约35分钟</span>
+                    <span>发表于2020-12-25，</span>
+                    <span class="hidden-xs">全文2228字，</span>
+                    <span>阅读约8分钟</span>
                 </small>
             </p>
         </div>
@@ -669,7 +669,7 @@
 </div>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/geerpc/geerpc.jpg')"></div>
+    <div class="post-img" style="background-image: url('/post/gee/gee.jpg')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
@@ -683,14 +683,14 @@
                 
                 
             </div>
-            <a href="/post/geerpc-day7.html" class="title">
-                动手写RPC框架 - GeeRPC第七天 服务发现与注册中心(registry)
+            <a href="/post/gee-day1.html" class="title">
+                Go语言动手写Web框架 - Gee第一天 http.Handler
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2020-10-08，</span>
-                    <span class="hidden-xs">全文10879字，</span>
-                    <span>阅读约37分钟</span>
+                    <span>发表于2019-08-12，</span>
+                    <span class="hidden-xs">全文6588字，</span>
+                    <span>阅读约22分钟</span>
                 </small>
             </p>
         </div>
@@ -698,7 +698,7 @@
 </div>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/pandas-select-data/pandas.gif')"></div>
+    <div class="post-img" style="background-image: url('/post/tensorflow-mnist-tensorboard-training/tensorboard_mnist_graph.png')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
@@ -706,20 +706,32 @@
                 
                 <span>/</span>
                 
-                <a class="text-gray" href="/tags/#Pandas"
-                    title="Pandas">Pandas</a>
+                <a class="text-gray" href="/tags/#机器学习"
+                    title="机器学习">机器学习</a>
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#TensorFlow"
+                    title="TensorFlow">TensorFlow</a>
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#mnist"
+                    title="mnist">mnist</a>
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#Python"
+                    title="Python">Python</a>
                 <span>/</span>
                 
                 
             </div>
-            <a href="/post/pandas-select-data.html" class="title">
-                Pandas 数据处理(二) - 筛选数据
+            <a href="/post/tensorflow-mnist-tensorboard-training.html" class="title">
+                TensorFlow入门(三) - mnist手写数字识别(可视化训练)
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2018-03-21，</span>
-                    <span class="hidden-xs">全文7858字，</span>
-                    <span>阅读约27分钟</span>
+                    <span>发表于2018-03-29，</span>
+                    <span class="hidden-xs">全文5393字，</span>
+                    <span>阅读约18分钟</span>
                 </small>
             </p>
         </div>

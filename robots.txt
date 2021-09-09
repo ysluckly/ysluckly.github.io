@@ -1,1 +1,1 @@
-Sitemap: https://geektutu.com/sitemap.xml
+Sitemap: https://ysliving.github.io/sitemap.xml

@@ -261,7 +261,7 @@
         
         <div class="gkt-article-start"></div>
         <p>使用<code>demo.csv</code>举几个栗子~</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">编号,日期,单价,数量</span><br><span class="line">T001,2018-03-02 12:34:05,100,3</span><br><span class="line">T002,2018-03-02 13:04:05,200,3</span><br><span class="line">T003,2018-03-03 18:12:31,30,10</span><br><span class="line">T004,2018-03-04 20:34:05,400,2</span><br><span class="line">T005,2018-03-02 20:34:05,500,1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">编号,日期,单价,数量</span><br><span class="line">T001,2018-03-02 12:34:05,100,3</span><br><span class="line">T002,2018-03-02 13:04:05,200,3</span><br><span class="line">T003,2018-03-03 18:12:31,30,10</span><br><span class="line">T004,2018-03-04 20:34:05,400,2</span><br><span class="line">T005,2018-03-02 20:34:05,500,1</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">df = pd.read_csv(<span class="string">&#x27;demo.csv&#x27;</span>, index_col=<span class="string">&#x27;编号&#x27;</span>) <span class="comment"># 指定行标签 label</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">                    日期   单价</span></span><br><span class="line"><span class="string">编号                            </span></span><br><span class="line"><span class="string">T001  2018-03-02 12:34:05  100</span></span><br><span class="line"><span class="string">T002  2018-03-02 13:04:05  200</span></span><br><span class="line"><span class="string">T003  2018-03-03 18:12:31   30</span></span><br><span class="line"><span class="string">T004  2018-03-04 20:34:05  400</span></span><br><span class="line"><span class="string">T005  2018-03-02 20:34:05  500</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
 
@@ -338,7 +338,7 @@
 <ul>
 <li>筛选总价大于500的记录</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">df.loc[<span class="keyword">lambda</span> x: x[<span class="string">&#x27;单价&#x27;</span>] * x[<span class="string">&#x27;数量&#x27;</span>] &gt; <span class="number">500</span>] <span class="comment"># 函数入参 x 是整个 DataFrame</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">                       日期   单价  数量</span></span><br><span class="line"><span class="string">编号                                </span></span><br><span class="line"><span class="string">T002  2018-03-02 13:04:05  200   3</span></span><br><span class="line"><span class="string">T004  2018-03-04 20:34:05  400   2</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="comment"># 等价于 </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">filter_func</span>(<span class="params">x</span>):</span></span><br><span class="line">    print(<span class="built_in">type</span>(x)) <span class="comment"># &lt;class &#x27;pandas.core.frame.DataFrame&#x27;&gt;</span></span><br><span class="line">    <span class="keyword">return</span> x[<span class="string">&#x27;单价&#x27;</span>] * x[<span class="string">&#x27;数量&#x27;</span>] &gt; <span class="number">500</span></span><br><span class="line">df.loc[filter_func]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">df.loc[<span class="keyword">lambda</span> x: x[<span class="string">&#x27;单价&#x27;</span>] * x[<span class="string">&#x27;数量&#x27;</span>] &gt; <span class="number">500</span>] <span class="comment"># 函数入参 x 是整个 DataFrame</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">                       日期   单价  数量</span></span><br><span class="line"><span class="string">编号                                </span></span><br><span class="line"><span class="string">T002  2018-03-02 13:04:05  200   3</span></span><br><span class="line"><span class="string">T004  2018-03-04 20:34:05  400   2</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="comment"># 等价于 </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">filter_func</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">type</span>(x)) <span class="comment"># &lt;class &#x27;pandas.core.frame.DataFrame&#x27;&gt;</span></span><br><span class="line">    <span class="keyword">return</span> x[<span class="string">&#x27;单价&#x27;</span>] * x[<span class="string">&#x27;数量&#x27;</span>] &gt; <span class="number">500</span></span><br><span class="line">df.loc[filter_func]</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>筛选3月2号的记录</li>
@@ -352,7 +352,7 @@
 <h3 id="2-apply"><a href="#2-apply" class="headerlink" title="2. apply"></a>2. apply</h3><ul>
 <li>筛选总价大于500的记录</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">df[df.apply(<span class="keyword">lambda</span> x: x[<span class="string">&#x27;单价&#x27;</span>] * x[<span class="string">&#x27;数量&#x27;</span>] &gt; <span class="number">500</span>, axis=<span class="number">1</span>)] <span class="comment"># 函数入参 x 是一行数据 Series</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">                       日期   单价  数量</span></span><br><span class="line"><span class="string">编号                                </span></span><br><span class="line"><span class="string">T002  2018-03-02 13:04:05  200   3</span></span><br><span class="line"><span class="string">T004  2018-03-04 20:34:05  400   2</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="comment"># 等价于 </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">filter_func</span>(<span class="params">x</span>):</span></span><br><span class="line">    print(<span class="built_in">type</span>(x)) <span class="comment"># &lt;class &#x27;pandas.core.series.Series&#x27;&gt;</span></span><br><span class="line">    <span class="keyword">return</span> x[<span class="string">&#x27;单价&#x27;</span>] * x[<span class="string">&#x27;数量&#x27;</span>] &gt; <span class="number">500</span></span><br><span class="line">df[df.apply(filter_func, axis=<span class="number">1</span>)]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">df[df.apply(<span class="keyword">lambda</span> x: x[<span class="string">&#x27;单价&#x27;</span>] * x[<span class="string">&#x27;数量&#x27;</span>] &gt; <span class="number">500</span>, axis=<span class="number">1</span>)] <span class="comment"># 函数入参 x 是一行数据 Series</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">                       日期   单价  数量</span></span><br><span class="line"><span class="string">编号                                </span></span><br><span class="line"><span class="string">T002  2018-03-02 13:04:05  200   3</span></span><br><span class="line"><span class="string">T004  2018-03-04 20:34:05  400   2</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="comment"># 等价于 </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">filter_func</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">type</span>(x)) <span class="comment"># &lt;class &#x27;pandas.core.series.Series&#x27;&gt;</span></span><br><span class="line">    <span class="keyword">return</span> x[<span class="string">&#x27;单价&#x27;</span>] * x[<span class="string">&#x27;数量&#x27;</span>] &gt; <span class="number">500</span></span><br><span class="line">df[df.apply(filter_func, axis=<span class="number">1</span>)]</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>axis默认为0，表示遍历列，axis=1，表示遍历行。</p>
@@ -366,9 +366,9 @@
 <ul>
 <li>假如数据中单价包含非数字，需要删除</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">编号,日期,单价,数量</span><br><span class="line">T001,2018-03-02 12:34:05,100,3</span><br><span class="line">T002,2018-03-02 13:04:05,200,3</span><br><span class="line">T003,2018-03-03 18:12:31,30,10</span><br><span class="line">T004,2018-03-04 20:34:05,400,2</span><br><span class="line">T005,2018-03-02 20:34:05,500,1</span><br><span class="line">T006,2018-03-02 20:34:05,$#500,1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">编号,日期,单价,数量</span><br><span class="line">T001,2018-03-02 12:34:05,100,3</span><br><span class="line">T002,2018-03-02 13:04:05,200,3</span><br><span class="line">T003,2018-03-03 18:12:31,30,10</span><br><span class="line">T004,2018-03-04 20:34:05,400,2</span><br><span class="line">T005,2018-03-02 20:34:05,500,1</span><br><span class="line">T006,2018-03-02 20:34:05,$#500,1</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">filter_func</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="built_in">float</span>(x[<span class="string">&#x27;单价&#x27;</span>]) <span class="comment"># x是为某一行的数据，x[&#x27;单价&#x27;]可以取到该行对应的值</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">df = pd.read_csv(<span class="string">&#x27;demo.csv&#x27;</span>, index_col=<span class="string">&#x27;编号&#x27;</span>)</span><br><span class="line">print(df[df.apply(filter_func, axis=<span class="number">1</span>)])</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">                       日期     单价  数量</span></span><br><span class="line"><span class="string">编号                                  </span></span><br><span class="line"><span class="string">T001  2018-03-02 12:34:05    100   3</span></span><br><span class="line"><span class="string">T002  2018-03-02 13:04:05    200   3</span></span><br><span class="line"><span class="string">T003  2018-03-03 18:12:31     30  10</span></span><br><span class="line"><span class="string">T004  2018-03-04 20:34:05    400   2</span></span><br><span class="line"><span class="string">T005  2018-03-02 20:34:05  500.0   1</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">filter_func</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="built_in">float</span>(x[<span class="string">&#x27;单价&#x27;</span>]) <span class="comment"># x是为某一行的数据，x[&#x27;单价&#x27;]可以取到该行对应的值</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">df = pd.read_csv(<span class="string">&#x27;demo.csv&#x27;</span>, index_col=<span class="string">&#x27;编号&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(df[df.apply(filter_func, axis=<span class="number">1</span>)])</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">                       日期     单价  数量</span></span><br><span class="line"><span class="string">编号                                  </span></span><br><span class="line"><span class="string">T001  2018-03-02 12:34:05    100   3</span></span><br><span class="line"><span class="string">T002  2018-03-02 13:04:05    200   3</span></span><br><span class="line"><span class="string">T003  2018-03-03 18:12:31     30  10</span></span><br><span class="line"><span class="string">T004  2018-03-04 20:34:05    400   2</span></span><br><span class="line"><span class="string">T005  2018-03-02 20:34:05  500.0   1</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="附-推荐"><a href="#附-推荐" class="headerlink" title="附 推荐"></a>附 推荐</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://geektutu.com/post/quick-python.html">一篇文章入门 Python</a></li>
@@ -580,7 +580,7 @@
         <h3>推荐阅读</h3>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/hpg-mutex/concurrent.jpg')"></div>
+    <div class="post-img" style="background-image: url('/post/hpg-reduce-size/compiler.jpg')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
@@ -594,14 +594,14 @@
                 
                 
             </div>
-            <a href="/post/charpter-3/hpg-exit-goroutine.html" class="title">
-                如何退出协程 goroutine (其他场景)
+            <a href="/post/charpter-4/hpg-reduce-size.html" class="title">
+                减小 Go 代码编译后的二进制体积
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2020-12-15，</span>
-                    <span class="hidden-xs">全文4652字，</span>
-                    <span>阅读约16分钟</span>
+                    <span>发表于2020-12-06，</span>
+                    <span class="hidden-xs">全文3884字，</span>
+                    <span>阅读约13分钟</span>
                 </small>
             </p>
         </div>
@@ -609,7 +609,7 @@
 </div>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/hpg-mutex/concurrent.jpg')"></div>
+    <div class="post-img" style="background-image: url('/post/geecache-day5/dist_nodes_logo.jpg')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
@@ -617,20 +617,20 @@
                 
                 <span>/</span>
                 
-                <a class="text-gray" href="/tags/#Go语言高性能编程"
-                    title="Go语言高性能编程">Go语言高性能编程</a>
+                <a class="text-gray" href="/tags/#Go"
+                    title="Go">Go</a>
                 <span>/</span>
                 
                 
             </div>
-            <a href="/post/charpter-3/hpg-mutex.html" class="title">
-                读写锁和互斥锁的性能比较
+            <a href="/post/geecache-day5.html" class="title">
+                动手写分布式缓存 - GeeCache第五天 分布式节点
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2020-12-05，</span>
-                    <span class="hidden-xs">全文6076字，</span>
-                    <span>阅读约21分钟</span>
+                    <span>发表于2020-02-16，</span>
+                    <span class="hidden-xs">全文9530字，</span>
+                    <span>阅读约32分钟</span>
                 </small>
             </p>
         </div>
@@ -638,7 +638,7 @@
 </div>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/blog-experience-3/cnzz.jpg')"></div>
+    <div class="post-img" style="background-image: url('/post/pandas-select-data/pandas.gif')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
@@ -646,20 +646,20 @@
                 
                 <span>/</span>
                 
-                <a class="text-gray" href="/tags/#关于我"
-                    title="关于我">关于我</a>
+                <a class="text-gray" href="/tags/#Pandas"
+                    title="Pandas">Pandas</a>
                 <span>/</span>
                 
                 
             </div>
-            <a href="/post/blog-experience-3.html" class="title">
-                博客折腾记(三) - 主题设计、彩蛋与阅读量翻倍
+            <a href="/post/pandas-select-data.html" class="title">
+                Pandas 数据处理(二) - 筛选数据
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2019-06-23，</span>
-                    <span class="hidden-xs">全文3998字，</span>
-                    <span>阅读约14分钟</span>
+                    <span>发表于2018-03-21，</span>
+                    <span class="hidden-xs">全文7858字，</span>
+                    <span>阅读约27分钟</span>
                 </small>
             </p>
         </div>
