@@ -729,7 +729,7 @@
 </div></section>
             
             <section class="bg-white box-shadow">
-                <p><a target="_blank" rel="noopener" href="https://geektutu.com/post/gee.html" title="📘 七天用 Go 从零实现">📘 七天用 Go 从零实现</a></p><p><a target="_blank" rel="noopener" href="https://geektutu.com/post/high-performance-go.html" title="📘 Go 语言高性能编程">📘 Go 语言高性能编程</a></p><p><a target="_blank" rel="noopener" href="https://studygolang.com" title="🔗 Go 语言中文网">🔗 Go 语言中文网</a></p><p><a target="_blank" rel="noopener" href="https://studygolang.com" title="🔗 Go 中文网">🔗 Go 中文网</a></p>
+                <p><a target="_blank" rel="noopener" href="http://cxysite.com/" title="🔍 程序猿导航网">🔍 程序猿导航网</a></p><p><a href="https://ysliving.github.io/post/high-performance-go.html" title="📖 Go 语言高性能编程">📖 Go 语言高性能编程</a></p><p><a href="https://ysliving.github.io/games/2048/index.html" title="🙈 公众号：码农印象 ▼">🙈 公众号：码农印象 ▼</a></p>
             </section>
             
             
@@ -754,7 +754,7 @@
 <script>
     (function () {
         function randomInt(low, high) { return Math.floor(Math.random() * (high - low) + low) };
-        var count = '0', links = JSON.parse('["<div><a href=https://s.click.taobao.com/0ZEThqv><img src=https://img.alicdn.com/tfs/TB1QJC6dOrpK1RjSZFhXXXSdXXa-300-100.jpg alt=rec></a></div>"]'), childs = '';
+        var count = '0', links = JSON.parse('["<div><a href=https://ysliving.github.io><img src=https://cdn.jsdelivr.net/gh/ysliving/ImageHost/living/20210909033130.png alt=rec></a></div>"]'), childs = '';
         count == 0 && (count = links.length);
         var start = randomInt(0, links.length);
         for (var i = 0; i < count; i++) { childs += links[(i + start) % links.length] };
@@ -905,15 +905,55 @@
 </style>
 <footer class="text-center col-xs-12">
     <p>
-        <small>© 2021 - 码农印象 - </small>
+        <small>Copyright © 2020-2021丨<a href="https://ysliving.github.io/"> 码农印象 </a>丨</small>
         <small>
-            <a target="_blank" rel="nofollow noopener" href="http://beian.miit.gov.cn/">沪ICP备1******8号-X</a>
-        </small>
+	<img src="https://cdn.jsdelivr.net/gh/ysliving/ImageHost/living/20210909054027.png" style="width:18px;height:18px;margin-bottom:-2px" alt="ICP">
+    <a href="http://www.beian.miit.gov.cn/" target="_blank">沪ICP备1******8号-X</a>
+        </small>丨
+        <small>
+	<!-- 网站运行时间 -->
+<img src="https://cdn.jsdelivr.net/gh/ysliving/ImageHost/living/20210909063232.png" style="width:18px;height:18px;margin-bottom:-2px" alt="time">
+    <span id="timeDate">正在载入...</span><span id="times"><span><i class="fa fa-spinner fa-spin"> </i></span></span>
+    <script>
+    var now = new Date(); 
+    function createtime() {
+      var grt= new Date("08/09/2020 17:38:00");//建站时间2018-08-10
+      now.setTime(now.getTime()+250); 
+      days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+      hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+      if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+      mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+      seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+      snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+      document.getElementById("timeDate").innerHTML = "本站已运行 "
+      document.getElementById("times").innerHTML = dnum +" 天 " + hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      /*document.getElementById("times").style.color="#0056FF";*/
+      }
+      setInterval("createtime()",250);
+    </script>
+        </small>丨 <!--<a href="/sitemap.xml" target="_blank">站点地图</a>丨-->
+    <small><a href="https://tongji.baidu.com/web/welcome/ico?s=df0bc7c6bdbd80356ba4db429724ccad" target="_blank">百度统计</a>丨
+	<script>var _hmt = _hmt || [];(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?e5184b820429b441f40b68941facf7ef";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+    <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1280300550'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1280300550%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script><br>
+  </small>
+
+ <div class="github-badge">
+      <a style="color: #fff" rel="license" href="https://hexo.io/" target="_blank" title="由 Hexo 强力驱动">
+      <span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a>
+    </div>
     </p>
+
     <p class="footer-hexo">
         <!-- 但若直接使用或修改主题，请务必保留这段声明 -->
-        <small>Powered by <a target="_blank" href="https://hexo.io">Hexo</a> | Theme
-            <a target="_blank" href="https://geektutu.com">Geektutu</a>
+        <small>2020-2021
+	Powered by <a target="_blank" href="https://hexo.io">Hexo</a> | Theme
+            <a target="_blank" href="https://github.com/geektutu/hexo-theme-geektutu">Geektutu</a>
             <a target="_blank" rel="noopener" href="https://github.com/geektutu/hexo-theme-geektutu">
                 <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAYGBgYHBgcICAcKCwoLCg8ODAwODxYQERAREBYiFRkVFRkVIh4kHhweJB42KiYmKjY+NDI0PkxERExfWl98fKcBBgYGBgcGBwgIBwoLCgsKDw4MDA4PFhAREBEQFiIVGRUVGRUiHiQeHB4kHjYqJiYqNj40MjQ+TERETF9aX3x8p//CABEIACIAUAMBIgACEQEDEQH/xAAcAAABBAMBAAAAAAAAAAAAAAAAAQQFBwIDBgj/2gAIAQEAAAAA9KrHSgAYL5/z6zZGuJd12uugbhq3uKtmuRtix20IS7lTLAfAAAn/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oACAECEAAAAAAB/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAgBAxAAAAAAAf/EADEQAAICAQIEBQEGBwAAAAAAAAECAwQFAAYREhORBxQhUlQxQVFic5KxJDJCYYGC0f/aAAgBAQABPwCFHnjWUzuvN6hV4cANSRLGjO9yRVUcSzMoA7jVXJYe5N0a2dhmk9kc0bN2GvLN8mbuNeWb5M3ca8s3yZu415Y/Jm7jXlm+TN3H/NeVPyZu40vOk3TZywK8wJ+v3EHVM/wsI/Dq2lrxN3Nnca16eti8chSAIoMbzByhMwP14kHVfwIiSaF5c96J6kwwCOTnHsYk8uvCrdmQy1TI4rJuz3cZLyGR/wCd4+YoOf8AEpUjXitubLYPG4paFsUxcuiGe7yc5gTW3LW44szXmobsi3Dhmic2+Z4+vCVH9CpraPiQ+QvbgTJrPFBWd5YpWrmNIIEXiRO32Pqt4p7cnfHk18lFBdmEVW1LVdIZGOrniTt6plrWKaO69yCykDRxwF+LMAewB0Txtr+Sf31VI8tEPw62fZt7N3Humtbpzz13ucX6CGSWMSuzpLyD1eNgeUka3PuvHbaxq3biTMHfkiSNCS78CwU+3Xg7Vu3MhuTcU6cq3Zemn3Eh2dv8Lzcut+29x1atKbHYqLJUhLwyNMwiZ3j9yDWOxUOV3tgb+3No5LDx1pi9+aeIwRlNY6bc+Jv+IFGrhLxtXJZ7VKcw81diiAAEn0JOrkWZyNfbEr0tz27UGQgkuGzXdIIvyowq99bRxk9ffO/L81SZBPZgEEroQroIxxMZOgeNsfkn99QypHGqO4Vl9CDrN4LDZkwyzyyQ2IgRHZrzGCZVP1XnQglT9oOtw4LC7iqV6uRkZoYpxKFSQpzFRw4EjVRMfSrQ1qqwxQxKFjjTgFUD7BoWYR6iVe+mtxt9Zwf9teaj4AdccPu5tedX5A/VrzUR+sy/q1CwksF19VEfDj/cnQRW+qg66cfsXtrpx+xe2unH7F7a6cfsXtrpx+xe2unH7F7a6cfsXtoxx+xe2gAAOA1//8QAFBEBAAAAAAAAAAAAAAAAAAAAMP/aAAgBAgEBPwB//8QAFBEBAAAAAAAAAAAAAAAAAAAAMP/aAAgBAwEBPwB//9k="
                     alt="Github Star">
@@ -998,7 +1038,7 @@
 <script>
     (function (window, document, undefined) {
         var hearts = [];
-        var keywords = ["点个赞", "留个言", "赞赏一下", "码农印象", "ysliving.github.io"];
+        var keywords = ["点个赞","四季发财","留个言","八方聚财",  "赞赏一下","十全十美",  "码农印象", "ysliving.github.io"];
         function randomInt(max) {
             return Math.floor(Math.random() * Math.floor(max));
         }
