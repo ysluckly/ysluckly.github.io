@@ -830,14 +830,14 @@
   </url>
   
   <url>
-    <loc>https://ysliving.github.io/tags/Rust/</loc>
+    <loc>https://ysliving.github.io/tags/Go%E8%AF%AD%E8%A8%80%E9%AB%98%E6%80%A7%E8%83%BD%E7%BC%96%E7%A8%8B/</loc>
     <lastmod>2021-09-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://ysliving.github.io/tags/Go%E8%AF%AD%E8%A8%80%E9%AB%98%E6%80%A7%E8%83%BD%E7%BC%96%E7%A8%8B/</loc>
+    <loc>https://ysliving.github.io/tags/Rust/</loc>
     <lastmod>2021-09-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -930,20 +930,6 @@
   </url>
   
   <url>
-    <loc>https://ysliving.github.io/categories/Python-%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/</loc>
-    <lastmod>2021-09-09</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://ysliving.github.io/categories/Rust-%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/</loc>
-    <lastmod>2021-09-09</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://ysliving.github.io/categories/%E5%BA%8F%E8%A8%80/</loc>
     <lastmod>2021-09-09</lastmod>
     <changefreq>daily</changefreq>
@@ -980,6 +966,20 @@
   
   <url>
     <loc>https://ysliving.github.io/categories/%E8%AF%AD%E8%A8%80%E9%99%B7%E9%98%B1/</loc>
+    <lastmod>2021-09-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://ysliving.github.io/categories/Python-%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/</loc>
+    <lastmod>2021-09-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://ysliving.github.io/categories/Rust-%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/</loc>
     <lastmod>2021-09-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

@@ -1068,6 +1068,69 @@
     .footer-hexo a {
         color: #337ab7;
     }
+	.github-badge {
+  display: inline-block;
+  border-radius: 4px;
+  text-shadow: none;
+  font-size: 12px;
+  color: #fff;
+  line-height: 12px;
+  background-color: #ABBAC3;
+  margin-bottom: 5px;
+  }
+  .github-badge .badge-subject {
+    display: inline-block;
+    background-color: #4D4D4D;
+    padding: 4px 4px 4px 6px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    color:#fff;
+  }
+  .github-badge .badge-value {
+    display: inline-block;
+    padding: 4px 6px 4px 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    color:#fff;
+  }
+  .github-badge .bg-brightgreen {
+    background-color: #4DC820 !important;
+  }
+  .github-badge .bg-orange {
+    background-color: #FFA500 !important;
+  }
+  .github-badge .bg-yellow {
+    background-color: #D8B024 !important;
+  }
+  .github-badge .bg-blueviolet {
+    background-color: #8833D7 !important;
+  }
+  .github-badge .bg-pink {
+    background-color: #F26BAE !important;
+  }
+  .github-badge .bg-red {
+    background-color: #e05d44 !important;
+  }
+  .github-badge .bg-blue {
+    background-color: #007EC6 !important;
+  }
+  .github-badge .bg-theme {
+    background-color: #2c2735 !important;
+  }
+  .github-badge .bg-cdn {
+    background-color: #f02f30 !important;
+  }
+  .github-badge .bg-lightgrey {
+    background-color: #9F9F9F !important;
+  }
+  .github-badge .bg-grey,
+  .github-badge .bg-gray {
+    background-color: #555 !important;
+  }
+  .github-badge .bg-lightgrey,
+  .github-badge .bg-lightgray {
+    background-color: #9f9f9f !important;
+  }
 </style>
 <footer class="text-center col-xs-12">
     <p>
@@ -1091,14 +1154,14 @@
       mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
       seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
       snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
-      document.getElementById("timeDate").innerHTML = "本站已运行 "
+      document.getElementById("timeDate").innerHTML = "小站已苟活 "
       document.getElementById("times").innerHTML = dnum +" 天 " + hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
       /*document.getElementById("times").style.color="#0056FF";*/
       }
       setInterval("createtime()",250);
     </script>
         </small>丨 <!--<a href="/sitemap.xml" target="_blank">站点地图</a>丨-->
-    <small><a href="https://tongji.baidu.com/web/34906877/overview/index?siteId=17196652" target="_blank">百度统计</a>丨
+    <small><a href="https://tongji.baidu.com/web/welcome/ico?s=df0bc7c6bdbd80356ba4db429724ccad" target="_blank">百度统计</a>丨
 	<script>var _hmt = _hmt || [];(function() {
 	var hm = document.createElement("script");
 	hm.src = "https://hm.baidu.com/hm.js?e5184b820429b441f40b68941facf7ef";
@@ -1108,29 +1171,49 @@
 	</script>
     <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1280300550'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1280300550%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script><br>
   </small>
-
- <div class="github-badge">
-      <a style="color: #fff" rel="license" href="https://hexo.io/" target="_blank" title="由 Hexo 强力驱动">
-      <span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a>
-    </div>
+<small>
+  <div style="text-align:center; padding-top: 20px;">
+        <div class="github-badge">
+          <a rel="license" href="https://hexo.io/" target="_blank" title="由Hexo强力驱动">
+          <span class="badge-subject"><i class="fa fa-fire" aria-hidden="true"></i> Powered</span><span class="badge-value bg-blue">Hexo</span></a>
+        </div>
+        <div class="github-badge">
+          <a rel="license" href="https://github.io/" target="_blank" title="静态网页托管于Github">
+          <span class="badge-subject">Hosted</span><span class="badge-value bg-brightgreen"><i class="fa fa-github" aria-hidden="true"></i> Github</span></a>
+        </div>
+     
+        <div class="github-badge">
+            <a rel="license" href="https://www.jsdelivr.com/" target="_blank" title="jsDelivr提供CDN加速服务">
+            <span class="badge-subject"><i class="fa fa-firefox fa-spin" aria-hidden="true"></i> CND</span><span class="badge-value bg-cdn">Github&jsDelivr</span></a>
+        </div>
+        <div class="github-badge">
+            <a rel="license" href="https://github.com/geektutu/hexo-theme-geektutu" target="_blank" title="站点使用 Geektutu 主题，作者：geektutu">
+            <span class="badge-subject"><i class="fa fa-themeisle" aria-hidden="true"></i> Theme</span><span class="badge-value bg-theme">Geektutu</span></a>
+        </div>
+        <div class="github-badge">
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="本站点采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议进行许可">
+            <span class="badge-subject"><i class="fa fa-copyright"></i>© </span><span class="badge-value bg-lightgrey">BY-NC-SA 4.0</span></a>
+        </div>
+		
+   
+		 <div class="github-badge">
+          <span id="busuanzi_container_site_pv" class="badge-subject"> UV<i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_pv"></span></span>
+          <span  class="site_uv badge-value bg-orange""></span>
+        </div>
+		 <div class="github-badge">
+          <span class="badge-subject" id="busuanzi_container_page_pv" ><i class="fa fa-eye" aria-hidden="true"></i> PV<span id="busuanzi_value_page_pv"></span></span>
+          <span class="site_pv badge-value bg-brightgreen"></span>
+        </div>
+  
+		
+      </div>  
+ 
+  </small>
     </p>
 
     <p class="footer-hexo">
         <!-- 但若直接使用或修改主题，请务必保留这段声明 -->
-        <small>2020-2021
-	Powered by <a target="_blank" href="https://hexo.io">Hexo</a> | Theme
-            <a target="_blank" href="https://github.com/geektutu/hexo-theme-geektutu">Geektutu</a>
-            <a target="_blank" rel="noopener" href="https://github.com/geektutu/hexo-theme-geektutu">
-                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAYGBgYHBgcICAcKCwoLCg8ODAwODxYQERAREBYiFRkVFRkVIh4kHhweJB42KiYmKjY+NDI0PkxERExfWl98fKcBBgYGBgcGBwgIBwoLCgsKDw4MDA4PFhAREBEQFiIVGRUVGRUiHiQeHB4kHjYqJiYqNj40MjQ+TERETF9aX3x8p//CABEIACIAUAMBIgACEQEDEQH/xAAcAAABBAMBAAAAAAAAAAAAAAAAAQQFBwIDBgj/2gAIAQEAAAAA9KrHSgAYL5/z6zZGuJd12uugbhq3uKtmuRtix20IS7lTLAfAAAn/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oACAECEAAAAAAB/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAgBAxAAAAAAAf/EADEQAAICAQIEBQEGBwAAAAAAAAECAwQFAAYREhORBxQhUlQxQVFic5KxJDJCYYGC0f/aAAgBAQABPwCFHnjWUzuvN6hV4cANSRLGjO9yRVUcSzMoA7jVXJYe5N0a2dhmk9kc0bN2GvLN8mbuNeWb5M3ca8s3yZu415Y/Jm7jXlm+TN3H/NeVPyZu40vOk3TZywK8wJ+v3EHVM/wsI/Dq2lrxN3Nnca16eti8chSAIoMbzByhMwP14kHVfwIiSaF5c96J6kwwCOTnHsYk8uvCrdmQy1TI4rJuz3cZLyGR/wCd4+YoOf8AEpUjXitubLYPG4paFsUxcuiGe7yc5gTW3LW44szXmobsi3Dhmic2+Z4+vCVH9CpraPiQ+QvbgTJrPFBWd5YpWrmNIIEXiRO32Pqt4p7cnfHk18lFBdmEVW1LVdIZGOrniTt6plrWKaO69yCykDRxwF+LMAewB0Txtr+Sf31VI8tEPw62fZt7N3Humtbpzz13ucX6CGSWMSuzpLyD1eNgeUka3PuvHbaxq3biTMHfkiSNCS78CwU+3Xg7Vu3MhuTcU6cq3Zemn3Eh2dv8Lzcut+29x1atKbHYqLJUhLwyNMwiZ3j9yDWOxUOV3tgb+3No5LDx1pi9+aeIwRlNY6bc+Jv+IFGrhLxtXJZ7VKcw81diiAAEn0JOrkWZyNfbEr0tz27UGQgkuGzXdIIvyowq99bRxk9ffO/L81SZBPZgEEroQroIxxMZOgeNsfkn99QypHGqO4Vl9CDrN4LDZkwyzyyQ2IgRHZrzGCZVP1XnQglT9oOtw4LC7iqV6uRkZoYpxKFSQpzFRw4EjVRMfSrQ1qqwxQxKFjjTgFUD7BoWYR6iVe+mtxt9Zwf9teaj4AdccPu5tedX5A/VrzUR+sy/q1CwksF19VEfDj/cnQRW+qg66cfsXtrpx+xe2unH7F7a6cfsXtrpx+xe2unH7F7a6cfsXtoxx+xe2gAAOA1//8QAFBEBAAAAAAAAAAAAAAAAAAAAMP/aAAgBAgEBPwB//8QAFBEBAAAAAAAAAAAAAAAAAAAAMP/aAAgBAwEBPwB//9k="
-                    alt="Github Star">
-            </a>
-        </small>
-    </p>
-    
-    <p>
         <small>
-            <span id="busuanzi_container_site_pv">👁<span id="busuanzi_value_site_pv"></span></span> &nbsp;
-            <span id="busuanzi_container_page_pv">📚<span id="busuanzi_value_page_pv"></span></span>
         </small>
     </p>
     
