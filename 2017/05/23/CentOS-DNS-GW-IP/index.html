@@ -2250,6 +2250,13 @@ ONBOOT=yes #系统启动时是否设置此网络接口，设置为yes时，系�
 <script src="/js/jquery.pjax.js?v=1.1.0" ></script>
 
 <script src="/js/script.js?v=1.1.0" ></script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
 <script>
     var img_resize = 'default';
     function initArticle() {
