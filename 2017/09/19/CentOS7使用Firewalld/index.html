@@ -86,7 +86,7 @@
     
         
             <a title="github"
-               href="https://github.com/yelog"
+               href="https://github.com/ysluckly"
                target="_blank">
                 
                     <svg class="iconfont-svg" aria-hidden="true">
@@ -97,48 +97,8 @@
         
     
         
-            <a title="facebook"
-               href="https://www.facebook.com/faker.tops"
-               target="_blank">
-                
-                    <svg class="iconfont-svg" aria-hidden="true">
-                        <use xlink:href="#icon-facebook"></use>
-                    </svg>
-                
-            </a>
-        
-    
-        
-    
-        
-    
-        
-            <a title="instagram"
-               href="https://www.facebook.com/faker.tops"
-               target="_blank">
-                
-                    <svg class="iconfont-svg" aria-hidden="true">
-                        <use xlink:href="#icon-instagram"></use>
-                    </svg>
-                
-            </a>
-        
-    
-        
-            <a title="reddit"
-               href="https://www.reddit.com/user/yelog/"
-               target="_blank">
-                
-                    <svg class="iconfont-svg" aria-hidden="true">
-                        <use xlink:href="#icon-reddit"></use>
-                    </svg>
-                
-            </a>
-        
-    
-        
             <a title="weibo"
-               href="http://weibo.com/u/2307534817"
+               href="http://weibo.com"
                target="_blank">
                 
                     <svg class="iconfont-svg" aria-hidden="true">
@@ -150,7 +110,7 @@
     
         
             <a title="jianshu"
-               href="https://www.jianshu.com/u/ff56736de7cf"
+               href="https://www.jianshu.com"
                target="_blank">
                 
                     <svg class="iconfont-svg" aria-hidden="true">
@@ -162,7 +122,7 @@
     
         
             <a title="zhihu"
-               href="https://www.zhihu.com/people/jaytp/activities"
+               href="https://www.zhihu.com"
                target="_blank">
                 
                     <svg class="iconfont-svg" aria-hidden="true">
@@ -173,10 +133,20 @@
         
     
         
+            <a title="csdn"
+               href="https://blog.csdn.net/qq_41035588"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-csdn"></use>
+                    </svg>
+                
+            </a>
+        
     
         
             <a title="oschina"
-               href="https://my.oschina.net/yelog"
+               href="https://my.oschina.net"
                target="_blank">
                 
                     <svg class="iconfont-svg" aria-hidden="true">
@@ -186,6 +156,16 @@
             </a>
         
     
+        
+            <a title="juejin"
+               href="https://juejin.cn/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-juejin"></use>
+                    </svg>
+                
+            </a>
         
     
         
@@ -201,32 +181,8 @@
         
     
         
-            <a title="qq"
-               href="http://wpa.qq.com/msgrd?v=3&uin=872336115&site=qq&menu=yes"
-               target="_blank">
-                
-                    <svg class="iconfont-svg" aria-hidden="true">
-                        <use xlink:href="#icon-qq"></use>
-                    </svg>
-                
-            </a>
-        
-    
-        
-            <a title="kugou"
-               href="https://www.kugou.com/"
-               target="_blank">
-                
-                    <svg class="iconfont-svg" aria-hidden="true">
-                        <use xlink:href="#icon-kugou"></use>
-                    </svg>
-                
-            </a>
-        
-    
-        
             <a title="neteasemusic"
-               href="https://music.163.com/#/user/home?id=88151013"
+               href="https://music.163.com"
                target="_blank">
                 
                     <svg class="iconfont-svg" aria-hidden="true">
@@ -1540,6 +1496,17 @@
         </span>
         
         
+        <span class="top-comment" title="跳转至评论区">
+            <a href="#comments">
+                评论:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
     </div>
     
     <div class="article-meta">
@@ -1748,7 +1715,7 @@ $ firewall-cmd --permanent --zone=public --ipset=blacklist --add-entry=222.222.2
 </code></pre>
 
       
-       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
+       <hr><span style="font-style: italic;color: gray;"> 部分资料来源于网络，版权属其原著者所有，只供学习交流之用，非商务用途。如有侵犯您的权益，请告知【公众号：码农印象】删除，也可以在下面评论区评论，亦可邮件至ysluckly.520@qq.com。互动交流时请遵守理性、宽容、换位思考的原则。 </span>
     </div>
 </article>
 
@@ -1758,6 +1725,27 @@ $ firewall-cmd --permanent --zone=public --ipset=blacklist --add-entry=222.222.2
 </p>
 
 
+
+
+    <div id="comments"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+<script type="text/javascript">
+    $.getScript('/js/gitalk.js', function () {
+        var gitalk = new Gitalk({
+            clientID: '',
+            clientSecret: '',
+            repo: 'yelog.github.io',
+            owner: 'yelog',
+            admin: ['yelog'],
+            id: decodeURI(location.pathname),
+            distractionFreeMode: 'true',
+            language: 'zh-CN',
+            perPage: parseInt('10',10)
+        })
+        gitalk.render('comments')
+    })
+</script>
 
 
 
@@ -1770,7 +1758,7 @@ $ firewall-cmd --permanent --zone=public --ipset=blacklist --add-entry=222.222.2
     </div>
     <div class="copyright">
         <p class="footer-entry">
-    ©2016-2020 Yelog
+    ©2022-2022@码农印象
 </p>
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
@@ -1919,6 +1907,14 @@ $ firewall-cmd --permanent --zone=public --ipset=blacklist --add-entry=222.222.2
 
     /* 背景图样式 */
     
+    #post {
+        background: url(https://imgtu.com/i/HLd6bj);
+    }
+    
+    
+    #post .index {
+        background: url(https://imgtu.com/i/HLd6bj);
+    }
     
 
 
@@ -1926,6 +1922,25 @@ $ firewall-cmd --permanent --zone=public --ipset=blacklist --add-entry=222.222.2
     
 
     /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.7;
+        background: url("https://imgtu.com/i/HLdoMF");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
     
 
     
