@@ -4,13 +4,25 @@
   
     
     <entry>
-      <title>Hello World</title>
-      <link href="2022/02/19/undefined/"/>
-      <url>2022/02/19/undefined/</url>
+      <title>休闲娱乐-小游戏</title>
+      <link href="2022/02/02/undefined/"/>
+      <url>2022/02/02/undefined/</url>
       
-        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;</code></pre><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+        <content type="html"><![CDATA[<blockquote><p>休闲小游戏是小游戏的一种。一般都是在看技术博客累的时候玩的，后来发展成网页游戏。并成为网络游戏集，并加以利用加入网络等元素，可以和网友进行比拼，使得休闲小游戏得以发展。</p></blockquote><h4 id="①、2048-小游戏-点击进入…"><a href="#①、2048-小游戏-点击进入…" class="headerlink" title="①、2048-小游戏 | 点击进入…"></a>①、2048-小游戏 | <a href="https://ysluckly.github.io/games/2048/index.html">点击进入…</a></h4><h4 id="②、五子棋-小游戏-点击进入…"><a href="#②、五子棋-小游戏-点击进入…" class="headerlink" title="②、五子棋- 小游戏 | 点击进入…"></a>②、五子棋- 小游戏 | <a href="https://ysluckly.github.io/games/gobang/index.html">点击进入…</a></h4><h4 id="③、圈小猫-小游戏-点击进入…"><a href="#③、圈小猫-小游戏-点击进入…" class="headerlink" title="③、圈小猫-小游戏 | 点击进入…"></a>③、圈小猫-小游戏 | <a href="https://ysluckly.github.io/games/cat/index.html">点击进入…</a></h4><h4 id="④、3D元素周期表-小游戏-点击进入…"><a href="#④、3D元素周期表-小游戏-点击进入…" class="headerlink" title="④、3D元素周期表-小游戏 | 点击进入…"></a>④、3D元素周期表-小游戏 | <a href="https://ysliving.github.io/games/element/index.html">点击进入…</a></h4><h4 id="⑤、弹钢琴-小游戏-点击进入…"><a href="#⑤、弹钢琴-小游戏-点击进入…" class="headerlink" title="⑤、弹钢琴-小游戏 | 点击进入…"></a>⑤、弹钢琴-小游戏 | <a href="https://ysluckly.github.io/games/piano/index.html">点击进入…</a></h4><h4 id="⑥、吃豆人-小游戏-点击进入…"><a href="#⑥、吃豆人-小游戏-点击进入…" class="headerlink" title="⑥、吃豆人-小游戏 | 点击进入…"></a>⑥、吃豆人-小游戏 | <a href="https://ysluckly.github.io/games/PacMan/index.html">点击进入…</a></h4>]]></content>
       
       
+      <categories>
+          
+          <category> 工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> game </tag>
+            
+        </tags>
       
     </entry>
     
@@ -1444,7 +1456,7 @@
       <link href="2017/03/23/the-third-comment/"/>
       <url>2017/03/23/the-third-comment/</url>
       
-        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>昨天登陆blog看到了多说的通知：将于2017年6月1日正式关停服务，其实并没有太大的意外。</p><p>自从去年9月份disqus被GFW认证后，被迫转移到多说，一看就是很久没有维护了，感觉关闭就是迟早的事，没想到刚用5个月。。</p><p><img src="http://img.saodiyang.com/FiTeQPGuPt1W5BuUj2NcruE_eHkv.jpg" alt="好想使用disqus啊！！！"></p><p>不能用disqus不开心，然后就又开始调查第三方评论系统。</p><h2 id="友言"><a href="#友言" class="headerlink" title="友言"></a>友言</h2><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ol><li>界面挺像disqus的</li><li>查询最近的评论，需要打开新的页面</li><li>支持表情，不支持图片</li><li>支持自定义界面</li><li>注册即用</li></ol><p><img src="http://img.saodiyang.com/Fu3w7t5F_blvaZ2xyRmNaZ70wDJD.png" alt="友言"></p><h2 id="网易云跟帖"><a href="#网易云跟帖" class="headerlink" title="网易云跟帖"></a>网易云跟帖</h2><h3 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h3><ol><li>界面简洁</li><li>网易作为后台，不容易倒</li><li>不支持表情，不支持图片</li><li>支持自定义界面</li><li>我在国外加载巨慢，不过查了国内的延迟，平均20ms左右。</li><li>注册即用</li></ol><p><img src="http://img.saodiyang.com/Fhb1TtKq7JWIj91gU90Mh4o5Ay12.png" alt="网易云跟帖"></p><h2 id="畅言"><a href="#畅言" class="headerlink" title="畅言"></a>畅言</h2><h3 id="特点-2"><a href="#特点-2" class="headerlink" title="特点"></a>特点</h3><ol><li>界面简介</li><li>打印记的功能</li><li>支持表情和图片</li><li>支持获取评论数</li><li>需要ICP备案</li></ol><p><img src="http://img.saodiyang.com/FufklpIz5UFXJsiKGGjTP9DnMymz.png" alt="畅言"></p><h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>想要尝试一下畅言，功能符合我的预期，不过要ICP备案，最近由于想要开启国内CDN加速，也需要备案。</p><p><code>蛋四！！</code> 我在国外，等回国的时候再备案吧，暂时现使用 <code>disqus</code>,如果想评论，国内只能翻墙了。╮（╯＿╰）╭</p><p>最后，多说一路走好。</p>]]></content>
+        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>昨天登录blog看到了多说的通知：将于2017年6月1日正式关停服务，其实并没有太大的意外。</p><p>自从去年9月份disqus被GFW认证后，被迫转移到多说，一看就是很久没有维护了，感觉关闭就是迟早的事，没想到刚用5个月。。</p><p><img src="http://img.saodiyang.com/FiTeQPGuPt1W5BuUj2NcruE_eHkv.jpg" alt="好想使用disqus啊！！！"></p><p>不能用disqus不开心，然后就又开始调查第三方评论系统。</p><h2 id="友言"><a href="#友言" class="headerlink" title="友言"></a>友言</h2><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ol><li>界面挺像disqus的</li><li>查询最近的评论，需要打开新的页面</li><li>支持表情，不支持图片</li><li>支持自定义界面</li><li>注册即用</li></ol><p><img src="http://img.saodiyang.com/Fu3w7t5F_blvaZ2xyRmNaZ70wDJD.png" alt="友言"></p><h2 id="网易云跟帖"><a href="#网易云跟帖" class="headerlink" title="网易云跟帖"></a>网易云跟帖</h2><h3 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h3><ol><li>界面简洁</li><li>网易作为后台，不容易倒</li><li>不支持表情，不支持图片</li><li>支持自定义界面</li><li>我在国外加载巨慢，不过查了国内的延迟，平均20ms左右。</li><li>注册即用</li></ol><p><img src="http://img.saodiyang.com/Fhb1TtKq7JWIj91gU90Mh4o5Ay12.png" alt="网易云跟帖"></p><h2 id="畅言"><a href="#畅言" class="headerlink" title="畅言"></a>畅言</h2><h3 id="特点-2"><a href="#特点-2" class="headerlink" title="特点"></a>特点</h3><ol><li>界面简介</li><li>打印记的功能</li><li>支持表情和图片</li><li>支持获取评论数</li><li>需要ICP备案</li></ol><p><img src="http://img.saodiyang.com/FufklpIz5UFXJsiKGGjTP9DnMymz.png" alt="畅言"></p><h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>想要尝试一下畅言，功能符合我的预期，不过要ICP备案，最近由于想要开启国内CDN加速，也需要备案。</p><p><code>蛋四！！</code> 我在国外，等回国的时候再备案吧，暂时现使用 <code>disqus</code>,如果想评论，国内只能翻墙了。╮（╯＿╰）╭</p><p>最后，多说一路走好。</p>]]></content>
       
       
       <categories>

@@ -6,7 +6,7 @@
   <link href="https://ysluckly.github.io/atom.xml" rel="self"/>
   
   <link href="https://ysluckly.github.io/"/>
-  <updated>2022-02-19T11:19:52.641Z</updated>
+  <updated>2022-02-20T11:58:02.073Z</updated>
   <id>https://ysluckly.github.io/</id>
   
   <author>
@@ -17,22 +17,29 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hello World</title>
-    <link href="https://ysluckly.github.io/2022/02/19/undefined/"/>
-    <id>https://ysluckly.github.io/2022/02/19/undefined/</id>
-    <published>2022-02-19T11:19:52.641Z</published>
-    <updated>2022-02-19T11:19:52.641Z</updated>
+    <title>休闲娱乐-小游戏</title>
+    <link href="https://ysluckly.github.io/2022/02/02/undefined/"/>
+    <id>https://ysluckly.github.io/2022/02/02/undefined/</id>
+    <published>2022-02-01T17:00:10.000Z</published>
+    <updated>2022-02-20T11:58:02.073Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;</code></pre><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>休闲小游戏是小游戏的一种。一般都是在看技术博客累的时候玩的，后来发展成网页游戏。并成为网络游戏集，并加以利用加入网络等元素，可以和网友进行比拼，使得休闲小游戏得以发展。</p></blockquote><h4 id="①、2048-小游戏-点击进入…"><a href="#①、2048-小游戏-点击进入…" class="headerlink" title="①、2048-小游戏 | 点击进入…"></a>①、2048-小游戏 | <a href="https://ysluckly.github.io/games/2048/index.html">点击进入…</a></h4><h4 id="②、五子棋-小游戏-点击进入…"><a href="#②、五子棋-小游戏-点击进入…" class="headerlink" title="②、五子棋- 小游戏 | 点击进入…"></a>②、五子棋- 小游戏 | <a href="https://ysluckly.github.io/games/gobang/index.html">点击进入…</a></h4><h4 id="③、圈小猫-小游戏-点击进入…"><a href="#③、圈小猫-小游戏-点击进入…" class="headerlink" title="③、圈小猫-小游戏 | 点击进入…"></a>③、圈小猫-小游戏 | <a href="https://ysluckly.github.io/games/cat/index.html">点击进入…</a></h4><h4 id="④、3D元素周期表-小游戏-点击进入…"><a href="#④、3D元素周期表-小游戏-点击进入…" class="headerlink" title="④、3D元素周期表-小游戏 | 点击进入…"></a>④、3D元素周期表-小游戏 | <a href="https://ysliving.github.io/games/element/index.html">点击进入…</a></h4><h4 id="⑤、弹钢琴-小游戏-点击进入…"><a href="#⑤、弹钢琴-小游戏-点击进入…" class="headerlink" title="⑤、弹钢琴-小游戏 | 点击进入…"></a>⑤、弹钢琴-小游戏 | <a href="https://ysluckly.github.io/games/piano/index.html">点击进入…</a></h4><h4 id="⑥、吃豆人-小游戏-点击进入…"><a href="#⑥、吃豆人-小游戏-点击进入…" class="headerlink" title="⑥、吃豆人-小游戏 | 点击进入…"></a>⑥、吃豆人-小游戏 | <a href="https://ysluckly.github.io/games/PacMan/index.html">点击进入…</a></h4>]]></content>
     
     
       
       
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;休闲小游戏是小游戏的一种。一般都是在看技术博客累的时候玩的，后来发展成网页游戏。并成为网络游戏集，并加以利用加入网络等元素，可以和网友进行比拼，使得休闲小游戏得以发展。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;①、2048-小游戏-点击</summary>
       
     
     
     
+    <category term="工具" scheme="https://ysluckly.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="game" scheme="https://ysluckly.github.io/tags/game/"/>
     
   </entry>
   

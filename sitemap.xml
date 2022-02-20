@@ -11,18 +11,18 @@
   </url>
   
   <url>
-    <loc>https://ysluckly.github.io/2022/02/19/undefined/</loc>
+    <loc>https://ysluckly.github.io/2017/03/23/the-third-comment/</loc>
     
-    <lastmod>2022-02-19</lastmod>
+    <lastmod>2022-02-20</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://ysluckly.github.io/index.html</loc>
+    <loc>https://ysluckly.github.io/2022/02/02/undefined/</loc>
     
-    <lastmod>2022-02-19</lastmod>
+    <lastmod>2022-02-20</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -31,14 +31,14 @@
   <url>
     <loc>https://ysluckly.github.io/about/index.html</loc>
     
-    <lastmod>2022-02-19</lastmod>
+    <lastmod>2022-02-20</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://ysluckly.github.io/2017/03/23/the-third-comment/</loc>
+    <loc>https://ysluckly.github.io/index.html</loc>
     
     <lastmod>2022-02-19</lastmod>
     
@@ -883,6 +883,60 @@
     <priority>0.6</priority>
   </url>
   
+  <url>
+    <loc>https://ysluckly.github.io/games/piano/index.html</loc>
+    
+    <lastmod>2021-09-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://ysluckly.github.io/games/PacMan/index.html</loc>
+    
+    <lastmod>2021-09-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://ysluckly.github.io/games/gobang/index.html</loc>
+    
+    <lastmod>2021-09-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://ysluckly.github.io/games/cat/index.html</loc>
+    
+    <lastmod>2021-09-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://ysluckly.github.io/games/2048/index.html</loc>
+    
+    <lastmod>2021-09-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://ysluckly.github.io/games/element/index.html</loc>
+    
+    <lastmod>2021-09-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
 
   <url>
     <loc>https://ysluckly.github.io/</loc>
@@ -1286,6 +1340,13 @@
   
   <url>
     <loc>https://ysluckly.github.io/tags/regex/</loc>
+    <lastmod>2022-02-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://ysluckly.github.io/tags/game/</loc>
     <lastmod>2022-02-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
