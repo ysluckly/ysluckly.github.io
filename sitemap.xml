@@ -1444,27 +1444,6 @@
   </url>
   
   <url>
-    <loc>https://ysluckly.github.io/tags/golang-test/</loc>
-    <lastmod>2022-02-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://ysluckly.github.io/tags/unit-tests/</loc>
-    <lastmod>2022-02-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://ysluckly.github.io/tags/golang-testing/</loc>
-    <lastmod>2022-02-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://ysluckly.github.io/tags/Go-WebAssembly/</loc>
     <lastmod>2022-02-25</lastmod>
     <changefreq>weekly</changefreq>
@@ -1480,6 +1459,27 @@
   
   <url>
     <loc>https://ysluckly.github.io/tags/gopherjs/</loc>
+    <lastmod>2022-02-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://ysluckly.github.io/tags/golang-test/</loc>
+    <lastmod>2022-02-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://ysluckly.github.io/tags/unit-tests/</loc>
+    <lastmod>2022-02-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://ysluckly.github.io/tags/golang-testing/</loc>
     <lastmod>2022-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1528,14 +1528,14 @@
   </url>
   
   <url>
-    <loc>https://ysluckly.github.io/tags/tcp-ip/</loc>
+    <loc>https://ysluckly.github.io/tags/javaee/</loc>
     <lastmod>2022-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://ysluckly.github.io/tags/javaee/</loc>
+    <loc>https://ysluckly.github.io/tags/tcp-ip/</loc>
     <lastmod>2022-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1913,6 +1913,13 @@
   </url>
   
   <url>
+    <loc>https://ysluckly.github.io/tags/pjax/</loc>
+    <lastmod>2022-02-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://ysluckly.github.io/tags/mac/</loc>
     <lastmod>2022-02-25</lastmod>
     <changefreq>weekly</changefreq>
@@ -1921,13 +1928,6 @@
   
   <url>
     <loc>https://ysluckly.github.io/tags/efficiency/</loc>
-    <lastmod>2022-02-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://ysluckly.github.io/tags/pjax/</loc>
     <lastmod>2022-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
