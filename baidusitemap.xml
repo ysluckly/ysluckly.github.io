@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ysluckly.github.io/2021/05/02/undefined/</loc>
-    <lastmod>2022-02-25</lastmod>
-  </url>
-  <url>
-    <loc>https://ysluckly.github.io/2017/10/20/undefined/</loc>
+    <loc>https://ysluckly.github.io/2021/10/08/hexo-add-baidu/</loc>
     <lastmod>2022-02-25</lastmod>
   </url>
   <url>
@@ -14,6 +10,18 @@
   </url>
   <url>
     <loc>https://ysluckly.github.io/2022/01/31/mysql/</loc>
+    <lastmod>2022-02-25</lastmod>
+  </url>
+  <url>
+    <loc>https://ysluckly.github.io/2021/05/02/undefined/</loc>
+    <lastmod>2022-02-25</lastmod>
+  </url>
+  <url>
+    <loc>https://ysluckly.github.io/2017/10/20/undefined/</loc>
+    <lastmod>2022-02-25</lastmod>
+  </url>
+  <url>
+    <loc>https://ysluckly.github.io/2021/12/08/redis/</loc>
     <lastmod>2022-02-25</lastmod>
   </url>
   <url>
@@ -201,11 +209,11 @@
     <lastmod>2022-02-19</lastmod>
   </url>
   <url>
-    <loc>https://ysluckly.github.io/2016/10/22/set-up-git-server-on-vps/</loc>
+    <loc>https://ysluckly.github.io/2017/05/24/tale-build-experience/</loc>
     <lastmod>2022-02-19</lastmod>
   </url>
   <url>
-    <loc>https://ysluckly.github.io/2017/05/24/tale-build-experience/</loc>
+    <loc>https://ysluckly.github.io/2016/10/22/set-up-git-server-on-vps/</loc>
     <lastmod>2022-02-19</lastmod>
   </url>
   <url>

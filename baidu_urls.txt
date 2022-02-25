@@ -1,7 +1,9 @@
-https://ysluckly.github.io/2021/05/02/undefined/
-https://ysluckly.github.io/2017/10/20/undefined/
+https://ysluckly.github.io/2021/10/08/hexo-add-baidu/
 https://ysluckly.github.io/2022/03/03/mysql/
 https://ysluckly.github.io/2022/01/31/mysql/
+https://ysluckly.github.io/2021/05/02/undefined/
+https://ysluckly.github.io/2017/10/20/undefined/
+https://ysluckly.github.io/2021/12/08/redis/
 https://ysluckly.github.io/googleddd7f3e93b89923f.html
 https://ysluckly.github.io/2022/02/02/gamesh/
 https://ysluckly.github.io/games/gobang/index.html
@@ -55,8 +57,8 @@ https://ysluckly.github.io/2017/03/23/the-third-comment/
 https://ysluckly.github.io/about/index.html
 https://ysluckly.github.io/index.html
 https://ysluckly.github.io/2017/03/17/windows-hexo/
-https://ysluckly.github.io/2016/10/22/set-up-git-server-on-vps/
 https://ysluckly.github.io/2017/05/24/tale-build-experience/
+https://ysluckly.github.io/2016/10/22/set-up-git-server-on-vps/
 https://ysluckly.github.io/2016/10/04/regular-expression/
 https://ysluckly.github.io/2016/11/05/idea-shortcuts/
 https://ysluckly.github.io/2017/03/09/hexo-wordcount/
