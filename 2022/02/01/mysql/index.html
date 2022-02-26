@@ -1,0 +1,3311 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="code-0WEqylqKMo" />
+  <meta name="google-site-verification" content="K3ZtAzN_QG0hds9kOoA0pitJFIkbH8Fl-Kl_R3z41FI" />
+  <title>Go全栈面试题（4）-数据库面试题 | 码农印象</title>
+  <meta name="keywords" content=" 面试题 , MySQL总结 ">
+  <meta name="description" content="Go全栈面试题（4）-数据库面试题 | 码农印象">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="为 layui 扩展的 下拉多选select在线demo： http:&#x2F;&#x2F;yelog.org&#x2F;layui-select-multiple&#x2F; 这个在线 demo就是本项目的 index.html。 可将项目 clone 到本地查看效果。 效果图 参数   属性名 属性值 备注    multiple 无 开启多选   lay-search 无 开启搜索   lay-case 无 大小写敏感   la">
+<meta property="og:type" content="website">
+<meta property="og:title" content="码农印象">
+<meta property="og:url" content="https://ysluckly.github.io/README.html">
+<meta property="og:site_name" content="码农印象">
+<meta property="og:description" content="为 layui 扩展的 下拉多选select在线demo： http:&#x2F;&#x2F;yelog.org&#x2F;layui-select-multiple&#x2F; 这个在线 demo就是本项目的 index.html。 可将项目 clone 到本地查看效果。 效果图 参数   属性名 属性值 备注    multiple 无 开启多选   lay-search 无 开启搜索   lay-case 无 大小写敏感   la">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://oncj6b2vl.bkt.clouddn.com/Frg6VGOCjKJ8fdTYkekfsi-Ax9p2.png">
+<meta property="article:published_time" content="2022-02-20T04:41:43.082Z">
+<meta property="article:modified_time" content="2022-02-19T09:27:58.478Z">
+<meta property="article:author" content="码农印象">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://oncj6b2vl.bkt.clouddn.com/Frg6VGOCjKJ8fdTYkekfsi-Ax9p2.png">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 6.0.0"><link rel="alternate" href="/atom.xml" title="码农印象" type="application/atom+xml">
+</head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>码农印象</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/ysluckly"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="juejin"
+               href="https://juejin.cn/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-juejin"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="csdn"
+               href="https://blog.csdn.net/qq_41035588"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-csdn"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="weibo"
+               href="http://weibo.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-weibo"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="jianshu"
+               href="https://www.jianshu.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-jianshu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="zhihu"
+               href="https://www.zhihu.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-zhihu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:ysluckly.520@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="oschina"
+               href="https://my.oschina.net"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-oschina"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="neteasemusic"
+               href="https://music.163.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-neteasemusic"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+    <a class="more-menus">更多菜单</a>
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(155)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                <li>
+                    <div data-rel="读书">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        读书
+                        <small>(6)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="读书<--->书单">
+                                        
+                                        书单
+                                        
+                                            <small>(1
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="读书<--->程序人生">
+                                        
+                                        程序人生
+                                        
+                                            <small>(1
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="读书<--->阅读笔记">
+                                        
+                                        阅读笔记
+                                        
+                                            <small>(3
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="后端">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        后端
+                        <small>(55)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="后端<--->C语言">
+                                        
+                                        C语言
+                                        
+                                            <small>(12
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="后端<--->Go">
+                                        
+                                        Go
+                                        
+                                            <small>(24
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="后端<--->Java">
+                                        
+                                        Java
+                                        
+                                            <small>(6
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="后端<--->Python3">
+                                        
+                                        Python3
+                                        
+                                            <small>(10
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="后端<--->Redis">
+                                        
+                                        Redis
+                                        
+                                            <small>(1
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="后端<--->其他">
+                                        
+                                        其他
+                                        
+                                            <small>(1
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="后端<--->网络编程">
+                                        
+                                        网络编程
+                                        
+                                            <small>(1
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="数据库">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        数据库
+                        <small>(9)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="数据库<--->MySQL">
+                                        
+                                        MySQL
+                                        
+                                            <small>(3
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="数据库<--->PostgreSQL">
+                                        
+                                        PostgreSQL
+                                        
+                                            <small>(5
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="运维">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        运维
+                        <small>(26)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="运维<--->linux">
+                                        
+                                        linux
+                                        
+                                            <small>(2
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="工具">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        工具
+                        <small>(45)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="工具<--->git">
+                                        
+                                        git
+                                        
+                                            <small>(8
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="工具<--->hexo">
+                                        
+                                        hexo
+                                        
+                                            <small>(29
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="工具<--->markdown">
+                                        
+                                        markdown
+                                        
+                                            <small>(1
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="工具<--->软件记录">
+                                        
+                                        软件记录
+                                        
+                                            <small>(5
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="大前端">
+                        
+                        大前端
+                        <small>(14)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+                <a class="dynamic-menu site_url"
+                   
+                   href="/2022/02/02/gamesh/">休闲小游戏</a>
+        
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="155">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org">叶落阁</a></li>
+            
+            <li><a target="_blank" href="https://wujun234.com">吴俊笔记</a></li>
+            
+            <li><a target="_blank" href="https://www.coderutil.com">程序员盒子导航</a></li>
+            
+            <li><a target="_blank" href="https://www.bookstack.cn">程序员图书馆</a></li>
+            
+            <li><a target="_blank" href="https://www.martinku.cn">马丁库导航</a></li>
+            
+            <li><a target="_blank" href="https://docschina.org">印记中文(前端)</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>3-hexo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>AngularJs</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>c/c++代码规范</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>CDN</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>centos</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Cloudflare</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>deepin</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>docker</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>docker仓库</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>dubbo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>efficiency</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>emacs</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>encoding</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>encryption</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>firewall</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>fragment_cache</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>freemarker</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ftp</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>game</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Gin</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>git</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Git</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>GitHub</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Go WebAssembly</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>go-qrcode</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>GO2</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>golang</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Golang</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>golang test</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>golang testing</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gopherjs</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>goquery</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Go总结</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Go数据库</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Go爬虫</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Go练习题</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Go语言</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Go语言教程中文版</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Go语言程序设计</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Go进阶面试题</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Go面试</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Go面试题</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Go项目</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hexo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>IntellijIDEA</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>java</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>javaee</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>javascript</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>jQuery</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>js</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>jsDelivr</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>jsp</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>jstl</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>keybord</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>linux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>linux命令</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mac</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Markdown</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mathjax</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>maven</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>memory mapping</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mmap</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mock框架</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mybatis</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mysql</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MySQL总结</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MySQL面试</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nexus</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nginx</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>node</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>PicGo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>pjax</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>postgres</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>PostgreSQL</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Protobuf</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Protocol Buffers</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Python3</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>reading</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Redis</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>regex</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>RPC</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>samba</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>SEO</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>shell</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>SkyWalking</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>spring</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>SpringCloud</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>springmvc</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sql</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sqlx</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>stub</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>tale</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>tcp/ip</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>TLS</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>translation</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Ubuntu</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>unit tests</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>vim</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>VMware</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>wasm</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>windows</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>zookeeper</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>三子棋</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>上下文</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>个税</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>二分查找</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>二维码</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>五险一金</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>人生在勤，不索何获</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>信道</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>单元测试</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>命令行参数 main函数</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>图床</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>字符串旋转</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>平均数</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>并发编程</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>微服务</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>扫雷</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>推箱子游戏</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>搜索引擎</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>教程</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>数据结构与算法</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>栈桢</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>核心原理</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>泛型</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>活着</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>浏览器</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>爬虫</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>磁盘分区</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>结构体</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>编辑器</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>网络编程</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>证书</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>读写锁实现</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>超时退出</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>运维</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>逆序字符串</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>通讯录</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>鉴权</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>面试题</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a id="top" class="全部文章 后端 Go "
+           href="/2022/02/02/golang/"
+           data-tag="Go总结,Go练习题"
+           data-author="" >
+            <span class="post-title" title="Go语言练习题">Go语言练习题</span>
+            <span class="post-date" title="2022-02-02 15:29:32">2022/02/02</span>
+        </a>
+        
+        <a id="top" class="全部文章 后端 Go "
+           href="/2022/01/04/golang/"
+           data-tag="Go总结,Go面试题"
+           data-author="" >
+            <span class="post-title" title="Go全栈面试题（1）-Go基础语法面试题">Go全栈面试题（1）-Go基础语法面试题</span>
+            <span class="post-date" title="2022-01-04 15:29:32">2022/01/04</span>
+        </a>
+        
+        <a id="top" class="全部文章 后端 Go "
+           href="/2022/01/07/golang/"
+           data-tag="Go进阶面试题"
+           data-author="" >
+            <span class="post-title" title="Go全栈面试题（2）-Go进阶面试题">Go全栈面试题（2）-Go进阶面试题</span>
+            <span class="post-date" title="2022-01-07 15:29:32">2022/01/07</span>
+        </a>
+        
+        <a id="top" class="全部文章 读书 程序人生 "
+           href="/2018/01/20/undefined/"
+           data-tag="人生在勤，不索何获"
+           data-author="" >
+            <span class="post-title" title="My First Blog">My First Blog</span>
+            <span class="post-date" title="2018-01-20 13:27:47">2018/01/20</span>
+        </a>
+        
+        <a id="top" class="全部文章 后端 Go "
+           href="/2022/01/19/golang/"
+           data-tag="爬虫"
+           data-author="" >
+            <span class="post-title" title="【Go项目】模拟网站登录并爬虫">【Go项目】模拟网站登录并爬虫</span>
+            <span class="post-date" title="2022-01-19 15:29:32">2022/01/19</span>
+        </a>
+        
+        <a id="top" class="全部文章 后端 Go "
+           href="/2022/01/19/golang/"
+           data-tag="Go面试,微服务"
+           data-author="" >
+            <span class="post-title" title="Go全栈面试题（3）-微服务面试题">Go全栈面试题（3）-微服务面试题</span>
+            <span class="post-date" title="2022-01-19 15:29:32">2022/01/19</span>
+        </a>
+        
+        <a id="top" class="全部文章 后端 Go "
+           href="/2022/02/01/mysql/"
+           data-tag="面试题,MySQL总结"
+           data-author="" >
+            <span class="post-title" title="Go全栈面试题（4）-数据库面试题">Go全栈面试题（4）-数据库面试题</span>
+            <span class="post-date" title="2022-02-01 15:29:32">2022/02/01</span>
+        </a>
+        
+        <a id="top" class="全部文章 后端 Go "
+           href="/2022/02/03/golang/"
+           data-tag="网络编程,面试题"
+           data-author="" >
+            <span class="post-title" title="Go全栈面试题（5）-网络编程面试题">Go全栈面试题（5）-网络编程面试题</span>
+            <span class="post-date" title="2022-02-03 15:29:32">2022/02/03</span>
+        </a>
+        
+        <a id="top" class="全部文章 后端 Go "
+           href="/2022/01/05/golang/"
+           data-tag="数据结构与算法,Go面试题"
+           data-author="" >
+            <span class="post-title" title="Go全栈面试题（6）-数据结构与算法面试题">Go全栈面试题（6）-数据结构与算法面试题</span>
+            <span class="post-date" title="2022-01-05 15:29:32">2022/01/05</span>
+        </a>
+        
+        <a id="top" class="全部文章 工具 hexo "
+           href="/2017/03/13/3-hexo-logs/"
+           data-tag="hexo,3-hexo"
+           data-author="" >
+            <span class="post-title" title="3-hexo开发日志-持续更新">3-hexo开发日志-持续更新</span>
+            <span class="post-date" title="2017-03-13 15:44:57">2017/03/13</span>
+        </a>
+        
+        <a id="top" class="全部文章 工具 hexo "
+           href="/2017/03/23/3-hexo-instruction/"
+           data-tag="hexo,3-hexo"
+           data-author="" >
+            <span class="post-title" title="3-hexo使用说明">3-hexo使用说明</span>
+            <span class="post-date" title="2017-03-23 15:13:47">2017/03/23</span>
+        </a>
+        
+        <a  class="全部文章 数据库 MySQL "
+           href="/2022/03/03/mysql/"
+           data-tag="MySQL面试"
+           data-author="" >
+            <span class="post-title" title="MySQL数据库面试题">MySQL数据库面试题</span>
+            <span class="post-date" title="2022-03-03 15:29:32">2022/03/03</span>
+        </a>
+        
+        <a  class="全部文章 后端 C语言 "
+           href="/2022/02/26/undefined/"
+           data-tag="通讯录"
+           data-author="" >
+            <span class="post-title" title="【C语言】动态顺序表 + 文件存储 = 通讯录">【C语言】动态顺序表 + 文件存储 = 通讯录</span>
+            <span class="post-date" title="2022-02-26 13:28:26">2022/02/26</span>
+        </a>
+        
+        <a  class="全部文章 后端 Go "
+           href="/2022/02/16/go/"
+           data-tag="Go语言,单元测试,mock框架,stub"
+           data-author="" >
+            <span class="post-title" title="Go Mock (gomock)简明教程">Go Mock (gomock)简明教程</span>
+            <span class="post-date" title="2022-02-16 21:59:10">2022/02/16</span>
+        </a>
+        
+        <a  class="全部文章 后端 Go "
+           href="/2022/02/16/go/"
+           data-tag="Go语言,Go语言程序设计,Go语言教程中文版"
+           data-author="" >
+            <span class="post-title" title="Go 语言简明教程">Go 语言简明教程</span>
+            <span class="post-date" title="2022-02-16 21:59:10">2022/02/16</span>
+        </a>
+        
+        <a  class="全部文章 后端 Go "
+           href="/2022/02/11/go/"
+           data-tag="golang,mmap,memory mapping,windows"
+           data-author="" >
+            <span class="post-title" title="Go Mmap 文件内存映射简明教程">Go Mmap 文件内存映射简明教程</span>
+            <span class="post-date" title="2022-02-11 21:59:10">2022/02/11</span>
+        </a>
+        
+        <a  class="全部文章 工具 "
+           href="/2022/02/02/gamesh/"
+           data-tag="game"
+           data-author="" >
+            <span class="post-title" title="休闲娱乐-小游戏">休闲娱乐-小游戏</span>
+            <span class="post-date" title="2022-02-02 01:00:10">2022/02/02</span>
+        </a>
+        
+        <a  class="全部文章 数据库 MySQL "
+           href="/2022/01/31/mysql/"
+           data-tag="MySQL总结"
+           data-author="" >
+            <span class="post-title" title="MySQL 有这一篇就够（呕心狂敲37k字，只为博君一点赞！！！）">MySQL 有这一篇就够（呕心狂敲37k字，只为博君一点赞！！！）</span>
+            <span class="post-date" title="2022-01-31 15:29:32">2022/01/31</span>
+        </a>
+        
+        <a  class="全部文章 后端 Go "
+           href="/2022/01/17/go/"
+           data-tag="Go WebAssembly,wasm,gopherjs"
+           data-author="" >
+            <span class="post-title" title="Go WebAssembly (Wasm) 简明教程">Go WebAssembly (Wasm) 简明教程</span>
+            <span class="post-date" title="2022-01-17 21:59:10">2022/01/17</span>
+        </a>
+        
+        <a  class="全部文章 后端 Go "
+           href="/2022/01/16/go/"
+           data-tag="Protocol Buffers,Protobuf,Golang,RPC"
+           data-author="" >
+            <span class="post-title" title="Go Protobuf 简明教程">Go Protobuf 简明教程</span>
+            <span class="post-date" title="2022-01-16 21:59:10">2022/01/16</span>
+        </a>
+        
+        <a  class="全部文章 后端 Go "
+           href="/2022/01/16/go/"
+           data-tag="Golang,RPC,TLS,证书,鉴权"
+           data-author="" >
+            <span class="post-title" title="Go RPC &amp; TLS 鉴权简明教程">Go RPC &amp; TLS 鉴权简明教程</span>
+            <span class="post-date" title="2022-01-16 21:59:10">2022/01/16</span>
+        </a>
+        
+        <a  class="全部文章 后端 Go "
+           href="/2022/01/16/go/"
+           data-tag="golang test,unit tests,golang testing"
+           data-author="" >
+            <span class="post-title" title="Go Test 单元测试简明教程">Go Test 单元测试简明教程</span>
+            <span class="post-date" title="2022-01-16 21:59:10">2022/01/16</span>
+        </a>
+        
+        <a  class="全部文章 后端 Go "
+           href="/2022/01/09/golang/"
+           data-tag="Go爬虫,goquery"
+           data-author="" >
+            <span class="post-title" title="Go库之goquery">Go库之goquery</span>
+            <span class="post-date" title="2022-01-09 15:29:32">2022/01/09</span>
+        </a>
+        
+        <a  class="全部文章 后端 Go "
+           href="/2022/01/08/golang/"
+           data-tag="Go爬虫,goquery"
+           data-author="" >
+            <span class="post-title" title="【Go项目】爬取CSDN文章保存本地">【Go项目】爬取CSDN文章保存本地</span>
+            <span class="post-date" title="2022-01-08 15:29:32">2022/01/08</span>
+        </a>
+        
+        <a  class="全部文章 后端 Go "
+           href="/2022/01/06/golang/"
+           data-tag="go-qrcode,二维码"
+           data-author="" >
+            <span class="post-title" title="【Go项目】用Go生成和识别二维码">【Go项目】用Go生成和识别二维码</span>
+            <span class="post-date" title="2022-01-06 15:29:32">2022/01/06</span>
+        </a>
+        
+        <a  class="全部文章 后端 Go "
+           href="/2022/01/03/golang/"
+           data-tag="推箱子游戏,Go项目"
+           data-author="" >
+            <span class="post-title" title="【Go项目】实现推箱子游戏">【Go项目】实现推箱子游戏</span>
+            <span class="post-date" title="2022-01-03 15:29:32">2022/01/03</span>
+        </a>
+        
+        <a  class="全部文章 数据库 MySQL "
+           href="/2021/12/31/mysql/"
+           data-tag="mysql"
+           data-author="" >
+            <span class="post-title" title="MySQL 基础教程">MySQL 基础教程</span>
+            <span class="post-date" title="2021-12-31 22:00:42">2021/12/31</span>
+        </a>
+        
+        <a  class="全部文章 后端 Go "
+           href="/2021/12/26/go/"
+           data-tag="Gin"
+           data-author="" >
+            <span class="post-title" title="Go Gin 简明教程">Go Gin 简明教程</span>
+            <span class="post-date" title="2021-12-26 21:59:10">2021/12/26</span>
+        </a>
+        
+        <a  class="全部文章 后端 Go "
+           href="/2021/12/25/go/"
+           data-tag="并发编程,上下文,信道,超时退出,golang"
+           data-author="" >
+            <span class="post-title" title="Go Context 并发编程简明教程">Go Context 并发编程简明教程</span>
+            <span class="post-date" title="2021-12-25 21:59:10">2021/12/25</span>
+        </a>
+        
+        <a  class="全部文章 后端 Go "
+           href="/2021/12/24/go/"
+           data-tag="Go语言,GO2,泛型"
+           data-author="" >
+            <span class="post-title" title="Go2 新特性简明教程">Go2 新特性简明教程</span>
+            <span class="post-date" title="2021-12-24 21:59:10">2021/12/24</span>
+        </a>
+        
+        <a  class="全部文章 后端 网络编程 "
+           href="/2021/12/17/tcp/ip/"
+           data-tag="tcp/ip"
+           data-author="" >
+            <span class="post-title" title="TCP/IP 基础教程">TCP/IP 基础教程</span>
+            <span class="post-date" title="2021-12-17 22:00:42">2021/12/17</span>
+        </a>
+        
+        <a  class="全部文章 后端 Redis "
+           href="/2021/12/08/redis/"
+           data-tag="Redis,教程"
+           data-author="" >
+            <span class="post-title" title="Redis 2021最新 超详解 教程（狂神笔记+个人总结+代码+截图）">Redis 2021最新 超详解 教程（狂神笔记+个人总结+代码+截图）</span>
+            <span class="post-date" title="2021-12-08 10:44:30">2021/12/08</span>
+        </a>
+        
+        <a  class="全部文章 后端 Go "
+           href="/2021/11/24/go/"
+           data-tag="读写锁实现,核心原理"
+           data-author="" >
+            <span class="post-title" title="图解Go读写锁实现与核心原理分析">图解Go读写锁实现与核心原理分析</span>
+            <span class="post-date" title="2021-11-24 23:59:10">2021/11/24</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python3 "
+           href="/2021/11/24/python3/"
+           data-tag="Python3"
+           data-author="" >
+            <span class="post-title" title="Python 简明教程">Python 简明教程</span>
+            <span class="post-date" title="2021-11-24 23:59:10">2021/11/24</span>
+        </a>
+        
+        <a  class="全部文章 后端 Go "
+           href="/2021/11/24/go/"
+           data-tag="sqlx,Go数据库"
+           data-author="" >
+            <span class="post-title" title="Go sqlx操作mysql教程">Go sqlx操作mysql教程</span>
+            <span class="post-date" title="2021-11-24 21:59:10">2021/11/24</span>
+        </a>
+        
+        <a  class="全部文章 运维 linux "
+           href="/2021/10/24/linux/"
+           data-tag="VMware,Ubuntu"
+           data-author="" >
+            <span class="post-title" title="VMware Pro 14 安装 Ubuntu 18.04 详细教程">VMware Pro 14 安装 Ubuntu 18.04 详细教程</span>
+            <span class="post-date" title="2021-10-24 10:10:45">2021/10/24</span>
+        </a>
+        
+        <a  class="全部文章 工具 markdown "
+           href="/2021/10/24/tools/"
+           data-tag="Markdown,编辑器"
+           data-author="" >
+            <span class="post-title" title="主流 Markdown 编辑器推荐">主流 Markdown 编辑器推荐</span>
+            <span class="post-date" title="2021-10-24 10:10:45">2021/10/24</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2021/10/24/hexo/"
+           data-tag="jsDelivr,CDN"
+           data-author="" >
+            <span class="post-title" title="免费CDN：jsDelivr + Github">免费CDN：jsDelivr + Github</span>
+            <span class="post-date" title="2021-10-24 10:10:45">2021/10/24</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2021/10/24/hexo/"
+           data-tag="Cloudflare"
+           data-author="" >
+            <span class="post-title" title="利用Cloudflare为基于GitHub Pages的Hexo博客添加HTTPS支持">利用Cloudflare为基于GitHub Pages的Hexo博客添加HTTPS支持</span>
+            <span class="post-date" title="2021-10-24 10:10:45">2021/10/24</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2021/10/24/hexo/"
+           data-tag="jsDelivr,CDN,图床,PicGo"
+           data-author="" >
+            <span class="post-title" title="Github+jsDelivr+PicGo 打造稳定快速、高效免费图床">Github+jsDelivr+PicGo 打造稳定快速、高效免费图床</span>
+            <span class="post-date" title="2021-10-24 10:10:45">2021/10/24</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2021/10/24/hexo/"
+           data-tag="搜索引擎,SEO"
+           data-author="" >
+            <span class="post-title" title="Hexo 博客提交百度、谷歌搜索引擎收录">Hexo 博客提交百度、谷歌搜索引擎收录</span>
+            <span class="post-date" title="2021-10-24 10:10:45">2021/10/24</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2021/10/08/hexo-add-baidu/"
+           data-tag="hexo,3-hexo"
+           data-author="" >
+            <span class="post-title" title="Hexo博客向百度提交链接">Hexo博客向百度提交链接</span>
+            <span class="post-date" title="2021-10-08 10:44:30">2021/10/08</span>
+        </a>
+        
+        <a  class="全部文章 后端 Java "
+           href="/2021/09/26/spring-cloud-skywalking/"
+           data-tag="java,SpringCloud,SkyWalking"
+           data-author="" >
+            <span class="post-title" title="SpringCloud系列之接入SkyWalking进行链路追踪和日志收集">SpringCloud系列之接入SkyWalking进行链路追踪和日志收集</span>
+            <span class="post-date" title="2021-09-26 18:08:00">2021/09/26</span>
+        </a>
+        
+        <a  class="全部文章 后端 C语言 "
+           href="/2021/06/01/undefined/"
+           data-tag="逆序字符串"
+           data-author="" >
+            <span class="post-title" title="逆序字符串问题">逆序字符串问题</span>
+            <span class="post-date" title="2021-06-01 22:02:30">2021/06/01</span>
+        </a>
+        
+        <a  class="全部文章 后端 C语言 "
+           href="/2021/05/31/undefined/"
+           data-tag="结构体"
+           data-author="" >
+            <span class="post-title" title="自定义类型：结构体，枚举，联合">自定义类型：结构体，枚举，联合</span>
+            <span class="post-date" title="2021-05-31 22:02:36">2021/05/31</span>
+        </a>
+        
+        <a  class="全部文章 后端 C语言 "
+           href="/2021/05/29/undefined/"
+           data-tag="通讯录"
+           data-author="" >
+            <span class="post-title" title="【C语言】静态(动态)顺序表-通讯录">【C语言】静态(动态)顺序表-通讯录</span>
+            <span class="post-date" title="2021-05-29 21:54:55">2021/05/29</span>
+        </a>
+        
+        <a  class="全部文章 后端 C语言 "
+           href="/2021/05/27/undefined/"
+           data-tag="二分查找"
+           data-author="" >
+            <span class="post-title" title="二分查找，你真的掌握了吗？">二分查找，你真的掌握了吗？</span>
+            <span class="post-date" title="2021-05-27 21:54:50">2021/05/27</span>
+        </a>
+        
+        <a  class="全部文章 后端 C语言 "
+           href="/2021/05/26/undefined/"
+           data-tag="三子棋"
+           data-author="" >
+            <span class="post-title" title="【C语言】经典小游戏-三子棋">【C语言】经典小游戏-三子棋</span>
+            <span class="post-date" title="2021-05-26 21:54:45">2021/05/26</span>
+        </a>
+        
+        <a  class="全部文章 后端 C语言 "
+           href="/2021/05/25/undefined/"
+           data-tag="栈桢"
+           data-author="" >
+            <span class="post-title" title="函数调用过程（栈桢）">函数调用过程（栈桢）</span>
+            <span class="post-date" title="2021-05-25 21:54:40">2021/05/25</span>
+        </a>
+        
+        <a  class="全部文章 后端 C语言 "
+           href="/2021/05/24/undefined/"
+           data-tag="平均数"
+           data-author="" >
+            <span class="post-title" title="平均数三种境界">平均数三种境界</span>
+            <span class="post-date" title="2021-05-24 21:54:20">2021/05/24</span>
+        </a>
+        
+        <a  class="全部文章 后端 C语言 "
+           href="/2021/05/23/undefined/"
+           data-tag="c/c++代码规范"
+           data-author="" >
+            <span class="post-title" title="C/C++代码规范">C/C++代码规范</span>
+            <span class="post-date" title="2021-05-23 21:54:33">2021/05/23</span>
+        </a>
+        
+        <a  class="全部文章 后端 C语言 "
+           href="/2021/05/22/undefined/"
+           data-tag="扫雷"
+           data-author="" >
+            <span class="post-title" title="【C语言】经典小游戏-扫雷">【C语言】经典小游戏-扫雷</span>
+            <span class="post-date" title="2021-05-22 13:27:47">2021/05/22</span>
+        </a>
+        
+        <a  class="全部文章 后端 C语言 "
+           href="/2021/05/20/undefined/"
+           data-tag="字符串旋转"
+           data-author="" >
+            <span class="post-title" title="字符串左右旋转问题">字符串左右旋转问题</span>
+            <span class="post-date" title="2021-05-20 13:27:47">2021/05/20</span>
+        </a>
+        
+        <a  class="全部文章 后端 C语言 "
+           href="/2021/05/20/undefined/"
+           data-tag="命令行参数 main函数"
+           data-author="" >
+            <span class="post-title" title="浅析（命令行参数 ）&amp;（main函数参数）">浅析（命令行参数 ）&amp;（main函数参数）</span>
+            <span class="post-date" title="2021-05-20 13:27:47">2021/05/20</span>
+        </a>
+        
+        <a  class="全部文章 运维 linux "
+           href="/2021/05/17/linux/"
+           data-tag="linux"
+           data-author="" >
+            <span class="post-title" title="Linux 基础教程">Linux 基础教程</span>
+            <span class="post-date" title="2021-05-17 22:00:42">2021/05/17</span>
+        </a>
+        
+        <a  class="全部文章 读书 "
+           href="/2021/05/02/undefined/"
+           data-tag="五险一金,个税"
+           data-author="" >
+            <span class="post-title" title="五险一金&amp;个税小常识">五险一金&amp;个税小常识</span>
+            <span class="post-date" title="2021-05-02 17:46:16">2021/05/02</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python3 "
+           href="/2021/01/24/python3/"
+           data-tag="Python3"
+           data-author="" >
+            <span class="post-title" title="Python3 基础学习笔记 C09">Python3 基础学习笔记 C09</span>
+            <span class="post-date" title="2021-01-24 23:59:10">2021/01/24</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python3 "
+           href="/2021/01/23/python3/"
+           data-tag="Python3"
+           data-author="" >
+            <span class="post-title" title="Python3 基础学习笔记 C08">Python3 基础学习笔记 C08</span>
+            <span class="post-date" title="2021-01-23 23:59:10">2021/01/23</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python3 "
+           href="/2021/01/22/python3/"
+           data-tag="Python3"
+           data-author="" >
+            <span class="post-title" title="Python3 基础学习笔记 C07">Python3 基础学习笔记 C07</span>
+            <span class="post-date" title="2021-01-22 23:59:10">2021/01/22</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python3 "
+           href="/2021/01/20/python3/"
+           data-tag="Python3"
+           data-author="" >
+            <span class="post-title" title="Python3 基础学习笔记 C05">Python3 基础学习笔记 C05</span>
+            <span class="post-date" title="2021-01-20 23:59:10">2021/01/20</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python3 "
+           href="/2021/01/20/python3/"
+           data-tag="Python3"
+           data-author="" >
+            <span class="post-title" title="Python3 基础学习笔记 C06">Python3 基础学习笔记 C06</span>
+            <span class="post-date" title="2021-01-20 23:59:10">2021/01/20</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python3 "
+           href="/2021/01/19/python3/"
+           data-tag="Python3"
+           data-author="" >
+            <span class="post-title" title="Python3 基础学习笔记 C04">Python3 基础学习笔记 C04</span>
+            <span class="post-date" title="2021-01-19 23:59:10">2021/01/19</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python3 "
+           href="/2021/01/18/python3/"
+           data-tag="Python3"
+           data-author="" >
+            <span class="post-title" title="Python3 基础学习笔记 C03">Python3 基础学习笔记 C03</span>
+            <span class="post-date" title="2021-01-18 23:59:10">2021/01/18</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python3 "
+           href="/2021/01/16/python3/"
+           data-tag="Python3"
+           data-author="" >
+            <span class="post-title" title="Python3 基础学习笔记 C02">Python3 基础学习笔记 C02</span>
+            <span class="post-date" title="2021-01-16 23:59:10">2021/01/16</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python3 "
+           href="/2021/01/15/python3/"
+           data-tag="Python3"
+           data-author="" >
+            <span class="post-title" title="Python3 基础学习笔记 C01">Python3 基础学习笔记 C01</span>
+            <span class="post-date" title="2021-01-15 23:59:10">2021/01/15</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2020/12/28/3-hexo-add-icon/"
+           data-tag="hexo,3-hexo"
+           data-author="" >
+            <span class="post-title" title="3-hexo添加自定义图标">3-hexo添加自定义图标</span>
+            <span class="post-date" title="2020-12-28 22:00:00">2020/12/28</span>
+        </a>
+        
+        <a  class="全部文章 大前端 "
+           href="/2020/10/20/know-javascript-promise/"
+           data-tag="javascript"
+           data-author="" >
+            <span class="post-title" title="一文看懂JavaScript中的Promise">一文看懂JavaScript中的Promise</span>
+            <span class="post-date" title="2020-10-20 19:43:44">2020/10/20</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2020/09/01/Docker-summary/"
+           data-tag="docker,linux"
+           data-author="" >
+            <span class="post-title" title="Docker 技术整理">Docker 技术整理</span>
+            <span class="post-date" title="2020-09-01 22:11:00">2020/09/01</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2020/05/23/3-hexo-comment/"
+           data-tag="3-hexo"
+           data-author="" >
+            <span class="post-title" title="3-hexo评论设置">3-hexo评论设置</span>
+            <span class="post-date" title="2020-05-23 22:26:23">2020/05/23</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2019/11/12/3-hexo-support-mermaid/"
+           data-tag="hexo,3-hexo"
+           data-author="" >
+            <span class="post-title" title="3-hexo支持mermaid图表">3-hexo支持mermaid图表</span>
+            <span class="post-date" title="2019-11-12 09:55:37">2019/11/12</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2019/10/08/3-hexo-add-music/"
+           data-tag="hexo,3-hexo"
+           data-author="" >
+            <span class="post-title" title="3-hexo 添加音乐插件">3-hexo 添加音乐插件</span>
+            <span class="post-date" title="2019-10-08 10:44:30">2019/10/08</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2019/09/24/3-hexo-jsfiddle/"
+           data-tag="hexo,3-hexo"
+           data-author="" >
+            <span class="post-title" title="3-hexo支持jsfiddle渲染">3-hexo支持jsfiddle渲染</span>
+            <span class="post-date" title="2019-09-24 09:59:37">2019/09/24</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2019/09/24/3-hexo-toc/"
+           data-tag="hexo,3-hexo"
+           data-author="" >
+            <span class="post-title" title="3-hexo文章内toc生成">3-hexo文章内toc生成</span>
+            <span class="post-date" title="2019-09-24 09:48:20">2019/09/24</span>
+        </a>
+        
+        <a  class="全部文章 读书 阅读笔记 "
+           href="/2019/06/09/misfortune-intellectual/"
+           data-tag="reading"
+           data-author="" >
+            <span class="post-title" title="[记]《知识分子的不幸》-王小波">[记]《知识分子的不幸》-王小波</span>
+            <span class="post-date" title="2019-06-09 21:31:09">2019/06/09</span>
+        </a>
+        
+        <a  class="全部文章 读书 阅读笔记 "
+           href="/2019/05/02/to-live/"
+           data-tag="reading,活着"
+           data-author="" >
+            <span class="post-title" title="人们在一本叫《活着》的书中纷纷死去">人们在一本叫《活着》的书中纷纷死去</span>
+            <span class="post-date" title="2019-05-02 17:46:16">2019/05/02</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2018/09/08/shell-command/"
+           data-tag="linux,shell"
+           data-author="" >
+            <span class="post-title" title="shell速查表">shell速查表</span>
+            <span class="post-date" title="2018-09-08 11:48:24">2018/09/08</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2018/02/08/nginx-config/"
+           data-tag="nginx"
+           data-author="" >
+            <span class="post-title" title="nginx配置记录">nginx配置记录</span>
+            <span class="post-date" title="2018-02-08 09:19:09">2018/02/08</span>
+        </a>
+        
+        <a  class="全部文章 工具 软件记录 "
+           href="/2017/12/13/Mac-BetterTouchTool/"
+           data-tag="mac,efficiency"
+           data-author="" >
+            <span class="post-title" title="Mac神器-BTT(BetterTouchTool)不完全教程">Mac神器-BTT(BetterTouchTool)不完全教程</span>
+            <span class="post-date" title="2017-12-13 17:04:25">2017/12/13</span>
+        </a>
+        
+        <a  class="全部文章 后端 Java "
+           href="/2017/11/27/java-grammatical-sugar/"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="[转]谈谈Java中的语法糖">[转]谈谈Java中的语法糖</span>
+            <span class="post-date" title="2017-11-27 22:51:45">2017/11/27</span>
+        </a>
+        
+        <a  class="全部文章 数据库 PostgreSQL "
+           href="/2017/11/09/PostgreSQL%E4%BA%8B%E7%89%A9%E5%8F%8A%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/"
+           data-tag="PostgreSQL"
+           data-author="" >
+            <span class="post-title" title="PostgreSQL事务及隔离级别">PostgreSQL事务及隔离级别</span>
+            <span class="post-date" title="2017-11-09 00:07:33">2017/11/09</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/10/20/undefined/"
+           data-tag="vim,keybord,emacs,linux"
+           data-author="" >
+            <span class="post-title" title="linux下修改按键ESC&lt;=&gt;CAPSLOCK和Control=&gt;ALT_R">linux下修改按键ESC&lt;=&gt;CAPSLOCK和Control=&gt;ALT_R</span>
+            <span class="post-date" title="2017-10-20 17:38:49">2017/10/20</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/09/25/ascii-ansi-unicode-utf-8/"
+           data-tag="encoding"
+           data-author="" >
+            <span class="post-title" title="[转]字符编解码的故事（ASCII，ANSI，Unicode，Utf-8区别）">[转]字符编解码的故事（ASCII，ANSI，Unicode，Utf-8区别）</span>
+            <span class="post-date" title="2017-09-25 19:15:00">2017/09/25</span>
+        </a>
+        
+        <a  class="全部文章 后端 Java "
+           href="/2017/09/25/%E6%90%AD%E5%BB%BAdubbo+zookeeper%E5%B9%B3%E5%8F%B0/"
+           data-tag="dubbo,zookeeper"
+           data-author="" >
+            <span class="post-title" title="搭建dubbo+zookeeper平台">搭建dubbo+zookeeper平台</span>
+            <span class="post-date" title="2017-09-25 16:29:07">2017/09/25</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/09/25/docker-errors/"
+           data-tag="docker"
+           data-author="" >
+            <span class="post-title" title="docker报错集锦">docker报错集锦</span>
+            <span class="post-date" title="2017-09-25 10:03:50">2017/09/25</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2017/09/21/hexo-fragment_cache/"
+           data-tag="hexo,fragment_cache"
+           data-author="" >
+            <span class="post-title" title="Hexo加速渲染速度之fragment_cache">Hexo加速渲染速度之fragment_cache</span>
+            <span class="post-date" title="2017-09-21 19:34:37">2017/09/21</span>
+        </a>
+        
+        <a  class="全部文章 大前端 "
+           href="/2017/09/21/bf-cache/"
+           data-tag="浏览器,js"
+           data-author="" >
+            <span class="post-title" title="[转]浏览器前进/后退缓存（BF Cache）">[转]浏览器前进/后退缓存（BF Cache）</span>
+            <span class="post-date" title="2017-09-21 15:35:24">2017/09/21</span>
+        </a>
+        
+        <a  class="全部文章 大前端 "
+           href="/2017/09/21/iphone-bf-no-run-js/"
+           data-tag="js"
+           data-author="" >
+            <span class="post-title" title="解决iphone下后退不执行js的问题">解决iphone下后退不执行js的问题</span>
+            <span class="post-date" title="2017-09-21 15:25:32">2017/09/21</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/09/19/CentOS7%E4%BD%BF%E7%94%A8Firewalld/"
+           data-tag="firewall"
+           data-author="" >
+            <span class="post-title" title="CentOS7使用Firewalld">CentOS7使用Firewalld</span>
+            <span class="post-date" title="2017-09-19 09:53:53">2017/09/19</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/09/18/docker-save-export/"
+           data-tag="docker"
+           data-author="" >
+            <span class="post-title" title="docker备份恢复之save与export">docker备份恢复之save与export</span>
+            <span class="post-date" title="2017-09-18 22:38:52">2017/09/18</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/09/11/sudo%E5%91%BD%E4%BB%A4%E5%85%8D%E5%AF%86%E7%A0%81%E8%AE%BE%E7%BD%AE/"
+           data-tag="linux"
+           data-author="" >
+            <span class="post-title" title="sudo命令免密码设置">sudo命令免密码设置</span>
+            <span class="post-date" title="2017-09-11 09:30:55">2017/09/11</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/09/06/build-Maven-Nexus/"
+           data-tag="java,maven,nexus"
+           data-author="" >
+            <span class="post-title" title="搭建Maven私服-Nexus">搭建Maven私服-Nexus</span>
+            <span class="post-date" title="2017-09-06 23:01:31">2017/09/06</span>
+        </a>
+        
+        <a  class="全部文章 数据库 "
+           href="/2017/08/04/mybatis-Mapper/"
+           data-tag="mybatis"
+           data-author="" >
+            <span class="post-title" title="Mybatis常用Mapper语句">Mybatis常用Mapper语句</span>
+            <span class="post-date" title="2017-08-04 15:54:47">2017/08/04</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2017/07/05/MathJax-pjax/"
+           data-tag="mathjax,pjax"
+           data-author="" >
+            <span class="post-title" title="MathJax适配Pjax">MathJax适配Pjax</span>
+            <span class="post-date" title="2017-07-05 19:24:10">2017/07/05</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2017/07/05/3-hexo-mathjax/"
+           data-tag="mathjax"
+           data-author="" >
+            <span class="post-title" title="3-hexo配置MathJax数学公式渲染">3-hexo配置MathJax数学公式渲染</span>
+            <span class="post-date" title="2017-07-05 15:09:42">2017/07/05</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/07/03/CentOS7-anonymous-Samba/"
+           data-tag="samba"
+           data-author="" >
+            <span class="post-title" title="CentOS7安装配置匿名访问Samba">CentOS7安装配置匿名访问Samba</span>
+            <span class="post-date" title="2017-07-03 19:40:14">2017/07/03</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2017/06/26/gitment/"
+           data-tag="hexo"
+           data-author="" >
+            <span class="post-title" title="完美替代多说-gitment">完美替代多说-gitment</span>
+            <span class="post-date" title="2017-06-26 12:08:13">2017/06/26</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/06/01/vim-paste/"
+           data-tag="vim"
+           data-author="" >
+            <span class="post-title" title="解决粘贴到vim缩进错乱问题">解决粘贴到vim缩进错乱问题</span>
+            <span class="post-date" title="2017-06-01 19:45:24">2017/06/01</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/06/01/entering-docker/"
+           data-tag="docker"
+           data-author="" >
+            <span class="post-title" title="进入docker容器命令制作">进入docker容器命令制作</span>
+            <span class="post-date" title="2017-06-01 17:25:11">2017/06/01</span>
+        </a>
+        
+        <a  class="全部文章 工具 软件记录 "
+           href="/2017/05/24/tale-build-experience/"
+           data-tag="tale"
+           data-author="" >
+            <span class="post-title" title="tale博客搭建及体验">tale博客搭建及体验</span>
+            <span class="post-date" title="2017-05-24 11:29:30">2017/05/24</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/05/23/docker-data-manager/"
+           data-tag="docker"
+           data-author="" >
+            <span class="post-title" title="docker数据管理">docker数据管理</span>
+            <span class="post-date" title="2017-05-23 21:43:06">2017/05/23</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/05/23/docker-container/"
+           data-tag="docker"
+           data-author="" >
+            <span class="post-title" title="docker容器">docker容器</span>
+            <span class="post-date" title="2017-05-23 21:29:38">2017/05/23</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/05/23/docker-registry/"
+           data-tag="docker,docker仓库"
+           data-author="" >
+            <span class="post-title" title="docker仓库">docker仓库</span>
+            <span class="post-date" title="2017-05-23 21:15:52">2017/05/23</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/05/23/CentOS-DNS-GW-IP/"
+           data-tag="运维,centos"
+           data-author="" >
+            <span class="post-title" title="CentOS修改DNS/GW/IP">CentOS修改DNS/GW/IP</span>
+            <span class="post-date" title="2017-05-23 09:53:52">2017/05/23</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/05/22/Dockerfile/"
+           data-tag="docker"
+           data-author="" >
+            <span class="post-title" title="Dockerfile指令详解">Dockerfile指令详解</span>
+            <span class="post-date" title="2017-05-22 19:11:42">2017/05/22</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/05/19/docker-image/"
+           data-tag="docker"
+           data-author="" >
+            <span class="post-title" title="docker镜像">docker镜像</span>
+            <span class="post-date" title="2017-05-19 16:47:33">2017/05/19</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/05/19/docker-first/"
+           data-tag="docker"
+           data-author="" >
+            <span class="post-title" title="docker初体验">docker初体验</span>
+            <span class="post-date" title="2017-05-19 16:32:23">2017/05/19</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/05/17/linux%E6%97%A0%E6%8D%9F%E8%B0%83%E6%95%B4%E5%88%86%E5%8C%BA%E5%A4%A7%E5%B0%8F/"
+           data-tag="运维,磁盘分区"
+           data-author="" >
+            <span class="post-title" title="linux无损调整分区大小">linux无损调整分区大小</span>
+            <span class="post-date" title="2017-05-17 22:00:42">2017/05/17</span>
+        </a>
+        
+        <a  class="全部文章 工具 git "
+           href="/2017/05/16/git-log/"
+           data-tag="git"
+           data-author="" >
+            <span class="post-title" title="Git统计操作">Git统计操作</span>
+            <span class="post-date" title="2017-05-16 09:26:11">2017/05/16</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/04/25/%E8%A7%A3%E5%86%B3linux%E4%B8%8Bzip%E6%96%87%E4%BB%B6%E8%A7%A3%E5%8E%8B%E4%B9%B1%E7%A0%81/"
+           data-tag="linux命令"
+           data-author="" >
+            <span class="post-title" title="解决linux下zip文件解压乱码">解决linux下zip文件解压乱码</span>
+            <span class="post-date" title="2017-04-25 09:10:40">2017/04/25</span>
+        </a>
+        
+        <a  class="全部文章 后端 其他 "
+           href="/2017/04/22/encryption-algorithm/"
+           data-tag="encryption"
+           data-author="" >
+            <span class="post-title" title="加密算法简介">加密算法简介</span>
+            <span class="post-date" title="2017-04-22 09:30:41">2017/04/22</span>
+        </a>
+        
+        <a  class="全部文章 大前端 "
+           href="/2017/04/21/jsp-use-record/"
+           data-tag="jsp,jstl"
+           data-author="" >
+            <span class="post-title" title="JSP操作记录">JSP操作记录</span>
+            <span class="post-date" title="2017-04-21 11:22:12">2017/04/21</span>
+        </a>
+        
+        <a  class="全部文章 后端 Java "
+           href="/2017/04/15/SpringMVC-implementation-process/"
+           data-tag="java,spring,springmvc"
+           data-author="" >
+            <span class="post-title" title="[转]SpringMVC执行流程及源码解析">[转]SpringMVC执行流程及源码解析</span>
+            <span class="post-date" title="2017-04-15 10:22:05">2017/04/15</span>
+        </a>
+        
+        <a  class="全部文章 数据库 PostgreSQL "
+           href="/2017/04/14/postgres-sql-use/"
+           data-tag="postgres,sql"
+           data-author="" >
+            <span class="post-title" title="PostgreSQL常用SQL操作">PostgreSQL常用SQL操作</span>
+            <span class="post-date" title="2017-04-14 16:37:24">2017/04/14</span>
+        </a>
+        
+        <a  class="全部文章 工具 软件记录 "
+           href="/2017/03/30/deepin-linux/"
+           data-tag="运维,deepin"
+           data-author="" >
+            <span class="post-title" title="deepin系统使用记录">deepin系统使用记录</span>
+            <span class="post-date" title="2017-03-30 18:58:50">2017/03/30</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2017/03/27/hexo-error-collection/"
+           data-tag="hexo"
+           data-author="" >
+            <span class="post-title" title="hexo报错合集">hexo报错合集</span>
+            <span class="post-date" title="2017-03-27 19:40:42">2017/03/27</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2017/03/24/3-hexo-shortcuts/"
+           data-tag="hexo,3-hexo"
+           data-author="" >
+            <span class="post-title" title="3-hexo快捷键说明">3-hexo快捷键说明</span>
+            <span class="post-date" title="2017-03-24 16:45:31">2017/03/24</span>
+        </a>
+        
+        <a  class="全部文章 工具 "
+           href="/2017/03/23/the-third-comment/"
+           data-tag="hexo"
+           data-author="" >
+            <span class="post-title" title="关于第三方评论系统">关于第三方评论系统</span>
+            <span class="post-date" title="2017-03-23 11:59:50">2017/03/23</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2017/03/17/windows-hexo/"
+           data-tag="hexo"
+           data-author="" >
+            <span class="post-title" title="windows环境下使用hexo搭建blog平台">windows环境下使用hexo搭建blog平台</span>
+            <span class="post-date" title="2017-03-17 14:02:55">2017/03/17</span>
+        </a>
+        
+        <a  class="全部文章 大前端 "
+           href="/2017/03/16/npm/"
+           data-tag="node"
+           data-author="" >
+            <span class="post-title" title="npm使用介绍">npm使用介绍</span>
+            <span class="post-date" title="2017-03-16 20:09:48">2017/03/16</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2017/03/14/Hexo-RSS-Sitemap/"
+           data-tag="hexo"
+           data-author="" >
+            <span class="post-title" title="为Hexo添加RSS和Sitemap">为Hexo添加RSS和Sitemap</span>
+            <span class="post-date" title="2017-03-14 09:44:29">2017/03/14</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2017/03/13/3-hexo-homepage/"
+           data-tag="hexo,3-hexo"
+           data-author="" >
+            <span class="post-title" title="3-hexo配置首页">3-hexo配置首页</span>
+            <span class="post-date" title="2017-03-13 09:56:07">2017/03/13</span>
+        </a>
+        
+        <a  class="全部文章 大前端 "
+           href="/2017/03/09/busuanzi-pjax/"
+           data-tag="jQuery,hexo"
+           data-author="" >
+            <span class="post-title" title="不蒜子适配pjax">不蒜子适配pjax</span>
+            <span class="post-date" title="2017-03-09 20:15:51">2017/03/09</span>
+        </a>
+        
+        <a  class="全部文章 大前端 "
+           href="/2017/03/09/duoshuo-pjax/"
+           data-tag="jQuery,hexo"
+           data-author="" >
+            <span class="post-title" title="多说适配pjax">多说适配pjax</span>
+            <span class="post-date" title="2017-03-09 19:50:45">2017/03/09</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2017/03/09/hexo-wordcount/"
+           data-tag="hexo"
+           data-author="" >
+            <span class="post-title" title="Hexo加入字数统计WordCount">Hexo加入字数统计WordCount</span>
+            <span class="post-date" title="2017-03-09 16:57:10">2017/03/09</span>
+        </a>
+        
+        <a  class="全部文章 大前端 "
+           href="/2017/03/08/font-develop-rule/"
+           data-tag="translation"
+           data-author="" >
+            <span class="post-title" title="前端页面开发规范">前端页面开发规范</span>
+            <span class="post-date" title="2017-03-08 08:58:21">2017/03/08</span>
+        </a>
+        
+        <a  class="全部文章 大前端 "
+           href="/2017/03/08/understanding-the-critical-rendering-path/"
+           data-tag="translation"
+           data-author="" >
+            <span class="post-title" title="[译]理解浏览器关键渲染路径">[译]理解浏览器关键渲染路径</span>
+            <span class="post-date" title="2017-03-08 08:58:21">2017/03/08</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2017/03/07/3-hexo/"
+           data-tag="hexo,3-hexo"
+           data-author="" >
+            <span class="post-title" title="Hexo主题3-hexo">Hexo主题3-hexo</span>
+            <span class="post-date" title="2017-03-07 11:15:50">2017/03/07</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/03/06/Vim-command/"
+           data-tag="vim"
+           data-author="" >
+            <span class="post-title" title="Vim命令速查表">Vim命令速查表</span>
+            <span class="post-date" title="2017-03-06 11:23:36">2017/03/06</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/03/06/linux-ftp/"
+           data-tag="ftp"
+           data-author="" >
+            <span class="post-title" title="如何在linux中搭建ftp服务">如何在linux中搭建ftp服务</span>
+            <span class="post-date" title="2017-03-06 08:47:48">2017/03/06</span>
+        </a>
+        
+        <a  class="全部文章 大前端 "
+           href="/2017/03/04/AngularJs/"
+           data-tag="AngularJs"
+           data-author="" >
+            <span class="post-title" title="AngularJs快速入门">AngularJs快速入门</span>
+            <span class="post-date" title="2017-03-04 08:40:58">2017/03/04</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2017/02/28/3-hexo-multiple-author/"
+           data-tag="hexo,3-hexo"
+           data-author="" >
+            <span class="post-title" title="3-hexo多作者模式">3-hexo多作者模式</span>
+            <span class="post-date" title="2017-02-28 10:55:31">2017/02/28</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2017/02/25/hexo-create-404-page/"
+           data-tag="hexo"
+           data-author="" >
+            <span class="post-title" title="Hexo创建404页面">Hexo创建404页面</span>
+            <span class="post-date" title="2017-02-25 15:18:39">2017/02/25</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2017/02/24/hexo-top-sort/"
+           data-tag="hexo"
+           data-author="" >
+            <span class="post-title" title="Hexo置顶及排序问题">Hexo置顶及排序问题</span>
+            <span class="post-date" title="2017-02-24 15:50:38">2017/02/24</span>
+        </a>
+        
+        <a  class="全部文章 后端 Java "
+           href="/2017/02/21/the-introduction-of-memory-leak-what-why-and-how/"
+           data-tag="java,translation"
+           data-author="" >
+            <span class="post-title" title="[译]Java内存泄露介绍">[译]Java内存泄露介绍</span>
+            <span class="post-date" title="2017-02-21 15:05:39">2017/02/21</span>
+        </a>
+        
+        <a  class="全部文章 大前端 "
+           href="/2017/02/08/pjax/"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="pjax用法">pjax用法</span>
+            <span class="post-date" title="2017-02-08 20:18:54">2017/02/08</span>
+        </a>
+        
+        <a  class="全部文章 读书 书单 "
+           href="/2017/01/31/reading-list/"
+           data-tag="reading"
+           data-author="" >
+            <span class="post-title" title="reading-list">reading-list</span>
+            <span class="post-date" title="2017-01-31 15:29:32">2017/01/31</span>
+        </a>
+        
+        <a  class="全部文章 读书 阅读笔记 "
+           href="/2017/01/03/Fortress-Besieged/"
+           data-tag="reading"
+           data-author="" >
+            <span class="post-title" title="人生若只如初见-《围城》">人生若只如初见-《围城》</span>
+            <span class="post-date" title="2017-01-03 11:27:04">2017/01/03</span>
+        </a>
+        
+        <a  class="全部文章 工具 git "
+           href="/2016/12/24/git-reset/"
+           data-tag="Git"
+           data-author="" >
+            <span class="post-title" title="Git之reset揭秘">Git之reset揭秘</span>
+            <span class="post-date" title="2016-12-24 11:19:24">2016/12/24</span>
+        </a>
+        
+        <a  class="全部文章 工具 git "
+           href="/2016/12/23/git-master/"
+           data-tag="Git"
+           data-author="" >
+            <span class="post-title" title="Git操作之高手过招">Git操作之高手过招</span>
+            <span class="post-date" title="2016-12-23 10:59:01">2016/12/23</span>
+        </a>
+        
+        <a  class="全部文章 工具 git "
+           href="/2016/12/21/git-ssh-https-verify-configuration/"
+           data-tag="Git"
+           data-author="" >
+            <span class="post-title" title="Git之SSH与HTTPS免密码配置">Git之SSH与HTTPS免密码配置</span>
+            <span class="post-date" title="2016-12-21 15:31:55">2016/12/21</span>
+        </a>
+        
+        <a  class="全部文章 大前端 "
+           href="/2016/11/23/jQuery-checkbox-radio-select/"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="jQuery之checkbox|radio|select操作">jQuery之checkbox|radio|select操作</span>
+            <span class="post-date" title="2016-11-23 16:19:34">2016/11/23</span>
+        </a>
+        
+        <a  class="全部文章 大前端 "
+           href="/2016/11/22/jQuery-selector/"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="jQuery选择器与节点操作">jQuery选择器与节点操作</span>
+            <span class="post-date" title="2016-11-22 17:11:48">2016/11/22</span>
+        </a>
+        
+        <a  class="全部文章 工具 软件记录 "
+           href="/2016/11/05/idea-shortcuts/"
+           data-tag="IntellijIDEA"
+           data-author="" >
+            <span class="post-title" title="idea常用快捷键">idea常用快捷键</span>
+            <span class="post-date" title="2016-11-05 15:22:48">2016/11/05</span>
+        </a>
+        
+        <a  class="全部文章 后端 Java "
+           href="/2016/10/24/web-xml/"
+           data-tag="java,javaee"
+           data-author="" >
+            <span class="post-title" title="web.xml详解">web.xml详解</span>
+            <span class="post-date" title="2016-10-24 10:10:45">2016/10/24</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2016/10/23/hexo-git-server-blog/"
+           data-tag="hexo,Git"
+           data-author="" >
+            <span class="post-title" title="Hexo+Git服务器搭建blog">Hexo+Git服务器搭建blog</span>
+            <span class="post-date" title="2016-10-23 09:24:03">2016/10/23</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2016/10/22/hexo-gitHub-pages-create-own-blog/"
+           data-tag="hexo,Git,GitHub"
+           data-author="" >
+            <span class="post-title" title="Hexo+GitHub Pages搭建属于自己的blog">Hexo+GitHub Pages搭建属于自己的blog</span>
+            <span class="post-date" title="2016-10-22 21:24:05">2016/10/22</span>
+        </a>
+        
+        <a  class="全部文章 工具 git "
+           href="/2016/10/22/set-up-git-server-on-vps/"
+           data-tag="Git"
+           data-author="" >
+            <span class="post-title" title="搭建Git服务器">搭建Git服务器</span>
+            <span class="post-date" title="2016-10-22 20:08:04">2016/10/22</span>
+        </a>
+        
+        <a  class="全部文章 工具 git "
+           href="/2016/10/13/contributing-to-open-source-on-github/"
+           data-tag="Git,GitHub"
+           data-author="" >
+            <span class="post-title" title="如何给GitHub上的项目贡献代码">如何给GitHub上的项目贡献代码</span>
+            <span class="post-date" title="2016-10-13 15:44:07">2016/10/13</span>
+        </a>
+        
+        <a  class="全部文章 数据库 PostgreSQL "
+           href="/2016/10/12/PostgreSQL-2/"
+           data-tag="PostgreSQL"
+           data-author="" >
+            <span class="post-title" title="PostgreSQL常用操作">PostgreSQL常用操作</span>
+            <span class="post-date" title="2016-10-12 20:27:07">2016/10/12</span>
+        </a>
+        
+        <a  class="全部文章 数据库 PostgreSQL "
+           href="/2016/10/12/PostgreSQL-1/"
+           data-tag="PostgreSQL"
+           data-author="" >
+            <span class="post-title" title="PostgreSQL初体验">PostgreSQL初体验</span>
+            <span class="post-date" title="2016-10-12 19:49:40">2016/10/12</span>
+        </a>
+        
+        <a  class="全部文章 数据库 PostgreSQL "
+           href="/2016/10/12/PostgreSQL-3/"
+           data-tag="PostgreSQL"
+           data-author="" >
+            <span class="post-title" title="PostgreSQL的介绍与安装">PostgreSQL的介绍与安装</span>
+            <span class="post-date" title="2016-10-12 15:44:16">2016/10/12</span>
+        </a>
+        
+        <a  class="全部文章 大前端 "
+           href="/2016/10/05/FreeMarker/"
+           data-tag="java,freemarker"
+           data-author="" >
+            <span class="post-title" title="FreeMarker语法详解">FreeMarker语法详解</span>
+            <span class="post-date" title="2016-10-05 11:58:50">2016/10/05</span>
+        </a>
+        
+        <a  class="全部文章 工具 软件记录 "
+           href="/2016/10/04/regular-expression/"
+           data-tag="regex"
+           data-author="" >
+            <span class="post-title" title="正则表达式详解">正则表达式详解</span>
+            <span class="post-date" title="2016-10-04 09:41:40">2016/10/04</span>
+        </a>
+        
+        <a  class="全部文章 工具 git "
+           href="/2016/10/02/git-command/"
+           data-tag="Git"
+           data-author="" >
+            <span class="post-title" title="Git常用命令">Git常用命令</span>
+            <span class="post-date" title="2016-10-02 17:15:39">2016/10/02</span>
+        </a>
+        
+        <a  class="全部文章 工具 git "
+           href="/2016/09/30/computer-mutiple-github-account/"
+           data-tag="Git,GitHub"
+           data-author="" >
+            <span class="post-title" title="一个客户端设置多个github账号">一个客户端设置多个github账号</span>
+            <span class="post-date" title="2016-09-30 16:42:48">2016/09/30</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-back-end/1645851816502" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">Go全栈面试题（4）-数据库面试题</h1>
+    
+    <div class="article-meta">
+        
+        <span class="top"><a>置顶</a></span>
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="后端">后端</a> > 
+            
+            <a  data-rel="后端&lt;---&gt;Go">Go</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color4">面试题</a>
+            
+            <a class="color3">MySQL总结</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2022-02-26 13:49:38'>2022-02-01 15:29</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="跳转至评论区">
+            <a href="#comments">
+                评论:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93MySQL%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-text">数据库MySQL面试题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MySQL%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">MySQL的数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MySQL%E4%B8%ADutf8%E5%92%8Cutf8mb4%E5%8C%BA%E5%88%AB"><span class="toc-text">MySQL中utf8和utf8mb4区别?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MySQL%E5%92%8Credis%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">MySQL和redis区别是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MySQL%E9%AB%98%E5%8F%AF%E7%94%A8%E6%96%B9%E6%A1%88%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="toc-text">MySQL高可用方案有哪些?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MySQL%E5%B9%B6%E5%8F%91%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98"><span class="toc-text">MySQL并发一致性问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%A2%E5%A4%B1%E4%BF%AE%E6%94%B9"><span class="toc-text">丢失修改</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%BB%E8%84%8F%E6%95%B0%E6%8D%AE"><span class="toc-text">读脏数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8D%E5%8F%AF%E9%87%8D%E5%A4%8D%E8%AF%BB"><span class="toc-text">不可重复读</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%BB%E5%BD%B1%E8%AF%BB"><span class="toc-text">幻影读</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MySQL%E4%B8%AD%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81-%E5%8E%9F%E7%90%86%E3%80%81%E5%8C%BA%E5%88%AB"><span class="toc-text">MySQL中乐观锁和悲观锁 原理、区别?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFMySQL%E4%BA%8B%E5%8A%A1%EF%BC%9F"><span class="toc-text">什么是MySQL事务？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Next-Key-Locks%EF%BC%9F"><span class="toc-text">什么是 Next-Key Locks？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ISAM%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">ISAM是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#InnoDB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">InnoDB是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MyISAM%E5%92%8CInnoDB%E5%BC%95%E6%93%8E%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">MyISAM和InnoDB引擎的区别?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MySQL%E5%A6%82%E4%BD%95%E6%94%AF%E6%8C%81%E4%BA%8B%E5%8A%A1%EF%BC%9F"><span class="toc-text">MySQL如何支持事务？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MySQL%E7%B4%A2%E5%BC%95%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">MySQL索引使用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E9%94%AE%E3%80%81%E5%A4%96%E9%94%AE%E5%92%8C%E7%B4%A2%E5%BC%95%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">主键、外键和索引的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis"><span class="toc-text">Redis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%8C%E4%BB%A5%E5%8F%8A%E5%AE%9E%E7%8E%B0%E5%9C%BA%E6%99%AF"><span class="toc-text">Redis的数据结构有哪些，以及实现场景?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E6%98%AF%E4%BB%80%E4%B9%88%E5%9B%9E%E4%BA%8B%EF%BC%9F"><span class="toc-text">Redis分布式锁是什么回事？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis%E5%BC%82%E6%AD%A5%E9%98%9F%E5%88%97%E6%98%AF%E6%80%8E%E4%B9%88%E7%94%A8%E7%9A%84%EF%BC%9F"><span class="toc-text">Redis异步队列是怎么用的？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis%E5%A6%82%E4%BD%95%E5%81%9A%E6%8C%81%E4%B9%85%E5%8C%96%E7%9A%84%EF%BC%9F"><span class="toc-text">Redis如何做持久化的？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E5%A4%A7%E8%A7%84%E6%A8%A1%E6%95%B0%E6%8D%AE%E4%B8%AD%EF%BC%8C%E5%A6%82%E4%BD%95%E6%89%BE%E5%87%BA%E6%9C%89%E5%9B%BA%E5%AE%9A%E5%89%8D%E7%BC%80%E7%9A%84key%EF%BC%9F"><span class="toc-text">在大规模数据中，如何找出有固定前缀的key？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E6%9E%9C%E6%9C%89%E5%A4%A7%E9%87%8F%E7%9A%84key%E9%9C%80%E8%A6%81%E8%AE%BE%E7%BD%AE%E5%90%8C%E4%B8%80%E6%97%B6%E9%97%B4%E8%BF%87%E6%9C%9F%EF%BC%8C%E4%B8%80%E8%88%AC%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">如果有大量的key需要设置同一时间过期，一般需要注意什么？</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pipeline%E6%9C%89%E4%BB%80%E4%B9%88%E5%A5%BD%E5%A4%84%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8pipeline%EF%BC%9F"><span class="toc-text">Pipeline有什么好处，为什么要用pipeline？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis%E7%9A%84%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">Redis的同步机制是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis%E9%9B%86%E7%BE%A4%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">Redis集群原理是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3-Redis-%E7%9A%84%E5%B9%B6%E5%8F%91%E7%AB%9E%E4%BA%89-Key-%E9%97%AE%E9%A2%98"><span class="toc-text">如何解决 Redis 的并发竞争 Key 问题?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8-redis-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8%E7%BC%93%E5%AD%98"><span class="toc-text">为什么要用 redis&#x2F;为什么要用缓存?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8-redis-%E8%80%8C%E4%B8%8D%E7%94%A8-map-%E5%81%9A%E7%BC%93%E5%AD%98"><span class="toc-text">为什么要用 redis 而不用 map 做缓存?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96Redis%E6%9F%A5%E8%AF%A2%E6%80%A7%E8%83%BD%EF%BC%9F"><span class="toc-text">如何优化Redis查询性能？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%9C%80%E5%A4%A7%E9%99%90%E5%BA%A6%E5%9C%B0%E9%99%8D%E4%BD%8E%E6%AD%BB%E9%94%81%EF%BC%9F"><span class="toc-text">如何最大限度地降低死锁？</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>===================================================================</p>
+<h3 id="数据库MySQL面试题"><a href="#数据库MySQL面试题" class="headerlink" title="数据库MySQL面试题"></a>数据库MySQL面试题</h3><hr>
+<h3 id="MySQL的数据类型"><a href="#MySQL的数据类型" class="headerlink" title="MySQL的数据类型"></a>MySQL的数据类型</h3><ol>
+<li> 整型</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>存储</th>
+<th>存储</th>
+<th>最小值</th>
+<th>最大值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td>byte</td>
+<td>bit</td>
+<td>signed</td>
+<td>signed</td>
+</tr>
+<tr>
+<td>TINYINT</td>
+<td>1</td>
+<td>8</td>
+<td>-27 = -128</td>
+<td>27-1 = 127</td>
+</tr>
+<tr>
+<td>SMALLINT</td>
+<td>2</td>
+<td>16</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>MEDIUMINT</td>
+<td>3</td>
+<td>24</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>INT</td>
+<td>4</td>
+<td>32</td>
+<td>-231 = -2147483648</td>
+<td>231-1 = 2147483647</td>
+</tr>
+<tr>
+<td>BIGINT</td>
+<td>8</td>
+<td>64</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>TINYINT, SMALLINT, MEDIUMINT, INT, BIGINT 分别使用 8, 16, 24, 32, 64 位存储空间，一般情况下越小的列越好。</p>
+<p>INT(11) 中的数字只是规定了交互工具显示字符的个数，对于存储和计算来说是没有意义的。<br>2. 浮点数</p>
+<p>FLOAT 和 DOUBLE 为浮点类型，DECIMAL 为高精度小数类型。CPU 原生支持浮点运算，但是不支持 DECIMAl 类型的计算，因此 DECIMAL 的计算比浮点类型需要更高的代价。</p>
+<p>FLOAT、DOUBLE 和 DECIMAL 都可以指定列宽，例如 DECIMAL(18, 9) 表示总共 18 位，取 9 位存储小数部分，剩下 9 位存储整数部分。</p>
+<ol start="3">
+<li> 字符串</li>
+</ol>
+<p>MySQL中主要有 CHAR 和 VARCHAR 两种字符串类型，一种是定长的，一种是变长的。</p>
+<p>VARCHAR 这种变长类型能够节省空间，因为只需要存储必要的内容。但是在执行 UPDATE 时可能会使行变得比原来长，当超出一个页所能容纳的大小时，就要执行额外的操作。MyISAM 会将行拆成不同的片段存储，而 InnoDB 则需要分裂页来使行放进页内。</p>
+<p>VARCHAR 会保留字符串末尾的空格，而 CHAR 会删除。</p>
+<ol start="4">
+<li> 时间和日期</li>
+</ol>
+<p>MySQL中提供了两种相似的日期时间类型：DATATIME 和 TIMESTAMP。</p>
+<ul>
+<li>  DATATIME</li>
+</ul>
+<p>能够保存从 1001 年到 9999 年的日期和时间，精度为秒，使用 8 字节的存储空间。</p>
+<p>它与时区无关。</p>
+<p>默认情况下，MySQL 以一种可排序的、无歧义的格式显示 DATATIME 值，例如“2008-01-16 22:37:08”，这是 ANSI 标准定义的日期和时间表示方法。</p>
+<ul>
+<li>  TIMESTAMP</li>
+</ul>
+<p>和 UNIX 时间戳相同，保存从 1970 年 1 月 1 日午夜（格林威治时间）以来的秒数，使用 4 个字节，只能表示从 1970 年 到 2038 年。</p>
+<p>它和时区有关，也就是说一个时间戳在不同的时区所代表的具体时间是不同的。</p>
+<p>MySQL 提供了 FROM_UNIXTIME() 函数把 UNIX 时间戳转换为日期，并提供了 UNIX_TIMESTAMP() 函数把日期转换为 UNIX 时间戳。</p>
+<p>默认情况下，如果插入时没有指定 TIMESTAMP 列的值，会将这个值设置为当前时间。</p>
+<p>应该尽量使用 TIMESTAMP，因为它比 DATETIME 空间效率更高。</p>
+<h3 id="MySQL中utf8和utf8mb4区别"><a href="#MySQL中utf8和utf8mb4区别" class="headerlink" title="MySQL中utf8和utf8mb4区别?"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637558"></a>MySQL中utf8和utf8mb4区别?</h3><p>MySQL在5.5.3之后增加了这个utf8mb4的编码，mb4就是most bytes 4的意思，专门用来兼容四字节的unicode。好在utf8mb4是utf8的超集，除了将编码改为utf8mb4外不需要做其他转换。当然，为了节省空间，一般情况下使用utf8也就可以了。</p>
+<p>MySQL支持的 utf8 编码最大字符长度为 3 字节，如果遇到 4 字节的宽字符就会插入异常了。三个字节的 UTF-8 最大能编码的 Unicode 字符是 0xffff，也就是 Unicode 中的基本多文种平面(BMP)。任何不在基本多文本平面的 Unicode字符，都无法使用 MySQL 的 utf8 字符集存储。包括 Emoji 表情(Emoji 是一种特殊的 Unicode 编码，常见于 ios 和 android 手机上)，和很多不常用的汉字，以及任何新增的 Unicode 字符等等。</p>
+<p>MySQL 中保存 4 字节长度的 UTF-8 字符，需要使用 utf8mb4 字符集，但只有 5.5.3 版本以后的才支持(查看版本： select version()?。我觉得，为了获取更好的兼容性，应该总是使用 utf8mb4 而非 utf8. 对于 CHAR 类型数据，utf8mb4 会多消耗一些空间，根据 MySQL 官方建议，使用 VARCHAR 替代 CHAR。</p>
+<h3 id="MySQL和redis区别是什么？"><a href="#MySQL和redis区别是什么？" class="headerlink" title="MySQL和redis区别是什么？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637558"></a>MySQL和redis区别是什么？</h3><ul>
+<li>  MySQL和redis的数据库类型</li>
+</ul>
+<p>MySQL是关系型数据库，主要用于存放持久化数据，将数据存储在硬盘中，读取速度较慢。</p>
+<p>redis是NOSQL，即非关系型数据库，也是缓存数据库，即将数据存储在缓存中，缓存的读取速度快，能够大大的提高运行效率，但是保存时间有限。</p>
+<ul>
+<li>  MySQL的运行机制</li>
+</ul>
+<p>MySQL作为持久化存储的关系型数据库，相对薄弱的地方在于每次请求访问数据库时，都存在着I/O操作，如果反复频繁的访问数据库。第一：会在反复链接数据库上花费大量时间，从而导致运行效率过慢；第二：反复的访问数据库也会导致数据库的负载过高，那么此时缓存的概念就衍生了出来。</p>
+<ul>
+<li>  缓存</li>
+</ul>
+<p>缓存就是数据交换的缓冲区（cache），当浏览器执行请求时，首先会对在缓存中进行查找，如果存在，就获取；否则就访问数据库。</p>
+<p>缓存的好处就是读取速度快。</p>
+<ul>
+<li>  redis数据库</li>
+</ul>
+<p>redis数据库就是一款缓存数据库，用于存储使用频繁的数据，这样减少访问数据库的次数，提高运行效率。</p>
+<ul>
+<li>  redis和MySQL的区别总结</li>
+</ul>
+<p>（1）类型上</p>
+<p>从类型上来说，MySQL是关系型数据库，redis是缓存数据库</p>
+<p>（2）作用上</p>
+<p>MySQL用于持久化的存储数据到硬盘，功能强大，但是速度较慢</p>
+<p>redis用于存储使用较为频繁的数据到缓存中，读取速度快</p>
+<p>（3）需求上</p>
+<p>MySQL和redis因为需求的不同，一般都是配合使用。</p>
+<h3 id="MySQL高可用方案有哪些"><a href="#MySQL高可用方案有哪些" class="headerlink" title="MySQL高可用方案有哪些?"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637558"></a>MySQL高可用方案有哪些?</h3><p>MySQL高可用方案包括:</p>
+<ol>
+<li> 主从复制方案</li>
+</ol>
+<p>这是MySQL自身提供的一种高可用解决方案，数据同步方法采用的是MySQL replication技术。MySQL replication就是从服务器到主服务器拉取二进制日志文件，然后再将日志文件解析成相应的SQL在从服务器上重新执行一遍主服务器的操作，通过这种方式保证数据的一致性。为了达到更高的可用性，在实际的应用环境中，一般都是采用MySQL replication技术配合高可用集群软件keepalived来实现自动failover，这种方式可以实现95.000%的SLA。</p>
+<ol start="2">
+<li> MMM/MHA高可用方案</li>
+</ol>
+<p>MMM提供了MySQL主主复制配置的监控、故障转移和管理的一套可伸缩的脚本套件。在MMM高可用方案中，典型的应用是双主多从架构，通过MySQL replication技术可以实现两个服务器互为主从，且在任何时候只有一个节点可以被写入，避免了多点写入的数据冲突。同时，当可写的主节点故障时，MMM套件可以立刻监控到，然后将服务自动切换到另一个主节点，继续提供服务，从而实现MySQL的高可用。</p>
+<ol start="3">
+<li> Heartbeat/SAN高可用方案</li>
+</ol>
+<p>在这个方案中，处理failover的方式是高可用集群软件Heartbeat，它监控和管理各个节点间连接的网络，并监控集群服务，当节点出现故障或者服务不可用时，自动在其他节点启动集群服务。在数据共享方面，通过SAN（Storage Area Network）存储来共享数据，这种方案可以实现99.990%的SLA。</p>
+<ol start="4">
+<li> Heartbeat/DRBD高可用方案</li>
+</ol>
+<p>这个方案处理failover的方式上依旧采用Heartbeat，不同的是，在数据共享方面，采用了基于块级别的数据同步软件DRBD来实现。DRBD是一个用软件实现的、无共享的、服务器之间镜像块设备内容的存储复制解决方案。和SAN网络不同，它并不共享存储，而是通过服务器之间的网络复制数据。</p>
+<ol start="5">
+<li> NDB CLUSTER高可用方案</li>
+</ol>
+<p>国内用NDB集群的公司非常少，貌似有些银行有用。NDB集群不需要依赖第三方组件，全部都使用官方组件，能保证数据的一致性，某个数据节点挂掉，其他数据节点依然可以提供服务，管理节点需要做冗余以防挂掉。缺点是：管理和配置都很复杂，而且某些SQL语句例如join语句需要避免。</p>
+<h3 id="MySQL并发一致性问题"><a href="#MySQL并发一致性问题" class="headerlink" title="MySQL并发一致性问题"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637558"></a>MySQL并发一致性问题</h3><p>在并发环境下，事务的隔离性很难保证，因此会出现很多并发一致性问题。</p>
+<h4 id="丢失修改"><a href="#丢失修改" class="headerlink" title="丢失修改"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637558"></a>丢失修改</h4><p>T1 和 T2 两个事务都对一个数据进行修改，T1 先修改，T2 随后修改，T2 的修改覆盖了 T1 的修改。<br><img src="https://www.github.com/Clown95/StroyBack/raw/master/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1558080090977.png"></p>
+<h4 id="读脏数据"><a href="#读脏数据" class="headerlink" title="读脏数据"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637558"></a>读脏数据</h4><p>T1 修改一个数据，T2 随后读取这个数据。如果 T1 撤销了这次修改，那么 T2 读取的数据是脏数据。<br><img src="https://www.github.com/Clown95/StroyBack/raw/master/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1558080115260.png"></p>
+<h4 id="不可重复读"><a href="#不可重复读" class="headerlink" title="不可重复读"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637558"></a>不可重复读</h4><p>T2 读取一个数据，T1 对该数据做了修改。如果 T2 再次读取这个数据，此时读取的结果和第一次读取的结果不同。<br><img src="https://www.github.com/Clown95/StroyBack/raw/master/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1558080125009.png"></p>
+<h4 id="幻影读"><a href="#幻影读" class="headerlink" title="幻影读"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637558"></a>幻影读</h4><p>T1 读取某个范围的数据，T2 在这个范围内插入新的数据，T1 再次读取这个范围的数据，此时读取的结果和和第一次读取的结果不同。</p>
+<p><img src="https://www.github.com/Clown95/StroyBack/raw/master/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1558080139434.png"></p>
+<hr>
+<p>产生并发不一致性问题主要原因是破坏了事务的隔离性，解决方法是通过并发控制来保证隔离性。并发控制可以通过封锁来实现，但是封锁操作需要用户自己控制，相当复杂。数据库管理系统提供了事务的隔离级别，让用户以一种更轻松的方式处理并发一致性问题。</p>
+<h3 id="MySQL中乐观锁和悲观锁-原理、区别"><a href="#MySQL中乐观锁和悲观锁-原理、区别" class="headerlink" title="MySQL中乐观锁和悲观锁 原理、区别?"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637558"></a>MySQL中乐观锁和悲观锁 原理、区别?</h3><p>悲观锁(Pessimistic Lock), 顾名思义，就是很悲观，每次去拿数据的时候都认为别人会修改，所以每次在拿数据的时候都会上锁，这样别人想拿这个数据就会block直到它拿到锁。传统的关系型数据库里边就用到了很多这种锁机制，比如行锁，表锁等，读锁，写锁等，都是在做操作之前先上锁。</p>
+<p>乐观锁(Optimistic Lock), 顾名思义，就是很乐观，每次去拿数据的时候都认为别人不会修改，所以不会上锁，但是在更新的时候会判断一下在此期间别人有没有去更新这个数据，可以使用版本号等机制。乐观锁适用于多读的应用类型，这样可以提高吞吐量，像数据库如果提供类似于write_condition机制的其实都是提供的乐观锁。</p>
+<p>乐观锁的特点先进行业务操作，不到万不得已不去拿锁。即“乐观”的认为拿锁多半是会成功的，因此在进行完业务操作需要实际更新数据的最后一步再去拿一下锁就好。</p>
+<p>乐观锁在数据库上的实现完全是逻辑的，不需要数据库提供特殊的支持。一般的做法是在需要锁的数据上增加一个版本号，或者时间戳，然后按照如下方式实现：</p>
+<pre><code>1. SELECT data AS old_data, version AS old_version FROM …;
+2. 根据获取的数据进行业务操作，得到new_data和new_version
+3. UPDATE SET data = new_data, version = new_version WHERE version = old_version
+if (updated row &gt; 0) &#123;
+    // 乐观锁获取成功，操作完成
+&#125; else &#123;
+    // 乐观锁获取失败，回滚并重试
+&#125;
+</code></pre>
+<p>乐观锁是否在事务中其实都是无所谓的，其底层机制是这样：在数据库内部update同一行的时候是不允许并发的，即数据库每次执行一条update语句时会获取被update行的写锁，直到这一行被成功更新后才释放。因此在业务操作进行前获取需要锁的数据的当前版本号，然后实际更新数据时再次对比版本号确认与之前获取的相同，并更新版本号，即可确认这之间没有发生并发的修改。如果更新失败即可认为老版本的数据已经被并发修改掉而不存在了，此时认为获取锁失败，需要回滚整个业务操作并可根据需要重试整个过程。</p>
+<p>两种锁各有优缺点，不可认为一种好于另一种，像乐观锁适用于写比较少的情况下，即冲突真的很少发生的时候，这样可以省去了锁的开销，加大了系统的整个吞吐量。但如果经常产生冲突，上层应用会不断的进行retry，这样反倒是降低了性能，所以这种情况下用悲观锁就比较合适。</p>
+<h3 id="什么是MySQL事务？"><a href="#什么是MySQL事务？" class="headerlink" title="什么是MySQL事务？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637558"></a>什么是MySQL事务？</h3><p>事务是一组原子性的sql命令或者说是一个独立的工作单元,如果数据库引擎能够成功的对数据库应用该组的全部sql语句,那么就执行该组命令如果其中有任何一条语句因为崩溃或者其它原因无法执行,那么该组中所有的sql语句都不会执行,如果没有显示启动事务,数据库会根据autocommit的值.默认每条sql操作都会自动提交。</p>
+<ol>
+<li>原子性（Atomicity）<br> 事务被视为不可分割的最小单元，事务的所有操作要么全部提交成功，要么全部失败回滚。</li>
+</ol>
+<p>回滚可以用回滚日志来实现，回滚日志记录着事务所执行的修改操作，在回滚时反向执行这些修改操作即可。</p>
+<ol start="2">
+<li><p>一致性（Consistency）<br> 数据库在事务执行前后都保持一致性状态。在一致性状态下，所有事务对一个数据的读取结果都是相同的。</p>
+</li>
+<li><p>隔离性（Isolation）<br> 一个事务所做的修改在最终提交以前，对其它事务是不可见的。</p>
+</li>
+<li><p>持久性（Durability）<br> 一旦事务提交，则其所做的修改将会永远保存到数据库中。即使系统发生崩溃，事务执行的结果也不能丢失。使用重做日志来保证持久性。</p>
+</li>
+</ol>
+<p>事务的 ACID 特性概念简单，但不是很好理解，主要是因为这几个特性不是一种平级关系：</p>
+<ul>
+<li>  只有满足一致性，事务的执行结果才是正确的。</li>
+<li>  在无并发的情况下，事务串行执行，隔离性一定能够满足。此时只要能满足原子性，就一定能满足一致性。</li>
+<li>  在并发的情况下，多个事务并行执行，事务不仅要满足原子性，还需要满足隔离性，才能满足一致性。</li>
+<li>事务满足持久化是为了能应对数据库崩溃的情况。<br>  <img src="https://www.github.com/Clown95/StroyBack/raw/master/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1558183001169.png"></li>
+</ul>
+<p>MySQL 默认采用自动提交模式。也就是说，如果不显式使用<code>START TRANSACTION</code>语句来开始一个事务，那么每个查询都会被当做一个事务自动提交。</p>
+<h3 id="什么是-Next-Key-Locks？"><a href="#什么是-Next-Key-Locks？" class="headerlink" title="什么是 Next-Key Locks？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637558"></a>什么是 Next-Key Locks？</h3><p>Next-Key Locks 是 MySQL 的 InnoDB 存储引擎的一种锁实现。</p>
+<p>MVCC 不能解决幻读的问题，Next-Key Locks 就是为了解决这个问题而存在的。在可重复读（REPEATABLE READ）隔离级别下，使用 MVCC + Next-Key Locks 可以解决幻读问题。</p>
+<ul>
+<li>Record Locks<br>  锁定一个记录上的索引，而不是记录本身。</li>
+</ul>
+<p>如果表没有设置索引，InnoDB 会自动在主键上创建隐藏的聚簇索引，因此 Record Locks 依然可以使用。</p>
+<ul>
+<li>Gap Locks<br>  锁定索引之间的间隙，但是不包含索引本身。例如当一个事务执行以下语句，其它事务就不能在 t.c 中插入 15。</li>
+</ul>
+<pre><code>SELECT c FROM t WHERE c BETWEEN 10 and 20 FOR UPDATE;
+</code></pre>
+<ul>
+<li>Next-Key Locks<br>  它是 Record Locks 和 Gap Locks 的结合，不仅锁定一个记录上的索引，也锁定索引之间的间隙。例如一个索引包含以下值：10, 11, 13, and 20，那么就需要锁定以下区间：</li>
+</ul>
+<pre><code>(negative infinity, 10]
+(10, 11]
+(11, 13]
+(13, 20]
+(20, positive infinity)
+</code></pre>
+<h3 id="ISAM是什么？"><a href="#ISAM是什么？" class="headerlink" title="ISAM是什么？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637558"></a>ISAM是什么？</h3><p>MySQL 5.5 版本之前的默认存储引擎，在 <code>5.0</code> 以前最大表存储空间最大 <code>4G</code>，<code>5.0</code> 以后最大 <code>256TB</code>。</p>
+<p>Myisam 存储引擎由 <code>.myd</code>（数据）和 <code>.myi</code>（索引文件）组成，<code>.frm</code>文件存储表结构（所以存储引擎都有）</p>
+<p><strong>特性</strong></p>
+<ul>
+<li>  并发性和锁级别 （对于读写混合的操作不好，为表级锁，写入和读互斥）</li>
+<li>  表损坏修复</li>
+<li>  Myisam 表支持的索引类型（全文索引）</li>
+<li>  Myisam 支持表压缩（压缩后，此表为只读，不可以写入。使用 myisampack 压缩）</li>
+</ul>
+<p><strong>应用场景</strong></p>
+<ul>
+<li>  没有事务</li>
+<li>  只读类应用（插入不频繁，查询非常频繁）</li>
+<li>  空间类应用（唯一支持空间函数的引擎）</li>
+<li>  做很多 count 的计算</li>
+</ul>
+<h3 id="InnoDB是什么？"><a href="#InnoDB是什么？" class="headerlink" title="InnoDB是什么？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637558"></a>InnoDB是什么？</h3><p>MySQL 5.5 及之后版本的默认存储引擎</p>
+<p><strong>特性</strong></p>
+<ul>
+<li>  InnoDB为事务性存储引擎</li>
+<li>  完全支持事物的 ACID 特性</li>
+<li>  Redo log （实现事务的持久性） 和 Undo log（为了实现事务的原子性，存储未完成事务log，用于回滚）</li>
+<li>  InnoDB支持行级锁</li>
+<li>  行级锁可以最大程度的支持并发</li>
+<li>  行级锁是由存储引擎层实现的</li>
+</ul>
+<p><strong>应用场景</strong></p>
+<ul>
+<li>  可靠性要求比较高，或者要求事务</li>
+<li>  表更新和查询都相当的频繁，并且行锁定的机会比较大的情况。</li>
+</ul>
+<h3 id="MyISAM和InnoDB引擎的区别"><a href="#MyISAM和InnoDB引擎的区别" class="headerlink" title="MyISAM和InnoDB引擎的区别?"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637558"></a>MyISAM和InnoDB引擎的区别?</h3><p>两者之间的区别：</p>
+<ul>
+<li>  MyISAM 不支持外键，而 InnoDB 支持</li>
+<li>  MyISAM 是非事务安全型的，而 InnoDB 是事务安全型的。</li>
+<li>  MyISAM 锁的粒度是表级，而 InnoDB 支持行级锁定。</li>
+<li>  MyISAM 支持全文类型索引，而 InnoDB 不支持全文索引。</li>
+<li>  MyISAM 相对简单，所以在效率上要优于 InnoDB，小型应用可以考虑使用 MyISAM。</li>
+<li>  MyISAM 表是保存成文件的形式，在跨平台的数据转移中使用 MyISAM 存储会省去不少的麻烦。</li>
+<li>  InnoDB 表比 MyISAM 表更安全，可以在保证数据不会丢失的情况下，切换非事务表到事务表（alter table tablename type=innodb）。</li>
+</ul>
+<p>应用场景：</p>
+<ul>
+<li>  MyISAM 管理非事务表。它提供高速存储和检索，以及全文搜索能力。如果应用中需要执行大量的 SELECT 查询，那么 MyISAM 是更好的选择。</li>
+<li>InnoDB 用于事务处理应用程序，具有众多特性，包括 ACID 事务支持。如果应用中需要执行大量的 INSERT<br>  或 UPDATE 操作，则应该使用 InnoDB，这样可以提高多用户并发操作的性能。</li>
+</ul>
+<h3 id="MySQL如何支持事务？"><a href="#MySQL如何支持事务？" class="headerlink" title="MySQL如何支持事务？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637558"></a>MySQL如何支持事务？</h3><p>MYSQL的事务处理主要有两种方法</p>
+<ol>
+<li> 用begin,rollback,commit来实现</li>
+</ol>
+<ul>
+<li>  begin开始一个事务</li>
+<li>  rollback事务回滚</li>
+<li>  commit 事务确认</li>
+</ul>
+<ol start="2">
+<li> 直接用set来改变MySQL的自动提交模式</li>
+</ol>
+<ul>
+<li>  MySQL默认是自动提交的，也就是你提交一个query，就直接执行！可以通过</li>
+<li>  set autocommit = 0 禁止自动提交</li>
+<li>set autocommit = 1 开启自动提交<br>  来实现事务的处理</li>
+</ul>
+<h3 id="MySQL索引使用场景"><a href="#MySQL索引使用场景" class="headerlink" title="MySQL索引使用场景"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637558"></a>MySQL索引使用场景</h3><p>在什么情况下使用索引</p>
+<ul>
+<li>  通常为了快速查找匹配WHERE条件的行。</li>
+<li>  通常为了从考虑的条件中消除行。</li>
+<li>  如果表有一个multiple-column索引，任何一个索引的最左前缀可以通过使用优化器来查找行。</li>
+<li>  查询中与其它表关联的字，字段常常建立了外键关系</li>
+<li>  查询中统计或分组统计的字段</li>
+</ul>
+<pre><code>select max(hbs_bh) from zl_yhjbqk
+select qc_bh,count(*) from zl_yhjbqk group by qc_bh
+</code></pre>
+<h3 id="主键、外键和索引的区别"><a href="#主键、外键和索引的区别" class="headerlink" title="主键、外键和索引的区别"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637558"></a>主键、外键和索引的区别</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>定义</th>
+<th>作用</th>
+<th>个数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>主键</strong></td>
+<td>唯一标识一条记录，不能有重复的，不允许为空</td>
+<td>用来保证数据完整性</td>
+<td>主键只能有一个</td>
+</tr>
+<tr>
+<td><strong>外键</strong></td>
+<td>表的外键是另一表的主键，外键可以有重复的，可以是空值</td>
+<td>用来和其他表建立联系用的</td>
+<td>一个表可以有多个外键</td>
+</tr>
+<tr>
+<td><strong>索引</strong></td>
+<td>该字段没有重复值，但可以有一个空值</td>
+<td>是提高查询排序的速度</td>
+<td>一个表可以有多个惟一索引</td>
+</tr>
+</tbody></table>
+<h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637558"></a>Redis</h2><h3 id="Redis的数据结构有哪些，以及实现场景"><a href="#Redis的数据结构有哪些，以及实现场景" class="headerlink" title="Redis的数据结构有哪些，以及实现场景?"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637558"></a>Redis的数据结构有哪些，以及实现场景?</h3><p>Redis的数据结构有五种:</p>
+<ul>
+<li>  string 字符串</li>
+</ul>
+<p>String 数据结构是简单的 key-value 类型，value 不仅可以是 String，也可以是数字（当数字类型用 Long 可以表示的时候encoding 就是整型，其他都存储在 sdshdr 当做字符串）。使用 Strings 类型，可以完全实现目前 Memcached 的功能，并且效率更高。还可以享受 Redis 的定时持久化（可以选择 RDB 模式或者 AOF 模式），操作日志及 Replication 等功能。</p>
+<p>除了提供与 Memcached 一样的 get、set、incr、decr 等操作外，Redis 还提供了下面一些操作：</p>
+<ol>
+<li> LEN niushuai：O(1)获取字符串长度.</li>
+<li> APPEND niushuai redis：往字符串 append 内容，而且采用智能分配内存（每次2倍）.</li>
+<li> 设置和获取字符串的某一段内容.</li>
+<li> 设置及获取字符串的某一位（bit）.</li>
+<li> 批量设置一系列字符串的内容.</li>
+<li> 原子计数器.</li>
+<li> GETSET 命令的妙用，请于清空旧值的同时设置一个新值，配合原子计数器使用.</li>
+</ol>
+<ul>
+<li>  Hash 字典</li>
+</ul>
+<p>在 Memcached 中，我们经常将一些结构化的信息打包成 hashmap，在客户端序列化后存储为一个字符串的值（一般是 JSON 格式），比如用户的昵称、年龄、性别、积分等。这时候在需要修改其中某一项时，通常需要将字符串（JSON）取出来，然后进行反序列化，修改某一项的值，再序列化成字符串（JSON）存储回去。简单修改一个属性就干这么多事情，消耗必定是很大的，也不适用于一些可能并发操作的场合（比如两个并发的操作都需要修改积分）。而 Redis 的 Hash 结构可以使你像在数据库中 Update 一个属性一样只修改某一项属性值。</p>
+<p>Hash可以用来存储、读取、修改用户属性。</p>
+<ul>
+<li>  List 列表</li>
+</ul>
+<p>List 说白了就是链表（redis 使用双端链表实现的 List），相信学过数据结构知识的人都应该能理解其结构。使用 List 结构，我们可以轻松地实现最新消息排行等功能（比如新浪微博的 TimeLine ）。List 的另一个应用就是消息队列，可以利用 List 的 *PUSH 操作，将任务存在 List 中，然后工作线程再用 POP 操作将任务取出进行执行。</p>
+<p>Redis 还提供了操作 List 中某一段元素的 API，你可以直接查询，删除 List 中某一段的元素。</p>
+<p>List 列表应用:</p>
+<ol>
+<li> 微博 TimeLine.</li>
+<li> 消息队列.</li>
+</ol>
+<ul>
+<li>  Set 集合</li>
+</ul>
+<p>Set 就是一个集合，集合的概念就是一堆不重复值的组合。利用 Redis 提供的 Set 数据结构，可以存储一些集合性的数据。比如在微博应用中，可以将一个用户所有的关注人存在一个集合中，将其所有粉丝存在一个集合。因为 Redis 非常人性化的为集合提供了求交集、并集、差集等操作，那么就可以非常方便的实现如共同关注、共同喜好、二度好友等功能，对上面的所有集合操作，你还可以使用不同的命令选择将结果返回给客户端还是存集到一个新的集合中。</p>
+<p>Set 集合应用:</p>
+<ol>
+<li> 共同好友、二度好友</li>
+<li> 利用唯一性，可以统计访问网站的所有独立 IP.</li>
+<li> 好友推荐的时候，根据 tag 求交集，大于某个 threshold 就可以推荐.</li>
+</ol>
+<ul>
+<li>  Sorted Set有序集合</li>
+</ul>
+<p>和Sets相比，Sorted Sets是将 Set 中的元素增加了一个权重参数 score，使得集合中的元素能够按 score 进行有序排列，比如一个存储全班同学成绩的 Sorted Sets，其集合 value 可以是同学的学号，而 score 就可以是其考试得分，这样在数据插入集合的时候，就已经进行了天然的排序。另外还可以用 Sorted Sets 来做带权重的队列，比如普通消息的 score 为1，重要消息的 score 为2，然后工作线程可以选择按 score 的倒序来获取工作任务。让重要的任务优先执行。</p>
+<p>Sorted Set有序集合应用:</p>
+<p>1.带有权重的元素，比如一个游戏的用户得分排行榜.<br>2.比较复杂的数据结构，一般用到的场景不算太多.</p>
+<p>Redis 其他功能使用场景:</p>
+<ul>
+<li>  订阅-发布系统</li>
+</ul>
+<p>Pub/Sub 从字面上理解就是发布（Publish）与订阅（Subscribe），在 Redis 中，你可以设定对某一个 key 值进行消息发布及消息订阅，当一个 key 值上进行了消息发布后，所有订阅它的客户端都会收到相应的消息。这一功能最明显的用法就是用作实时消息系统，比如普通的即时聊天，群聊等功能。</p>
+<ul>
+<li>  事务——Transactions</li>
+</ul>
+<p>谁说 NoSQL 都不支持事务，虽然 Redis 的 Transactions 提供的并不是严格的 ACID 的事务（比如一串用 EXEC 提交执行的命令，在执行中服务器宕机，那么会有一部分命令执行了，剩下的没执行），但是这个 Transactions 还是提供了基本的命令打包执行的功能（在服务器不出问题的情况下，可以保证一连串的命令是顺序在一起执行的，中间有会有其它客户端命令插进来执行）。Redis 还提供了一个 Watch 功能，你可以对一个 key 进行 Watch，然后再执行 Transactions，在这过程中，如果这个 Watched 的值进行了修改，那么这个 Transactions 会发现并拒绝执行。</p>
+<h3 id="Redis分布式锁是什么回事？"><a href="#Redis分布式锁是什么回事？" class="headerlink" title="Redis分布式锁是什么回事？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637558"></a>Redis分布式锁是什么回事？</h3><p>先拿setnx来争抢锁，抢到之后，再用expire给锁加一个过期时间防止锁忘记了释放。</p>
+<p>如果在setnx之后执行expire之前进程意外crash或者要重启维护了，那会怎么样？这个锁就永远得不到释放了。</p>
+<p>如何解决？set指令有非常复杂的参数，可以同时把setnx和expire合成一条指令来用。</p>
+<h3 id="Redis异步队列是怎么用的？"><a href="#Redis异步队列是怎么用的？" class="headerlink" title="Redis异步队列是怎么用的？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637558"></a>Redis异步队列是怎么用的？</h3><p>一般使用list结构作为队列，rpush生产消息，lpop消费消息。当lpop没有消息的时候，要适当sleep一会再重试。</p>
+<p>如果不用sleep呢？list还有个指令叫blpop，在没有消息的时候，它会阻塞住直到消息到来。</p>
+<p>如何生产一次消费多次呢？使用pub/sub主题订阅者模式，可以实现1:N的消息队列。</p>
+<p>pub/sub有什么缺点？在消费者下线的情况下，生产的消息会丢失，得使用专业的消息队列如rabbitmq等。</p>
+<p>redis如何实现延时队列？使用sortedset，拿时间戳作为score，消息内容作为key调用zadd来生产消息，消费者用zrangebyscore指令获取N秒之前的数据轮询进行处理。</p>
+<h3 id="Redis如何做持久化的？"><a href="#Redis如何做持久化的？" class="headerlink" title="Redis如何做持久化的？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637558"></a>Redis如何做持久化的？</h3><p>bgsave做镜像全量持久化，aof做增量持久化。因为bgsave会耗费较长时间，不够实时，在停机的时候会导致大量丢失数据，所以需要aof来配合使用。在redis实例重启时，优先使用aof来恢复内存的状态，如果没有aof日志，就会使用rdb文件来恢复。</p>
+<p>aof文件过大恢复时间过长怎么办？Redis会定期做aof重写，压缩aof文件日志大小。Redis4.0之后有了混合持久化的功能，将bgsave的全量和aof的增量做了融合处理，这样既保证了恢复的效率又兼顾了数据的安全性。</p>
+<h3 id="在大规模数据中，如何找出有固定前缀的key？"><a href="#在大规模数据中，如何找出有固定前缀的key？" class="headerlink" title="在大规模数据中，如何找出有固定前缀的key？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637558"></a>在大规模数据中，如何找出有固定前缀的key？</h3><p>使用keys指令可以扫出指定模式的key列表。</p>
+<p>如果这个redis正在给线上的业务提供服务，那使用keys指令会有什么问题？redis有一个关键的特性：redis的单线程的。keys指令会导致线程阻塞一段时间，线上服务会停顿，直到指令执行完毕，服务才能恢复。这个时候可以使用scan指令，scan指令可以无阻塞的提取出指定模式的key列表，但是会有一定的重复概率，在客户端做一次去重就可以了，但是整体所花费的时间会比直接用keys指令长。</p>
+<h4 id="如果有大量的key需要设置同一时间过期，一般需要注意什么？"><a href="#如果有大量的key需要设置同一时间过期，一般需要注意什么？" class="headerlink" title="如果有大量的key需要设置同一时间过期，一般需要注意什么？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637558"></a>如果有大量的key需要设置同一时间过期，一般需要注意什么？</h4><p>如果大量的key过期时间设置的过于集中，到过期的那个时间点，redis可能会出现短暂的卡顿现象。一般需要在时间上加一个随机值，使得过期时间分散一些。</p>
+<h3 id="Pipeline有什么好处，为什么要用pipeline？"><a href="#Pipeline有什么好处，为什么要用pipeline？" class="headerlink" title="Pipeline有什么好处，为什么要用pipeline？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637558"></a>Pipeline有什么好处，为什么要用pipeline？</h3><p>可以将多次IO往返的时间缩减为一次，前提是pipeline执行的指令之间没有因果相关性。使用redis-benchmark进行压测的时候可以发现影响redis的QPS峰值的一个重要因素是pipeline批次指令的数目。</p>
+<h3 id="Redis的同步机制是什么？"><a href="#Redis的同步机制是什么？" class="headerlink" title="Redis的同步机制是什么？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637558"></a>Redis的同步机制是什么？</h3><p>Redis可以使用主从同步，从从同步。第一次同步时，主节点做一次bgsave，并同时将后续修改操作记录到内存buffer，待完成后将rdb文件全量同步到复制节点，复制节点接受完成后将rdb镜像加载到内存。加载完成后，再通知主节点将期间修改的操作记录同步到复制节点进行重放就完成了同步过程。</p>
+<h3 id="Redis集群原理是什么？"><a href="#Redis集群原理是什么？" class="headerlink" title="Redis集群原理是什么？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637558"></a>Redis集群原理是什么？</h3><p>Redis Sentinal着眼于高可用，在master宕机时会自动将slave提升为master，继续提供服务。</p>
+<p>Redis Cluster着眼于扩展性，在单个redis内存不足时，使用Cluster进行分片存储。</p>
+<h3 id="如何解决-Redis-的并发竞争-Key-问题"><a href="#如何解决-Redis-的并发竞争-Key-问题" class="headerlink" title="如何解决 Redis 的并发竞争 Key 问题?"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637558"></a>如何解决 Redis 的并发竞争 Key 问题?</h3><p>所谓 Redis 的并发竞争 Key 的问题也就是多个系统同时对一个 key 进行操作，但是最后执行的顺序和我们期望的顺序不同，这样也就导致了结果的不同！</p>
+<p>推荐一种方案：分布式锁（zookeeper 和 redis 都可以实现分布式锁）。（如果不存在 Redis 的并发竞争 Key 问题，不要使用分布式锁，这样会影响性能）</p>
+<p>基于zookeeper临时有序节点可以实现的分布式锁。大致思想为：每个客户端对某个方法加锁时，在zookeeper上的与该方法对应的指定节点的目录下，生成一个唯一的瞬时有序节点。 判断是否获取锁的方式很简单，只需要判断有序节点中序号最小的一个。 当释放锁的时候，只需将这个瞬时节点删除即可。同时，其可以避免服务宕机导致的锁无法释放，而产生的死锁问题。完成业务流程后，删除对应的子节点释放锁。</p>
+<p>在实践中，当然是从以可靠性为主。所以首推Zookeeper。</p>
+<h3 id="为什么要用-redis-为什么要用缓存"><a href="#为什么要用-redis-为什么要用缓存" class="headerlink" title="为什么要用 redis/为什么要用缓存?"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637558"></a>为什么要用 redis/为什么要用缓存?</h3><p>主要从“高性能”和“高并发”这两点来看待这个问题。</p>
+<ul>
+<li><p>高性能：<br>  假如用户第一次访问数据库中的某些数据。这个过程会比较慢，因为是从硬盘上读取的。将该用户访问的数据存在数缓存中，这样下一次再访问这些数据的时候就可以直接从缓存中获取了。操作缓存就是直接操作内存，所以速度相当快。如果数据库中的对应数据改变的之后，同步改变缓存中相应的数据即可！</p>
+</li>
+<li><p>高并发：<br>  直接操作缓存能够承受的请求是远远大于直接访问数据库的，所以我们可以考虑把数据库中的部分数据转移到缓存中去，这样用户的一部分请求会直接到缓存这里而不用经过数据库。</p>
+</li>
+</ul>
+<h3 id="为什么要用-redis-而不用-map-做缓存"><a href="#为什么要用-redis-而不用-map-做缓存" class="headerlink" title="为什么要用 redis 而不用 map 做缓存?"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637558"></a>为什么要用 redis 而不用 map 做缓存?</h3><p>缓存分为本地缓存和分布式缓存。以 go为例，使用自带的 map实现的是本地缓存，最主要的特点是轻量以及快速，生命周期随着程序的销毁而结束，并且在多实例的情况下，每个实例都需要各自保存一份缓存，缓存不具有一致性。</p>
+<p>使用 redis 或 memcached 之类的称为分布式缓存，在多实例的情况下，各实例共用一份缓存数据，缓存具有一致性。缺点是需要保持 redis 或 memcached服务的高可用，整个程序架构上较为复杂。</p>
+<h3 id="如何优化Redis查询性能？"><a href="#如何优化Redis查询性能？" class="headerlink" title="如何优化Redis查询性能？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637558"></a>如何优化Redis查询性能？</h3><ol>
+<li> 使用 Explain 进行分析</li>
+</ol>
+<p>Explain 用来分析 SELECT 查询语句，开发人员可以通过分析 Explain 结果来优化查询语句。</p>
+<p>字段有：</p>
+<ul>
+<li>  select_type : 查询类型，有简单查询、联合查询、子查询等</li>
+<li>  key : 使用的索引</li>
+<li>  rows : 扫描的行数</li>
+</ul>
+<pre><code>mysql&gt; explain select * from user_info where id = 3\G
+*************************** 1. row ***************************
+           id: 3
+  select_type: SIMPLE
+        table: user_info
+   partitions: NULL
+         type: const
+possible_keys: PRIMARY
+          key: PRIMARY
+      key_len: 8
+          ref: const
+         rows: 1
+     filtered: 100.00
+        Extra: NULL
+1 row in set, 1 warning (0.00 sec)
+</code></pre>
+<ol start="2">
+<li> 优化数据访问</li>
+</ol>
+<p>减少请求的数据量:</p>
+<ul>
+<li>  只返回必要的列</li>
+</ul>
+<p>最好不要使用 SELECT * 语句。</p>
+<ul>
+<li>  只返回必要的行</li>
+</ul>
+<p>使用 WHERE 语句进行查询过滤，有时候也需要使用 LIMIT 语句来限制返回的数据。</p>
+<ul>
+<li>  缓存重复查询的数据</li>
+</ul>
+<p>使用缓存可以避免在数据库中进行查询，特别要查询的数据经常被重复查询，缓存可以带来的查询性能提升将会是非常明显的。</p>
+<ul>
+<li>  减少服务器端扫描的行数</li>
+</ul>
+<p>对于查询来说，其中最有效的方式是使用索引来覆盖查询。</p>
+<ol start="3">
+<li> 重构查询方式</li>
+</ol>
+<ul>
+<li>  切分大查询</li>
+</ul>
+<p>一个大查询如果一次性执行的话，可能一次锁住很多数据、占满整个事务日志、耗尽系统资源、阻塞很多小的但重要的查询。</p>
+<pre><code>DELEFT FROM info WHERE create &lt; DATE_SUB(NOW(), INTERVAL 3 MONTH);
+</code></pre>
+<pre><code>rows_affected = 0
+do &#123;
+    rows_affected = do_query(
+    &quot;DELETE FROM info WHERE create  &lt; DATE_SUB(NOW(), INTERVAL 3 MONTH) LIMIT 10000&quot;)
+&#125; while rows_affected &gt; 0
+</code></pre>
+<ul>
+<li><p>分解大连接查询<br>  将一个大连接查询（JOIN）分解成对每一个表进行一次单表查询，然后将结果在应用程序中进行关联，这样做的好处有：</p>
+</li>
+<li><p>  让缓存更高效。对于连接查询，如果其中一个表发生变化，那么整个查询缓存就无法使用。而分解后的多个查询，即使其中一个表发生变化，对其它表的查询缓存依然可以使用。</p>
+</li>
+<li><p>  分解成多个单表查询，这些单表查询的缓存结果更可能被其它查询使用到，从而减少冗余记录的查询。</p>
+</li>
+<li><p>  减少锁竞争；</p>
+</li>
+<li><p>  在应用层进行连接，可以更容易对数据库进行拆分，从而更容易做到高性能和可扩展。</p>
+</li>
+<li><p>  查询本身效率也可能会有所提升。例如下面的例子中，使用 IN() 代替连接查询，可以让 MySQL 按照 ID 顺序进行查询，这可能比随机的连接要更高效。</p>
+</li>
+</ul>
+<h3 id="如何最大限度地降低死锁？"><a href="#如何最大限度地降低死锁？" class="headerlink" title="如何最大限度地降低死锁？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637558"></a>如何最大限度地降低死锁？</h3><ul>
+<li>  按同一顺序访问对象</li>
+<li>  避免事务中的用户交互</li>
+<li>  保持事务简短并在一个批处理中</li>
+<li>  使用低隔离级别</li>
+<li>  使用绑定连接</li>
+</ul>
+<p>本文转自 <a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637558">https://blog.csdn.net/yang731227/article/details/90637558</a>，如有侵权，请联系删除。</p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 部分资料来源于网络，版权属其原著者所有，只供学习交流之用。如有侵犯您的权益，请联系【公众号：码农印象】删除，可在下方评论，亦可邮件至ysluckly.520@qq.com。互动交流时请遵守宽容、换位思考的原则。 </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+    <div id="comments"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+<script type="text/javascript">
+    $.getScript('/js/gitalk.js', function () {
+        var gitalk = new Gitalk({
+            clientID: 'e2124f560cfd0eb39dbd',
+            clientSecret: '4be2c247d3945f99e8db63224555838f4a729d57',
+            repo: 'gittalk',
+            owner: 'ysluckly',
+            admin: ['ysluckly'],
+            id: decodeURI(location.pathname),
+            distractionFreeMode: 'true',
+            language: 'zh-CN',
+            perPage: parseInt('10',10)
+        })
+        gitalk.render('comments')
+    })
+</script>
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2021-2022@码农印象
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 552px;
+    }
+    .nav.fullscreen {
+        margin-left: -552px;
+    }
+    .nav-left {
+        width: 130px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    #post {
+        background: url(https://s4.ax1x.com/2022/02/20/HLfdgJ.jpg);
+    }
+    
+    
+    #post .index {
+        background: url(https://s4.ax1x.com/2022/02/20/HLgPeK.md.jpg);
+    }
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
+        background: url("https://s4.ax1x.com/2022/02/20/HLdoMF.png");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+<div class="mobile-menus-out" >
+
+</div>
+<div class="mobile-menus">
+    
+    
+    <a class="dynamic-menu site_url"   href="/2022/02/02/gamesh/">休闲小游戏</a>
+    
+    
+    
+</div>
+
+
+</html>

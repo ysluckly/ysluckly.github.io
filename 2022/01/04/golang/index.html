@@ -1,0 +1,3551 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="code-0WEqylqKMo" />
+  <meta name="google-site-verification" content="K3ZtAzN_QG0hds9kOoA0pitJFIkbH8Fl-Kl_R3z41FI" />
+  <title>Go全栈面试题（1）-Go基础语法面试题 | 码农印象</title>
+  <meta name="keywords" content=" Go总结 , Go面试题 ">
+  <meta name="description" content="Go全栈面试题（1）-Go基础语法面试题 | 码农印象">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="为 layui 扩展的 下拉多选select在线demo： http:&#x2F;&#x2F;yelog.org&#x2F;layui-select-multiple&#x2F; 这个在线 demo就是本项目的 index.html。 可将项目 clone 到本地查看效果。 效果图 参数   属性名 属性值 备注    multiple 无 开启多选   lay-search 无 开启搜索   lay-case 无 大小写敏感   la">
+<meta property="og:type" content="website">
+<meta property="og:title" content="码农印象">
+<meta property="og:url" content="https://ysluckly.github.io/README.html">
+<meta property="og:site_name" content="码农印象">
+<meta property="og:description" content="为 layui 扩展的 下拉多选select在线demo： http:&#x2F;&#x2F;yelog.org&#x2F;layui-select-multiple&#x2F; 这个在线 demo就是本项目的 index.html。 可将项目 clone 到本地查看效果。 效果图 参数   属性名 属性值 备注    multiple 无 开启多选   lay-search 无 开启搜索   lay-case 无 大小写敏感   la">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://oncj6b2vl.bkt.clouddn.com/Frg6VGOCjKJ8fdTYkekfsi-Ax9p2.png">
+<meta property="article:published_time" content="2022-02-20T04:41:43.082Z">
+<meta property="article:modified_time" content="2022-02-19T09:27:58.478Z">
+<meta property="article:author" content="码农印象">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://oncj6b2vl.bkt.clouddn.com/Frg6VGOCjKJ8fdTYkekfsi-Ax9p2.png">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 6.0.0"><link rel="alternate" href="/atom.xml" title="码农印象" type="application/atom+xml">
+</head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>码农印象</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/ysluckly"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="juejin"
+               href="https://juejin.cn/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-juejin"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="csdn"
+               href="https://blog.csdn.net/qq_41035588"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-csdn"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="weibo"
+               href="http://weibo.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-weibo"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="jianshu"
+               href="https://www.jianshu.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-jianshu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="zhihu"
+               href="https://www.zhihu.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-zhihu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:ysluckly.520@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="oschina"
+               href="https://my.oschina.net"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-oschina"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="neteasemusic"
+               href="https://music.163.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-neteasemusic"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+    <a class="more-menus">更多菜单</a>
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(155)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                <li>
+                    <div data-rel="读书">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        读书
+                        <small>(6)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="读书<--->书单">
+                                        
+                                        书单
+                                        
+                                            <small>(1
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="读书<--->程序人生">
+                                        
+                                        程序人生
+                                        
+                                            <small>(1
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="读书<--->阅读笔记">
+                                        
+                                        阅读笔记
+                                        
+                                            <small>(3
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="后端">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        后端
+                        <small>(55)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="后端<--->C语言">
+                                        
+                                        C语言
+                                        
+                                            <small>(12
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="后端<--->Go">
+                                        
+                                        Go
+                                        
+                                            <small>(24
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="后端<--->Java">
+                                        
+                                        Java
+                                        
+                                            <small>(6
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="后端<--->Python3">
+                                        
+                                        Python3
+                                        
+                                            <small>(10
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="后端<--->Redis">
+                                        
+                                        Redis
+                                        
+                                            <small>(1
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="后端<--->其他">
+                                        
+                                        其他
+                                        
+                                            <small>(1
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="后端<--->网络编程">
+                                        
+                                        网络编程
+                                        
+                                            <small>(1
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="数据库">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        数据库
+                        <small>(9)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="数据库<--->MySQL">
+                                        
+                                        MySQL
+                                        
+                                            <small>(3
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="数据库<--->PostgreSQL">
+                                        
+                                        PostgreSQL
+                                        
+                                            <small>(5
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="运维">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        运维
+                        <small>(26)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="运维<--->linux">
+                                        
+                                        linux
+                                        
+                                            <small>(2
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="工具">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        工具
+                        <small>(45)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="工具<--->git">
+                                        
+                                        git
+                                        
+                                            <small>(8
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="工具<--->hexo">
+                                        
+                                        hexo
+                                        
+                                            <small>(29
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="工具<--->markdown">
+                                        
+                                        markdown
+                                        
+                                            <small>(1
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="工具<--->软件记录">
+                                        
+                                        软件记录
+                                        
+                                            <small>(5
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="大前端">
+                        
+                        大前端
+                        <small>(14)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+                <a class="dynamic-menu site_url"
+                   
+                   href="/2022/02/02/gamesh/">休闲小游戏</a>
+        
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="155">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org">叶落阁</a></li>
+            
+            <li><a target="_blank" href="https://wujun234.com">吴俊笔记</a></li>
+            
+            <li><a target="_blank" href="https://www.coderutil.com">程序员盒子导航</a></li>
+            
+            <li><a target="_blank" href="https://www.bookstack.cn">程序员图书馆</a></li>
+            
+            <li><a target="_blank" href="https://www.martinku.cn">马丁库导航</a></li>
+            
+            <li><a target="_blank" href="https://docschina.org">印记中文(前端)</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>3-hexo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>AngularJs</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>c/c++代码规范</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>CDN</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>centos</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Cloudflare</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>deepin</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>docker</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>docker仓库</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>dubbo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>efficiency</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>emacs</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>encoding</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>encryption</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>firewall</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>fragment_cache</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>freemarker</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ftp</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>game</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Gin</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>git</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Git</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>GitHub</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Go WebAssembly</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>go-qrcode</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>GO2</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>golang</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Golang</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>golang test</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>golang testing</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gopherjs</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>goquery</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Go总结</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Go数据库</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Go爬虫</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Go练习题</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Go语言</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Go语言教程中文版</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Go语言程序设计</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Go进阶面试题</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Go面试</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Go面试题</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Go项目</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hexo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>IntellijIDEA</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>java</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>javaee</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>javascript</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>jQuery</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>js</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>jsDelivr</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>jsp</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>jstl</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>keybord</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>linux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>linux命令</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mac</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Markdown</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mathjax</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>maven</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>memory mapping</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mmap</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mock框架</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mybatis</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mysql</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MySQL总结</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MySQL面试</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nexus</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nginx</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>node</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>PicGo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>pjax</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>postgres</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>PostgreSQL</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Protobuf</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Protocol Buffers</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Python3</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>reading</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Redis</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>regex</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>RPC</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>samba</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>SEO</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>shell</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>SkyWalking</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>spring</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>SpringCloud</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>springmvc</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sql</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sqlx</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>stub</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>tale</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>tcp/ip</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>TLS</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>translation</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Ubuntu</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>unit tests</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>vim</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>VMware</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>wasm</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>windows</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>zookeeper</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>三子棋</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>上下文</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>个税</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>二分查找</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>二维码</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>五险一金</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>人生在勤，不索何获</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>信道</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>单元测试</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>命令行参数 main函数</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>图床</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>字符串旋转</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>平均数</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>并发编程</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>微服务</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>扫雷</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>推箱子游戏</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>搜索引擎</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>教程</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>数据结构与算法</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>栈桢</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>核心原理</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>泛型</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>活着</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>浏览器</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>爬虫</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>磁盘分区</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>结构体</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>编辑器</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>网络编程</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>证书</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>读写锁实现</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>超时退出</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>运维</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>逆序字符串</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>通讯录</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>鉴权</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>面试题</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a id="top" class="全部文章 后端 Go "
+           href="/2022/02/02/golang/"
+           data-tag="Go总结,Go练习题"
+           data-author="" >
+            <span class="post-title" title="Go语言练习题">Go语言练习题</span>
+            <span class="post-date" title="2022-02-02 15:29:32">2022/02/02</span>
+        </a>
+        
+        <a id="top" class="全部文章 后端 Go "
+           href="/2022/01/04/golang/"
+           data-tag="Go总结,Go面试题"
+           data-author="" >
+            <span class="post-title" title="Go全栈面试题（1）-Go基础语法面试题">Go全栈面试题（1）-Go基础语法面试题</span>
+            <span class="post-date" title="2022-01-04 15:29:32">2022/01/04</span>
+        </a>
+        
+        <a id="top" class="全部文章 后端 Go "
+           href="/2022/01/07/golang/"
+           data-tag="Go进阶面试题"
+           data-author="" >
+            <span class="post-title" title="Go全栈面试题（2）-Go进阶面试题">Go全栈面试题（2）-Go进阶面试题</span>
+            <span class="post-date" title="2022-01-07 15:29:32">2022/01/07</span>
+        </a>
+        
+        <a id="top" class="全部文章 读书 程序人生 "
+           href="/2018/01/20/undefined/"
+           data-tag="人生在勤，不索何获"
+           data-author="" >
+            <span class="post-title" title="My First Blog">My First Blog</span>
+            <span class="post-date" title="2018-01-20 13:27:47">2018/01/20</span>
+        </a>
+        
+        <a id="top" class="全部文章 后端 Go "
+           href="/2022/01/19/golang/"
+           data-tag="爬虫"
+           data-author="" >
+            <span class="post-title" title="【Go项目】模拟网站登录并爬虫">【Go项目】模拟网站登录并爬虫</span>
+            <span class="post-date" title="2022-01-19 15:29:32">2022/01/19</span>
+        </a>
+        
+        <a id="top" class="全部文章 后端 Go "
+           href="/2022/01/19/golang/"
+           data-tag="Go面试,微服务"
+           data-author="" >
+            <span class="post-title" title="Go全栈面试题（3）-微服务面试题">Go全栈面试题（3）-微服务面试题</span>
+            <span class="post-date" title="2022-01-19 15:29:32">2022/01/19</span>
+        </a>
+        
+        <a id="top" class="全部文章 后端 Go "
+           href="/2022/02/01/mysql/"
+           data-tag="面试题,MySQL总结"
+           data-author="" >
+            <span class="post-title" title="Go全栈面试题（4）-数据库面试题">Go全栈面试题（4）-数据库面试题</span>
+            <span class="post-date" title="2022-02-01 15:29:32">2022/02/01</span>
+        </a>
+        
+        <a id="top" class="全部文章 后端 Go "
+           href="/2022/02/03/golang/"
+           data-tag="网络编程,面试题"
+           data-author="" >
+            <span class="post-title" title="Go全栈面试题（5）-网络编程面试题">Go全栈面试题（5）-网络编程面试题</span>
+            <span class="post-date" title="2022-02-03 15:29:32">2022/02/03</span>
+        </a>
+        
+        <a id="top" class="全部文章 后端 Go "
+           href="/2022/01/05/golang/"
+           data-tag="数据结构与算法,Go面试题"
+           data-author="" >
+            <span class="post-title" title="Go全栈面试题（6）-数据结构与算法面试题">Go全栈面试题（6）-数据结构与算法面试题</span>
+            <span class="post-date" title="2022-01-05 15:29:32">2022/01/05</span>
+        </a>
+        
+        <a id="top" class="全部文章 工具 hexo "
+           href="/2017/03/13/3-hexo-logs/"
+           data-tag="hexo,3-hexo"
+           data-author="" >
+            <span class="post-title" title="3-hexo开发日志-持续更新">3-hexo开发日志-持续更新</span>
+            <span class="post-date" title="2017-03-13 15:44:57">2017/03/13</span>
+        </a>
+        
+        <a id="top" class="全部文章 工具 hexo "
+           href="/2017/03/23/3-hexo-instruction/"
+           data-tag="hexo,3-hexo"
+           data-author="" >
+            <span class="post-title" title="3-hexo使用说明">3-hexo使用说明</span>
+            <span class="post-date" title="2017-03-23 15:13:47">2017/03/23</span>
+        </a>
+        
+        <a  class="全部文章 数据库 MySQL "
+           href="/2022/03/03/mysql/"
+           data-tag="MySQL面试"
+           data-author="" >
+            <span class="post-title" title="MySQL数据库面试题">MySQL数据库面试题</span>
+            <span class="post-date" title="2022-03-03 15:29:32">2022/03/03</span>
+        </a>
+        
+        <a  class="全部文章 后端 C语言 "
+           href="/2022/02/26/undefined/"
+           data-tag="通讯录"
+           data-author="" >
+            <span class="post-title" title="【C语言】动态顺序表 + 文件存储 = 通讯录">【C语言】动态顺序表 + 文件存储 = 通讯录</span>
+            <span class="post-date" title="2022-02-26 13:28:26">2022/02/26</span>
+        </a>
+        
+        <a  class="全部文章 后端 Go "
+           href="/2022/02/16/go/"
+           data-tag="Go语言,单元测试,mock框架,stub"
+           data-author="" >
+            <span class="post-title" title="Go Mock (gomock)简明教程">Go Mock (gomock)简明教程</span>
+            <span class="post-date" title="2022-02-16 21:59:10">2022/02/16</span>
+        </a>
+        
+        <a  class="全部文章 后端 Go "
+           href="/2022/02/16/go/"
+           data-tag="Go语言,Go语言程序设计,Go语言教程中文版"
+           data-author="" >
+            <span class="post-title" title="Go 语言简明教程">Go 语言简明教程</span>
+            <span class="post-date" title="2022-02-16 21:59:10">2022/02/16</span>
+        </a>
+        
+        <a  class="全部文章 后端 Go "
+           href="/2022/02/11/go/"
+           data-tag="golang,mmap,memory mapping,windows"
+           data-author="" >
+            <span class="post-title" title="Go Mmap 文件内存映射简明教程">Go Mmap 文件内存映射简明教程</span>
+            <span class="post-date" title="2022-02-11 21:59:10">2022/02/11</span>
+        </a>
+        
+        <a  class="全部文章 工具 "
+           href="/2022/02/02/gamesh/"
+           data-tag="game"
+           data-author="" >
+            <span class="post-title" title="休闲娱乐-小游戏">休闲娱乐-小游戏</span>
+            <span class="post-date" title="2022-02-02 01:00:10">2022/02/02</span>
+        </a>
+        
+        <a  class="全部文章 数据库 MySQL "
+           href="/2022/01/31/mysql/"
+           data-tag="MySQL总结"
+           data-author="" >
+            <span class="post-title" title="MySQL 有这一篇就够（呕心狂敲37k字，只为博君一点赞！！！）">MySQL 有这一篇就够（呕心狂敲37k字，只为博君一点赞！！！）</span>
+            <span class="post-date" title="2022-01-31 15:29:32">2022/01/31</span>
+        </a>
+        
+        <a  class="全部文章 后端 Go "
+           href="/2022/01/17/go/"
+           data-tag="Go WebAssembly,wasm,gopherjs"
+           data-author="" >
+            <span class="post-title" title="Go WebAssembly (Wasm) 简明教程">Go WebAssembly (Wasm) 简明教程</span>
+            <span class="post-date" title="2022-01-17 21:59:10">2022/01/17</span>
+        </a>
+        
+        <a  class="全部文章 后端 Go "
+           href="/2022/01/16/go/"
+           data-tag="Protocol Buffers,Protobuf,Golang,RPC"
+           data-author="" >
+            <span class="post-title" title="Go Protobuf 简明教程">Go Protobuf 简明教程</span>
+            <span class="post-date" title="2022-01-16 21:59:10">2022/01/16</span>
+        </a>
+        
+        <a  class="全部文章 后端 Go "
+           href="/2022/01/16/go/"
+           data-tag="Golang,RPC,TLS,证书,鉴权"
+           data-author="" >
+            <span class="post-title" title="Go RPC &amp; TLS 鉴权简明教程">Go RPC &amp; TLS 鉴权简明教程</span>
+            <span class="post-date" title="2022-01-16 21:59:10">2022/01/16</span>
+        </a>
+        
+        <a  class="全部文章 后端 Go "
+           href="/2022/01/16/go/"
+           data-tag="golang test,unit tests,golang testing"
+           data-author="" >
+            <span class="post-title" title="Go Test 单元测试简明教程">Go Test 单元测试简明教程</span>
+            <span class="post-date" title="2022-01-16 21:59:10">2022/01/16</span>
+        </a>
+        
+        <a  class="全部文章 后端 Go "
+           href="/2022/01/09/golang/"
+           data-tag="Go爬虫,goquery"
+           data-author="" >
+            <span class="post-title" title="Go库之goquery">Go库之goquery</span>
+            <span class="post-date" title="2022-01-09 15:29:32">2022/01/09</span>
+        </a>
+        
+        <a  class="全部文章 后端 Go "
+           href="/2022/01/08/golang/"
+           data-tag="Go爬虫,goquery"
+           data-author="" >
+            <span class="post-title" title="【Go项目】爬取CSDN文章保存本地">【Go项目】爬取CSDN文章保存本地</span>
+            <span class="post-date" title="2022-01-08 15:29:32">2022/01/08</span>
+        </a>
+        
+        <a  class="全部文章 后端 Go "
+           href="/2022/01/06/golang/"
+           data-tag="go-qrcode,二维码"
+           data-author="" >
+            <span class="post-title" title="【Go项目】用Go生成和识别二维码">【Go项目】用Go生成和识别二维码</span>
+            <span class="post-date" title="2022-01-06 15:29:32">2022/01/06</span>
+        </a>
+        
+        <a  class="全部文章 后端 Go "
+           href="/2022/01/03/golang/"
+           data-tag="推箱子游戏,Go项目"
+           data-author="" >
+            <span class="post-title" title="【Go项目】实现推箱子游戏">【Go项目】实现推箱子游戏</span>
+            <span class="post-date" title="2022-01-03 15:29:32">2022/01/03</span>
+        </a>
+        
+        <a  class="全部文章 数据库 MySQL "
+           href="/2021/12/31/mysql/"
+           data-tag="mysql"
+           data-author="" >
+            <span class="post-title" title="MySQL 基础教程">MySQL 基础教程</span>
+            <span class="post-date" title="2021-12-31 22:00:42">2021/12/31</span>
+        </a>
+        
+        <a  class="全部文章 后端 Go "
+           href="/2021/12/26/go/"
+           data-tag="Gin"
+           data-author="" >
+            <span class="post-title" title="Go Gin 简明教程">Go Gin 简明教程</span>
+            <span class="post-date" title="2021-12-26 21:59:10">2021/12/26</span>
+        </a>
+        
+        <a  class="全部文章 后端 Go "
+           href="/2021/12/25/go/"
+           data-tag="并发编程,上下文,信道,超时退出,golang"
+           data-author="" >
+            <span class="post-title" title="Go Context 并发编程简明教程">Go Context 并发编程简明教程</span>
+            <span class="post-date" title="2021-12-25 21:59:10">2021/12/25</span>
+        </a>
+        
+        <a  class="全部文章 后端 Go "
+           href="/2021/12/24/go/"
+           data-tag="Go语言,GO2,泛型"
+           data-author="" >
+            <span class="post-title" title="Go2 新特性简明教程">Go2 新特性简明教程</span>
+            <span class="post-date" title="2021-12-24 21:59:10">2021/12/24</span>
+        </a>
+        
+        <a  class="全部文章 后端 网络编程 "
+           href="/2021/12/17/tcp/ip/"
+           data-tag="tcp/ip"
+           data-author="" >
+            <span class="post-title" title="TCP/IP 基础教程">TCP/IP 基础教程</span>
+            <span class="post-date" title="2021-12-17 22:00:42">2021/12/17</span>
+        </a>
+        
+        <a  class="全部文章 后端 Redis "
+           href="/2021/12/08/redis/"
+           data-tag="Redis,教程"
+           data-author="" >
+            <span class="post-title" title="Redis 2021最新 超详解 教程（狂神笔记+个人总结+代码+截图）">Redis 2021最新 超详解 教程（狂神笔记+个人总结+代码+截图）</span>
+            <span class="post-date" title="2021-12-08 10:44:30">2021/12/08</span>
+        </a>
+        
+        <a  class="全部文章 后端 Go "
+           href="/2021/11/24/go/"
+           data-tag="读写锁实现,核心原理"
+           data-author="" >
+            <span class="post-title" title="图解Go读写锁实现与核心原理分析">图解Go读写锁实现与核心原理分析</span>
+            <span class="post-date" title="2021-11-24 23:59:10">2021/11/24</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python3 "
+           href="/2021/11/24/python3/"
+           data-tag="Python3"
+           data-author="" >
+            <span class="post-title" title="Python 简明教程">Python 简明教程</span>
+            <span class="post-date" title="2021-11-24 23:59:10">2021/11/24</span>
+        </a>
+        
+        <a  class="全部文章 后端 Go "
+           href="/2021/11/24/go/"
+           data-tag="sqlx,Go数据库"
+           data-author="" >
+            <span class="post-title" title="Go sqlx操作mysql教程">Go sqlx操作mysql教程</span>
+            <span class="post-date" title="2021-11-24 21:59:10">2021/11/24</span>
+        </a>
+        
+        <a  class="全部文章 运维 linux "
+           href="/2021/10/24/linux/"
+           data-tag="VMware,Ubuntu"
+           data-author="" >
+            <span class="post-title" title="VMware Pro 14 安装 Ubuntu 18.04 详细教程">VMware Pro 14 安装 Ubuntu 18.04 详细教程</span>
+            <span class="post-date" title="2021-10-24 10:10:45">2021/10/24</span>
+        </a>
+        
+        <a  class="全部文章 工具 markdown "
+           href="/2021/10/24/tools/"
+           data-tag="Markdown,编辑器"
+           data-author="" >
+            <span class="post-title" title="主流 Markdown 编辑器推荐">主流 Markdown 编辑器推荐</span>
+            <span class="post-date" title="2021-10-24 10:10:45">2021/10/24</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2021/10/24/hexo/"
+           data-tag="jsDelivr,CDN"
+           data-author="" >
+            <span class="post-title" title="免费CDN：jsDelivr + Github">免费CDN：jsDelivr + Github</span>
+            <span class="post-date" title="2021-10-24 10:10:45">2021/10/24</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2021/10/24/hexo/"
+           data-tag="Cloudflare"
+           data-author="" >
+            <span class="post-title" title="利用Cloudflare为基于GitHub Pages的Hexo博客添加HTTPS支持">利用Cloudflare为基于GitHub Pages的Hexo博客添加HTTPS支持</span>
+            <span class="post-date" title="2021-10-24 10:10:45">2021/10/24</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2021/10/24/hexo/"
+           data-tag="jsDelivr,CDN,图床,PicGo"
+           data-author="" >
+            <span class="post-title" title="Github+jsDelivr+PicGo 打造稳定快速、高效免费图床">Github+jsDelivr+PicGo 打造稳定快速、高效免费图床</span>
+            <span class="post-date" title="2021-10-24 10:10:45">2021/10/24</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2021/10/24/hexo/"
+           data-tag="搜索引擎,SEO"
+           data-author="" >
+            <span class="post-title" title="Hexo 博客提交百度、谷歌搜索引擎收录">Hexo 博客提交百度、谷歌搜索引擎收录</span>
+            <span class="post-date" title="2021-10-24 10:10:45">2021/10/24</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2021/10/08/hexo-add-baidu/"
+           data-tag="hexo,3-hexo"
+           data-author="" >
+            <span class="post-title" title="Hexo博客向百度提交链接">Hexo博客向百度提交链接</span>
+            <span class="post-date" title="2021-10-08 10:44:30">2021/10/08</span>
+        </a>
+        
+        <a  class="全部文章 后端 Java "
+           href="/2021/09/26/spring-cloud-skywalking/"
+           data-tag="java,SpringCloud,SkyWalking"
+           data-author="" >
+            <span class="post-title" title="SpringCloud系列之接入SkyWalking进行链路追踪和日志收集">SpringCloud系列之接入SkyWalking进行链路追踪和日志收集</span>
+            <span class="post-date" title="2021-09-26 18:08:00">2021/09/26</span>
+        </a>
+        
+        <a  class="全部文章 后端 C语言 "
+           href="/2021/06/01/undefined/"
+           data-tag="逆序字符串"
+           data-author="" >
+            <span class="post-title" title="逆序字符串问题">逆序字符串问题</span>
+            <span class="post-date" title="2021-06-01 22:02:30">2021/06/01</span>
+        </a>
+        
+        <a  class="全部文章 后端 C语言 "
+           href="/2021/05/31/undefined/"
+           data-tag="结构体"
+           data-author="" >
+            <span class="post-title" title="自定义类型：结构体，枚举，联合">自定义类型：结构体，枚举，联合</span>
+            <span class="post-date" title="2021-05-31 22:02:36">2021/05/31</span>
+        </a>
+        
+        <a  class="全部文章 后端 C语言 "
+           href="/2021/05/29/undefined/"
+           data-tag="通讯录"
+           data-author="" >
+            <span class="post-title" title="【C语言】静态(动态)顺序表-通讯录">【C语言】静态(动态)顺序表-通讯录</span>
+            <span class="post-date" title="2021-05-29 21:54:55">2021/05/29</span>
+        </a>
+        
+        <a  class="全部文章 后端 C语言 "
+           href="/2021/05/27/undefined/"
+           data-tag="二分查找"
+           data-author="" >
+            <span class="post-title" title="二分查找，你真的掌握了吗？">二分查找，你真的掌握了吗？</span>
+            <span class="post-date" title="2021-05-27 21:54:50">2021/05/27</span>
+        </a>
+        
+        <a  class="全部文章 后端 C语言 "
+           href="/2021/05/26/undefined/"
+           data-tag="三子棋"
+           data-author="" >
+            <span class="post-title" title="【C语言】经典小游戏-三子棋">【C语言】经典小游戏-三子棋</span>
+            <span class="post-date" title="2021-05-26 21:54:45">2021/05/26</span>
+        </a>
+        
+        <a  class="全部文章 后端 C语言 "
+           href="/2021/05/25/undefined/"
+           data-tag="栈桢"
+           data-author="" >
+            <span class="post-title" title="函数调用过程（栈桢）">函数调用过程（栈桢）</span>
+            <span class="post-date" title="2021-05-25 21:54:40">2021/05/25</span>
+        </a>
+        
+        <a  class="全部文章 后端 C语言 "
+           href="/2021/05/24/undefined/"
+           data-tag="平均数"
+           data-author="" >
+            <span class="post-title" title="平均数三种境界">平均数三种境界</span>
+            <span class="post-date" title="2021-05-24 21:54:20">2021/05/24</span>
+        </a>
+        
+        <a  class="全部文章 后端 C语言 "
+           href="/2021/05/23/undefined/"
+           data-tag="c/c++代码规范"
+           data-author="" >
+            <span class="post-title" title="C/C++代码规范">C/C++代码规范</span>
+            <span class="post-date" title="2021-05-23 21:54:33">2021/05/23</span>
+        </a>
+        
+        <a  class="全部文章 后端 C语言 "
+           href="/2021/05/22/undefined/"
+           data-tag="扫雷"
+           data-author="" >
+            <span class="post-title" title="【C语言】经典小游戏-扫雷">【C语言】经典小游戏-扫雷</span>
+            <span class="post-date" title="2021-05-22 13:27:47">2021/05/22</span>
+        </a>
+        
+        <a  class="全部文章 后端 C语言 "
+           href="/2021/05/20/undefined/"
+           data-tag="字符串旋转"
+           data-author="" >
+            <span class="post-title" title="字符串左右旋转问题">字符串左右旋转问题</span>
+            <span class="post-date" title="2021-05-20 13:27:47">2021/05/20</span>
+        </a>
+        
+        <a  class="全部文章 后端 C语言 "
+           href="/2021/05/20/undefined/"
+           data-tag="命令行参数 main函数"
+           data-author="" >
+            <span class="post-title" title="浅析（命令行参数 ）&amp;（main函数参数）">浅析（命令行参数 ）&amp;（main函数参数）</span>
+            <span class="post-date" title="2021-05-20 13:27:47">2021/05/20</span>
+        </a>
+        
+        <a  class="全部文章 运维 linux "
+           href="/2021/05/17/linux/"
+           data-tag="linux"
+           data-author="" >
+            <span class="post-title" title="Linux 基础教程">Linux 基础教程</span>
+            <span class="post-date" title="2021-05-17 22:00:42">2021/05/17</span>
+        </a>
+        
+        <a  class="全部文章 读书 "
+           href="/2021/05/02/undefined/"
+           data-tag="五险一金,个税"
+           data-author="" >
+            <span class="post-title" title="五险一金&amp;个税小常识">五险一金&amp;个税小常识</span>
+            <span class="post-date" title="2021-05-02 17:46:16">2021/05/02</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python3 "
+           href="/2021/01/24/python3/"
+           data-tag="Python3"
+           data-author="" >
+            <span class="post-title" title="Python3 基础学习笔记 C09">Python3 基础学习笔记 C09</span>
+            <span class="post-date" title="2021-01-24 23:59:10">2021/01/24</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python3 "
+           href="/2021/01/23/python3/"
+           data-tag="Python3"
+           data-author="" >
+            <span class="post-title" title="Python3 基础学习笔记 C08">Python3 基础学习笔记 C08</span>
+            <span class="post-date" title="2021-01-23 23:59:10">2021/01/23</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python3 "
+           href="/2021/01/22/python3/"
+           data-tag="Python3"
+           data-author="" >
+            <span class="post-title" title="Python3 基础学习笔记 C07">Python3 基础学习笔记 C07</span>
+            <span class="post-date" title="2021-01-22 23:59:10">2021/01/22</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python3 "
+           href="/2021/01/20/python3/"
+           data-tag="Python3"
+           data-author="" >
+            <span class="post-title" title="Python3 基础学习笔记 C05">Python3 基础学习笔记 C05</span>
+            <span class="post-date" title="2021-01-20 23:59:10">2021/01/20</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python3 "
+           href="/2021/01/20/python3/"
+           data-tag="Python3"
+           data-author="" >
+            <span class="post-title" title="Python3 基础学习笔记 C06">Python3 基础学习笔记 C06</span>
+            <span class="post-date" title="2021-01-20 23:59:10">2021/01/20</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python3 "
+           href="/2021/01/19/python3/"
+           data-tag="Python3"
+           data-author="" >
+            <span class="post-title" title="Python3 基础学习笔记 C04">Python3 基础学习笔记 C04</span>
+            <span class="post-date" title="2021-01-19 23:59:10">2021/01/19</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python3 "
+           href="/2021/01/18/python3/"
+           data-tag="Python3"
+           data-author="" >
+            <span class="post-title" title="Python3 基础学习笔记 C03">Python3 基础学习笔记 C03</span>
+            <span class="post-date" title="2021-01-18 23:59:10">2021/01/18</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python3 "
+           href="/2021/01/16/python3/"
+           data-tag="Python3"
+           data-author="" >
+            <span class="post-title" title="Python3 基础学习笔记 C02">Python3 基础学习笔记 C02</span>
+            <span class="post-date" title="2021-01-16 23:59:10">2021/01/16</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python3 "
+           href="/2021/01/15/python3/"
+           data-tag="Python3"
+           data-author="" >
+            <span class="post-title" title="Python3 基础学习笔记 C01">Python3 基础学习笔记 C01</span>
+            <span class="post-date" title="2021-01-15 23:59:10">2021/01/15</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2020/12/28/3-hexo-add-icon/"
+           data-tag="hexo,3-hexo"
+           data-author="" >
+            <span class="post-title" title="3-hexo添加自定义图标">3-hexo添加自定义图标</span>
+            <span class="post-date" title="2020-12-28 22:00:00">2020/12/28</span>
+        </a>
+        
+        <a  class="全部文章 大前端 "
+           href="/2020/10/20/know-javascript-promise/"
+           data-tag="javascript"
+           data-author="" >
+            <span class="post-title" title="一文看懂JavaScript中的Promise">一文看懂JavaScript中的Promise</span>
+            <span class="post-date" title="2020-10-20 19:43:44">2020/10/20</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2020/09/01/Docker-summary/"
+           data-tag="docker,linux"
+           data-author="" >
+            <span class="post-title" title="Docker 技术整理">Docker 技术整理</span>
+            <span class="post-date" title="2020-09-01 22:11:00">2020/09/01</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2020/05/23/3-hexo-comment/"
+           data-tag="3-hexo"
+           data-author="" >
+            <span class="post-title" title="3-hexo评论设置">3-hexo评论设置</span>
+            <span class="post-date" title="2020-05-23 22:26:23">2020/05/23</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2019/11/12/3-hexo-support-mermaid/"
+           data-tag="hexo,3-hexo"
+           data-author="" >
+            <span class="post-title" title="3-hexo支持mermaid图表">3-hexo支持mermaid图表</span>
+            <span class="post-date" title="2019-11-12 09:55:37">2019/11/12</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2019/10/08/3-hexo-add-music/"
+           data-tag="hexo,3-hexo"
+           data-author="" >
+            <span class="post-title" title="3-hexo 添加音乐插件">3-hexo 添加音乐插件</span>
+            <span class="post-date" title="2019-10-08 10:44:30">2019/10/08</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2019/09/24/3-hexo-jsfiddle/"
+           data-tag="hexo,3-hexo"
+           data-author="" >
+            <span class="post-title" title="3-hexo支持jsfiddle渲染">3-hexo支持jsfiddle渲染</span>
+            <span class="post-date" title="2019-09-24 09:59:37">2019/09/24</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2019/09/24/3-hexo-toc/"
+           data-tag="hexo,3-hexo"
+           data-author="" >
+            <span class="post-title" title="3-hexo文章内toc生成">3-hexo文章内toc生成</span>
+            <span class="post-date" title="2019-09-24 09:48:20">2019/09/24</span>
+        </a>
+        
+        <a  class="全部文章 读书 阅读笔记 "
+           href="/2019/06/09/misfortune-intellectual/"
+           data-tag="reading"
+           data-author="" >
+            <span class="post-title" title="[记]《知识分子的不幸》-王小波">[记]《知识分子的不幸》-王小波</span>
+            <span class="post-date" title="2019-06-09 21:31:09">2019/06/09</span>
+        </a>
+        
+        <a  class="全部文章 读书 阅读笔记 "
+           href="/2019/05/02/to-live/"
+           data-tag="reading,活着"
+           data-author="" >
+            <span class="post-title" title="人们在一本叫《活着》的书中纷纷死去">人们在一本叫《活着》的书中纷纷死去</span>
+            <span class="post-date" title="2019-05-02 17:46:16">2019/05/02</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2018/09/08/shell-command/"
+           data-tag="linux,shell"
+           data-author="" >
+            <span class="post-title" title="shell速查表">shell速查表</span>
+            <span class="post-date" title="2018-09-08 11:48:24">2018/09/08</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2018/02/08/nginx-config/"
+           data-tag="nginx"
+           data-author="" >
+            <span class="post-title" title="nginx配置记录">nginx配置记录</span>
+            <span class="post-date" title="2018-02-08 09:19:09">2018/02/08</span>
+        </a>
+        
+        <a  class="全部文章 工具 软件记录 "
+           href="/2017/12/13/Mac-BetterTouchTool/"
+           data-tag="mac,efficiency"
+           data-author="" >
+            <span class="post-title" title="Mac神器-BTT(BetterTouchTool)不完全教程">Mac神器-BTT(BetterTouchTool)不完全教程</span>
+            <span class="post-date" title="2017-12-13 17:04:25">2017/12/13</span>
+        </a>
+        
+        <a  class="全部文章 后端 Java "
+           href="/2017/11/27/java-grammatical-sugar/"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="[转]谈谈Java中的语法糖">[转]谈谈Java中的语法糖</span>
+            <span class="post-date" title="2017-11-27 22:51:45">2017/11/27</span>
+        </a>
+        
+        <a  class="全部文章 数据库 PostgreSQL "
+           href="/2017/11/09/PostgreSQL%E4%BA%8B%E7%89%A9%E5%8F%8A%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/"
+           data-tag="PostgreSQL"
+           data-author="" >
+            <span class="post-title" title="PostgreSQL事务及隔离级别">PostgreSQL事务及隔离级别</span>
+            <span class="post-date" title="2017-11-09 00:07:33">2017/11/09</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/10/20/undefined/"
+           data-tag="vim,keybord,emacs,linux"
+           data-author="" >
+            <span class="post-title" title="linux下修改按键ESC&lt;=&gt;CAPSLOCK和Control=&gt;ALT_R">linux下修改按键ESC&lt;=&gt;CAPSLOCK和Control=&gt;ALT_R</span>
+            <span class="post-date" title="2017-10-20 17:38:49">2017/10/20</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/09/25/ascii-ansi-unicode-utf-8/"
+           data-tag="encoding"
+           data-author="" >
+            <span class="post-title" title="[转]字符编解码的故事（ASCII，ANSI，Unicode，Utf-8区别）">[转]字符编解码的故事（ASCII，ANSI，Unicode，Utf-8区别）</span>
+            <span class="post-date" title="2017-09-25 19:15:00">2017/09/25</span>
+        </a>
+        
+        <a  class="全部文章 后端 Java "
+           href="/2017/09/25/%E6%90%AD%E5%BB%BAdubbo+zookeeper%E5%B9%B3%E5%8F%B0/"
+           data-tag="dubbo,zookeeper"
+           data-author="" >
+            <span class="post-title" title="搭建dubbo+zookeeper平台">搭建dubbo+zookeeper平台</span>
+            <span class="post-date" title="2017-09-25 16:29:07">2017/09/25</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/09/25/docker-errors/"
+           data-tag="docker"
+           data-author="" >
+            <span class="post-title" title="docker报错集锦">docker报错集锦</span>
+            <span class="post-date" title="2017-09-25 10:03:50">2017/09/25</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2017/09/21/hexo-fragment_cache/"
+           data-tag="hexo,fragment_cache"
+           data-author="" >
+            <span class="post-title" title="Hexo加速渲染速度之fragment_cache">Hexo加速渲染速度之fragment_cache</span>
+            <span class="post-date" title="2017-09-21 19:34:37">2017/09/21</span>
+        </a>
+        
+        <a  class="全部文章 大前端 "
+           href="/2017/09/21/bf-cache/"
+           data-tag="浏览器,js"
+           data-author="" >
+            <span class="post-title" title="[转]浏览器前进/后退缓存（BF Cache）">[转]浏览器前进/后退缓存（BF Cache）</span>
+            <span class="post-date" title="2017-09-21 15:35:24">2017/09/21</span>
+        </a>
+        
+        <a  class="全部文章 大前端 "
+           href="/2017/09/21/iphone-bf-no-run-js/"
+           data-tag="js"
+           data-author="" >
+            <span class="post-title" title="解决iphone下后退不执行js的问题">解决iphone下后退不执行js的问题</span>
+            <span class="post-date" title="2017-09-21 15:25:32">2017/09/21</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/09/19/CentOS7%E4%BD%BF%E7%94%A8Firewalld/"
+           data-tag="firewall"
+           data-author="" >
+            <span class="post-title" title="CentOS7使用Firewalld">CentOS7使用Firewalld</span>
+            <span class="post-date" title="2017-09-19 09:53:53">2017/09/19</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/09/18/docker-save-export/"
+           data-tag="docker"
+           data-author="" >
+            <span class="post-title" title="docker备份恢复之save与export">docker备份恢复之save与export</span>
+            <span class="post-date" title="2017-09-18 22:38:52">2017/09/18</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/09/11/sudo%E5%91%BD%E4%BB%A4%E5%85%8D%E5%AF%86%E7%A0%81%E8%AE%BE%E7%BD%AE/"
+           data-tag="linux"
+           data-author="" >
+            <span class="post-title" title="sudo命令免密码设置">sudo命令免密码设置</span>
+            <span class="post-date" title="2017-09-11 09:30:55">2017/09/11</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/09/06/build-Maven-Nexus/"
+           data-tag="java,maven,nexus"
+           data-author="" >
+            <span class="post-title" title="搭建Maven私服-Nexus">搭建Maven私服-Nexus</span>
+            <span class="post-date" title="2017-09-06 23:01:31">2017/09/06</span>
+        </a>
+        
+        <a  class="全部文章 数据库 "
+           href="/2017/08/04/mybatis-Mapper/"
+           data-tag="mybatis"
+           data-author="" >
+            <span class="post-title" title="Mybatis常用Mapper语句">Mybatis常用Mapper语句</span>
+            <span class="post-date" title="2017-08-04 15:54:47">2017/08/04</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2017/07/05/MathJax-pjax/"
+           data-tag="mathjax,pjax"
+           data-author="" >
+            <span class="post-title" title="MathJax适配Pjax">MathJax适配Pjax</span>
+            <span class="post-date" title="2017-07-05 19:24:10">2017/07/05</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2017/07/05/3-hexo-mathjax/"
+           data-tag="mathjax"
+           data-author="" >
+            <span class="post-title" title="3-hexo配置MathJax数学公式渲染">3-hexo配置MathJax数学公式渲染</span>
+            <span class="post-date" title="2017-07-05 15:09:42">2017/07/05</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/07/03/CentOS7-anonymous-Samba/"
+           data-tag="samba"
+           data-author="" >
+            <span class="post-title" title="CentOS7安装配置匿名访问Samba">CentOS7安装配置匿名访问Samba</span>
+            <span class="post-date" title="2017-07-03 19:40:14">2017/07/03</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2017/06/26/gitment/"
+           data-tag="hexo"
+           data-author="" >
+            <span class="post-title" title="完美替代多说-gitment">完美替代多说-gitment</span>
+            <span class="post-date" title="2017-06-26 12:08:13">2017/06/26</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/06/01/vim-paste/"
+           data-tag="vim"
+           data-author="" >
+            <span class="post-title" title="解决粘贴到vim缩进错乱问题">解决粘贴到vim缩进错乱问题</span>
+            <span class="post-date" title="2017-06-01 19:45:24">2017/06/01</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/06/01/entering-docker/"
+           data-tag="docker"
+           data-author="" >
+            <span class="post-title" title="进入docker容器命令制作">进入docker容器命令制作</span>
+            <span class="post-date" title="2017-06-01 17:25:11">2017/06/01</span>
+        </a>
+        
+        <a  class="全部文章 工具 软件记录 "
+           href="/2017/05/24/tale-build-experience/"
+           data-tag="tale"
+           data-author="" >
+            <span class="post-title" title="tale博客搭建及体验">tale博客搭建及体验</span>
+            <span class="post-date" title="2017-05-24 11:29:30">2017/05/24</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/05/23/docker-data-manager/"
+           data-tag="docker"
+           data-author="" >
+            <span class="post-title" title="docker数据管理">docker数据管理</span>
+            <span class="post-date" title="2017-05-23 21:43:06">2017/05/23</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/05/23/docker-container/"
+           data-tag="docker"
+           data-author="" >
+            <span class="post-title" title="docker容器">docker容器</span>
+            <span class="post-date" title="2017-05-23 21:29:38">2017/05/23</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/05/23/docker-registry/"
+           data-tag="docker,docker仓库"
+           data-author="" >
+            <span class="post-title" title="docker仓库">docker仓库</span>
+            <span class="post-date" title="2017-05-23 21:15:52">2017/05/23</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/05/23/CentOS-DNS-GW-IP/"
+           data-tag="运维,centos"
+           data-author="" >
+            <span class="post-title" title="CentOS修改DNS/GW/IP">CentOS修改DNS/GW/IP</span>
+            <span class="post-date" title="2017-05-23 09:53:52">2017/05/23</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/05/22/Dockerfile/"
+           data-tag="docker"
+           data-author="" >
+            <span class="post-title" title="Dockerfile指令详解">Dockerfile指令详解</span>
+            <span class="post-date" title="2017-05-22 19:11:42">2017/05/22</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/05/19/docker-image/"
+           data-tag="docker"
+           data-author="" >
+            <span class="post-title" title="docker镜像">docker镜像</span>
+            <span class="post-date" title="2017-05-19 16:47:33">2017/05/19</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/05/19/docker-first/"
+           data-tag="docker"
+           data-author="" >
+            <span class="post-title" title="docker初体验">docker初体验</span>
+            <span class="post-date" title="2017-05-19 16:32:23">2017/05/19</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/05/17/linux%E6%97%A0%E6%8D%9F%E8%B0%83%E6%95%B4%E5%88%86%E5%8C%BA%E5%A4%A7%E5%B0%8F/"
+           data-tag="运维,磁盘分区"
+           data-author="" >
+            <span class="post-title" title="linux无损调整分区大小">linux无损调整分区大小</span>
+            <span class="post-date" title="2017-05-17 22:00:42">2017/05/17</span>
+        </a>
+        
+        <a  class="全部文章 工具 git "
+           href="/2017/05/16/git-log/"
+           data-tag="git"
+           data-author="" >
+            <span class="post-title" title="Git统计操作">Git统计操作</span>
+            <span class="post-date" title="2017-05-16 09:26:11">2017/05/16</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/04/25/%E8%A7%A3%E5%86%B3linux%E4%B8%8Bzip%E6%96%87%E4%BB%B6%E8%A7%A3%E5%8E%8B%E4%B9%B1%E7%A0%81/"
+           data-tag="linux命令"
+           data-author="" >
+            <span class="post-title" title="解决linux下zip文件解压乱码">解决linux下zip文件解压乱码</span>
+            <span class="post-date" title="2017-04-25 09:10:40">2017/04/25</span>
+        </a>
+        
+        <a  class="全部文章 后端 其他 "
+           href="/2017/04/22/encryption-algorithm/"
+           data-tag="encryption"
+           data-author="" >
+            <span class="post-title" title="加密算法简介">加密算法简介</span>
+            <span class="post-date" title="2017-04-22 09:30:41">2017/04/22</span>
+        </a>
+        
+        <a  class="全部文章 大前端 "
+           href="/2017/04/21/jsp-use-record/"
+           data-tag="jsp,jstl"
+           data-author="" >
+            <span class="post-title" title="JSP操作记录">JSP操作记录</span>
+            <span class="post-date" title="2017-04-21 11:22:12">2017/04/21</span>
+        </a>
+        
+        <a  class="全部文章 后端 Java "
+           href="/2017/04/15/SpringMVC-implementation-process/"
+           data-tag="java,spring,springmvc"
+           data-author="" >
+            <span class="post-title" title="[转]SpringMVC执行流程及源码解析">[转]SpringMVC执行流程及源码解析</span>
+            <span class="post-date" title="2017-04-15 10:22:05">2017/04/15</span>
+        </a>
+        
+        <a  class="全部文章 数据库 PostgreSQL "
+           href="/2017/04/14/postgres-sql-use/"
+           data-tag="postgres,sql"
+           data-author="" >
+            <span class="post-title" title="PostgreSQL常用SQL操作">PostgreSQL常用SQL操作</span>
+            <span class="post-date" title="2017-04-14 16:37:24">2017/04/14</span>
+        </a>
+        
+        <a  class="全部文章 工具 软件记录 "
+           href="/2017/03/30/deepin-linux/"
+           data-tag="运维,deepin"
+           data-author="" >
+            <span class="post-title" title="deepin系统使用记录">deepin系统使用记录</span>
+            <span class="post-date" title="2017-03-30 18:58:50">2017/03/30</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2017/03/27/hexo-error-collection/"
+           data-tag="hexo"
+           data-author="" >
+            <span class="post-title" title="hexo报错合集">hexo报错合集</span>
+            <span class="post-date" title="2017-03-27 19:40:42">2017/03/27</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2017/03/24/3-hexo-shortcuts/"
+           data-tag="hexo,3-hexo"
+           data-author="" >
+            <span class="post-title" title="3-hexo快捷键说明">3-hexo快捷键说明</span>
+            <span class="post-date" title="2017-03-24 16:45:31">2017/03/24</span>
+        </a>
+        
+        <a  class="全部文章 工具 "
+           href="/2017/03/23/the-third-comment/"
+           data-tag="hexo"
+           data-author="" >
+            <span class="post-title" title="关于第三方评论系统">关于第三方评论系统</span>
+            <span class="post-date" title="2017-03-23 11:59:50">2017/03/23</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2017/03/17/windows-hexo/"
+           data-tag="hexo"
+           data-author="" >
+            <span class="post-title" title="windows环境下使用hexo搭建blog平台">windows环境下使用hexo搭建blog平台</span>
+            <span class="post-date" title="2017-03-17 14:02:55">2017/03/17</span>
+        </a>
+        
+        <a  class="全部文章 大前端 "
+           href="/2017/03/16/npm/"
+           data-tag="node"
+           data-author="" >
+            <span class="post-title" title="npm使用介绍">npm使用介绍</span>
+            <span class="post-date" title="2017-03-16 20:09:48">2017/03/16</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2017/03/14/Hexo-RSS-Sitemap/"
+           data-tag="hexo"
+           data-author="" >
+            <span class="post-title" title="为Hexo添加RSS和Sitemap">为Hexo添加RSS和Sitemap</span>
+            <span class="post-date" title="2017-03-14 09:44:29">2017/03/14</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2017/03/13/3-hexo-homepage/"
+           data-tag="hexo,3-hexo"
+           data-author="" >
+            <span class="post-title" title="3-hexo配置首页">3-hexo配置首页</span>
+            <span class="post-date" title="2017-03-13 09:56:07">2017/03/13</span>
+        </a>
+        
+        <a  class="全部文章 大前端 "
+           href="/2017/03/09/busuanzi-pjax/"
+           data-tag="jQuery,hexo"
+           data-author="" >
+            <span class="post-title" title="不蒜子适配pjax">不蒜子适配pjax</span>
+            <span class="post-date" title="2017-03-09 20:15:51">2017/03/09</span>
+        </a>
+        
+        <a  class="全部文章 大前端 "
+           href="/2017/03/09/duoshuo-pjax/"
+           data-tag="jQuery,hexo"
+           data-author="" >
+            <span class="post-title" title="多说适配pjax">多说适配pjax</span>
+            <span class="post-date" title="2017-03-09 19:50:45">2017/03/09</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2017/03/09/hexo-wordcount/"
+           data-tag="hexo"
+           data-author="" >
+            <span class="post-title" title="Hexo加入字数统计WordCount">Hexo加入字数统计WordCount</span>
+            <span class="post-date" title="2017-03-09 16:57:10">2017/03/09</span>
+        </a>
+        
+        <a  class="全部文章 大前端 "
+           href="/2017/03/08/font-develop-rule/"
+           data-tag="translation"
+           data-author="" >
+            <span class="post-title" title="前端页面开发规范">前端页面开发规范</span>
+            <span class="post-date" title="2017-03-08 08:58:21">2017/03/08</span>
+        </a>
+        
+        <a  class="全部文章 大前端 "
+           href="/2017/03/08/understanding-the-critical-rendering-path/"
+           data-tag="translation"
+           data-author="" >
+            <span class="post-title" title="[译]理解浏览器关键渲染路径">[译]理解浏览器关键渲染路径</span>
+            <span class="post-date" title="2017-03-08 08:58:21">2017/03/08</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2017/03/07/3-hexo/"
+           data-tag="hexo,3-hexo"
+           data-author="" >
+            <span class="post-title" title="Hexo主题3-hexo">Hexo主题3-hexo</span>
+            <span class="post-date" title="2017-03-07 11:15:50">2017/03/07</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/03/06/Vim-command/"
+           data-tag="vim"
+           data-author="" >
+            <span class="post-title" title="Vim命令速查表">Vim命令速查表</span>
+            <span class="post-date" title="2017-03-06 11:23:36">2017/03/06</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2017/03/06/linux-ftp/"
+           data-tag="ftp"
+           data-author="" >
+            <span class="post-title" title="如何在linux中搭建ftp服务">如何在linux中搭建ftp服务</span>
+            <span class="post-date" title="2017-03-06 08:47:48">2017/03/06</span>
+        </a>
+        
+        <a  class="全部文章 大前端 "
+           href="/2017/03/04/AngularJs/"
+           data-tag="AngularJs"
+           data-author="" >
+            <span class="post-title" title="AngularJs快速入门">AngularJs快速入门</span>
+            <span class="post-date" title="2017-03-04 08:40:58">2017/03/04</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2017/02/28/3-hexo-multiple-author/"
+           data-tag="hexo,3-hexo"
+           data-author="" >
+            <span class="post-title" title="3-hexo多作者模式">3-hexo多作者模式</span>
+            <span class="post-date" title="2017-02-28 10:55:31">2017/02/28</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2017/02/25/hexo-create-404-page/"
+           data-tag="hexo"
+           data-author="" >
+            <span class="post-title" title="Hexo创建404页面">Hexo创建404页面</span>
+            <span class="post-date" title="2017-02-25 15:18:39">2017/02/25</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2017/02/24/hexo-top-sort/"
+           data-tag="hexo"
+           data-author="" >
+            <span class="post-title" title="Hexo置顶及排序问题">Hexo置顶及排序问题</span>
+            <span class="post-date" title="2017-02-24 15:50:38">2017/02/24</span>
+        </a>
+        
+        <a  class="全部文章 后端 Java "
+           href="/2017/02/21/the-introduction-of-memory-leak-what-why-and-how/"
+           data-tag="java,translation"
+           data-author="" >
+            <span class="post-title" title="[译]Java内存泄露介绍">[译]Java内存泄露介绍</span>
+            <span class="post-date" title="2017-02-21 15:05:39">2017/02/21</span>
+        </a>
+        
+        <a  class="全部文章 大前端 "
+           href="/2017/02/08/pjax/"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="pjax用法">pjax用法</span>
+            <span class="post-date" title="2017-02-08 20:18:54">2017/02/08</span>
+        </a>
+        
+        <a  class="全部文章 读书 书单 "
+           href="/2017/01/31/reading-list/"
+           data-tag="reading"
+           data-author="" >
+            <span class="post-title" title="reading-list">reading-list</span>
+            <span class="post-date" title="2017-01-31 15:29:32">2017/01/31</span>
+        </a>
+        
+        <a  class="全部文章 读书 阅读笔记 "
+           href="/2017/01/03/Fortress-Besieged/"
+           data-tag="reading"
+           data-author="" >
+            <span class="post-title" title="人生若只如初见-《围城》">人生若只如初见-《围城》</span>
+            <span class="post-date" title="2017-01-03 11:27:04">2017/01/03</span>
+        </a>
+        
+        <a  class="全部文章 工具 git "
+           href="/2016/12/24/git-reset/"
+           data-tag="Git"
+           data-author="" >
+            <span class="post-title" title="Git之reset揭秘">Git之reset揭秘</span>
+            <span class="post-date" title="2016-12-24 11:19:24">2016/12/24</span>
+        </a>
+        
+        <a  class="全部文章 工具 git "
+           href="/2016/12/23/git-master/"
+           data-tag="Git"
+           data-author="" >
+            <span class="post-title" title="Git操作之高手过招">Git操作之高手过招</span>
+            <span class="post-date" title="2016-12-23 10:59:01">2016/12/23</span>
+        </a>
+        
+        <a  class="全部文章 工具 git "
+           href="/2016/12/21/git-ssh-https-verify-configuration/"
+           data-tag="Git"
+           data-author="" >
+            <span class="post-title" title="Git之SSH与HTTPS免密码配置">Git之SSH与HTTPS免密码配置</span>
+            <span class="post-date" title="2016-12-21 15:31:55">2016/12/21</span>
+        </a>
+        
+        <a  class="全部文章 大前端 "
+           href="/2016/11/23/jQuery-checkbox-radio-select/"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="jQuery之checkbox|radio|select操作">jQuery之checkbox|radio|select操作</span>
+            <span class="post-date" title="2016-11-23 16:19:34">2016/11/23</span>
+        </a>
+        
+        <a  class="全部文章 大前端 "
+           href="/2016/11/22/jQuery-selector/"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="jQuery选择器与节点操作">jQuery选择器与节点操作</span>
+            <span class="post-date" title="2016-11-22 17:11:48">2016/11/22</span>
+        </a>
+        
+        <a  class="全部文章 工具 软件记录 "
+           href="/2016/11/05/idea-shortcuts/"
+           data-tag="IntellijIDEA"
+           data-author="" >
+            <span class="post-title" title="idea常用快捷键">idea常用快捷键</span>
+            <span class="post-date" title="2016-11-05 15:22:48">2016/11/05</span>
+        </a>
+        
+        <a  class="全部文章 后端 Java "
+           href="/2016/10/24/web-xml/"
+           data-tag="java,javaee"
+           data-author="" >
+            <span class="post-title" title="web.xml详解">web.xml详解</span>
+            <span class="post-date" title="2016-10-24 10:10:45">2016/10/24</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2016/10/23/hexo-git-server-blog/"
+           data-tag="hexo,Git"
+           data-author="" >
+            <span class="post-title" title="Hexo+Git服务器搭建blog">Hexo+Git服务器搭建blog</span>
+            <span class="post-date" title="2016-10-23 09:24:03">2016/10/23</span>
+        </a>
+        
+        <a  class="全部文章 工具 hexo "
+           href="/2016/10/22/hexo-gitHub-pages-create-own-blog/"
+           data-tag="hexo,Git,GitHub"
+           data-author="" >
+            <span class="post-title" title="Hexo+GitHub Pages搭建属于自己的blog">Hexo+GitHub Pages搭建属于自己的blog</span>
+            <span class="post-date" title="2016-10-22 21:24:05">2016/10/22</span>
+        </a>
+        
+        <a  class="全部文章 工具 git "
+           href="/2016/10/22/set-up-git-server-on-vps/"
+           data-tag="Git"
+           data-author="" >
+            <span class="post-title" title="搭建Git服务器">搭建Git服务器</span>
+            <span class="post-date" title="2016-10-22 20:08:04">2016/10/22</span>
+        </a>
+        
+        <a  class="全部文章 工具 git "
+           href="/2016/10/13/contributing-to-open-source-on-github/"
+           data-tag="Git,GitHub"
+           data-author="" >
+            <span class="post-title" title="如何给GitHub上的项目贡献代码">如何给GitHub上的项目贡献代码</span>
+            <span class="post-date" title="2016-10-13 15:44:07">2016/10/13</span>
+        </a>
+        
+        <a  class="全部文章 数据库 PostgreSQL "
+           href="/2016/10/12/PostgreSQL-2/"
+           data-tag="PostgreSQL"
+           data-author="" >
+            <span class="post-title" title="PostgreSQL常用操作">PostgreSQL常用操作</span>
+            <span class="post-date" title="2016-10-12 20:27:07">2016/10/12</span>
+        </a>
+        
+        <a  class="全部文章 数据库 PostgreSQL "
+           href="/2016/10/12/PostgreSQL-1/"
+           data-tag="PostgreSQL"
+           data-author="" >
+            <span class="post-title" title="PostgreSQL初体验">PostgreSQL初体验</span>
+            <span class="post-date" title="2016-10-12 19:49:40">2016/10/12</span>
+        </a>
+        
+        <a  class="全部文章 数据库 PostgreSQL "
+           href="/2016/10/12/PostgreSQL-3/"
+           data-tag="PostgreSQL"
+           data-author="" >
+            <span class="post-title" title="PostgreSQL的介绍与安装">PostgreSQL的介绍与安装</span>
+            <span class="post-date" title="2016-10-12 15:44:16">2016/10/12</span>
+        </a>
+        
+        <a  class="全部文章 大前端 "
+           href="/2016/10/05/FreeMarker/"
+           data-tag="java,freemarker"
+           data-author="" >
+            <span class="post-title" title="FreeMarker语法详解">FreeMarker语法详解</span>
+            <span class="post-date" title="2016-10-05 11:58:50">2016/10/05</span>
+        </a>
+        
+        <a  class="全部文章 工具 软件记录 "
+           href="/2016/10/04/regular-expression/"
+           data-tag="regex"
+           data-author="" >
+            <span class="post-title" title="正则表达式详解">正则表达式详解</span>
+            <span class="post-date" title="2016-10-04 09:41:40">2016/10/04</span>
+        </a>
+        
+        <a  class="全部文章 工具 git "
+           href="/2016/10/02/git-command/"
+           data-tag="Git"
+           data-author="" >
+            <span class="post-title" title="Git常用命令">Git常用命令</span>
+            <span class="post-date" title="2016-10-02 17:15:39">2016/10/02</span>
+        </a>
+        
+        <a  class="全部文章 工具 git "
+           href="/2016/09/30/computer-mutiple-github-account/"
+           data-tag="Git,GitHub"
+           data-author="" >
+            <span class="post-title" title="一个客户端设置多个github账号">一个客户端设置多个github账号</span>
+            <span class="post-date" title="2016-09-30 16:42:48">2016/09/30</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-back-end/1645851767812" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">Go全栈面试题（1）-Go基础语法面试题</h1>
+    
+    <div class="article-meta">
+        
+        <span class="top"><a>置顶</a></span>
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="后端">后端</a> > 
+            
+            <a  data-rel="后端&lt;---&gt;Go">Go</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color5">Go总结</a>
+            
+            <a class="color1">Go面试题</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2022-02-26 13:53:52'>2022-01-04 15:29</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="跳转至评论区">
+            <a href="#comments">
+                评论:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Golang%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95"><span class="toc-text">Golang基础面试</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Go%E7%BC%96%E7%A8%8B%E6%9C%89%E4%BB%80%E4%B9%88%E5%A5%BD%E5%A4%84%EF%BC%9F"><span class="toc-text">使用Go编程有什么好处？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E5%8C%85%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E5%9C%A8%E4%B8%80%E4%B8%AA%E6%BA%90%E6%96%87%E4%BB%B6%E9%87%8C%E9%9D%A2%E5%A4%9A%E6%AC%A1%E5%BC%95%E7%94%A8%EF%BC%9F"><span class="toc-text">一个包是否可以在一个源文件里面多次引用？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E8%BF%B0%E5%86%85%E7%BD%AE%E7%9A%84print%E5%92%8Cprintln%E5%87%BD%E6%95%B0%E4%B8%8Efmt%E5%92%8Clog%E6%A0%87%E5%87%86%E5%BA%93%E5%8C%85%E4%B8%AD%E7%9B%B8%E5%BA%94%E7%9A%84%E6%89%93%E5%8D%B0%E5%87%BD%E6%95%B0%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-text">简述内置的print和println函数与fmt和log标准库包中相应的打印函数有什么区别？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFbyte%EF%BC%9F%E4%BB%80%E4%B9%88%E6%98%AFrune%EF%BC%9F-%E5%A6%82%E4%BD%95%E5%B0%86-byte%E5%92%8C-rune%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%80%BC%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%9F"><span class="toc-text">什么是byte？什么是rune？ 如何将[]byte和[]rune类型的值转换为字符串？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Golang%E4%B8%AD%E6%95%B0%E7%BB%84%E5%92%8C%E5%88%87%E7%89%87%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-text">Golang中数组和切片之间的区别？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E4%BB%A5%E4%B8%8B%E4%B8%A4%E4%B8%AA%E5%88%87%E7%89%87%E5%A3%B0%E6%98%8E%E4%B8%AD%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%88%E5%A6%82%E6%9E%9C%E6%9C%89%E7%9A%84%E8%AF%9D%EF%BC%89%EF%BC%8C%E5%93%AA%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%8F%AF%E5%8F%96%EF%BC%9F"><span class="toc-text">在以下两个切片声明中有什么区别（如果有的话），哪一个更可取？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E5%8F%AF%E4%BB%A5-%E4%B8%8D%E5%8F%AF%E4%BB%A5%E4%BD%9C%E4%B8%BA%E6%96%B9%E6%B3%95%E7%9A%84%E6%8E%A5%E6%94%B6%E8%80%85"><span class="toc-text">什么可以&#x2F;不可以作为方法的接收者?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%80%BC%E6%8E%A5%E6%94%B6%E8%80%85%E5%92%8C%E6%8C%87%E9%92%88%E6%8E%A5%E6%94%B6%E8%80%85%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">值接收者和指针接收者的区别?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%AA%E4%BA%9B%E7%B1%BB%E5%9E%8B%E4%B8%8D%E6%94%AF%E6%8C%81%E6%AF%94%E8%BE%83%EF%BC%9F"><span class="toc-text">哪些类型不支持比较？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#go%E8%AF%AD%E8%A8%80%E4%B8%AD%E5%93%AA%E4%BA%9B%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%80%BC%E5%8F%AF%E4%BB%A5%E8%A2%AB%E5%8F%96%E5%9C%B0%E5%9D%80%EF%BC%8C%E5%93%AA%E4%BA%9B%E4%B8%8D%E5%8F%AF%E4%BB%A5%E8%A2%AB%E5%8F%96%E5%9C%B0%E5%9D%80%EF%BC%9F"><span class="toc-text">go语言中哪些类型的值可以被取地址，哪些不可以被取地址？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%A0%E5%B0%84%E5%85%83%E7%B4%A0%E4%B8%8D%E5%8F%AF%E8%A2%AB%E5%8F%96%E5%9C%B0%E5%9D%80%EF%BC%9F"><span class="toc-text">为什么映射元素不可被取地址？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9D%9E%E7%A9%BA%E5%88%87%E7%89%87%E7%9A%84%E5%85%83%E7%B4%A0%E6%80%BB%E6%98%AF%E5%8F%AF%E8%A2%AB%E5%8F%96%E5%9C%B0%E5%9D%80%EF%BC%8C%E5%8D%B3%E4%BE%BF%E5%AF%B9%E4%BA%8E%E4%B8%8D%E5%8F%AF%E5%AF%BB%E5%9D%80%E7%9A%84%E5%88%87%E7%89%87%E4%B9%9F%E6%98%AF%E5%A6%82%E6%AD%A4%EF%BC%9F"><span class="toc-text">为什么非空切片的元素总是可被取地址，即便对于不可寻址的切片也是如此？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%AA%E4%BA%9B%E7%B1%BB%E5%9E%8B%E6%98%AF%E5%80%BC%E7%B1%BB%E5%9E%8B%EF%BC%8C%E9%82%A3%E4%BA%9B%E6%98%AF%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B"><span class="toc-text">哪些类型是值类型，那些是引用类型?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#go-struct%E8%83%BD%E4%B8%8D%E8%83%BD%E6%AF%94%E8%BE%83%EF%BC%9F"><span class="toc-text">go struct能不能比较？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8%E7%A9%BA-struct"><span class="toc-text">为什么使用空 struct{}?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#slice%E7%9A%84len%EF%BC%8Ccap%EF%BC%8C%E6%89%A9%E5%AE%B9%EF%BC%8C%E5%85%B1%E4%BA%AB%E3%80%82"><span class="toc-text">slice的len，cap，扩容，共享。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#map%E5%A6%82%E4%BD%95%E9%A1%BA%E5%BA%8F%E8%AF%BB%E5%8F%96"><span class="toc-text">map如何顺序读取?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8range%E4%BF%AE%E6%94%B9%E7%BB%93%E6%9E%84%E4%BD%93%E5%88%87%E7%89%87%E7%9A%84%E5%85%83%E7%B4%A0%E7%9A%84%E5%80%BC%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%EF%BC%9F%E6%80%8E%E4%B9%88%E9%81%BF%E5%85%8D%E8%BF%99%E7%A7%8D%E6%83%85%E5%86%B5%EF%BC%9F"><span class="toc-text">使用range修改结构体切片的元素的值会发生什么情况？怎么避免这种情况？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Go%E4%B8%AD%E7%9A%84%E9%9B%B6%E6%8C%87%E9%92%88%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">Go中的零指针是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8go%E5%AE%9E%E7%8E%B0set%EF%BC%9F"><span class="toc-text">如何使用go实现set？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83%E4%B8%A4%E4%B8%AA%E7%BB%93%E6%9E%84%E4%BD%93%EF%BC%9F%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83%E4%B8%A4%E4%B8%AA%E6%8E%A5%E5%8F%A3%EF%BC%9F"><span class="toc-text">如何比较两个结构体？如何比较两个接口？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%A4%E4%B8%AAnil%E5%80%BC%E6%9C%89%E6%97%B6%E5%80%99%E4%BC%9A%E4%B8%8D%E7%9B%B8%E7%AD%89%EF%BC%9F"><span class="toc-text">为什么两个nil值有时候会不相等？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Go%E4%B8%AD%E5%88%87%E7%89%87%EF%BC%8Cmap%EF%BC%8Cstruct-%E5%9C%A864%E4%BD%8D%E6%9C%BA%E5%99%A8%E4%B8%AD%E5%8D%A0%E7%94%A8%E5%AD%97%E8%8A%82%E6%98%AF%E5%A4%9A%E5%B0%91"><span class="toc-text">Go中切片，map，struct 在64位机器中占用字节是多少?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E8%BF%B0go%E8%AF%AD%E8%A8%80%E4%B8%ADmake%E5%92%8Cnew%E7%9A%84%E5%8C%BA%E5%88%AB%E3%80%82"><span class="toc-text">简述go语言中make和new的区别。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#switch%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E4%BB%A3%E7%A0%81%E5%9D%97%E4%B8%AD%E7%9A%84case%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%83%BD%E9%87%8D%E5%A4%8D%E5%90%97%EF%BC%9F"><span class="toc-text">switch流程控制代码块中的case表达式能重复吗？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E8%BF%B0go%E4%B8%AD%E7%9A%84main%E5%92%8Cinit%E5%87%BD%E6%95%B0%E7%9A%84%E5%8C%BA%E5%88%AB%E3%80%82"><span class="toc-text">简述go中的main和init函数的区别。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E8%BF%B0go%E4%B8%AD%E7%9A%84defer"><span class="toc-text">简述go中的defer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Go%E4%B8%AD%E7%9A%84defer%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8%E4%B8%8B%E9%9D%A2%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%83%85%E5%86%B5%E4%B8%8B%E7%BB%93%E6%9E%9C%E6%98%AF%E5%A4%9A%E5%B0%91%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88"><span class="toc-text">Go中的defer函数使用下面的两种情况下结果是多少，为什么?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AF%8F%E4%B8%AA%E6%B5%8B%E8%AF%95%E6%96%87%E4%BB%B6%E5%BF%85%E9%A1%BB%E4%BB%A5%E4%BB%80%E4%B9%88%E7%BB%93%E5%B0%BE%EF%BC%9F%E6%AF%8F%E4%B8%AA%E6%B5%8B%E8%AF%95%E6%96%87%E4%BB%B6%E5%BF%85%E9%A1%BB%E5%AF%BC%E5%85%A5%E4%BB%80%E4%B9%88%E5%8C%85%EF%BC%9F%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95%E5%87%BD%E6%95%B0%E5%BF%85%E9%A1%BB%E4%BB%A5%E4%BB%80%E4%B9%88%E4%B8%BA%E5%89%8D%E7%BC%80%EF%BC%9F-%E8%A6%81%E6%89%A7%E8%A1%8C%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95%E9%9C%80%E8%A6%81%E5%B8%A6%E4%B8%8A%E4%BB%80%E4%B9%88%E5%8F%82%E6%95%B0%EF%BC%9F%E5%9C%A8%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E4%B8%AD-%E8%A6%81%E5%9C%A8%E5%BE%AA%E7%8E%AF%E4%BD%93%E5%86%85%E4%BD%BF%E7%94%A8%E4%BB%80%E4%B9%88-%E4%BB%A5%E4%BD%BF%E6%B5%8B%E8%AF%95%E5%8F%AF%E4%BB%A5%E6%AD%A3%E5%B8%B8%E7%9A%84%E8%BF%90%E8%A1%8C%E3%80%82"><span class="toc-text">每个测试文件必须以什么结尾？每个测试文件必须导入什么包？功能测试函数必须以什么为前缀？ 要执行压力测试需要带上什么参数？在压力测试用例中,要在循环体内使用什么?以使测试可以正常的运行。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E7%BC%93%E5%86%B2%E5%92%8C%E7%BC%93%E5%86%B2%E9%80%9A%E9%81%93%E4%B9%8B%E9%97%B4%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-text">无缓冲和缓冲通道之间有什么区别？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#select%E5%8F%AF%E4%BB%A5%E7%94%A8%E4%BA%8E%E4%BB%80%E4%B9%88"><span class="toc-text">select可以用于什么?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#selcet%E6%98%AF%E6%80%8E%E4%B9%88%E6%89%A7%E8%A1%8C%E7%9A%84%EF%BC%9F"><span class="toc-text">selcet是怎么执行的？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JSON-%E6%A0%87%E5%87%86%E5%BA%93%E5%AF%B9-nil-slice-%E5%92%8C-%E7%A9%BA-slice-%E7%9A%84%E5%A4%84%E7%90%86%E6%98%AF%E4%B8%80%E8%87%B4%E7%9A%84%E5%90%97%EF%BC%9F"><span class="toc-text">JSON 标准库对 nil slice 和 空 slice 的处理是一致的吗？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E6%A6%82%E5%BF%B5%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">并发编程概念是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E8%BF%B0%E5%8D%8F%E7%A8%8B%EF%BC%8C%E7%BA%BF%E7%A8%8B%EF%BC%8C%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%8C%BA%E5%88%AB%E3%80%82"><span class="toc-text">简述协程，线程，进程的区别。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%A4%8D%E5%88%B6silce%E3%80%81map%E3%80%81interface"><span class="toc-text">如何复制silce、map、interface{} ?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Golang%E7%9A%84%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E5%B0%8F%E5%AF%B9%E8%B1%A1%E5%A4%9A%E4%BA%86%E4%BC%9A%E9%80%A0%E6%88%90gc%E5%8E%8B%E5%8A%9B%E3%80%82"><span class="toc-text">Golang的内存模型，为什么小对象多了会造成gc压力。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%AB%9E%E4%BA%89-Data-Race-%E9%97%AE%E9%A2%98%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3%EF%BC%9F%E8%83%BD%E4%B8%8D%E8%83%BD%E4%B8%8D%E5%8A%A0%E9%94%81%E8%A7%A3%E5%86%B3%E8%BF%99%E4%B8%AA%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="toc-text">数据竞争(Data Race)问题怎么解决？能不能不加锁解决这个问题？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFchannel%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E5%AE%83%E5%8F%AF%E4%BB%A5%E5%81%9A%E5%88%B0%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%EF%BC%9F"><span class="toc-text">什么是channel，为什么它可以做到线程安全？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B5%8B%E5%80%BC%E6%98%AF%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C%E5%90%97%EF%BC%9F"><span class="toc-text">赋值是原子操作吗？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8time-Sleep-d-%E5%92%8C%E6%95%B0%E6%8D%AE%E9%80%9A%E9%81%93%E6%8E%A5%E6%94%B6-lt-time-After-d-%E6%93%8D%E4%BD%9C%E4%B9%8B%E9%97%B4%E6%9C%89%E4%BD%95%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-text">函数调用time.Sleep(d)和数据通道接收&lt;-time.After(d)操作之间有何区别？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#64%E4%BD%8D%E6%95%B4%E6%95%B0%E5%80%BC%E7%9A%84%E5%9C%B0%E5%9D%80%E6%98%AF%E5%90%A6%E8%83%BD%E4%BF%9D%E8%AF%81%E6%80%BB%E6%98%AF64%E4%BD%8D%E5%AF%B9%E9%BD%90%E7%9A%84%EF%BC%8C%E4%BB%A5%E4%BE%BF%E5%8F%AF%E4%BB%A5%E8%A2%AB%E5%AE%89%E5%85%A8%E5%9C%B0%E5%8E%9F%E5%AD%90%E8%AE%BF%E9%97%AE%EF%BC%9F"><span class="toc-text">64位整数值的地址是否能保证总是64位对齐的，以便可以被安全地原子访问？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%EF%BC%8C%E7%94%A8%E8%BF%87%E5%90%97%EF%BC%9F"><span class="toc-text">分布式锁实现原理，用过吗？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BB%E5%86%99%E9%94%81%E6%88%96%E8%80%85%E4%BA%92%E6%96%A5%E9%94%81%E8%AF%BB%E7%9A%84%E6%97%B6%E5%80%99%E8%83%BD%E5%86%99%E5%90%97"><span class="toc-text">读写锁或者互斥锁读的时候能写吗?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Channel%E6%98%AF%E5%90%8C%E6%AD%A5%E7%9A%84%E8%BF%98%E6%98%AF%E5%BC%82%E6%AD%A5%E7%9A%84"><span class="toc-text">Channel是同步的还是异步的.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B4%E4%B8%80%E4%B8%8B%E5%BC%82%E6%AD%A5%E5%92%8C%E9%9D%9E%E9%98%BB%E5%A1%9E%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">说一下异步和非阻塞的区别?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Goroutine%E5%92%8C%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">Goroutine和线程的区别?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%EF%BC%88%E5%A4%9A%E7%94%9F%E4%BA%A7%E8%80%85%EF%BC%8C%E5%A4%9A%E6%B6%88%E8%B4%B9%E8%80%85%EF%BC%89%EF%BC%9F"><span class="toc-text">如何实现消息队列（多生产者，多消费者）？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E5%A4%A7%E6%96%87%E4%BB%B6%E6%8E%92%E5%BA%8F%EF%BC%9F"><span class="toc-text">如何进行大文件排序？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A4%E5%84%BF%E8%BF%9B%E7%A8%8B%EF%BC%8C%E5%83%B5%E5%B0%B8%E8%BF%9B%E7%A8%8B"><span class="toc-text">孤儿进程，僵尸进程</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Golang基础面试"><a href="#Golang基础面试" class="headerlink" title="Golang基础面试"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>Golang基础面试</h1><h2 id="使用Go编程有什么好处？"><a href="#使用Go编程有什么好处？" class="headerlink" title="使用Go编程有什么好处？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>使用Go编程有什么好处？</h2><p>以下是使用Go编程的好处 ：</p>
+<ul>
+<li>  支持环境采用类似于动态语言的模式。例如，类型推断（x：= 0是int类型的变量x的有效声明）。</li>
+<li>  编译时间很快。</li>
+<li>  InBuilt并发支持：轻量级进程（通过goroutines），通道，select语句。</li>
+<li>  简洁，简洁，安全。</li>
+<li>  支持接口和类型嵌入。</li>
+<li>  生成静态链接的本机二进制文件，没有外部依赖项。</li>
+</ul>
+<h2 id="一个包是否可以在一个源文件里面多次引用？"><a href="#一个包是否可以在一个源文件里面多次引用？" class="headerlink" title="一个包是否可以在一个源文件里面多次引用？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>一个包是否可以在一个源文件里面多次引用？</h2><p>一个Go源文件可以多次引入同一个包。但是每次的引入名称必须不同。这些相同的包引入引用着同一个包实例。</p>
+<h2 id="简述内置的print和println函数与fmt和log标准库包中相应的打印函数有什么区别？"><a href="#简述内置的print和println函数与fmt和log标准库包中相应的打印函数有什么区别？" class="headerlink" title="简述内置的print和println函数与fmt和log标准库包中相应的打印函数有什么区别？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>简述内置的print和println函数与fmt和log标准库包中相应的打印函数有什么区别？</h2><ul>
+<li>  内置的print/println函数总是写入标准错误。 fmt标准包里的打印函数总是写入标准输出。 log标准包里的打印函数会默认写入标准错误，然而也可以通过log.SetOutput函数来配置。</li>
+<li>  内置print/println函数的调用不能接受数组和结构体参数。</li>
+<li>  对于组合类型的参数，内置的print/println函数将输出参数的底层值部的地址，而fmt和log标准库包中的打印函数将输出参数的字面值。</li>
+<li>  目前（Go 1.12），对于标准编译器，调用内置的print/println函数不会使调用参数引用的值逃逸到堆上，而fmt和log标准库包中的的打印函数将使调用参数引用的值逃逸到堆上。</li>
+<li>  如果一个实参有String() string或Error() string方法，那么fmt和log标准库包里的打印函数在打印参数时会调用这两个方法，而内置的print/println函数则会忽略参数的这些方法。</li>
+<li>  内置的print/println函数不保证在未来的Go版本中继续存在。</li>
+</ul>
+<h2 id="什么是byte？什么是rune？-如何将-byte和-rune类型的值转换为字符串？"><a href="#什么是byte？什么是rune？-如何将-byte和-rune类型的值转换为字符串？" class="headerlink" title="什么是byte？什么是rune？ 如何将[]byte和[]rune类型的值转换为字符串？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>什么是byte？什么是rune？ 如何将<code>[]byte</code>和<code>[]rune</code>类型的值转换为字符串？</h2><p>在Golang里，byte是uint8类型的一个别名。 换言之，byte 和 uint8是相同的类型。 rune和int32属于同样类似的关系。一个rune通常被用来存储一个Unicode码点。<br>[]byte和[]rune类型的值可以被显式地直接转换成字符串，反之亦然。</p>
+<h2 id="Golang中数组和切片之间的区别？"><a href="#Golang中数组和切片之间的区别？" class="headerlink" title="Golang中数组和切片之间的区别？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>Golang中数组和切片之间的区别？</h2><p>Slices是Golang中数组的包装器。 总是优先使用切片而不是数组。 极少数情况下数组会有益。<br>一种情况是数组的大小是固定的（比如存储IPv4地址）<br>还有一种是当我们不希望函数修改原始副本时，我们可能会使用数组。但是即使在这种情况下，也应该有一种传递切片的方法。</p>
+<h2 id="在以下两个切片声明中有什么区别（如果有的话），哪一个更可取？"><a href="#在以下两个切片声明中有什么区别（如果有的话），哪一个更可取？" class="headerlink" title="在以下两个切片声明中有什么区别（如果有的话），哪一个更可取？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>在以下两个切片声明中有什么区别（如果有的话），哪一个更可取？</h2><pre><code>var a []int
+</code></pre>
+<p>和</p>
+<pre><code>a := []int&#123;&#125;
+</code></pre>
+<p>如果未使用切片，则第一个声明不会分配内存，因此首选此声明方法。</p>
+<h2 id="什么可以-不可以作为方法的接收者"><a href="#什么可以-不可以作为方法的接收者" class="headerlink" title="什么可以/不可以作为方法的接收者?"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>什么可以/不可以作为方法的接收者?</h2><p>结构体，指向结构体的指针，甚至内置类型的别名，如’type myIntType int’。都可以充当接收者。甚至函数也可以是接收器。</p>
+<p>我们不能使用以下东西作为接收类型:</p>
+<ul>
+<li>  方法，如果我们在对象类型上定义方法，它就不能像普通函数一样用作接收方类型。</li>
+<li>  接口，在Go中，接口为类型定义了一组可能的操作。它们没有定义实际的实现。因此它们不能用作方法的接收者，因为方法是关于实现的。</li>
+</ul>
+<h2 id="值接收者和指针接收者的区别"><a href="#值接收者和指针接收者的区别" class="headerlink" title="值接收者和指针接收者的区别?"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>值接收者和指针接收者的区别?</h2><p>方法能给用户自定义的类型添加新的行为。它和函数的区别在于方法有一个接收者，给一个函数添加一个接收者，那么它就变成了方法。接收者可以是值接收者，也可以是指针接收者。</p>
+<p>在调用方法的时候，值类型既可以调用值接收者的方法，也可以调用指针接收者的方法；指针类型既可以调用指针接收者的方法，也可以调用值接收者的方法。</p>
+<p>也就是说，不管方法的接收者是什么类型，该类型的值和指针都可以调用，不必严格符合接收者的类型。</p>
+<pre><code>package main
+
+import &quot;fmt&quot;
+
+type Person struct &#123;
+    age int
+&#125;
+
+func (p Person) Elegance() int &#123;
+    return p.age
+&#125;
+
+func (p *Person) GetAge() &#123;
+    p.age += 1
+&#125;
+
+func main() &#123;
+    // p1 是值类型
+    p := Person&#123;age: 18&#125;
+
+    // 值类型 调用接收者也是值类型的方法
+    fmt.Println(p.howOld())
+
+    // 值类型 调用接收者是指针类型的方法
+    p.GetAge()
+    fmt.Println(p.GetAge())
+
+    // ----------------------
+
+    // p2 是指针类型
+    p2 := &amp;Person&#123;age: 100&#125;
+
+    // 指针类型 调用接收者是值类型的方法
+    fmt.Println(p2.GetAge())
+
+    // 指针类型 调用接收者也是指针类型的方法
+    p2.GetAge()
+    fmt.Println(p2.GetAge())
+&#125;
+</code></pre>
+<p>运行</p>
+<pre><code>18
+19
+100
+101
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>函数和方法</th>
+<th>值接收者</th>
+<th>指针接收者</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>值类型调用者</td>
+<td>方法会使用调用者的一个副本，类似于“传值”</td>
+<td>使用值的引用来调用方法，上例中，p1.GetAge() 实际上是 (&amp;p1).GetAge()</td>
+</tr>
+<tr>
+<td>指针类型调用者</td>
+<td>指针被解引用为值，上例中，p2.GetAge()实际上是 (*p1).GetAge()</td>
+<td>实际上也是“传值”，方法里的操作会影响到调用者，类似于指针传参，拷贝了一份指针</td>
+</tr>
+</tbody></table>
+<p>如果实现了接收者是值类型的方法，会隐含地也实现了接收者是指针类型的方法。</p>
+<p>如果方法的接收者是值类型，无论调用者是对象还是对象指针，修改的都是对象的副本，不影响调用者；如果方法的接收者是指针类型，则调用者修改的是指针指向的对象本身。</p>
+<p>通常我们使用指针作为方法的接收者的理由：</p>
+<ul>
+<li><p>  使用指针方法能够修改接收者指向的值。</p>
+</li>
+<li><p>  可以避免在每次调用方法时复制该值，在值的类型为大型结构体时，这样做会更加高效。</p>
+</li>
+</ul>
+<p>因而呢,我们是使用值接收者还是指针接收者，不是由该方法是否修改了调用者（也就是接收者）来决定，而是应该基于该类型的本质。</p>
+<p>如果类型具备“原始的本质”，也就是说它的成员都是由 Go 语言里内置的原始类型，如字符串，整型值等，那就定义值接收者类型的方法。像内置的引用类型，如 slice，map，interface，channel，这些类型比较特殊，声明他们的时候，实际上是创建了一个 header， 对于他们也是直接定义值接收者类型的方法。这样，调用函数时，是直接 copy 了这些类型的 header，而 header 本身就是为复制设计的。</p>
+<p>如果类型具备非原始的本质，不能被安全地复制，这种类型总是应该被共享，那就定义指针接收者的方法。比如 go 源码里的文件结构体（struct File）就不应该被复制，应该只有一份实体。</p>
+<p>接口值的零值是指动态类型和动态值都为 nil。当仅且当这两部分的值都为 nil 的情况下，这个接口值就才会被认为 接口值 == nil。</p>
+<h2 id="哪些类型不支持比较？"><a href="#哪些类型不支持比较？" class="headerlink" title="哪些类型不支持比较？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>哪些类型不支持比较？</h2><ul>
+<li>  映射（map）</li>
+<li>  切片</li>
+<li>  函数</li>
+<li>  包含不可比较字段的结构体类型</li>
+<li>  元素类型为不可比较类型的数组类型</li>
+<li>  不支持比较的类型不能用做映射类型的键值类型。</li>
+</ul>
+<blockquote>
+<p>请注意：<br>尽管映射，切片和函数值不支持比较，但是它们的值可以与类型不确定的nil标识符比较。<br>如果两个接口值的动态类型相同且不可比较，那么在运行时比较这两个接口的值会产生一个恐慌。</p>
+</blockquote>
+<h2 id="go语言中哪些类型的值可以被取地址，哪些不可以被取地址？"><a href="#go语言中哪些类型的值可以被取地址，哪些不可以被取地址？" class="headerlink" title="go语言中哪些类型的值可以被取地址，哪些不可以被取地址？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>go语言中哪些类型的值可以被取地址，哪些不可以被取地址？</h2><p>以下的值是不可以寻址的：</p>
+<ul>
+<li>  字符串的字节元素</li>
+<li>  映射元素</li>
+<li>  接口值的动态值（类型断言的结果）</li>
+<li>  常量值</li>
+<li>  字面值</li>
+<li>  声明的包级别函数</li>
+<li>  方法（用做函数值）</li>
+<li>中间结果值<ul>
+<li>  函数调用</li>
+<li>  显式值转换</li>
+<li>各种操作，不包含指针解引用（dereference）操作，但是包含：<ul>
+<li>  数据通道接收操作</li>
+<li>  子字符串操作</li>
+<li>  子切片操作</li>
+<li>  加法、减法、乘法、以及除法等等。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>请注意：&amp;T{}在Go里是一个语法糖，它是tmp := T{}; (&amp;tmp)的简写形式。 所以&amp;T{}是合法的,并不代表字面值T{}是可寻址的。</p>
+</blockquote>
+<p>以下的值是可寻址的，因此可以被取地址：</p>
+<ul>
+<li>  变量</li>
+<li>  可寻址的结构体的字段</li>
+<li>  可寻址的数组的元素</li>
+<li>  任意切片的元素（无论是可寻址切片或不可寻址切片）</li>
+<li>  指针解引用（dereference）操作</li>
+</ul>
+<h2 id="为什么映射元素不可被取地址？"><a href="#为什么映射元素不可被取地址？" class="headerlink" title="为什么映射元素不可被取地址？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>为什么映射元素不可被取地址？</h2><p>如果映射元素可以被取地址，则每个映射元素的地址在它的生命期内必须保持不变。 这阻碍了Go编译器在实现映射时使用更加有效率的算法。 对于标准编译器，映射元素的内部地址在运行时刻有可能发生改变。</p>
+<h2 id="为什么非空切片的元素总是可被取地址，即便对于不可寻址的切片也是如此？"><a href="#为什么非空切片的元素总是可被取地址，即便对于不可寻址的切片也是如此？" class="headerlink" title="为什么非空切片的元素总是可被取地址，即便对于不可寻址的切片也是如此？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>为什么非空切片的元素总是可被取地址，即便对于不可寻址的切片也是如此？</h2><p>切片的内部类型是一个结构体，类似于</p>
+<pre><code>struct &#123;
+    elements unsafe.Pointer // 引用着一个元素序列
+    length   int
+    capacity int
+&#125;
+</code></pre>
+<p>每一个切片间接引用一个元素序列。 尽管一个非空切片是不可取地址的，它的内部元素序列需要开辟在内存中的某处，因而必须是可取地址的。 取一个切片的元素地址事实上是取内部元素序列上的元素地址。 这就是为什么不可寻址的非空切片的元素是也可以被取地址的。</p>
+<h2 id="哪些类型是值类型，那些是引用类型"><a href="#哪些类型是值类型，那些是引用类型" class="headerlink" title="哪些类型是值类型，那些是引用类型?"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>哪些类型是值类型，那些是引用类型?</h2><ul>
+<li>  值类型：基本数据类型，int,float,bool,string,以及数组和struct</li>
+<li>  引用类型：指针，slice，map，chan等都是引用类型</li>
+</ul>
+<h2 id="go-struct能不能比较？"><a href="#go-struct能不能比较？" class="headerlink" title="go struct能不能比较？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>go struct能不能比较？</h2><ul>
+<li>  相同struct类型的可以比较</li>
+<li>  不同struct类型的不可以比较,编译都不过，类型不匹配</li>
+</ul>
+<h2 id="为什么使用空-struct"><a href="#为什么使用空-struct" class="headerlink" title="为什么使用空 struct{}?"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>为什么使用空 struct{}?</h2><p>如果要保存一些内存，可以使用空结构。空结构不会为其值获取任何内存。</p>
+<pre><code>a := struct&#123;&#125;&#123;&#125;
+println(unsafe.Sizeof(a))
+// Output: 0
+</code></pre>
+<ol>
+<li> 如果使用的是map，而且map又很长，通常会节省不少资源</li>
+<li> 空struct{}也在向别人表明，这里并不需要一个值。</li>
+</ol>
+<p>以下是一些有用的示例：</p>
+<ul>
+<li>  在map里节省资源的用途：</li>
+</ul>
+<pre><code>set := make(map[string]struct&#123;&#125;)
+for _, value := range []string&#123;&quot;apple&quot;, &quot;orange&quot;, &quot;apple&quot;&#125; &#123;
+   set[value] = struct&#123;&#125;&#123;&#125;
+&#125;
+fmt.Println(set)
+// Output: map[orange:&#123;&#125; apple:&#123;&#125;]
+</code></pre>
+<ul>
+<li>  使用seen哈希，就像遍历MAP时一样：</li>
+</ul>
+<pre><code>seen := make(map[string]struct&#123;&#125;)
+for _, ok := seen[v]; ok &#123;
+    // First time visiting a vertex.
+    seen[v] = struct&#123;&#125;&#123;&#125;
+&#125;
+</code></pre>
+<ul>
+<li>  构建对象时，只对一组方法感兴趣而没有中间数据，或者当您不打算保留对象状态时。在下面的示例中，无论方法是在相同的情况下调用（情况＃1）还是在两个不同的对象上调用（情况＃2），它都没有区别：</li>
+</ul>
+<pre><code>type Lamp struct&#123;&#125;
+
+func (l Lamp) On() &#123;
+        println(&quot;On&quot;)
+
+&#125;
+func (l Lamp) Off() &#123;
+        println(&quot;Off&quot;)
+&#125;
+
+func main() &#123;
+           // Case #1.
+           var lamp Lamp
+           lamp.On()
+           lamp.Off()
+           // Output:
+           // on
+           // off
+
+           // Case #2.
+           Lamp&#123;&#125;.On()
+           Lamp&#123;&#125;.Off()
+           // Output: 
+           // on
+           // off
+&#125;
+</code></pre>
+<ul>
+<li>  当您需要一个通道来发出事件信号时，却不需要发送任何数据。这个事件也不是最后一个，在这种情况下，您将使用close(ch)内置函数。</li>
+</ul>
+<pre><code>func worker(ch chan struct&#123;&#125;) &#123;
+    // Receive a message from the main program.
+    &lt;-ch
+    println(&quot;roger&quot;)
+
+    // Send a message to the main program.
+    close(ch)
+&#125;
+
+func main() &#123;
+    ch := make(chan struct&#123;&#125;)
+    go worker(ch)
+
+    // Send a message to a worker.
+    ch &lt;- struct&#123;&#125;&#123;&#125;
+
+    // Receive a message from the worker.
+    &lt;-ch
+    println(“roger&quot;)
+    // Output:
+    // roger
+    // roger
+&#125;
+</code></pre>
+<h2 id="slice的len，cap，扩容，共享。"><a href="#slice的len，cap，扩容，共享。" class="headerlink" title="slice的len，cap，扩容，共享。"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>slice的len，cap，扩容，共享。</h2><p>一个切片是一个数组片段的描述。它包含了指向数组的指针，片段的长度， 和容量（片段的最大长度）。</p>
+<ul>
+<li>  len切片的长度是它所包含的元素个数。</li>
+<li>  cap切片的容量是从它的第一个元素开始数，到其底层数组元素末尾的个数。</li>
+<li>  append新建对象，s2指向了新对象，函数退出新对象释放。</li>
+</ul>
+<p>在函数内用append时，append会自动以倍增的方式扩展slice_2的容量，但是扩展也仅仅是函数内slice_2的长度和容量，slice_1的长度和容量是没变的，所以在函数外打印时看起来就是没变。原来的s1还是s1，append没有影响，但是s2修改的操作有影响，因为s2直接操作了s1的内存。<br>slice被设计为指向数组的指针，在需要扩容时，会将底层数组上的值复制到一个更大的数组上然后指向这个新数组。<br>slice有个特性是允许多个slice指向同一个底层数组，这是一个有用的特性，在很多场景下都能通过这个特性实现 no copy 而提高效率。但共享同时意味着不安全。</p>
+<pre><code>func main() &#123;
+    a := make([]int, 2, 2)
+    a[0], a[1] = 1, 2
+    b := append(a[0:1], 3)
+    c := append(a[1:2], 4)
+
+    fmt.Println(b,c)
+&#125;
+</code></pre>
+<p>比如说这段代码我们期望的值是[1 3] [2 4]，但是却变成了[1 3] [3 4]。<br>那么怎么解决数据共享的问题？</p>
+<ol>
+<li> make出一个新slice，然后先copy前缀到新数组上再追加。</li>
+<li> 利用go中slice的一个小众语法，a[0:1:1] (源[起始index，终止index，cap终止index])，强迫追加时复制到新数组。</li>
+</ol>
+<h2 id="map如何顺序读取"><a href="#map如何顺序读取" class="headerlink" title="map如何顺序读取?"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>map如何顺序读取?</h2><p>可以通过sort中的排序包进行对map中的key进行排序</p>
+<pre><code>package main
+
+import (
+    &quot;fmt&quot;
+    &quot;sort&quot;
+)
+
+func main() &#123;
+    var m = map[string]int&#123;
+        &quot;hello&quot;:         0,
+        &quot;morning&quot;:       1,
+        &quot;my&quot;:            2,
+        &quot;girl&quot;:           3,
+    &#125;
+    var keys []string
+    for k := range m &#123;
+        keys = append(keys, k)
+    &#125;
+    sort.Strings(keys)
+    for _, k := range keys &#123;
+        fmt.Println(&quot;Key:&quot;, k, &quot;Value:&quot;, m[k])
+    &#125;
+&#125;
+</code></pre>
+<h2 id="使用range修改结构体切片的元素的值会发生什么情况？怎么避免这种情况？"><a href="#使用range修改结构体切片的元素的值会发生什么情况？怎么避免这种情况？" class="headerlink" title="使用range修改结构体切片的元素的值会发生什么情况？怎么避免这种情况？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>使用range修改结构体切片的元素的值会发生什么情况？怎么避免这种情况？</h2><p>因为for遍历时，使用的是副本，每次遍历仅进行struct值拷贝，而不是指向值的指针。</p>
+<p>我们可以通过指针更改元素,通过指针更改元素，如果不设置中间变量的话，又会照成所有的map的值都是一样的。</p>
+<h2 id="Go中的零指针是什么？"><a href="#Go中的零指针是什么？" class="headerlink" title="Go中的零指针是什么？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>Go中的零指针是什么？</h2><p>如果您没有要分配的确切地址，Go编译器会将Nil值分配给指针变量。这是在变量声明时完成的。指定为nil的指针称为nil指针。nil指针是一个常量，在几个标准库中定义了零值。</p>
+<h2 id="如何使用go实现set？"><a href="#如何使用go实现set？" class="headerlink" title="如何使用go实现set？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>如何使用go实现set？</h2><p>根据go中map的keys的无序性和唯一性，可以将其作为set</p>
+<h2 id="如何比较两个结构体？如何比较两个接口？"><a href="#如何比较两个结构体？如何比较两个接口？" class="headerlink" title="如何比较两个结构体？如何比较两个接口？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>如何比较两个结构体？如何比较两个接口？</h2><p>可以使用==操作符比较两个结构体，就像使用其他简单类型一样。<br>只要确保它们不包含任何片、映射或函数，有这些情况下代码将不会被编译。</p>
+<pre><code>type Foo struct &#123;
+    A int
+    B string
+    C interface&#123;&#125;
+&#125;
+a := Foo&#123;A: 1, B: &quot;one&quot;, C: &quot;two&quot;&#125;
+b := Foo&#123;A: 1, B: &quot;one&quot;, C: &quot;two&quot;&#125;
+
+println(a == b)
+// Output: true
+
+type Bar struct &#123;
+    A []int
+&#125;
+a := Bar&#123;A: []int&#123;1&#125;&#125;
+b := Bar&#123;A: []int&#123;1&#125;&#125;
+
+println(a == b)
+// Output: invalid operation: a == b (struct containing []int cannot be compared)
+</code></pre>
+<p>只要底层类型“简单”且相同，就可以使用==运算符比较两个接口。否则，否则代码会在运行时出现恐慌:</p>
+<pre><code>var a interface&#123;&#125;
+var b interface&#123;&#125;
+
+a = 10
+b = 10
+println(a == b)
+// Output: true
+
+a = []int&#123;1&#125;
+b = []int&#123;2&#125;
+println(a == b)
+// Output: panic: runtime error: comparing uncomparable type []int
+
+</code></pre>
+<p>包含映射、切片(但不包含函数)的结构和接口，都可以使用reflect.DeepEqual()函数进行比较:</p>
+<pre><code>var a interface&#123;&#125;
+var b interface&#123;&#125;
+
+a = []int&#123;1&#125;
+b = []int&#123;1&#125;
+println(reflect.DeepEqual(a, b))
+// Output: true
+
+a = map[string]string&#123;&quot;A&quot;: &quot;B&quot;&#125;
+b = map[string]string&#123;&quot;A&quot;: &quot;B&quot;&#125;
+println(reflect.DeepEqual(a, b))
+// Output: true
+
+temp := func() &#123;&#125;
+a = temp
+b = temp
+println(reflect.DeepEqual(a, b))
+// Output: false
+</code></pre>
+<p>为了比较字节片，在bytes包中有很好的助手函数：bytes.equal()、bytes.compare()和bytes.equalfold()。后者用于比较忽略大小写的文本字符串，这比reflect.deepequal()快得多。</p>
+<h2 id="为什么两个nil值有时候会不相等？"><a href="#为什么两个nil值有时候会不相等？" class="headerlink" title="为什么两个nil值有时候会不相等？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>为什么两个nil值有时候会不相等？</h2><p>一个接口值可以看作是一个包裹非接口值的盒子。被包裹在一个接口值中的非接口值的类型必须实现了此接口值的类型。 在Go中，很多种类型的类型的零值都是用nil来表示的。 一个什么都没包裹的接口值为一个零值接口值，即nil接口值。 一个包裹着其它非接口类型的nil值的接口值并非什么都没包裹，所以它不是（或者说它不等于）一个nil接口值。</p>
+<p>当对一个nil接口值和一个nil非接口值进行比较时（假设它们可以比较），此nil非接口值将先被转换为nil接口值的类型，然后再进行比较； 此转换的结果为一个包裹了此nil非接口值的一个副本的接口值，此接口值不是（或者说它不等于）一个nil接口值，所以此比较不相等。</p>
+<h2 id="Go中切片，map，struct-在64位机器中占用字节是多少"><a href="#Go中切片，map，struct-在64位机器中占用字节是多少" class="headerlink" title="Go中切片，map，struct 在64位机器中占用字节是多少?"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>Go中切片，map，struct 在64位机器中占用字节是多少?</h2><p>在64位系统下，Golang的切片占用字节是24位，map和struct都是8位.</p>
+<h2 id="简述go语言中make和new的区别。"><a href="#简述go语言中make和new的区别。" class="headerlink" title="简述go语言中make和new的区别。"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>简述go语言中make和new的区别。</h2><ul>
+<li>  new 它只接受一个参数，这个参数是一个类型，分配好内存后，返回一个指向该类型内存地址的指针。同时请注意它同时把分配的内存置为零，也就是类型的零值。</li>
+<li>make也是用于内存分配的，但是和new不同，它只用于chan、map以及切片的内存创建，而且它返回的类型就是这三个类型本身，而不是他们的指针类型，因为这三种类型就是引用类型，所以就没有必要返回他们的指针了。<br>  注意，因为这三种类型是引用类型，所以必须得初始化，但是不是置为零值，这个和new是不一样的。</li>
+</ul>
+<h2 id="switch流程控制代码块中的case表达式能重复吗？"><a href="#switch流程控制代码块中的case表达式能重复吗？" class="headerlink" title="switch流程控制代码块中的case表达式能重复吗？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>switch流程控制代码块中的case表达式能重复吗？</h2><p>switch流程控制代码块中的数字常量case表达式不能重复，但是布尔常量case表达式可以重复。</p>
+<h2 id="简述go中的main和init函数的区别。"><a href="#简述go中的main和init函数的区别。" class="headerlink" title="简述go中的main和init函数的区别。"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>简述go中的main和init函数的区别。</h2><p>Go里面有两个保留的函数：init函数和main函数。下边就来比较一下两个函数的异同。</p>
+<ul>
+<li>  相同点：两个函数在定义时不能有任何的参数和返回值，且Go程序自动调用。</li>
+<li>  不同点：init可以应用于任意包中，且可以重复定义多个。main函数只能用于main包中，且只能定义一个。</li>
+</ul>
+<p>两个函数的执行顺序：</p>
+<ol>
+<li> 对同一个go文件的init()调用顺序是从上到下的</li>
+<li> 对同一个package中不同文件是按文件名字符串比较“从小到大”顺序调用各文件中的init()函数</li>
+<li> 对不同的package，如果不相互依赖的话，按照main包中”先import的后调用”的顺序调用其包中的init()</li>
+<li> 如果package存在依赖，则先调用最早被依赖的package中的init()</li>
+<li> 最后调用main函数</li>
+</ol>
+<h2 id="简述go中的defer"><a href="#简述go中的defer" class="headerlink" title="简述go中的defer"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>简述go中的defer</h2><p>defer函数属延迟执行，延迟到调用者函数执行 return 命令前被执行。多个defer之间按LIFO先进后出顺序执行。</p>
+<ol>
+<li> 若函数中有多个 defer，其执行顺序为 先进后出，可以理解为栈。</li>
+<li> return 会做几件事：</li>
+</ol>
+<ul>
+<li>  给返回值赋值</li>
+<li>  调用 defer 表达式</li>
+<li>  返回给调用函数</li>
+</ul>
+<ol start="3">
+<li>若 defer 表达式有返回值，将会被丢弃。<br> 在实际开发中，defer 的使用经常伴随着闭包与匿名函数的使用。小心踩坑：</li>
+</ol>
+<pre><code>package main
+import &quot;fmt&quot;
+func main() &#123;
+    for i := 0; i &lt; 5; i++ &#123;
+        defer func() &#123;
+            fmt.Println(i)
+        &#125;()
+    &#125;
+&#125;
+</code></pre>
+<pre><code>Output:
+5
+5
+5
+5
+5
+</code></pre>
+<p>解释一下，defer 表达式中的 i 是对 for 循环中 i 的引用。到最后，i 加到 5，故最后全部打印 5。<br>如果将 i 作为参数传入 defer 表达式中，在传入最初就会进行求值保存，只是没有执行延迟函数而已。</p>
+<pre><code>for i := 0; i &lt; 5; i++ &#123;
+    defer func(idx int) &#123;
+        fmt.Println(idx)
+    &#125;(i) // 传入的 i，会立即被求值保存为 idx
+&#125;
+</code></pre>
+<h2 id="Go中的defer函数使用下面的两种情况下结果是多少，为什么"><a href="#Go中的defer函数使用下面的两种情况下结果是多少，为什么" class="headerlink" title="Go中的defer函数使用下面的两种情况下结果是多少，为什么?"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>Go中的defer函数使用下面的两种情况下结果是多少，为什么?</h2><pre><code>    a := 1
+    defer fmt.Println(&quot;the value of a1:&quot;,a)
+    a++
+
+    defer func() &#123;
+        fmt.Println(&quot;the value of a2:&quot;,a)
+    &#125;()
+
+</code></pre>
+<p>运行:</p>
+<pre><code>the value of a1: 1
+the value of a1: 2
+</code></pre>
+<p>第一种情况：</p>
+<pre><code>defer fmt.Println(&quot;the value of a1:&quot;,a)
+</code></pre>
+<p>defer延迟函数调用的fmt.Println(a)函数的参数值在defer语句出现时就已经确定了，所以无论后面如何修改a变量都不会影响延迟函数。</p>
+<p>第二种情况:</p>
+<pre><code>defer func() &#123;
+        fmt.Println(&quot;the value of a2:&quot;,a)
+    &#125;()
+</code></pre>
+<p>defer延迟函数调用的函数参数的值在defer定义时候就确定了，而defer延迟函数内部所使用的值需要在这个函数运行时候才确定。</p>
+<h2 id="每个测试文件必须以什么结尾？每个测试文件必须导入什么包？功能测试函数必须以什么为前缀？-要执行压力测试需要带上什么参数？在压力测试用例中-要在循环体内使用什么-以使测试可以正常的运行。"><a href="#每个测试文件必须以什么结尾？每个测试文件必须导入什么包？功能测试函数必须以什么为前缀？-要执行压力测试需要带上什么参数？在压力测试用例中-要在循环体内使用什么-以使测试可以正常的运行。" class="headerlink" title="每个测试文件必须以什么结尾？每个测试文件必须导入什么包？功能测试函数必须以什么为前缀？ 要执行压力测试需要带上什么参数？在压力测试用例中,要在循环体内使用什么?以使测试可以正常的运行。"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>每个测试文件必须以什么结尾？每个测试文件必须导入什么包？功能测试函数必须以什么为前缀？ 要执行压力测试需要带上什么参数？在压力测试用例中,要在循环体内使用什么?以使测试可以正常的运行。</h2><ul>
+<li>  测试文件必须以“_test.go”结尾</li>
+<li>  必须import testing这个包</li>
+<li>  所有的测试用例函数必须是Test开头</li>
+<li>  测试函数TestXxx()的参数是testing.T ,执行压力测试需要带上参数-bench</li>
+<li>  压力测试循环体内要使用 b.N</li>
+</ul>
+<h2 id="无缓冲和缓冲通道之间有什么区别？"><a href="#无缓冲和缓冲通道之间有什么区别？" class="headerlink" title="无缓冲和缓冲通道之间有什么区别？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>无缓冲和缓冲通道之间有什么区别？</h2><p>无缓冲的channel是同步的，而有缓冲的channel是非同步。<br>无缓冲的通道指的是通道的大小为0，也就是说，这种类型的通道在接收前没有能力保存任何值，它要求发送 goroutine 和接收 goroutine 同时准备好，才可以完成发送和接收操作。</p>
+<ul>
+<li>  channel无缓冲时，发送阻塞直到数据被接收，接收阻塞直到读到数据。</li>
+<li>  channel有缓冲时，当缓冲满时发送阻塞，当缓冲空时接收阻塞。</li>
+</ul>
+<h2 id="select可以用于什么"><a href="#select可以用于什么" class="headerlink" title="select可以用于什么?"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>select可以用于什么?</h2><p>Go的select主要是处理多个channel的操作.</p>
+<ul>
+<li><p>为请求设置超时时间<br>  在 golang 1.7 之前， http 包并没有引入 context 支持，通过 http.Client 向一个坏掉的服务发送请求会导致响应缓慢。类似的场景下，我们可以使用 select 控制服务响应时间。</p>
+</li>
+<li><p>完成 channel<br>  它可以用于保证流水线上每个阶段goroutine 的退出。</p>
+</li>
+<li><p>退出 channel<br>  在很多场景下，quit channel 和 done channel 是一个概念。在并发程序中，通常 main routine 将任务分给其它 go routine 去完成，而自身只是起到调度作用。这种情况下，main 函数无法知道 其它goroutine 任务是否完成，此时我们需要 quit channel；</p>
+</li>
+</ul>
+<h2 id="selcet是怎么执行的？"><a href="#selcet是怎么执行的？" class="headerlink" title="selcet是怎么执行的？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>selcet是怎么执行的？</h2><ul>
+<li>  select中的case语句必须是一个channel操作</li>
+<li>  select中的default子句总是可运行的,速度非常快。</li>
+<li>  如果有多个case都可以运行，select会随机公平地选出一个执行，其他不会执行。</li>
+<li>  如果没有可运行的case语句，且有default语句，那么就会执行default的动作。</li>
+<li>  如果没有可运行的case语句，且没有default语句，select将阻塞，直到某个case通信可以运行</li>
+</ul>
+<h2 id="JSON-标准库对-nil-slice-和-空-slice-的处理是一致的吗？"><a href="#JSON-标准库对-nil-slice-和-空-slice-的处理是一致的吗？" class="headerlink" title="JSON 标准库对 nil slice 和 空 slice 的处理是一致的吗？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>JSON 标准库对 nil slice 和 空 slice 的处理是一致的吗？</h2><p>首先JSON 标准库对 nil slice 和 空 slice 的处理是不一致.<br>通常错误的用法，会报数组越界的错误，因为只是声明了slice，却没有给实例化的对象。</p>
+<pre><code>var slice []int
+slice[1] = 0
+</code></pre>
+<p>此时slice的值是nil，这种情况可以用于需要返回slice的函数，当函数出现异常的时候，保证函数依然会有nil的返回值。<br>empty slice 是指slice不为nil，但是slice没有值，slice的底层的空间是空的，此时的定义如下：</p>
+<pre><code>slice := make([]int,0）
+slice := []int&#123;&#125;
+</code></pre>
+<p>当我们查询或者处理一个空的列表的时候，这非常有用，它会告诉我们返回的是一个列表，但是列表内没有任何值。<br>总之，nil slice 和 empty slice是不同的东西,需要我们加以区分的.</p>
+<h2 id="并发编程概念是什么？"><a href="#并发编程概念是什么？" class="headerlink" title="并发编程概念是什么？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>并发编程概念是什么？</h2><p>并行是指两个或者多个事件在同一时刻发生；并发是指两个或多个事件在同一时间间隔发生。<br>并行是在不同实体上的多个事件，并发是在同一实体上的多个事件。在一台处理器上“同时”处理多个任务，在多台处理器上同时处理多个任务。如hadoop分布式集群<br>并发偏重于多个任务交替执行，而多个任务之间有可能还是串行的。而并行是真正意义上的“同时执行”。<br>并发编程是指在一台处理器上“同时”处理多个任务。并发是在同一实体上的多个事件。多个事件在同一时间间隔发生。并发编程的目标是充分的利用处理器的每一个核，以达到最高的处理性能。</p>
+<h2 id="简述协程，线程，进程的区别。"><a href="#简述协程，线程，进程的区别。" class="headerlink" title="简述协程，线程，进程的区别。"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>简述协程，线程，进程的区别。</h2><ul>
+<li><p>进程<br>  进程是具有一定独立功能的程序关于某个数据集合上的一次运行活动,进程是系统进行资源分配和调度的一个独立单位。每个进程都有自己的独立内存空间，不同进程通过进程间通信来通信。由于进程比较重量，占据独立的内存，所以上下文进程间的切换开销（栈、寄存器、虚拟内存、文件句柄等）比较大，但相对比较稳定安全。</p>
+</li>
+<li><p>线程<br>  线程是进程的一个实体,是CPU调度和分派的基本单位,它是比进程更小的能独立运行的基本单位.线程自己基本上不拥有系统资源,只拥有一点在运行中必不可少的资源(如程序计数器,一组寄存器和栈),但是它可与同属一个进程的其他的线程共享进程所拥有的全部资源。线程间通信主要通过共享内存，上下文切换很快，资源开销较少，但相比进程不够稳定容易丢失数据。</p>
+</li>
+<li><p>协程<br>  协程是一种用户态的轻量级线程，协程的调度完全由用户控制。协程拥有自己的寄存器上下文和栈。协程调度切换时，将寄存器上下文和栈保存到其他地方，在切回来的时候，恢复先前保存的寄存器上下文和栈，直接操作栈则基本没有内核切换的开销，可以不加锁的访问全局变量，所以上下文的切换非常快。</p>
+</li>
+</ul>
+<p>一个应用程序一般对应一个进程，一个进程一般有一个主线程，还有若干个辅助线程，线程之间是平行运行的，在线程里面可以开启协程，让程序在特定的时间内运行。<br>协程和线程的区别是：协程避免了无意义的调度，由此可以提高性能，但也因此，程序员必须自己承担调度的责任，同时，协程也失去了标准线程使用多CPU的能力。</p>
+<h2 id="如何复制silce、map、interface"><a href="#如何复制silce、map、interface" class="headerlink" title="如何复制silce、map、interface{} ?"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>如何复制silce、map、interface{} ?</h2><p>您可以使用内置copy()函数复制切片：</p>
+<pre><code>a := []int&#123;1, 2&#125;
+b := []int&#123;3, 4&#125;
+check := a
+copy(a, b)
+fmt.Println(a, b, check)
+// Output: [3 4] [3 4] [3 4]
+</code></pre>
+<p>这里，check变量用于保存对原始切片描述的引用，以确保它真正被复制。<br>另一方面，在下一个示例中，操作不复制切片内容，只复制切片描述：</p>
+<pre><code>a := []int&#123;1, 2&#125;
+b := []int&#123;3, 4&#125;
+check := a
+a = b
+fmt.Println(a, b, check)
+// Output: [3 4] [3 4] [1 2]
+</code></pre>
+<p>您可以通过遍历其键来复制Map。是的，不幸的是，这是在Go中复制Map的最简单方法：</p>
+<pre><code>a := map[string]bool&#123;&quot;A&quot;: true, &quot;B&quot;: true&#125;
+b := make(map[string]bool)
+for key, value := range a &#123;
+    b[key] = value
+&#125;
+</code></pre>
+<p>以下示例仅复制map的描述：</p>
+<pre><code>a := map[string]bool&#123;&quot;A&quot;: true, &quot;B&quot;: true&#125;
+b := map[string]bool&#123;&quot;C&quot;: true, &quot;D&quot;: true&#125;
+check := a
+a = b
+fmt.Println(a, b, check)
+// Output: map[C:true D:true] map[C:true D:true] map[A:true B:true]
+</code></pre>
+<p>Go中没有内置方式来复制接口。不，该reflect.DeepCopy()功能不存在。</p>
+<h2 id="Golang的内存模型，为什么小对象多了会造成gc压力。"><a href="#Golang的内存模型，为什么小对象多了会造成gc压力。" class="headerlink" title="Golang的内存模型，为什么小对象多了会造成gc压力。"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>Golang的内存模型，为什么小对象多了会造成gc压力。</h2><p>通常小对象过多会导致GC三色法消耗过多的GPU。优化思路是，减少对象分配.</p>
+<h2 id="数据竞争-Data-Race-问题怎么解决？能不能不加锁解决这个问题？"><a href="#数据竞争-Data-Race-问题怎么解决？能不能不加锁解决这个问题？" class="headerlink" title="数据竞争(Data Race)问题怎么解决？能不能不加锁解决这个问题？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>数据竞争(Data Race)问题怎么解决？能不能不加锁解决这个问题？</h2><p>同步访问共享数据是处理数据竞争的一种有效的方法.golang在1.1之后引入了竞争检测机制，可以使用 go run -race 或者 go build -race来进行静态检测。<br>其在内部的实现是,开启多个协程执行同一个命令， 并且记录下每个变量的状态.</p>
+<p>竞争检测器基于C/C++的ThreadSanitizer 运行时库，该库在Google内部代码基地和Chromium找到许多错误。这个技术在2012年九月集成到Go中，从那时开始，它已经在标准库中检测到42个竞争条件。现在，它已经是我们持续构建过程的一部分，当竞争条件出现时，它会继续捕捉到这些错误。</p>
+<p>竞争检测器已经完全集成到Go工具链中，仅仅添加-race标志到命令行就使用了检测器。</p>
+<pre><code>$ go test -race mypkg    // 测试包
+$ go run -race mysrc.go  // 编译和运行程序
+$ go build -race mycmd   // 构建程序
+$ go install -race mypkg // 安装程序
+</code></pre>
+<p>要想解决数据竞争的问题可以使用互斥锁sync.Mutex,解决数据竞争(Data race),也可以使用管道解决,使用管道的效率要比互斥锁高.</p>
+<h2 id="什么是channel，为什么它可以做到线程安全？"><a href="#什么是channel，为什么它可以做到线程安全？" class="headerlink" title="什么是channel，为什么它可以做到线程安全？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>什么是channel，为什么它可以做到线程安全？</h2><p>Channel是Go中的一个核心类型，可以把它看成一个管道，通过它并发核心单元就可以发送或者接收数据进行通讯(communication),Channel也可以理解是一个先进先出的队列，通过管道进行通信。</p>
+<p>Golang的Channel,发送一个数据到Channel 和 从Channel接收一个数据 都是 原子性的。而且Go的设计思想就是:不要通过共享内存来通信，而是通过通信来共享内存，前者就是传统的加锁，后者就是Channel。也就是说，设计Channel的主要目的就是在多任务间传递数据的，这当然是安全的。</p>
+<h2 id="赋值是原子操作吗？"><a href="#赋值是原子操作吗？" class="headerlink" title="赋值是原子操作吗？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>赋值是原子操作吗？</h2><p>对于标准编译器来说，赋值不是原子操作。</p>
+<h2 id="函数调用time-Sleep-d-和数据通道接收-lt-time-After-d-操作之间有何区别？"><a href="#函数调用time-Sleep-d-和数据通道接收-lt-time-After-d-操作之间有何区别？" class="headerlink" title="函数调用time.Sleep(d)和数据通道接收&lt;-time.After(d)操作之间有何区别？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>函数调用time.Sleep(d)和数据通道接收&lt;-time.After(d)操作之间有何区别？</h2><p>两者都会将当前的goroutine执行暂停一段时间。 区别在于time.Sleep(d)函数调用将使当前的协程进入睡眠字状态，但是当前协程的（主）状态依然为运行状态； 而数据通道接收&lt;-time.After(d)操作将使当前协程进入阻塞状态</p>
+<h2 id="64位整数值的地址是否能保证总是64位对齐的，以便可以被安全地原子访问？"><a href="#64位整数值的地址是否能保证总是64位对齐的，以便可以被安全地原子访问？" class="headerlink" title="64位整数值的地址是否能保证总是64位对齐的，以便可以被安全地原子访问？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>64位整数值的地址是否能保证总是64位对齐的，以便可以被安全地原子访问？</h2><p>传递给sync/atomic标准库包中的64位函数的地址必须是64位对齐的，否则调用这些函数将在运行时导致恐慌产生。对于标准编译器和gccgo编译器，在64位架构下，64位整数的地址将保证总是64位对齐的。 所以它们总是可以被安全地原子访问。 但在32位架构下，64位整数的地址仅保证是32位对齐的。 所以原子访问某些64位整数可能会导致恐慌。</p>
+<h2 id="分布式锁实现原理，用过吗？"><a href="#分布式锁实现原理，用过吗？" class="headerlink" title="分布式锁实现原理，用过吗？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>分布式锁实现原理，用过吗？</h2><p>在分析分布式锁的三种实现方式之前，先了解一下分布式锁应该具备哪些条件：</p>
+<ol>
+<li> 在分布式系统环境下，一个方法在同一时间只能被一个机器的一个线程执行；</li>
+<li> 高可用的获取锁与释放锁；</li>
+<li> 高性能的获取锁与释放锁；</li>
+<li> 具备可重入特性；</li>
+<li> 具备锁失效机制，防止死锁；</li>
+<li> 具备非阻塞锁特性，即没有获取到锁将直接返回获取锁失败。</li>
+</ol>
+<p>分布式的CAP理论告诉我们“任何一个分布式系统都无法同时满足一致性（Consistency）、可用性（Availability）和分区容错性（Partition tolerance），最多只能同时满足两项。”所以，很多系统在设计之初就要对这三者做出取舍。在互联网领域的绝大多数的场景中，都需要牺牲强一致性来换取系统的高可用性，系统往往只需要保证“最终一致性”，只要这个最终时间是在用户可以接受的范围内即可。</p>
+<p>通常分布式锁以单独的服务方式实现，目前比较常用的分布式锁实现有三种：</p>
+<ul>
+<li>  基于数据库实现分布式锁。</li>
+<li>  基于缓存（redis，memcached，tair）实现分布式锁。</li>
+<li>  基于Zookeeper实现分布式锁。</li>
+</ul>
+<p>尽管有这三种方案，但是不同的业务也要根据自己的情况进行选型，他们之间没有最好只有更适合！</p>
+<ul>
+<li>  基于数据库的实现方式</li>
+</ul>
+<p>基于数据库的实现方式的核心思想是：在数据库中创建一个表，表中包含方法名等字段，并在方法名字段上创建唯一索引，想要执行某个方法，就使用这个方法名向表中插入数据，成功插入则获取锁，执行完成后删除对应的行数据释放锁。</p>
+<p>创建一个表：</p>
+<pre><code>DROP TABLE IF EXISTS `method_lock`;
+CREATE TABLE `method_lock` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT &#39;主键&#39;,
+  `method_name` varchar(64) NOT NULL COMMENT &#39;锁定的方法名&#39;,
+  `desc` varchar(255) NOT NULL COMMENT &#39;备注信息&#39;,
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uidx_method_name` (`method_name`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT=&#39;锁定中的方法&#39;;
+</code></pre>
+<p>想要执行某个方法，就使用这个方法名向表中插入数据：</p>
+<pre><code>INSERT INTO method_lock (method_name, desc) VALUES (&#39;methodName&#39;, &#39;测试的methodName&#39;);
+</code></pre>
+<p>因为我们对method_name做了唯一性约束，这里如果有多个请求同时提交到数据库的话，数据库会保证只有一个操作可以成功，那么我们就可以认为操作成功的那个线程获得了该方法的锁，可以执行方法体内容。</p>
+<p>成功插入则获取锁，执行完成后删除对应的行数据释放锁：</p>
+<pre><code>delete from method_lock where method_name =&#39;methodName&#39;;
+</code></pre>
+<p>注意：这里只是使用基于数据库的一种方法，使用数据库实现分布式锁还有很多其他的用法可以实现！</p>
+<p>使用基于数据库的这种实现方式很简单，但是对于分布式锁应该具备的条件来说，它有一些问题需要解决及优化：</p>
+<p>1、因为是基于数据库实现的，数据库的可用性和性能将直接影响分布式锁的可用性及性能，所以，数据库需要双机部署、数据同步、主备切换；</p>
+<p>2、不具备可重入的特性，因为同一个线程在释放锁之前，行数据一直存在，无法再次成功插入数据，所以，需要在表中新增一列，用于记录当前获取到锁的机器和线程信息，在再次获取锁的时候，先查询表中机器和线程信息是否和当前机器和线程相同，若相同则直接获取锁；</p>
+<p>3、没有锁失效机制，因为有可能出现成功插入数据后，服务器宕机了，对应的数据没有被删除，当服务恢复后一直获取不到锁，所以，需要在表中新增一列，用于记录失效时间，并且需要有定时任务清除这些失效的数据；</p>
+<p>4、不具备阻塞锁特性，获取不到锁直接返回失败，所以需要优化获取逻辑，循环多次去获取。</p>
+<p>5、在实施的过程中会遇到各种不同的问题，为了解决这些问题，实现方式将会越来越复杂；依赖数据库需要一定的资源开销，性能问题需要考虑。</p>
+<ul>
+<li>  基于Redis的实现方式</li>
+</ul>
+<p>选用Redis实现分布式锁原因：</p>
+<ol>
+<li> Redis有很高的性能；</li>
+<li> Redis命令对此支持较好，实现起来比较方便</li>
+</ol>
+<p>主要实现方式:</p>
+<ol>
+<li> SET lock currentTime+expireTime EX 600 NX，使用set设置lock值，并设置过期时间为600秒，如果成功，则获取锁；</li>
+<li> 获取锁后，如果该节点掉线，则到过期时间ock值自动失效；</li>
+<li> 释放锁时，使用del删除lock键值；</li>
+</ol>
+<p>使用redis单机来做分布式锁服务，可能会出现单点问题，导致服务可用性差，因此在服务稳定性要求高的场合，官方建议使用redis集群（例如5台，成功请求锁超过3台就认为获取锁），来实现redis分布式锁。详见RedLock。</p>
+<p>优点:性能高，redis可持久化，也能保证数据不易丢失,redis集群方式提高稳定性。</p>
+<p>缺点:使用redis主从切换时可能丢失部分数据。</p>
+<ul>
+<li>  基于ZooKeeper的实现方式</li>
+</ul>
+<p>ZooKeeper是一个为分布式应用提供一致性服务的开源组件，它内部是一个分层的文件系统目录树结构，规定同一个目录下只能有一个唯一文件名。基于ZooKeeper实现分布式锁的步骤如下：</p>
+<ol>
+<li> 创建一个目录mylock；</li>
+<li> 线程A想获取锁就在mylock目录下创建临时顺序节点；</li>
+<li> 获取mylock目录下所有的子节点，然后获取比自己小的兄弟节点，如果不存在，则说明当前线程顺序号最小，获得锁；</li>
+<li> 线程B获取所有节点，判断自己不是最小节点，设置监听比自己次小的节点；</li>
+<li> 线程A处理完，删除自己的节点，线程B监听到变更事件，判断自己是不是最小的节点，如果是则获得锁。</li>
+</ol>
+<p>这里推荐一个Apache的开源库Curator，它是一个ZooKeeper客户端，Curator提供的InterProcessMutex是分布式锁的实现，acquire方法用于获取锁，release方法用于释放锁。</p>
+<p>优点：具备高可用、可重入、阻塞锁特性，可解决失效死锁问题。</p>
+<p>缺点：因为需要频繁的创建和删除节点，性能上不如Redis方式。</p>
+<p>上面的三种实现方式，没有在所有场合都是完美的，所以，应根据不同的应用场景选择最适合的实现方式。</p>
+<p>在分布式环境中，对资源进行上锁有时候是很重要的，比如抢购某一资源，这时候使用分布式锁就可以很好地控制资源。</p>
+<h2 id="读写锁或者互斥锁读的时候能写吗"><a href="#读写锁或者互斥锁读的时候能写吗" class="headerlink" title="读写锁或者互斥锁读的时候能写吗?"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>读写锁或者互斥锁读的时候能写吗?</h2><p>Go中读写锁包括读锁和写锁，多个读线程可以同时访问共享数据；写线程必须等待所有读线程都释放锁以后，才能取得锁；同样的，读线程必须等待写线程释放锁后，才能取得锁，也就是说读写锁要确保的是如下互斥关系，可以同时读，但是读-写，写-写都是互斥的。</p>
+<h2 id="Channel是同步的还是异步的"><a href="#Channel是同步的还是异步的" class="headerlink" title="Channel是同步的还是异步的."></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>Channel是同步的还是异步的.</h2><p>Channel是异步进行的。<br>channel存在3种状态：</p>
+<ul>
+<li>  nil，未初始化的状态，只进行了声明，或者手动赋值为nil</li>
+<li>  active，正常的channel，可读或者可写</li>
+<li>  closed，已关闭，千万不要误认为关闭channel后，channel的值是nil</li>
+</ul>
+<h2 id="说一下异步和非阻塞的区别"><a href="#说一下异步和非阻塞的区别" class="headerlink" title="说一下异步和非阻塞的区别?"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>说一下异步和非阻塞的区别?</h2><ul>
+<li>  异步和非阻塞的区别:</li>
+</ul>
+<ol>
+<li> 异步：调用在发出之后，这个调用就直接返回，不管有无结果；异步是过程。</li>
+<li> 非阻塞：关注的是程序在等待调用结果（消息，返回值）时的状态，指在不能立刻得到结果之前，该调用不会阻塞当前线程。</li>
+</ol>
+<ul>
+<li>  同步和异步的区别：</li>
+</ul>
+<ol>
+<li> 步：一个服务的完成需要依赖其他服务时，只有等待被依赖的服务完成后，才算完成，这是一种可靠的服务序列。要么成功都成功，失败都失败，服务的状态可以保持一致。</li>
+<li> 异步：一个服务的完成需要依赖其他服务时，只通知其他依赖服务开始执行，而不需要等待被依赖的服务完成，此时该服务就算完成了。被依赖的服务是否最终完成无法确定，一次它是一个不可靠的服务序列。</li>
+</ol>
+<ul>
+<li>  消息通知中的同步和异步：</li>
+</ul>
+<ol>
+<li> 同步：当一个同步调用发出后，调用者要一直等待返回消息（或者调用结果）通知后，才能进行后续的执行。</li>
+<li> 异步：当一个异步过程调用发出后，调用者不能立刻得到返回消息（结果）。在调用结束之后，通过消息回调来通知调用者是否调用成功。</li>
+</ol>
+<ul>
+<li>  阻塞与非阻塞的区别：</li>
+</ul>
+<ol>
+<li> 阻塞：阻塞调用是指调用结果返回之前，当前线程会被挂起，一直处于等待消息通知，不能够执行其他业务,函数只有在得到结果之后才会返回。</li>
+<li> 非阻塞：非阻塞和阻塞的概念相对应，指在不能立刻得到结果之前，该函数不会阻塞当前线程，而会立刻返回。</li>
+</ol>
+<p>同步与异步是对应的，它们是线程之间的关系，两个线程之间要么是同步的，要么是异步的。</p>
+<p>阻塞与非阻塞是对同一个线程来说的，在某个时刻，线程要么处于阻塞，要么处于非阻塞。</p>
+<p>阻塞是使用同步机制的结果，非阻塞则是使用异步机制的结果。</p>
+<h2 id="Goroutine和线程的区别"><a href="#Goroutine和线程的区别" class="headerlink" title="Goroutine和线程的区别?"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>Goroutine和线程的区别?</h2><p>从调度上看，goroutine的调度开销远远小于线程调度开销。</p>
+<p>OS的线程由OS内核调度，每隔几毫秒，一个硬件时钟中断发到CPU，CPU调用一个调度器内核函数。这个函数暂停当前正在运行的线程，把他的寄存器信息保存到内存中，查看线程列表并决定接下来运行哪一个线程，再从内存中恢复线程的注册表信息，最后继续执行选中的线程。这种线程切换需要一个完整的上下文切换：即保存一个线程的状态到内存，再恢复另外一个线程的状态，最后更新调度器的数据结构。某种意义上，这种操作还是很慢的。</p>
+<p>Go运行的时候包涵一个自己的调度器，这个调度器使用一个称为一个M:N调度技术，m个goroutine到n个os线程（可以用GOMAXPROCS来控制n的数量），Go的调度器不是由硬件时钟来定期触发的，而是由特定的go语言结构来触发的，他不需要切换到内核语境，所以调度一个goroutine比调度一个线程的成本低很多。</p>
+<p>从栈空间上，goroutine的栈空间更加动态灵活。</p>
+<p>每个OS的线程都有一个固定大小的栈内存，通常是2MB，栈内存用于保存在其他函数调用期间哪些正在执行或者临时暂停的函数的局部变量。这个固定的栈大小，如果对于goroutine来说，可能是一种巨大的浪费。作为对比goroutine在生命周期开始只有一个很小的栈，典型情况是2KB, 在go程序中，一次创建十万左右的goroutine也不罕见（2KB*100,000=200MB）。而且goroutine的栈不是固定大小，它可以按需增大和缩小，最大限制可以到1GB。</p>
+<p>goroutine没有一个特定的标识。</p>
+<p>在大部分支持多线程的操作系统和编程语言中，线程有一个独特的标识，通常是一个整数或者指针，这个特性可以让我们构建一个线程的局部存储，本质是一个全局的map，以线程的标识作为键，这样每个线程可以独立使用这个map存储和获取值，不受其他线程干扰。</p>
+<p>goroutine中没有可供程序员访问的标识，原因是一种纯函数的理念，不希望滥用线程局部存储导致一个不健康的超距作用，即函数的行为不仅取决于它的参数，还取决于运行它的线程标识。</p>
+<h2 id="如何实现消息队列（多生产者，多消费者）？"><a href="#如何实现消息队列（多生产者，多消费者）？" class="headerlink" title="如何实现消息队列（多生产者，多消费者）？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>如何实现消息队列（多生产者，多消费者）？</h2><p>根据Goroutine和channel的读写可以实现消息队列 。</p>
+<pre><code>
+package main
+
+import (
+    &quot;fmt&quot;
+    &quot;time&quot;
+)
+func consumer(cname string, ch chan int) &#123;
+
+    //可以循环 for i := range ch 来不断从 channel 接收值，直到它被关闭。
+
+    for i := range ch &#123;
+        fmt.Println(&quot;consumer-----------&quot;, cname, &quot;:&quot;, i)
+    &#125;
+    fmt.Println(&quot;ch closed.&quot;)
+&#125;
+
+func producer(pname string, ch chan int) &#123;
+    for i := 0; i &lt; 4; i++ &#123;
+        fmt.Println(&quot;producer--&quot;, pname, &quot;:&quot;, i)
+        ch &lt;- i
+    &#125;
+&#125;
+
+func main() &#123;
+    //用channel来传递&quot;产品&quot;, 不再需要自己去加锁维护一个全局的阻塞队列
+    ch := make(chan int)
+    go producer(&quot;生产者1&quot;, ch)
+    go producer(&quot;生产者2&quot;, ch)
+    go consumer(&quot;消费者1&quot;, ch)
+    go consumer(&quot;消费者2&quot;, ch)
+    time.Sleep(10 * time.Second)
+    close(ch)
+    time.Sleep(10 * time.Second)
+&#125;
+</code></pre>
+<h2 id="如何进行大文件排序？"><a href="#如何进行大文件排序？" class="headerlink" title="如何进行大文件排序？"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>如何进行大文件排序？</h2><p>设想你有一个20GB的文件，每行一个字符串，说明如何对这个文件进行排序。<br>内存肯定没有20GB大，所以不可能采用传统排序法。但是可以将文件分成许多块,针对每个快各自进行排序，存回文件系统。然后将这些块逐一合并，最终得到全部排好序的文件。</p>
+<h2 id="孤儿进程，僵尸进程"><a href="#孤儿进程，僵尸进程" class="headerlink" title="孤儿进程，僵尸进程"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487"></a>孤儿进程，僵尸进程</h2><ul>
+<li><p>  孤儿进程：一个父进程退出，而它的一个或多个子进程还在运行，那么那些子进程将成为孤儿进程。孤儿进程将被init进程(进程号为1)所收养，并由init进程对它们完成状态收集工作。</p>
+</li>
+<li><p>  僵尸进程：一个进程使用fork创建子进程，如果子进程退出，而父进程并没有调用wait或waitpid获取子进程的状态信息，那么子进程的进程描述符仍然保存在系统中。这种进程称之为僵死进程。</p>
+</li>
+</ul>
+<p>本文转自 <a target="_blank" rel="noopener" href="https://blog.csdn.net/yang731227/article/details/90637487">https://blog.csdn.net/yang731227/article/details/90637487</a>，如有侵权，请联系删除。</p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 部分资料来源于网络，版权属其原著者所有，只供学习交流之用。如有侵犯您的权益，请联系【公众号：码农印象】删除，可在下方评论，亦可邮件至ysluckly.520@qq.com。互动交流时请遵守宽容、换位思考的原则。 </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+    <div id="comments"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+<script type="text/javascript">
+    $.getScript('/js/gitalk.js', function () {
+        var gitalk = new Gitalk({
+            clientID: 'e2124f560cfd0eb39dbd',
+            clientSecret: '4be2c247d3945f99e8db63224555838f4a729d57',
+            repo: 'gittalk',
+            owner: 'ysluckly',
+            admin: ['ysluckly'],
+            id: decodeURI(location.pathname),
+            distractionFreeMode: 'true',
+            language: 'zh-CN',
+            perPage: parseInt('10',10)
+        })
+        gitalk.render('comments')
+    })
+</script>
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2021-2022@码农印象
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 552px;
+    }
+    .nav.fullscreen {
+        margin-left: -552px;
+    }
+    .nav-left {
+        width: 130px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    #post {
+        background: url(https://s4.ax1x.com/2022/02/20/HLfdgJ.jpg);
+    }
+    
+    
+    #post .index {
+        background: url(https://s4.ax1x.com/2022/02/20/HLgPeK.md.jpg);
+    }
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
+        background: url("https://s4.ax1x.com/2022/02/20/HLdoMF.png");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+<div class="mobile-menus-out" >
+
+</div>
+<div class="mobile-menus">
+    
+    
+    <a class="dynamic-menu site_url"   href="/2022/02/02/gamesh/">休闲小游戏</a>
+    
+    
+    
+</div>
+
+
+</html>
