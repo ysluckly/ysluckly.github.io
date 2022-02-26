@@ -29,15 +29,6 @@
   </url>
   
   <url>
-    <loc>https://ysluckly.github.io/2021/05/22/undefined/</loc>
-    
-    <lastmod>2022-02-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://ysluckly.github.io/2021/05/20/undefined/</loc>
     
     <lastmod>2022-02-26</lastmod>
@@ -1420,13 +1411,6 @@
   </url>
   
   <url>
-    <loc>https://ysluckly.github.io/tags/git/</loc>
-    <lastmod>2022-02-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://ysluckly.github.io/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0-main%E5%87%BD%E6%95%B0/</loc>
     <lastmod>2022-02-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -1476,14 +1460,14 @@
   </url>
   
   <url>
-    <loc>https://ysluckly.github.io/tags/%E7%BB%93%E6%9E%84%E4%BD%93/</loc>
+    <loc>https://ysluckly.github.io/tags/%E9%80%86%E5%BA%8F%E5%AD%97%E7%AC%A6%E4%B8%B2/</loc>
     <lastmod>2022-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://ysluckly.github.io/tags/%E9%80%86%E5%BA%8F%E5%AD%97%E7%AC%A6%E4%B8%B2/</loc>
+    <loc>https://ysluckly.github.io/tags/%E7%BB%93%E6%9E%84%E4%BD%93/</loc>
     <lastmod>2022-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1819,13 +1803,6 @@
   </url>
   
   <url>
-    <loc>https://ysluckly.github.io/tags/AngularJs/</loc>
-    <lastmod>2022-02-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://ysluckly.github.io/tags/jsp/</loc>
     <lastmod>2022-02-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -1869,6 +1846,13 @@
   
   <url>
     <loc>https://ysluckly.github.io/tags/node/</loc>
+    <lastmod>2022-02-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://ysluckly.github.io/tags/AngularJs/</loc>
     <lastmod>2022-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2177,6 +2161,13 @@
   
   <url>
     <loc>https://ysluckly.github.io/tags/deepin/</loc>
+    <lastmod>2022-02-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://ysluckly.github.io/tags/git/</loc>
     <lastmod>2022-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
