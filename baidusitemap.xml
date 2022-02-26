@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://ysluckly.github.io/2018/01/20/undefined/</loc>
+    <lastmod>2022-02-26</lastmod>
+  </url>
+  <url>
     <loc>https://ysluckly.github.io/2022/01/19/golang/</loc>
     <lastmod>2022-02-26</lastmod>
   </url>
@@ -46,10 +50,6 @@
   </url>
   <url>
     <loc>https://ysluckly.github.io/2022/02/01/mysql/</loc>
-    <lastmod>2022-02-26</lastmod>
-  </url>
-  <url>
-    <loc>https://ysluckly.github.io/2018/01/20/undefined/</loc>
     <lastmod>2022-02-26</lastmod>
   </url>
   <url>
